@@ -1,0 +1,75 @@
+import { Menu } from "@/types/menu";
+
+const menuData: Menu[] = [
+  {
+    id: 1,
+    title: "Services",
+    newTab: false,
+    submenu: [
+      {
+        id: 51,
+        title: "Visit Visa",
+        newTab: false,
+        path: "/services/visit-visa",
+      },
+      {
+        id: 54,
+        title: "Skilled Worker Visa",
+        newTab: false,
+        path: "/services/skilled-worker-visa",
+      },
+      {
+        id: 55,
+        title: "Graduate Visa",
+        newTab: false,
+        path: "/services/graduate-visa",
+      },
+      {
+        id: 56,
+        title: "Student Visa",
+        newTab: false,
+        path: "/services/student-visa",
+      },
+      {
+        id: 57,
+        title: "Spouse Visa",
+        newTab: false,
+        path: "/services/spouse-visa",
+      },
+    ],
+  },
+
+  {
+    id: 5,
+    title: "Our Clients",
+    newTab: false,
+    path: "/our-clients",
+  },
+  {
+    id: 2,
+    title: "About Us",
+    newTab: false,
+    path: "/about-us",
+  },
+  {
+    id: 3,
+    title: "Blog",
+    newTab: false,
+    path: "/blog",
+  },
+  {
+    id: 4,
+    title: "Free Stuff",
+    newTab: false,
+    path: "/free-stuff",
+  },
+
+  {
+    id: 6,
+    title: "Testimonials",
+    newTab: false,
+    path: "/testimonials",
+  },
+];
+
+export default menuData;
