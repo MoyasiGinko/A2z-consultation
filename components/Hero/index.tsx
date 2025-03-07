@@ -394,15 +394,11 @@ const Hero: React.FC = () => {
                   transition={{ delay: 0.4, type: "spring" }}
                   className="flex justify-end"
                 >
-                  <div className="h-32 w-32 overflow-hidden rounded-lg bg-white p-4 shadow-md">
+                  <div className="h-32 w-32 overflow-hidden bg-transparent">
                     <motion.div
-                      initial={{ rotate: 0 }}
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.5, type: "spring" }}
                       style={{
                         position: "relative",
                         width: "100%",
@@ -410,11 +406,11 @@ const Hero: React.FC = () => {
                       }}
                     >
                       <Image
-                        src="/checklist-image.png"
+                        src="/images/hero/sponsor.png"
                         alt="Checklist illustration"
                         width={120}
                         height={120}
-                        className="object-contain"
+                        className="rounded-md object-contain"
                       />
                     </motion.div>
                   </div>
