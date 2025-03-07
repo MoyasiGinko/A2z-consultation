@@ -197,7 +197,7 @@ const BlogSection: React.FC = () => {
   }, [isInView, controls]);
 
   return (
-    <section ref={sectionRef} className="bg-gray-50 py-16">
+    <section ref={sectionRef} className="bg-white py-16">
       <div className="container mx-auto px-4">
         <motion.div
           className="relative mb-20"

@@ -187,7 +187,7 @@ const WhoLovesUs: React.FC = () => {
   const remainingTestimonials = testimonials.slice(6, 9);
 
   return (
-    <section className="bg-gradient-to-b from-primary/95 to-primary py-16 lg:py-20">
+    <section className="bg-gradient-to-b from-cyan-600 to-white py-16 lg:py-20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -391,11 +391,6 @@ const WhoLovesUs: React.FC = () => {
           </AnimatePresence>
 
           {/* Fade effect for hidden cards */}
-          {!showAll && (
-            <div className="relative mb-8">
-              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-primary to-transparent"></div>
-            </div>
-          )}
         </div>
 
         {/* Toggle button - improved with subtle animation */}
@@ -410,20 +405,25 @@ const WhoLovesUs: React.FC = () => {
             onClick={() => setShowAll(!showAll)}
             whileHover="hover"
             variants={buttonVariants}
-            className="flex items-center gap-2 rounded-full bg-white px-8 py-3 font-medium text-primary shadow-lg transition-all duration-300"
+            className="z-30 flex items-center gap-2 rounded-full bg-cyan-600 px-8 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:bg-cyan-500"
           >
             {showAll ? (
               <>
-                Show Less <ChevronUp className="h-5 w-5" />
+                See Less <ChevronUp className="h-5 w-5" />
               </>
             ) : (
               <>
-                Show More <ChevronDown className="h-5 w-5" />
+                See More <ChevronDown className="h-5 w-5" />
               </>
             )}
           </motion.button>
         </motion.div>
       </div>
+      {!showAll && (
+        <div className="relative -bottom-20 z-10 w-full">
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-white via-white/95 to-transparent"></div>
+        </div>
+      )}
     </section>
   );
 };
