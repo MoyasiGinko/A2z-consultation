@@ -4,15 +4,12 @@ import Image from "next/image";
 
 const StartYourJourney = () => {
   return (
-    <section
-      className="mt-10 bg-primary bg-cover bg-center py-10 text-white lg:mt-40 lg:py-20"
-      style={{ backgroundImage: "url(/images/Start-your-journey-with-us.jpg)" }}
-    >
+    <section className="mt-10 bg-primary bg-cover bg-center py-10 text-white lg:mt-40 lg:py-20">
       <div className="container grid gap-12 lg:grid-cols-12 lg:gap-20">
         {/* Image Section */}
         <figure className="relative flex h-[220px] items-center justify-center overflow-hidden md:h-[250px] lg:order-1 lg:col-span-7 lg:h-[360px] lg:justify-end">
           <Image
-            src="/images/uk-passport.jpg"
+            src="/images/hero/uk-passport.png"
             alt="UK Passport"
             layout="intrinsic"
             width={600}
