@@ -18,6 +18,7 @@ import StartYourJourney from "@/components/StartYourJourney";
 import StepByStep from "@/components/StepByStep";
 import StatsSection from "@/components/Stats";
 import BlogSection from "@/components/Blog/BlogSection";
+import WhoLovesUs from "@/components/WhoLoveUs";
 
 export const metadata: Metadata = {
   title: "A2Z Immigration",
@@ -47,6 +48,7 @@ export default function Home() {
       {/* <Pricing /> */}
       {/* <Contact /> */}
       {/* <Blog /> */}
+      <WhoLovesUs />
       <BlogSection />
     </main>
   );
