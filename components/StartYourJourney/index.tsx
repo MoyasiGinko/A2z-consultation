@@ -4,7 +4,10 @@ import Image from "next/image";
 
 const StartYourJourney = () => {
   return (
-    <section className="mt-10 bg-primary bg-cover bg-center py-10 text-white lg:mt-40 lg:py-20">
+    <section
+      className="mt-10 bg-primary bg-cover bg-center py-10 text-white lg:mt-40 lg:py-20"
+      style={{ backgroundImage: "url(/images/hero/bg-section.png)" }}
+    >
       <div className="container grid gap-12 lg:grid-cols-12 lg:gap-20">
         {/* Image Section */}
         <figure className="relative flex h-[220px] items-center justify-center overflow-hidden md:h-[250px] lg:order-1 lg:col-span-7 lg:h-[360px] lg:justify-end">
