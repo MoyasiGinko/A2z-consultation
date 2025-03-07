@@ -1,17 +1,9 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Swiper from "swiper";
-import { Navigation, Autoplay, Mousewheel, Keyboard } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Star, Quote } from "lucide-react";
-
-// Import required modules
-Swiper.use([Navigation, Autoplay, Mousewheel, Keyboard]);
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, Quote, ChevronDown, ChevronUp } from "lucide-react";
 
 interface Testimonial {
   id: number;
@@ -74,188 +66,205 @@ const testimonials: Testimonial[] = [
     avatar: "/images/user/user-01.png",
     rating: 5,
   },
+  {
+    id: 6,
+    content:
+      "I've worked with many agencies over the years, but none have delivered the level of quality and attention to detail as this team. They're true partners in our success.",
+    name: "Maria Rodriguez",
+    position: "VP of Operations",
+    location: "Sydney, Australia",
+    avatar: "/images/user/user-02.png",
+    rating: 5,
+  },
+  {
+    id: 7,
+    content:
+      "The strategic guidance we received was invaluable. They don't just execute tasks but provide insights that make a real impact on your business. Couldn't be happier with our choice.",
+    name: "Ryan Park",
+    position: "Startup Founder",
+    location: "San Francisco, USA",
+    avatar: "/images/user/user-01.png",
+    rating: 4,
+  },
+  {
+    id: 8,
+    content:
+      "From day one, the communication was clear and the delivery exceeded our timeline requirements. A true pleasure to work with professionals who take such pride in their craft.",
+    name: "Sophia Müller",
+    position: "Creative Director",
+    location: "Munich, Germany",
+    avatar: "/images/user/user-02.png",
+    rating: 5,
+  },
+  {
+    id: 9,
+    content:
+      "Their ability to take our complex requirements and transform them into an elegant solution was remarkable. The ROI has been incredible and our customers love the results.",
+    name: "James Wilson",
+    position: "Head of Digital",
+    location: "Toronto, Canada",
+    avatar: "/images/user/user-01.png",
+    rating: 5,
+  },
 ];
 
 const WhoLovesUs: React.FC = () => {
-  const swiperRef = useRef<HTMLDivElement>(null);
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: false,
-  });
+  const [showAll, setShowAll] = useState(false);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (!swiperRef.current) return;
-
-    const swiper = new Swiper(
-      swiperRef.current.querySelector(".swiper") as HTMLElement,
-      {
-        speed: 700,
-        loop: true,
-        autoHeight: false,
-        followFinger: true,
-        freeMode: true,
-        slideToClickedSlide: true,
-        slidesPerView: "auto",
-        spaceBetween: 24,
-        rewind: false,
-        centeredSlides: false,
-        mousewheel: {
-          forceToAxis: true,
-        },
-        keyboard: {
-          enabled: true,
-          onlyInViewport: true,
-        },
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-          640: {
-            spaceBetween: 20,
-          },
-          768: {
-            spaceBetween: 24,
-          },
-          1024: {
-            spaceBetween: 32,
-          },
-        },
-      },
-    );
-
-    return () => {
-      swiper.destroy();
-    };
-  }, []);
-
-  // Animation variants
+  // Animation variants - simplified for better performance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.07,
+        delayChildren: 0.1,
       },
     },
   };
 
-  const titleVariants = {
-    hidden: { y: -50, opacity: 0 },
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
-      y: 0,
       opacity: 1,
+      y: 0,
       transition: {
         type: "spring",
-        stiffness: 100,
+        stiffness: 80,
         damping: 12,
       },
     },
   };
 
+  const moreCardsVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (custom: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 12,
+        delay: 0.05 * custom,
+      },
+    }),
+  };
+
+  const titleVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 70,
+        damping: 10,
+      },
+    },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.3,
+        duration: 0.5,
+      },
+    },
+    hover: {
+      scale: 1.05,
+      boxShadow:
+        "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+      transition: { duration: 0.2 },
+    },
+  };
+
+  // Get initial visible testimonials and hidden ones
+  const firstSixTestimonials = testimonials.slice(0, 6);
+  const remainingTestimonials = testimonials.slice(6, 9);
+
   return (
-    <div ref={ref}>
-      <motion.div
-        ref={swiperRef}
-        className="testimonials-section"
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
-        <div className="container mx-auto mb-12 px-4">
-          <motion.div
-            className="mb-12 flex items-center justify-between"
-            variants={titleVariants}
-          >
-            <h2 className="relative inline-block text-3xl font-bold md:text-4xl lg:text-5xl">
-              Who Loves Us
-              <span className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 transform bg-primary transition-transform duration-500 group-hover:scale-x-100"></span>
-            </h2>
-            <div className="hidden space-x-4 md:flex">
-              <button className="swiper-button-prev rounded-full bg-primary p-3 text-white transition-colors hover:bg-primary/80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m15 18-6-6 6-6" />
-                </svg>
-              </button>
-              <button className="swiper-button-next rounded-full bg-primary p-3 text-white transition-colors hover:bg-primary/80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </button>
-            </div>
-          </motion.div>
-        </div>
+    <section className="bg-gradient-to-b from-primary/95 to-primary py-16 lg:py-20">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <motion.div
+          className="mb-12 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={titleVariants}
+        >
+          <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+            What Our Clients Say
+          </h2>
+          <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-white/40"></div>
+          <p className="mx-auto max-w-2xl text-lg text-white/90">
+            Discover why our clients love working with us. Real stories from
+            real people who have experienced the difference our services make.
+          </p>
+        </motion.div>
 
-        <section className="relative overflow-hidden bg-primary bg-cover bg-bottom py-16 text-white lg:py-24">
-          {/* Background particles effect */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div
-                key={i}
-                className="animate-float absolute rounded-full bg-white/10"
-                style={{
-                  width: `${Math.random() * 100 + 50}px`,
-                  height: `${Math.random() * 100 + 50}px`,
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animationDuration: `${Math.random() * 10 + 15}s`,
-                  animationDelay: `${Math.random() * 5}s`,
+        {/* First 6 Testimonial Cards */}
+        <motion.div
+          className="mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={containerVariants}
+        >
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {firstSixTestimonials.map((testimonial) => (
+              <motion.div
+                key={testimonial.id}
+                variants={cardVariants}
+                onHoverStart={() => setActiveCard(testimonial.id)}
+                onHoverEnd={() => setActiveCard(null)}
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.2 },
                 }}
-              />
-            ))}
-          </div>
+                className="overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300"
+              >
+                <div className="p-6 lg:p-7">
+                  {/* Border top with gradient */}
+                  {/* <div className="absolute inset-x-0 top-0 h-0 bg-gradient-to-r from-primary to-primary/60"></div> */}
 
-          <div className="container relative z-10 mx-auto">
-            <div className="swiper">
-              <div className="swiper-wrapper flex">
-                {testimonials.map((testimonial) => (
-                  <div
-                    key={testimonial.id}
-                    className="swiper-slide bg-background min-w-[300px] shrink-0 transform rounded-xl p-6 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl md:min-w-[400px] lg:min-w-[480px] lg:p-8"
-                  >
-                    <div className="mb-4 flex gap-2">
+                  {/* Card content with smooth hover state */}
+                  <div className="relative">
+                    {/* Rating stars */}
+                    {/* <div className="mb-4 flex gap-1">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
-                          className={`h-5 w-5 ${i < testimonial.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+                          className={`h-5 w-5 ${
+                            i < testimonial.rating
+                              ? "fill-yellow-400 text-yellow-400"
+                              : "text-gray-300"
+                          }`}
                         />
                       ))}
-                    </div>
+                    </div> */}
 
+                    {/* Testimonial text */}
                     <div className="relative mb-6">
-                      <Quote className="absolute -left-2 -top-2 h-10 w-10 text-primary/20" />
-                      <p className="text-foreground leading-relaxed">
+                      {/* <Quote className="absolute -left-1 -top-1 h-8 w-8 text-primary/15" /> */}
+                      <p className="pl-2 pt-2 leading-relaxed text-gray-700">
                         {testimonial.content}
                       </p>
                     </div>
 
-                    <div className="mt-6 flex items-center gap-4 lg:gap-6">
-                      <div className="bg-muted relative size-16 overflow-hidden rounded-full lg:size-20">
+                    {/* Author info with smooth hover effect */}
+                    <motion.div
+                      className="mt-6 flex items-center gap-4"
+                      animate={{
+                        scale: activeCard === testimonial.id ? 1.02 : 1,
+                        transition: { duration: 0.2 },
+                      }}
+                    >
+                      <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-primary/10 shadow-sm">
                         {testimonial.avatar ? (
                           <Image
                             src={testimonial.avatar}
@@ -263,28 +272,159 @@ const WhoLovesUs: React.FC = () => {
                             fill
                             className="object-cover"
                           />
-                        ) : null}
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-primary/10 text-2xl font-bold text-primary">
+                            {testimonial.name.charAt(0)}
+                          </div>
+                        )}
                       </div>
                       <div>
-                        <h3 className="mb-1 text-lg font-bold">
+                        <h3 className="text-lg font-bold text-gray-800">
                           {testimonial.name}
                         </h3>
-                        <p className="text-muted-foreground text-sm font-medium leading-none">
+                        <p className="text-sm font-medium text-gray-600">
                           {testimonial.position}
                         </p>
-                        <p className="text-muted-foreground text-sm font-medium">
+                        <p className="text-xs text-gray-500">
                           {testimonial.location}
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </section>
-      </motion.div>
-    </div>
+        </motion.div>
+
+        {/* Remaining Cards (Shown when expanded) */}
+        <div className="relative">
+          <AnimatePresence>
+            {showAll && (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                exit={{ opacity: 0, height: 0, transition: { duration: 0.3 } }}
+                className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+              >
+                {remainingTestimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial.id}
+                    custom={index}
+                    variants={moreCardsVariants}
+                    onHoverStart={() => setActiveCard(testimonial.id)}
+                    onHoverEnd={() => setActiveCard(null)}
+                    whileHover={{
+                      y: -8,
+                      transition: { duration: 0.2 },
+                    }}
+                    className="overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300"
+                  >
+                    <div className="p-6 lg:p-7">
+                      {/* Border top with gradient */}
+                      {/* <div className="absolute inset-x-0 top-0 h-0 bg-gradient-to-r from-primary to-primary/60"></div> */}
+
+                      {/* Card content with smooth hover state */}
+                      <div className="relative">
+                        {/* Rating stars */}
+                        {/* <div className="mb-4 flex gap-1">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-5 w-5 ${
+                                i < testimonial.rating
+                                  ? "fill-yellow-400 text-yellow-400"
+                                  : "text-gray-300"
+                              }`}
+                            />
+                          ))}
+                        </div> */}
+
+                        {/* Testimonial text */}
+                        <div className="relative mb-6">
+                          {/* <Quote className="absolute -left-1 -top-1 h-8 w-8 text-primary/15" /> */}
+                          <p className="pl-2 pt-2 leading-relaxed text-gray-700">
+                            {testimonial.content}
+                          </p>
+                        </div>
+
+                        {/* Author info with smooth hover effect */}
+                        <motion.div
+                          className="mt-6 flex items-center gap-4"
+                          animate={{
+                            scale: activeCard === testimonial.id ? 1.02 : 1,
+                            transition: { duration: 0.2 },
+                          }}
+                        >
+                          <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-primary/10 shadow-sm">
+                            {testimonial.avatar ? (
+                              <Image
+                                src={testimonial.avatar}
+                                alt={testimonial.name}
+                                fill
+                                className="object-cover"
+                              />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center bg-primary/10 text-2xl font-bold text-primary">
+                                {testimonial.name.charAt(0)}
+                              </div>
+                            )}
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-bold text-gray-800">
+                              {testimonial.name}
+                            </h3>
+                            <p className="text-sm font-medium text-gray-600">
+                              {testimonial.position}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              {testimonial.location}
+                            </p>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Fade effect for hidden cards */}
+          {!showAll && (
+            <div className="relative mb-8">
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-primary to-transparent"></div>
+            </div>
+          )}
+        </div>
+
+        {/* Toggle button - improved with subtle animation */}
+        <motion.div
+          className="mt-8 flex justify-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={buttonVariants}
+        >
+          <motion.button
+            onClick={() => setShowAll(!showAll)}
+            whileHover="hover"
+            variants={buttonVariants}
+            className="flex items-center gap-2 rounded-full bg-white px-8 py-3 font-medium text-primary shadow-lg transition-all duration-300"
+          >
+            {showAll ? (
+              <>
+                Show Less <ChevronUp className="h-5 w-5" />
+              </>
+            ) : (
+              <>
+                Show More <ChevronDown className="h-5 w-5" />
+              </>
+            )}
+          </motion.button>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
