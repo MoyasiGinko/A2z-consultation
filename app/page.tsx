@@ -14,6 +14,10 @@ import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
 import SponsorLicenceSection from "@/components/SponsorLicense";
 import HowWeCanHelpYou from "@/components/HowCanHelp";
+import StartYourJourney from "@/components/StartYourJourney";
+import StepByStep from "@/components/StepByStep";
+import StatsSection from "@/components/Stats";
+import BlogSection from "@/components/Blog/BlogSection";
 
 export const metadata: Metadata = {
   title: "A2Z Immigration",
@@ -29,17 +33,21 @@ export default function Home() {
       {/* <Feature /> */}
       <SponsorLicenceSection />
       <HowWeCanHelpYou />
+      <StartYourJourney />
+      <StepByStep />
 
+      <StatsSection />
       {/* <About /> */}
-      <FeaturesTab />
+      {/* <FeaturesTab />
       <FunFact />
       <Integration />
       <CTA />
       <FAQ />
-      <Testimonial />
+      <Testimonial /> */}
       {/* <Pricing /> */}
-      <Contact />
-      <Blog />
+      {/* <Contact /> */}
+      {/* <Blog /> */}
+      <BlogSection />
     </main>
   );
 }
