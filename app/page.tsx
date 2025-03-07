@@ -12,6 +12,7 @@ import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
+import SponsorLicenceSection from "@/components/SponsorLicense";
 
 export const metadata: Metadata = {
   title: "A2Z Immigration",
@@ -24,7 +25,8 @@ export default function Home() {
     <main>
       <Hero />
       <Brands />
-      <Feature />
+      {/* <Feature /> */}
+      <SponsorLicenceSection />
       <About />
       <FeaturesTab />
       <FunFact />
