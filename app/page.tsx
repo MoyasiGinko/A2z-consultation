@@ -13,6 +13,7 @@ import Contact from "@/components/Contact";
 import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
 import SponsorLicenceSection from "@/components/SponsorLicense";
+import HowWeCanHelpYou from "@/components/HowCanHelp";
 
 export const metadata: Metadata = {
   title: "A2Z Immigration",
@@ -27,7 +28,9 @@ export default function Home() {
       <Brands />
       {/* <Feature /> */}
       <SponsorLicenceSection />
-      <About />
+      <HowWeCanHelpYou />
+
+      {/* <About /> */}
       <FeaturesTab />
       <FunFact />
       <Integration />
