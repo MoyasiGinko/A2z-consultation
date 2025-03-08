@@ -12,36 +12,36 @@ import {
 } from "framer-motion";
 
 // Custom cursor component that follows mouse position with delay
-const CustomCursor = () => {
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
+// const CustomCursor = () => {
+//   const cursorX = useMotionValue(0);
+//   const cursorY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+//   const springConfig = { damping: 25, stiffness: 700 };
+//   const cursorXSpring = useSpring(cursorX, springConfig);
+//   const cursorYSpring = useSpring(cursorY, springConfig);
 
-  // useEffect(() => {
-  //   const moveCursor = (e) => {
-  //     cursorX.set(e.clientX);
-  //     cursorY.set(e.clientY);
-  //   };
+//   // useEffect(() => {
+//   //   const moveCursor = (e) => {
+//   //     cursorX.set(e.clientX);
+//   //     cursorY.set(e.clientY);
+//   //   };
 
-  //   window.addEventListener("mousemove", moveCursor);
-  //   return () => {
-  //     window.removeEventListener("mousemove", moveCursor);
-  //   };
-  // }, [cursorX, cursorY]);
+//   //   window.addEventListener("mousemove", moveCursor);
+//   //   return () => {
+//   //     window.removeEventListener("mousemove", moveCursor);
+//   //   };
+//   // }, [cursorX, cursorY]);
 
-  return (
-    <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-50 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-blue-600 mix-blend-difference lg:block"
-      style={{
-        x: cursorXSpring,
-        y: cursorYSpring,
-      }}
-    />
-  );
-};
+//   return (
+//     <motion.div
+//       className="pointer-events-none fixed left-0 top-0 z-50 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-blue-600 mix-blend-difference lg:block"
+//       style={{
+//         x: cursorXSpring,
+//         y: cursorYSpring,
+//       }}
+//     />
+//   );
+// };
 
 // 3D rotating cube for step navigation
 // const RotatingCube = ({ currentStep, setCurrentStep, steps }) => {
@@ -177,7 +177,7 @@ const JourneyPath = ({ currentStep, totalSteps }) => {
           style={{ top: `${(i / (totalSteps - 1)) * 100}%` }}
           animate={{
             scale: currentStep >= i ? 1.2 : 0.8,
-            backgroundColor: currentStep >= i ? "#3B82F6" : "#E2E8F0",
+            backgroundColor: currentStep >= i ? "#2B92F5" : "#E2E8F0",
           }}
         />
       ))}
@@ -298,7 +298,7 @@ const AdvancedStepCard = ({ step, isActive }) => {
 
             <motion.div className="flex items-center" variants={itemVariants}>
               <motion.button
-                className="group relative inline-flex items-center overflow-hidden rounded-full bg-blue-600 px-6 py-2 font-medium text-white"
+                className="group relative inline-flex items-center overflow-hidden rounded-full bg-sky-600 px-6 py-2 font-medium text-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -322,18 +322,18 @@ const AdvancedStepCard = ({ step, isActive }) => {
               }}
             >
               <div className="group relative h-full w-full transform transition-transform duration-500 md:hover:scale-105">
-                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 opacity-75 blur-lg group-hover:opacity-100" />
+                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-sky-100 to-sky-100 opacity-75 blur-lg group-hover:opacity-100" />
                 <div className="relative h-full w-full overflow-hidden rounded-2xl bg-white">
                   <Image
                     src={step.image}
                     alt={step.title}
                     fill
-                    className="h-full w-full object-cover p-4"
+                    className="h-full w-full object-contain p-4"
                   />
                 </div>
 
                 <motion.div
-                  className="absolute -right-6 -top-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-3xl text-white shadow-lg"
+                  className="absolute -right-6 -top-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-sky-600 text-3xl text-white shadow-lg"
                   initial={{ scale: 0, rotate: -90 }}
                   animate={{
                     scale: isActive ? 1 : 0.8,
@@ -353,17 +353,17 @@ const AdvancedStepCard = ({ step, isActive }) => {
 };
 
 // Timeline line with animated segments
-const TimelineSegment = ({ progress }) => {
-  return (
-    <div className="relative h-1 w-full bg-gray-200">
-      <motion.div
-        className="absolute left-0 top-0 h-full bg-gradient-to-r from-blue-600 to-indigo-600"
-        style={{ width: `${progress}%` }}
-        transition={{ type: "spring", damping: 40, stiffness: 90 }}
-      />
-    </div>
-  );
-};
+// const TimelineSegment = ({ progress }) => {
+//   return (
+//     <div className="relative h-1 w-full bg-gray-200">
+//       <motion.div
+//         className="absolute left-0 top-0 h-full bg-gradient-to-r from-blue-600 to-indigo-600"
+//         style={{ width: `${progress}%` }}
+//         transition={{ type: "spring", damping: 40, stiffness: 90 }}
+//       />
+//     </div>
+//   );
+// };
 
 // Main component
 const StepByStep = () => {
@@ -425,7 +425,7 @@ const StepByStep = () => {
 
   return (
     <div className="relative overflow-hidden bg-white">
-      <CustomCursor />
+      {/* <CustomCursor /> */}
 
       {/* Background effects */}
       {/* <div className="fixed inset-0 -z-10 opacity-10">
@@ -449,7 +449,7 @@ const StepByStep = () => {
           {/* Hero header */}
           <div className="relative mb-40 text-center">
             <motion.div
-              className="absolute -top-24 left-1/2 h-60 w-60 -translate-x-1/2 transform rounded-full bg-blue-600 opacity-10 blur-3xl"
+              className="absolute -top-24 left-1/2 h-60 w-60 -translate-x-1/2 transform rounded-full bg-sky-600 opacity-10 blur-3xl"
               animate={{
                 scale: [1, 1.5, 1],
                 opacity: [0.1, 0.15, 0.1],
@@ -484,7 +484,7 @@ const StepByStep = () => {
               Worker Visa with our expert guidance and support at every step.
             </motion.p>
 
-            <motion.div
+            {/* <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -492,7 +492,7 @@ const StepByStep = () => {
               <TimelineSegment
                 progress={((currentStep + 1) / steps.length) * 100}
               />
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* 3D Navigation cube */}
@@ -519,7 +519,7 @@ const StepByStep = () => {
 
           {/* CTA section */}
           <motion.div
-            className="relative mx-auto mt-40 max-w-4xl rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 p-12 text-center text-white shadow-2xl"
+            className="relative mx-auto mt-40 max-w-4xl rounded-3xl bg-gradient-to-r from-sky-500 to-sky-600 p-12 text-center text-white shadow-2xl"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -562,7 +562,7 @@ const StepByStep = () => {
             </motion.p>
 
             <motion.button
-              className="group relative overflow-hidden rounded-full bg-white px-8 py-4 font-bold text-blue-600 shadow-lg transition-all duration-300 hover:shadow-xl"
+              className="group relative overflow-hidden rounded-full bg-white px-8 py-4 font-bold text-sky-700 shadow-lg transition-all duration-300 hover:shadow-xl"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
