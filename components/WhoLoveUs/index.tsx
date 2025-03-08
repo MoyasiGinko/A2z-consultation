@@ -187,7 +187,7 @@ const WhoLovesUs: React.FC = () => {
   const remainingTestimonials = testimonials.slice(6, 9);
 
   return (
-    <section className="bg-gradient-to-b from-cyan-600 to-white py-16 lg:py-20">
+    <section className="bg-gradient-to-b from-sky-600 to-white py-16 lg:py-20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -405,7 +405,7 @@ const WhoLovesUs: React.FC = () => {
             onClick={() => setShowAll(!showAll)}
             whileHover="hover"
             variants={buttonVariants}
-            className="z-30 flex items-center gap-2 rounded-full bg-cyan-600 px-8 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:bg-cyan-500"
+            className="z-30 flex items-center gap-2 rounded-full bg-sky-600 px-8 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:bg-sky-500"
           >
             {showAll ? (
               <>
