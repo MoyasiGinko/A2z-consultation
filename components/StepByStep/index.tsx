@@ -20,17 +20,17 @@ const CustomCursor = () => {
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
-  useEffect(() => {
-    const moveCursor = (e) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
+  // useEffect(() => {
+  //   const moveCursor = (e) => {
+  //     cursorX.set(e.clientX);
+  //     cursorY.set(e.clientY);
+  //   };
 
-    window.addEventListener("mousemove", moveCursor);
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-    };
-  }, [cursorX, cursorY]);
+  //   window.addEventListener("mousemove", moveCursor);
+  //   return () => {
+  //     window.removeEventListener("mousemove", moveCursor);
+  //   };
+  // }, [cursorX, cursorY]);
 
   return (
     <motion.div
@@ -44,85 +44,85 @@ const CustomCursor = () => {
 };
 
 // 3D rotating cube for step navigation
-const RotatingCube = ({ currentStep, setCurrentStep, steps }) => {
-  const [isHovering, setIsHovering] = useState(null);
-  const cubeRef = useRef(null);
+// const RotatingCube = ({ currentStep, setCurrentStep, steps }) => {
+//   const [isHovering, setIsHovering] = useState(null);
+//   const cubeRef = useRef(null);
 
-  return (
-    <div className="perspective-1000 mx-auto my-12 h-40 w-40">
-      <motion.div
-        ref={cubeRef}
-        className="transform-style-3d relative h-full w-full"
-        animate={{
-          rotateY: currentStep * 90,
-        }}
-        transition={{
-          type: "spring",
-          damping: 20,
-          stiffness: 100,
-        }}
-      >
-        {steps.map((step, index) => (
-          <motion.div
-            key={index}
-            className="backface-hidden absolute inset-0 flex cursor-pointer items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 text-white"
-            style={{
-              transform: `rotateY(${index * 90}deg) translateZ(80px)`,
-            }}
-            whileHover={{ scale: 1.05 }}
-            onClick={() => setCurrentStep(index)}
-            onHoverStart={() => setIsHovering(index)}
-            onHoverEnd={() => setIsHovering(null)}
-          >
-            <div className="text-center">
-              <span className="block text-3xl font-bold">{step.id}</span>
-              <motion.span
-                className="mt-2 block text-xs"
-                animate={{
-                  opacity: isHovering === index ? 1 : 0.7,
-                  y: isHovering === index ? 0 : 5,
-                }}
-              >
-                {step.title}
-              </motion.span>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
+//   return (
+//     <div className="perspective-1000 mx-auto my-12 h-40 w-40">
+//       <motion.div
+//         ref={cubeRef}
+//         className="transform-style-3d relative h-full w-full"
+//         animate={{
+//           rotateY: currentStep * 90,
+//         }}
+//         transition={{
+//           type: "spring",
+//           damping: 20,
+//           stiffness: 100,
+//         }}
+//       >
+//         {steps.map((step, index) => (
+//           <motion.div
+//             key={index}
+//             className="backface-hidden absolute inset-0 flex cursor-pointer items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 text-white"
+//             style={{
+//               transform: `rotateY(${index * 90}deg) translateZ(80px)`,
+//             }}
+//             whileHover={{ scale: 1.05 }}
+//             onClick={() => setCurrentStep(index)}
+//             onHoverStart={() => setIsHovering(index)}
+//             onHoverEnd={() => setIsHovering(null)}
+//           >
+//             <div className="text-center">
+//               <span className="block text-3xl font-bold">{step.id}</span>
+//               <motion.span
+//                 className="mt-2 block text-xs"
+//                 animate={{
+//                   opacity: isHovering === index ? 1 : 0.7,
+//                   y: isHovering === index ? 0 : 5,
+//                 }}
+//               >
+//                 {step.title}
+//               </motion.span>
+//             </div>
+//           </motion.div>
+//         ))}
+//       </motion.div>
+//     </div>
+//   );
+// };
 
 // Particle effect component
-const ParticleEffect = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {[...Array(100)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute h-1 w-1 rounded-full bg-blue-500"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            opacity: Math.random() * 0.5,
-            scale: Math.random() * 3,
-          }}
-          animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            opacity: [0.1, 0.5, 0.1],
-            scale: [1, 2, 1],
-          }}
-          transition={{
-            duration: Math.random() * 20 + 10,
-            repeat: Infinity,
-            repeatType: "mirror",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+// const ParticleEffect = () => {
+//   return (
+//     <div className="absolute inset-0 overflow-hidden">
+//       {[...Array(100)].map((_, i) => (
+//         <motion.div
+//           key={i}
+//           className="absolute h-1 w-1 rounded-full bg-blue-500"
+//           initial={{
+//             x: Math.random() * window.innerWidth,
+//             y: Math.random() * window.innerHeight,
+//             opacity: Math.random() * 0.5,
+//             scale: Math.random() * 3,
+//           }}
+//           animate={{
+//             x: Math.random() * window.innerWidth,
+//             y: Math.random() * window.innerHeight,
+//             opacity: [0.1, 0.5, 0.1],
+//             scale: [1, 2, 1],
+//           }}
+//           transition={{
+//             duration: Math.random() * 20 + 10,
+//             repeat: Infinity,
+//             repeatType: "mirror",
+//           }}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
 
 // Animated path component for journey visualization
 const JourneyPath = ({ currentStep, totalSteps }) => {
@@ -428,9 +428,9 @@ const StepByStep = () => {
       <CustomCursor />
 
       {/* Background effects */}
-      <div className="fixed inset-0 -z-10 opacity-10">
+      {/* <div className="fixed inset-0 -z-10 opacity-10">
         <ParticleEffect />
-      </div>
+      </div> */}
 
       {/* Floating text */}
       <div className="pointer-events-none fixed left-0 right-0 top-1/2 -z-10 overflow-hidden whitespace-nowrap text-[20vw] font-black uppercase leading-none text-blue-600 opacity-5">
@@ -496,11 +496,11 @@ const StepByStep = () => {
           </div>
 
           {/* 3D Navigation cube */}
-          <RotatingCube
+          {/* <RotatingCube
             currentStep={currentStep}
             setCurrentStep={setCurrentStep}
             steps={steps}
-          />
+          /> */}
 
           {/* Interactive steps */}
           <div className="relative mt-32">
