@@ -134,7 +134,7 @@ const Brands: React.FC = () => {
           className="brand-slider-container w-full overflow-hidden"
         >
           {/* First row - moving left to right */}
-          <div className="slider-row relative flex h-8 md:h-28 lg:h-36">
+          <div className="slider-row relative flex h-8 md:h-12 lg:h-18">
             {" "}
             {/* Increased height */}
             <div className="slider-track flex" data-direction="left">
