@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useId, useEffect, useRef } from "react";
+import React, { useId, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 
@@ -14,20 +14,32 @@ const SponsorLicenceSection: React.FC = () => {
   const clipPathId1 = useId();
   const clipPathId2 = useId();
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   const controls = useAnimation();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [isInView, controls]);
+
+  // Handle image loading state
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
@@ -45,7 +57,7 @@ const SponsorLicenceSection: React.FC = () => {
   };
 
   const titleVariants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
       x: 0,
@@ -60,39 +72,52 @@ const SponsorLicenceSection: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
         delayChildren: 0.3,
       },
     },
   };
 
   const listItemVariants = {
-    hidden: { opacity: 0, x: -30 },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut",
       },
     },
   };
 
+  const floatingElementVariants = {
+    animate: (custom: number) => ({
+      y: [0, custom, 0],
+      scale: [1, 1.1, 1],
+      transition: {
+        duration: 3 + custom / 10,
+        repeat: Infinity,
+        repeatType: "reverse" as const,
+        ease: "easeInOut",
+      },
+    }),
+  };
+
   const CheckIcon: React.FC = () => (
     <motion.svg
-      initial={{ scale: 0 }}
-      animate={{ scale: 1, rotate: 360 }}
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1, rotate: 360 }}
       transition={{
         duration: 0.5,
         type: "spring",
         stiffness: 200,
         damping: 10,
       }}
-      className="shrink-0"
+      className="shrink-0 text-[#00a2fb]"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="20"
-      height="20"
+      width="24"
+      height="24"
       zoomAndPan="magnify"
       viewBox="0 0 375 374.999991"
       preserveAspectRatio="xMidYMid meet"
@@ -141,12 +166,14 @@ const SponsorLicenceSection: React.FC = () => {
   const ListItem: React.FC<ListItemProps> = ({ content, index }) => (
     <motion.li
       variants={listItemVariants}
-      className="text-muted-foreground group mb-5 flex gap-4 md:mb-4 lg:items-center"
+      className="text-muted-foreground group mb-5 flex items-start gap-3 md:mb-4 lg:items-center"
     >
-      <CheckIcon />
+      <div className="mt-0.5 md:mt-0">
+        <CheckIcon />
+      </div>
       <motion.p
         className="group-hover:text-foreground select-none text-sm font-semibold transition-all duration-300 md:text-base lg:text-lg lg:font-bold"
-        whileHover={{ x: 8, transition: { duration: 0.2 } }}
+        whileHover={{ x: 5, transition: { duration: 0.2 } }}
       >
         {content}
       </motion.p>
@@ -163,129 +190,128 @@ const SponsorLicenceSection: React.FC = () => {
   ];
 
   return (
-    <section className="grid place-items-center py-20" ref={sectionRef}>
+    <section
+      className="relative overflow-hidden py-12 md:py-16 lg:py-20"
+      ref={sectionRef}
+    >
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10 opacity-5">
+        <div className="absolute left-0 top-0 h-64 w-64 rounded-full bg-blue-400 blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-300 blur-3xl"></div>
+      </div>
+
       <motion.div
-        className="container grid gap-10 lg:grid-cols-[1fr_0.7fr] lg:gap-20"
+        className="container mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
         animate={controls}
       >
-        <div className="flex items-center justify-center lg:justify-start">
-          <div>
-            <motion.h2
-              className="section-title relative mb-12 text-3xl font-bold text-[#286096] md:text-4xl lg:mb-14 lg:text-left lg:text-5xl"
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+          {/* Content Section */}
+          <div className="order-2 flex flex-col justify-center lg:order-1">
+            <motion.div
               variants={titleVariants}
+              className="mb-8 md:mb-10 lg:mb-12"
             >
-              Why You Need
-              <div className="text-[#00a2fb]">Sponsor Licence?</div>
-              <div className="indicator lg:indicator-left lg:w-full">
-                <motion.span
-                  className="indicator-line"
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{
-                    duration: 1.5,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    repeatDelay: 1,
-                  }}
-                />
-              </div>
-            </motion.h2>
+              <h2 className="text-3xl font-bold text-[#286096] md:text-4xl lg:text-5xl">
+                Why You Need
+                <div className="mt-1 text-[#00a2fb]">Sponsor Licence?</div>
+                <div className="relative mt-3 h-1 w-full overflow-hidden rounded-full bg-gray-100 md:mt-4">
+                  <motion.div
+                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#00a2fb] to-transparent"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{
+                      duration: 2,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                    }}
+                  />
+                </div>
+              </h2>
+            </motion.div>
 
-            <motion.ul variants={listContainerVariants}>
+            <motion.ul
+              variants={listContainerVariants}
+              className="space-y-4 md:space-y-5"
+            >
               {listItems.map((item, index) => (
                 <ListItem key={index} content={item} index={index} />
               ))}
             </motion.ul>
           </div>
-        </div>
 
-        <motion.div
-          className="flex items-center justify-center lg:justify-end"
-          variants={imageVariants}
-        >
-          <div className="relative w-full max-w-md rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 lg:max-w-xl">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                duration: 1,
-                ease: "easeOut",
-              }}
-            >
-              <Image
-                src="/images/hero/sponsor-passport.png"
-                alt="UK Sponsor License illustration"
-                width={600}
-                height={450}
-                className="w-full"
-                priority={true}
+          {/* Image Section */}
+          <motion.div
+            className="order-1 flex items-center justify-center lg:order-2 lg:justify-end"
+            variants={imageVariants}
+          >
+            <div className="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:max-w-md md:p-2 lg:max-w-lg xl:max-w-xl">
+              <div className="relative overflow-hidden rounded-2xl">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isLoaded ? 1 : 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Image
+                    src="/images/hero/sponsor-passport.png"
+                    alt="UK Sponsor License illustration"
+                    width={600}
+                    height={450}
+                    className="w-full object-cover"
+                    priority={true}
+                    onLoad={() => setIsLoaded(true)}
+                  />
+                </motion.div>
+
+                {/* Floating elements animation */}
+                <motion.div
+                  className="absolute right-1/4 top-1/4 h-12 w-12 rounded-full bg-blue-100/30 "
+                  custom={-15}
+                  variants={floatingElementVariants}
+                  animate="animate"
+                />
+                <motion.div
+                  className="absolute bottom-1/4 left-1/4 h-8 w-8 rounded-full bg-blue-200/40 "
+                  custom={15}
+                  variants={floatingElementVariants}
+                  animate="animate"
+                />
+                <motion.div
+                  className="left-1/6 absolute top-1/3 h-6 w-6 rounded-full bg-blue-300/30 "
+                  custom={-10}
+                  variants={floatingElementVariants}
+                  animate="animate"
+                />
+                <motion.div
+                  className="right-1/6 absolute bottom-1/3 h-10 w-10 rounded-full bg-blue-400/20 "
+                  custom={20}
+                  variants={floatingElementVariants}
+                  animate="animate"
+                />
+              </div>
+
+              {/* Image frame glow effect */}
+              <motion.div
+                className="absolute inset-0 rounded-3xl opacity-50"
+                animate={{
+                  boxShadow: [
+                    "0 0 10px 2px rgba(0,162,251,0.3)",
+                    "0 0 20px 5px rgba(0,162,251,0.5)",
+                    "0 0 10px 2px rgba(0,162,251,0.3)",
+                  ],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
               />
-            </motion.div>
-
-            {/* Floating elements animation */}
-            <motion.div
-              className="absolute right-1/4 top-1/4 h-12 w-12 rounded-full bg-blue-100/30"
-              animate={{
-                y: [0, -15, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-            <motion.div
-              className="absolute bottom-1/4 left-1/4 h-8 w-8 rounded-full bg-blue-200/40"
-              animate={{
-                y: [0, 15, 0],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: 0.5,
-              }}
-            />
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
-
-      <style jsx>{`
-        .section-title {
-          position: relative;
-        }
-
-        .indicator {
-          position: relative;
-          display: block;
-          margin-top: 15px;
-          height: 4px;
-        }
-
-        .indicator-line {
-          display: block;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #00a2fb, transparent);
-        }
-
-        @keyframes pulse {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
-        }
-      `}</style>
     </section>
   );
 };

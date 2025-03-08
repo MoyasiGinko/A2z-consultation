@@ -466,11 +466,11 @@ const StepByStep = () => {
               <span className="relative inline-block">
                 <span className="relative z-10">Your Path to the UK</span>
                 <motion.span
-                  className="absolute -bottom-2 left-0 -z-10 h-6 w-full bg-blue-200 opacity-70"
+                  className="absolute -bottom-3 left-1/2 h-1 w-16 -translate-x-1/2 transform rounded-full bg-sky-500"
                   initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 1, delay: 1 }}
-                />
+                  animate={{ width: 80 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                ></motion.span>
               </span>
             </motion.h1>
 
