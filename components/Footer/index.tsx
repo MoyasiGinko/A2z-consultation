@@ -115,10 +115,10 @@ const Footer: React.FC = () => {
       animate={controls}
       variants={containerVariants}
     >
-      <div className="bg-gray-800 text-white">
+      <div className="bg-blue-950 text-white">
         <div className="container mx-auto grid gap-10 px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 xl:grid-cols-[1.2fr_1fr_0.67fr_0.5fr_1fr] xl:gap-12">
           <motion.div
-            className="bg-blue-600 p-6 text-white"
+            className="bg-transparent p-6 text-white"
             variants={itemVariants}
           >
             <Link href="/" className="mb-2 block py-3">
@@ -219,9 +219,9 @@ const Footer: React.FC = () => {
           </motion.div>
 
           <motion.div className="py-4 lg:py-10" variants={itemVariants}>
-            <div className="relative h-20 w-24 xl:w-40">
+            <div className="relative mx-0 h-28 w-30 items-start xl:w-20">
               <Image
-                src="/images/OISC-icon.png"
+                src="/images/logo/oisc.png"
                 alt="OISC icon"
                 layout="fill"
                 objectFit="contain"
@@ -248,14 +248,14 @@ const Footer: React.FC = () => {
               ))}
             </div>
 
-            <motion.button
+            {/* <motion.button
               className="w-full rounded bg-blue-600 px-4 py-3 font-bold text-white transition-colors duration-300 hover:bg-blue-700"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
               Download our free guide
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </div>
       </div>
