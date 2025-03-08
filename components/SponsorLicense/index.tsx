@@ -247,7 +247,7 @@ const SponsorLicenceSection: React.FC = () => {
             className="order-1 flex items-center justify-center lg:order-2 lg:justify-end"
             variants={imageVariants}
           >
-            <div className="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:max-w-md md:p-2 lg:max-w-lg xl:max-w-xl">
+            <div className="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:max-w-md md:p-2 lg:w-96 lg:max-w-lg xl:max-w-xl">
               <div className="relative overflow-hidden rounded-2xl">
                 <motion.div
                   initial={{ opacity: 0 }}
