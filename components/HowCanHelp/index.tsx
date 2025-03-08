@@ -10,6 +10,7 @@ interface TabContent {
   title: string;
   color: string;
   icon: React.ReactNode;
+  image: string;
   content: {
     heading: string;
     description: string;
@@ -23,6 +24,7 @@ const HowWeCanHelpYou = () => {
       title: "Sponsor Licence",
       color: "#0ea5e9",
       icon: <FiSend className="h-5 w-5" />,
+      image: "/images/icon/upload.png",
       content: {
         heading: "Transfer money to anyone, instantly! No fees, no BS.",
         description:
@@ -34,6 +36,7 @@ const HowWeCanHelpYou = () => {
       title: "Compliance",
       color: "#0ea5e9",
       icon: <FiArrowRight className="h-5 w-5" />,
+      image: "/images/icon/upload.png",
       content: {
         heading: "Stay compliant with all immigration regulations",
         description:
@@ -45,6 +48,7 @@ const HowWeCanHelpYou = () => {
       title: "Skilled Worker Visa",
       color: "#0ea5e9",
       icon: <FiArrowRight className="h-5 w-5" />,
+      image: "/images/icon/upload.png",
       content: {
         heading: "Streamlined visa process for skilled workers",
         description:
@@ -88,13 +92,14 @@ const HowWeCanHelpYou = () => {
     };
   }, []);
 
-  // Staggered animations for tabs
+  // Enhanced staggered animations
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
@@ -106,7 +111,8 @@ const HowWeCanHelpYou = () => {
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
+        stiffness: 120,
+        damping: 14,
       },
     },
   };
@@ -118,8 +124,9 @@ const HowWeCanHelpYou = () => {
       y: 0,
       transition: {
         type: "spring",
-        stiffness: 100,
-        duration: 0.6,
+        stiffness: 110,
+        damping: 15,
+        duration: 0.7,
       },
     },
     exit: {
@@ -127,6 +134,7 @@ const HowWeCanHelpYou = () => {
       y: -20,
       transition: {
         duration: 0.3,
+        ease: "easeInOut",
       },
     },
   };
@@ -138,7 +146,9 @@ const HowWeCanHelpYou = () => {
       y: 0,
       transition: {
         delay: 0.2,
-        duration: 0.6,
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
       },
     },
   };
@@ -149,19 +159,39 @@ const HowWeCanHelpYou = () => {
       opacity: 1,
       transition: {
         delay: 0.4,
-        duration: 0.6,
+        duration: 0.7,
       },
     },
   };
 
   const pulseCircle = {
     animate: {
-      scale: [1, 1.1, 1],
+      scale: [1, 1.2, 1],
       opacity: [0.7, 0.9, 0.7],
       transition: {
-        duration: 2,
+        duration: 3,
         repeat: Infinity,
         repeatType: "reverse" as const,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  // Enhanced background and gradient animations
+  const gradientAnimation = {
+    animate: {
+      background: [
+        "linear-gradient(135deg, rgb(2, 132, 199) 0%, rgb(3, 105, 161) 100%)",
+        "linear-gradient(165deg, rgb(1, 87, 134) 0%, rgb(3, 105, 161) 100%)",
+        "linear-gradient(195deg, rgb(2, 132, 199) 0%, rgb(3, 105, 161) 100%)",
+        "linear-gradient(225deg, rgb(1, 87, 134) 0%, rgb(3, 105, 161) 100%)",
+        "linear-gradient(135deg, rgb(2, 132, 199) 0%, rgb(3, 105, 161) 100%)",
+      ],
+      transition: {
+        duration: 15,
+        repeat: Infinity,
+        repeatType: "reverse" as const,
+        ease: "linear",
       },
     },
   };
@@ -169,15 +199,16 @@ const HowWeCanHelpYou = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-b from-sky-50 to-white py-16 md:py-24"
+      className="relative overflow-hidden bg-gradient-to-b from-sky-50 to-white py-12 sm:py-16 md:py-20 lg:py-24"
     >
-      {/* Animated background elements */}
+      {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-sky-100 opacity-30 blur-3xl"
           animate={{
             x: [0, 20, 0],
             y: [0, -20, 0],
+            scale: [1, 1.1, 1],
           }}
           transition={{
             duration: 10,
@@ -190,9 +221,22 @@ const HowWeCanHelpYou = () => {
           animate={{
             x: [0, -30, 0],
             y: [0, 20, 0],
+            scale: [1, 1.15, 1],
           }}
           transition={{
             duration: 12,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+        <motion.div
+          className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-100 opacity-10 blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 8,
             repeat: Infinity,
             repeatType: "reverse",
           }}
@@ -204,7 +248,7 @@ const HowWeCanHelpYou = () => {
           variants={titleVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="relative mb-10 text-center text-3xl font-bold tracking-tight text-sky-700 md:text-4xl lg:mb-12 lg:text-5xl"
+          className="relative mb-8 text-center text-2xl font-bold tracking-tight text-sky-700 sm:text-3xl md:mb-10 md:text-4xl lg:mb-12 lg:text-5xl"
         >
           How we can help you?
           <motion.span
@@ -219,117 +263,159 @@ const HowWeCanHelpYou = () => {
           variants={subtitleVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="mb-16 text-center text-sm font-medium text-gray-600 md:text-base lg:mb-20 lg:text-lg"
+          className="mb-10 text-center text-sm font-medium text-gray-600 sm:text-base md:mb-12 lg:mb-16 lg:text-lg"
         >
           Immigration Support For Your Business
-          <br />
+          <br className="md:hidden" />
+          <span className="hidden md:inline"> - </span>
           All Through A Single Platform
         </motion.p>
 
-        <div className="relative rounded-[40px] bg-gradient-to-r from-sky-600 to-sky-800 p-6 md:p-8 lg:p-10">
-          {/* White dots at corners */}
-          <div className="absolute left-8 top-8 h-4 w-4 rounded-full bg-white"></div>
-          <div className="absolute right-8 top-8 h-4 w-4 rounded-full bg-white"></div>
-          <div className="absolute bottom-8 left-8 h-4 w-4 rounded-full bg-white"></div>
-          <div className="absolute bottom-8 right-8 h-4 w-4 rounded-full bg-white"></div>
+        <motion.div
+          className="relative rounded-[30px] p-[2px] sm:rounded-[40px]"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={
+            isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }
+          }
+          transition={{ delay: 0.3, duration: 0.8 }}
+          style={{
+            background:
+              "linear-gradient(to right, rgba(2, 132, 199, 0.2), rgba(14, 165, 233, 0.2))",
+            boxShadow: "0 0 40px rgba(14, 165, 233, 0.15)",
+          }}
+        >
+          <motion.div
+            className="rounded-[30px] sm:rounded-[40px]"
+            variants={gradientAnimation}
+            animate="animate"
+            style={{
+              boxShadow: "0 20px 50px rgba(3, 105, 161, 0.3)",
+            }}
+          >
+            <div className="relative w-full rounded-[30px] p-5 sm:rounded-[40px] sm:p-6 md:p-8 lg:p-10">
+              {/* White dots at corners */}
+              <div className="absolute left-4 top-4 h-3 w-3 rounded-full bg-white sm:left-6 sm:top-6 sm:h-4 sm:w-4 md:left-8 md:top-8"></div>
+              <div className="absolute right-4 top-4 h-3 w-3 rounded-full bg-white sm:right-6 sm:top-6 sm:h-4 sm:w-4 md:right-8 md:top-8"></div>
+              <div className="absolute bottom-4 left-4 h-3 w-3 rounded-full bg-white sm:bottom-6 sm:left-6 sm:h-4 sm:w-4 md:bottom-8 md:left-8"></div>
+              <div className="absolute bottom-4 right-4 h-3 w-3 rounded-full bg-white sm:bottom-6 sm:right-6 sm:h-4 sm:w-4 md:bottom-8 md:right-8"></div>
 
-          <motion.div>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate={isVisible ? "visible" : "hidden"}
-              className="relative z-10 mx-auto mb-8 flex max-w-4xl flex-col gap-4 md:mb-0 md:flex-row md:justify-center md:gap-8"
-            >
-              {tabs.map((tab) => (
-                <motion.button
-                  key={tab.id}
-                  variants={tabVariants}
-                  onClick={() => handleTabChange(tab.id)}
-                  className={`group relative flex h-12 items-center justify-center rounded-full px-8 font-medium text-black shadow-lg transition-all duration-300 hover:shadow-xl md:h-12 md:px-10 ${
-                    activeTab === tab.id
-                      ? "scale-105 font-semibold text-sky-600"
-                      : "hover:scale-105"
-                  }`}
-                  style={{ backgroundColor: "#fff" }}
-                  whileHover={{ y: -4 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {tab.title}
-                  {activeTab === tab.id && (
-                    <motion.span
-                      layoutId="activeTab"
-                      className="absolute inset-0 rounded-full ring-2 ring-sky-300"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </motion.button>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="relative mx-auto mt-2 overflow-hidden rounded-2xl bg-transparent p-1  md:mt-4 md:max-w-4xl"
-            >
-              {/* Blue background shape */}
-              <div className="absolute inset-0 rounded-2xl bg-transparent" />
-
-              {/* Content container */}
-              <div className="relative rounded-xl bg-transparent p-6 md:p-8 lg:p-10">
+              <motion.div>
                 <motion.div
-                  className="absolute -right-0 bottom-0 h-44 w-44 rounded-full bg-sky-50/50"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.3, 0.5, 0.3],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeTab}
-                    variants={contentVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="relative flex gap-6"
-                  >
-                    <div className="hidden h-48 w-16 flex-shrink-0 items-center justify-center rounded-full  text-white sm:flex">
-                      {/* {activeTabData.icon} */}
-                      <Image
-                        src="/images/icon/upload.png"
-                        alt="Upload icon"
-                        width={96}
-                        height={96}
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate={isVisible ? "visible" : "hidden"}
+                  className="relative z-10 mx-auto mb-6 flex max-w-4xl flex-wrap justify-center gap-3 sm:gap-4 md:mb-8 md:flex-row md:justify-center md:gap-6 lg:gap-8"
+                >
+                  {tabs.map((tab, index) => (
+                    <motion.button
+                      key={tab.id}
+                      variants={tabVariants}
+                      custom={index}
+                      onClick={() => handleTabChange(tab.id)}
+                      className={`group relative flex h-10 items-center justify-center rounded-full px-4 font-medium shadow-lg transition-all duration-300 sm:h-11 sm:px-5 md:h-12 md:px-8 lg:px-10 ${
+                        activeTab === tab.id
+                          ? "scale-110 bg-white font-semibold text-sky-600 shadow-xl"
+                          : "bg-white/90 text-sky-800 hover:scale-105 hover:bg-white"
+                      }`}
+                      style={{
+                        boxShadow:
+                          activeTab === tab.id
+                            ? "0 10px 25px rgba(14, 165, 233, 0.25)"
+                            : "0 4px 15px rgba(14, 165, 233, 0.15)",
+                      }}
+                      whileHover={{
+                        y: -4,
+                        boxShadow: "0 14px 30px rgba(14, 165, 233, 0.25)",
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {tab.title}
+                      {activeTab === tab.id && (
+                        <motion.span
+                          layoutId="activeTab"
+                          className="absolute inset-0 rounded-full ring-2 ring-sky-300"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                      <motion.span
+                        className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-sky-400 to-sky-600 opacity-0 blur-sm transition-opacity duration-300"
+                        animate={{
+                          opacity: activeTab === tab.id ? 0.3 : 0,
+                        }}
                       />
+                    </motion.button>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={
+                    isVisible ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }
+                  }
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  className="relative mx-auto mt-2 overflow-hidden rounded-xl bg-transparent p-1 sm:mt-3 md:mt-4 md:max-w-4xl"
+                >
+                  {/* Blue background shape */}
+
+                  {/* Content container */}
+                  <div className="relative rounded-lg bg-transparent p-4 sm:p-5 md:p-6 lg:p-8">
+                    <motion.div
+                      className="absolute -right-0 bottom-1 h-40 w-40 rounded-full bg-sky-50/30"
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                        x: [0, -10, 0],
+                      }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                      }}
+                    />
+
+                    <AnimatePresence mode="wait">
                       <motion.div
-                        className="absolute inset-0 rounded-full"
-                        variants={pulseCircle}
-                        animate="animate"
-                      />
-                    </div>
+                        key={activeTab}
+                        variants={contentVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        className="relative flex flex-col gap-4 sm:flex-row sm:gap-6"
+                      >
+                        <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-transparent text-white sm:h-24 sm:w-24 md:h-32 md:w-32 lg:h-40 lg:w-40">
+                          <div className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20">
+                            <Image
+                              src={activeTabData.image}
+                              alt={`${activeTabData.title} icon`}
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          {/* <motion.div
+                            className="absolute inset-0 rounded-full bg-sky-400/10"
+                            variants={pulseCircle}
+                            animate="animate"
+                          /> */}
+                        </div>
 
-                    <div className="flex-1">
-                      <h3 className="mb-4 text-xl font-bold text-white md:text-2xl lg:text-3xl">
-                        {activeTabData.content.heading}
-                      </h3>
-                      <p className="text-gray-100/70 lg:text-lg">
-                        {activeTabData.content.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </motion.div>
+                        <div className="flex-1">
+                          <h3 className="mb-3 text-lg font-bold text-white sm:text-xl md:mb-4 md:text-2xl lg:text-3xl">
+                            {activeTabData.content.heading}
+                          </h3>
+                          <p className="text-sm text-gray-100/80 sm:text-base lg:text-lg">
+                            {activeTabData.content.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
