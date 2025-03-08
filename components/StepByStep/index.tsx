@@ -433,11 +433,11 @@ const StepByStep = () => {
       </div> */}
 
       {/* Floating text */}
-      <div className="pointer-events-none fixed left-0 right-0 top-1/2 -z-10 overflow-hidden whitespace-nowrap text-[20vw] font-black uppercase leading-none text-blue-600 opacity-5">
+      {/* <div className="pointer-events-none fixed left-0 right-0 top-1/2 -z-10 overflow-hidden whitespace-nowrap text-[20vw] font-black uppercase leading-none text-blue-600 opacity-5">
         <motion.div style={{ x: textX }}>
           UK Visa Journey UK Visa Journey
         </motion.div>
-      </div>
+      </div> */}
 
       <section ref={containerRef} className="relative min-h-screen py-24">
         <motion.div
@@ -466,11 +466,11 @@ const StepByStep = () => {
               <span className="relative inline-block">
                 <span className="relative z-10">Your Path to the UK</span>
                 <motion.span
-                  className="absolute -bottom-2 left-0 -z-10 h-6 w-full bg-blue-200 opacity-70"
+                  className="absolute -bottom-3 left-1/2 h-1 w-16 -translate-x-1/2 transform rounded-full bg-sky-500"
                   initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 1, delay: 1 }}
-                />
+                  animate={{ width: 80 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                ></motion.span>
               </span>
             </motion.h1>
 
