@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowRight, FiSend } from "react-icons/fi";
 
@@ -160,7 +161,7 @@ const HowWeCanHelpYou = () => {
       transition: {
         duration: 2,
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "reverse" as const,
       },
     },
   };
@@ -203,7 +204,7 @@ const HowWeCanHelpYou = () => {
           variants={titleVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="relative mb-10 text-center text-3xl font-bold tracking-tight text-sky-950 md:text-4xl lg:mb-12 lg:text-5xl"
+          className="relative mb-10 text-center text-3xl font-bold tracking-tight text-sky-700 md:text-4xl lg:mb-12 lg:text-5xl"
         >
           How we can help you?
           <motion.span
@@ -218,14 +219,20 @@ const HowWeCanHelpYou = () => {
           variants={subtitleVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="mb-16 text-center text-sm font-medium text-sky-700 md:text-base lg:mb-20 lg:text-lg"
+          className="mb-16 text-center text-sm font-medium text-gray-600 md:text-base lg:mb-20 lg:text-lg"
         >
           Immigration Support For Your Business
           <br />
           All Through A Single Platform
         </motion.p>
 
-        <div className="rounded-[40px] bg-gradient-to-r from-sky-600 to-sky-800 p-6 md:p-8 lg:p-10">
+        <div className="relative rounded-[40px] bg-gradient-to-r from-sky-600 to-sky-800 p-6 md:p-8 lg:p-10">
+          {/* White dots at corners */}
+          <div className="absolute left-8 top-8 h-4 w-4 rounded-full bg-white"></div>
+          <div className="absolute right-8 top-8 h-4 w-4 rounded-full bg-white"></div>
+          <div className="absolute bottom-8 left-8 h-4 w-4 rounded-full bg-white"></div>
+          <div className="absolute bottom-8 right-8 h-4 w-4 rounded-full bg-white"></div>
+
           <motion.div>
             <motion.div
               variants={containerVariants}
@@ -265,7 +272,7 @@ const HowWeCanHelpYou = () => {
               initial={{ y: 60, opacity: 0 }}
               animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="relative mx-auto mt-12 overflow-hidden rounded-2xl bg-transparent p-1  md:mt-16 md:max-w-4xl"
+              className="relative mx-auto mt-2 overflow-hidden rounded-2xl bg-transparent p-1  md:mt-4 md:max-w-4xl"
             >
               {/* Blue background shape */}
               <div className="absolute inset-0 rounded-2xl bg-transparent" />
@@ -294,8 +301,14 @@ const HowWeCanHelpYou = () => {
                     exit="exit"
                     className="relative flex gap-6"
                   >
-                    <div className="hidden h-16 w-16 flex-shrink-0 items-start justify-center rounded-full bg-sky-500 p-4 text-white sm:flex">
-                      {activeTabData.icon}
+                    <div className="hidden h-48 w-16 flex-shrink-0 items-center justify-center rounded-full  text-white sm:flex">
+                      {/* {activeTabData.icon} */}
+                      <Image
+                        src="/images/icon/upload.png"
+                        alt="Upload icon"
+                        width={96}
+                        height={96}
+                      />
                       <motion.div
                         className="absolute inset-0 rounded-full"
                         variants={pulseCircle}
@@ -304,10 +317,10 @@ const HowWeCanHelpYou = () => {
                     </div>
 
                     <div className="flex-1">
-                      <h3 className="mb-4 text-xl font-bold text-sky-950 md:text-2xl lg:text-3xl">
+                      <h3 className="mb-4 text-xl font-bold text-white md:text-2xl lg:text-3xl">
                         {activeTabData.content.heading}
                       </h3>
-                      <p className="text-sky-800 lg:text-lg">
+                      <p className="text-gray-100/70 lg:text-lg">
                         {activeTabData.content.description}
                       </p>
                     </div>
