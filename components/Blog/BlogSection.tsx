@@ -220,21 +220,17 @@ const BlogSection: React.FC = () => {
               },
             }}
           >
-            Blogs
+            Blog & News
           </motion.h2>
-          <motion.span
-            className="mx-auto mt-4 block h-2 w-0 bg-blue-600"
+          <motion.div
+            className="mx-auto mt-4 block h-2 bg-blue-600"
             initial={{ width: 0 }}
-            animate={controls}
-            variants={{
-              visible: {
-                width: "90px",
-                transition: {
-                  duration: 0.8,
-                  delay: 0.3,
-                  ease: "easeOut",
-                },
-              },
+            animate={{ width: ["0%", "15%", "0%"] }}
+            transition={{
+              duration: 3,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "loop",
             }}
           />
         </motion.div>
