@@ -1,8 +1,13 @@
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { useEffect } from "react";
 
 const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme("light");
+  }, [setTheme]);
 
   return (
     <button
