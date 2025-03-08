@@ -1,150 +1,296 @@
 "use client";
 
-// components/BrandSection.tsx
-import React from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 
 interface Brand {
+  id: string;
   src: string;
   alt: string;
   className: string;
+  animationDelay?: number;
 }
 
 const Brands: React.FC = () => {
+  const [isHovering, setIsHovering] = useState<string | null>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const { ref: sectionRef, inView } = useInView({
+    threshold: 0.2,
+    triggerOnce: false,
+  });
+
   const brands: Brand[] = [
     {
+      id: "brand1",
       src: "/images/brands/logo-1.png",
-      alt: "brand logo",
-      className: "w-28 md:w-36 md:mr-4 lg:mr-8 lg:w-44",
+      alt: "Premium Brand Partner",
+      className: "w-32 md:w-40 md:mr-4 lg:mr-8 lg:w-52", // Increased sizes
+      animationDelay: 0.1,
     },
     {
+      id: "brand2",
       src: "/images/brands/logo-2.png",
-      alt: "brand logo",
-      className: "w-28 md:w-36 md:mr-4 lg:mr-8 lg:w-44",
+      alt: "Enterprise Solution Partner",
+      className: "w-32 md:w-40 md:mr-4 lg:mr-8 lg:w-52", // Increased sizes
+      animationDelay: 0.2,
     },
     {
+      id: "brand3",
       src: "/images/brands/logo-3.png",
-      alt: "brand logo",
-      className: "w-12 -ml-2 mr-7 md:w-14 md:mr-12 lg:mr-20 lg:w-20",
+      alt: "Technology Innovator",
+      className: "w-16 -ml-2 mr-7 md:w-20 md:mr-12 lg:mr-20 lg:w-24", // Increased sizes
+      animationDelay: 0.3,
     },
     {
+      id: "brand4",
       src: "/images/brands/logo-4.png",
-      alt: "brand logo",
-      className: "w-20 mr-7 md:w-24 md:mr-10 lg:mr-16 lg:w-36",
+      alt: "Industry Leader",
+      className: "w-24 mr-7 md:w-28 md:mr-10 lg:mr-16 lg:w-44", // Increased sizes
+      animationDelay: 0.4,
     },
     {
+      id: "brand5",
       src: "/images/brands/logo-5.png",
-      alt: "brand logo",
-      className: "w-12 mr-4 md:w-14 md:mr-8 lg:mr-10 lg:w-20",
+      alt: "Global Partner",
+      className: "w-16 mr-4 md:w-20 md:mr-8 lg:mr-10 lg:w-24", // Increased sizes
+      animationDelay: 0.5,
     },
     {
+      id: "brand6",
       src: "/images/brands/logo-6.png",
-      alt: "brand logo",
-      className: "w-16 mr-6 md:w-20 md:mr-12 lg:mr-20 lg:w-28",
+      alt: "Strategic Alliance",
+      className: "w-20 mr-6 md:w-24 md:mr-12 lg:mr-20 lg:w-36", // Increased sizes
+      animationDelay: 0.6,
     },
   ];
 
-  const Slide = () => (
-    <>
-      {[0, 1, 2].map((index) => (
-        <div key={index} className="slide flex shrink-0 items-center">
-          {brands.map((brand, brandIndex) => (
-            <Image
-              key={brandIndex}
-              src={brand.src}
-              alt={brand.alt}
-              width={100}
-              height={50}
-              className={`${brand.className} transition-transform duration-500 hover:scale-125`}
-            />
-          ))}
+  const renderBrandSet = () => {
+    return brands.map((brand) => (
+      <div
+        key={brand.id}
+        className="brand-container relative mx-2"
+        onMouseEnter={() => setIsHovering(brand.id)}
+        onMouseLeave={() => setIsHovering(null)}
+      >
+        <div
+          className={`
+            brand-wrapper transition-all duration-500 ease-in-out
+            ${isHovering === brand.id ? "scale-130 z-10" : "scale-100"}
+          `}
+        >
+          <Image
+            src={brand.src}
+            alt={brand.alt}
+            width={180}
+            height={90}
+            className={`
+              ${brand.className} mx-4
+              filter transition-all
+              duration-300 hover:drop-shadow-xl
+              ${isHovering === brand.id ? "brightness-110" : "brightness-100"}
+            `}
+          />
+          {isHovering === brand.id && (
+            <div className="brand-tooltip animate-fade-in absolute -bottom-8 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0">
+              {brand.alt}
+            </div>
+          )}
         </div>
-      ))}
-    </>
-  );
+      </div>
+    ));
+  };
 
   return (
-    <div className="grid place-items-center py-20">
-      <div className="w-full overflow-hidden">
-        <h3 className="mb-10 px-4 text-center font-bold md:mb-16 md:text-xl lg:text-2xl">
-          Trusted by UK Employers Across Industries
-        </h3>
-
-        <div className="slider relative flex h-20 lg:mb-6 lg:h-28">
-          <Slide />
+    <section
+      ref={sectionRef}
+      className={`brand-showcase py-20 transition-opacity duration-1000 ${inView ? "opacity-100" : "opacity-0"}`}
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2
+            className={`
+            mb-4 text-3xl font-bold transition-all
+            delay-300 duration-700 md:text-4xl
+            ${inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
+          `}
+          >
+            Trusted by UK Employers Across Industries
+          </h2>
+          <p
+            className={`
+            mx-auto max-w-2xl text-gray-600
+            transition-all delay-500 duration-700
+            ${inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
+          `}
+          >
+            Join the network of leading companies transforming their workforce
+            management
+          </p>
         </div>
-        <div className="slider row-2 relative flex h-20 lg:h-28">
-          <Slide />
+
+        <div
+          ref={sliderRef}
+          className="brand-slider-container w-full overflow-hidden"
+        >
+          {/* First row - moving left to right */}
+          <div className="slider-row relative flex h-8 md:h-28 lg:h-36">
+            {" "}
+            {/* Increased height */}
+            <div className="slider-track flex" data-direction="left">
+              {renderBrandSet()}
+              {renderBrandSet()}
+              {renderBrandSet()}
+              {renderBrandSet()}
+              {/* Multiple copies to ensure continuous flow */}
+            </div>
+          </div>
+
+          {/* Second row - moving right to left */}
+          <div className="slider-row relative mt-2 flex h-8 md:h-12 lg:h-18">
+            {" "}
+            {/* Increased height */}
+            <div className="slider-track flex" data-direction="right">
+              {renderBrandSet()}
+              {renderBrandSet()}
+              {renderBrandSet()}
+              {renderBrandSet()}
+              {/* Multiple copies to ensure continuous flow */}
+            </div>
+          </div>
         </div>
       </div>
 
       <style jsx>{`
-        .slide {
-          animation: marquee 35s linear infinite;
+        .brand-showcase {
+          background: linear-gradient(
+            180deg,
+            rgba(249, 250, 251, 0) 0%,
+            rgba(249, 250, 251, 1) 100%
+          );
         }
 
-        .row-2 .slide {
-          animation-direction: reverse;
+        .scale-130 {
+          transform: scale(1.3);
         }
 
-        .slider::before,
-        .slider::after {
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 0.3s forwards;
+        }
+
+        .slider-track {
+          width: max-content;
+          animation-duration: 20s; /* Faster animation - was 40s */
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+
+        .slider-track[data-direction="left"] {
+          animation-name: scrollLeft;
+        }
+
+        .slider-track[data-direction="right"] {
+          animation-name: scrollRight;
+        }
+
+        .slider-row::before,
+        .slider-row::after {
           content: "";
           position: absolute;
           height: 100%;
           z-index: 2;
-          width: var(--size);
+          width: var(--fade-width);
           top: 0;
+          pointer-events: none;
+        }
+
+        .slider-row::before {
           left: 0;
           background: linear-gradient(
             90deg,
-            white 51.55%,
-            rgba(255, 255, 255, 0.1) 85.21%
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 100%
           );
         }
 
-        .slider::after {
-          left: auto;
+        .slider-row::after {
           right: 0;
           background: linear-gradient(
             270deg,
-            white 51.55%,
-            rgba(255, 255, 255, 0.1) 85.21%
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 100%
           );
         }
 
-        .slider {
-          --size: 60px;
+        .slider-row {
+          --fade-width: 60px;
         }
 
         @media (min-width: 768px) {
-          .slider {
-            --size: 80px;
+          .slider-row {
+            --fade-width: 100px;
           }
         }
 
         @media (min-width: 1024px) {
-          .slider {
-            --size: 160px;
+          .slider-row {
+            --fade-width: 120px;
           }
         }
 
-        @media (min-width: 1280px) {
-          .slider {
-            --size: 200px;
-          }
-        }
-
-        @keyframes marquee {
+        @keyframes scrollLeft {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-100%);
+            transform: translateX(calc(-25%));
+          }
+        }
+
+        @keyframes scrollRight {
+          0% {
+            transform: translateX(calc(-25%));
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        /* Floating animation for brands */
+        .brand-container {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .brand-container:nth-child(2n) {
+          animation-delay: 0.5s;
+        }
+
+        .brand-container:nth-child(3n) {
+          animation-delay: 1s;
+        }
+
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-5px);
+          }
+          100% {
+            transform: translateY(0px);
           }
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 
