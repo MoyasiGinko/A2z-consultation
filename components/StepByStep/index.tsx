@@ -433,11 +433,11 @@ const StepByStep = () => {
       </div> */}
 
       {/* Floating text */}
-      <div className="pointer-events-none fixed left-0 right-0 top-1/2 -z-10 overflow-hidden whitespace-nowrap text-[20vw] font-black uppercase leading-none text-blue-600 opacity-5">
+      {/* <div className="pointer-events-none fixed left-0 right-0 top-1/2 -z-10 overflow-hidden whitespace-nowrap text-[20vw] font-black uppercase leading-none text-blue-600 opacity-5">
         <motion.div style={{ x: textX }}>
           UK Visa Journey UK Visa Journey
         </motion.div>
-      </div>
+      </div> */}
 
       <section ref={containerRef} className="relative min-h-screen py-24">
         <motion.div
