@@ -557,7 +557,7 @@ const Hero: React.FC = () => {
           />
 
           <motion.div
-            className="overflow-hidden rounded-lg bg-gradient-to-r from-[#1DA1C9] to-[#0C87AF] shadow-xl"
+            className="overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] shadow-xl"
             style={{
               transform: "perspective(1000px)",
               boxShadow:
@@ -745,7 +745,7 @@ const Hero: React.FC = () => {
             {/* Tab Progress Indicator */}
             {autoRotate && (
               <motion.div
-                className="h-1 bg-gradient-to-r from-[#1DA1C9] to-[#0C87AF]"
+                className="h-1 bg-gradient-to-r from-[#04A4D8] to-[#025772]"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 6, repeat: Infinity }}
@@ -768,7 +768,7 @@ const Hero: React.FC = () => {
                 transition={{ delay: 0.7 + index * 0.1 }}
                 className={`relative flex flex-1 items-center rounded-lg p-3 shadow-md transition-all duration-300 hover:shadow-lg ${
                   feature.highlighted
-                    ? "bg-gradient-to-br from-[#1DA1C9] to-[#0C87AF] text-white"
+                    ? "bg-gradient-to-br from-[#04A4D8] to-[#025772] text-white"
                     : "bg-gradient-to-br from-white to-blue-50 text-gray-700"
                 }`}
                 style={{
