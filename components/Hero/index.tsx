@@ -292,7 +292,7 @@ const Hero: React.FC = () => {
     <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-blue-50 via-white to-blue-50">
       {/* Enhanced 3D background with gradients */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute h-full w-full bg-gradient-to-br from-blue-100 via-white to-blue-200 opacity-70"></div>
+        <div className="absolute h-full w-full bg-white opacity-70"></div>
 
         {/* 3D surface effect with gradient blobs */}
         {[...Array(10)].map((_, i) => (
@@ -358,7 +358,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-4 py-16 md:flex-row md:px-8 md:py-28 lg:px-12">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-8 py-28 md:flex-row md:px-16 md:py-46 lg:px-12">
         {/* Left Content with Enhanced 3D Animation */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -374,7 +374,7 @@ const Hero: React.FC = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="mb-2 text-xl font-medium text-slate-700 sm:text-2xl md:text-3xl"
+              className="mb-2 text-xl font-medium text-sky-800 sm:text-2xl md:text-3xl"
             >
               <span className="inline-block">E</span>
               <span className="inline-block">x</span>
@@ -404,7 +404,7 @@ const Hero: React.FC = () => {
                   Sponsor Licence
                 </motion.span>
               </h1>
-              <motion.div
+              {/* <motion.div
                 className="absolute -left-4 -top-4 h-16 w-16 rounded-full bg-gradient-to-br from-yellow-200 to-yellow-400 opacity-20"
                 animate={{
                   scale: [1, 1.2, 1],
@@ -415,12 +415,12 @@ const Hero: React.FC = () => {
                   repeat: Infinity,
                   repeatType: "mirror",
                 }}
-              />
+              /> */}
             </motion.div>
 
             <motion.h2
               variants={itemVariants}
-              className="mb-6 text-xl font-medium text-slate-700 sm:text-2xl md:text-3xl"
+              className="mb-6 text-xl font-medium text-sky-800  sm:text-2xl md:text-3xl"
             >
               & Work Permit Visas
             </motion.h2>
@@ -445,7 +445,7 @@ const Hero: React.FC = () => {
             >
               <Link href="/consultation" className="group inline-block">
                 <motion.button
-                  className="relative overflow-hidden rounded-full bg-gradient-to-r from-[#1DA1C9] to-[#0C87AF] px-6 py-3 font-medium text-white shadow-lg transition duration-300 hover:shadow-xl"
+                  className="relative overflow-hidden rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition duration-300 hover:shadow-xl"
                   style={{
                     // textShadow: "0 1px 3px rgba(0,0,0,0.2)",
                     transform: "perspective(1000px)",
@@ -460,6 +460,7 @@ const Hero: React.FC = () => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                       animate={{ x: [0, 5, 0] }}
+                      style={{ rotate: "-45deg" }}
                       transition={{
                         duration: 1.5,
                         repeat: Infinity,
@@ -568,22 +569,12 @@ const Hero: React.FC = () => {
             }}
             transition={{ duration: 0.3 }}
           >
-            {/* Tab Progress Indicator */}
-            {autoRotate && (
-              <motion.div
-                className="h-1 bg-gradient-to-r from-[#1DA1C9] to-[#0C87AF]"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 6, repeat: Infinity }}
-              />
-            )}
-
             {/* Enhanced Tab Header */}
             <div className="flex">
               {["sponsor", "compliance", "immigration"].map((tab) => (
                 <motion.div
                   key={tab}
-                  className={`flex-1 cursor-pointer p-2 text-center transition-all duration-300
+                  className={`flex-1 cursor-pointer p-2 text-center font-semibold transition-all duration-300
         ${activeTab === tab ? "bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
         ${
           activeTab === "sponsor"
@@ -751,6 +742,15 @@ const Hero: React.FC = () => {
                 </div>
               </motion.div>
             </AnimatePresence>
+            {/* Tab Progress Indicator */}
+            {autoRotate && (
+              <motion.div
+                className="h-1 bg-gradient-to-r from-[#1DA1C9] to-[#0C87AF]"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 6, repeat: Infinity }}
+              />
+            )}
           </motion.div>
 
           {/* Enhanced 3D Feature Cards with Gradient Animation */}
@@ -778,7 +778,7 @@ const Hero: React.FC = () => {
                 whileHover={{
                   scale: 1.03,
                   rotateX: 0,
-                  // boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
                 }}
               >
                 {/* Animated gradient overlay */}
