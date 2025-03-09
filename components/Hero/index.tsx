@@ -362,82 +362,93 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="bg-[#1DA1C9] p-6 text-white"
               >
-                <motion.h3
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="mb-6 text-2xl font-bold"
-                >
-                  {tabContents[activeTab].title}
-                </motion.h3>
-
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="mb-1"
-                >
-                  {tabContents[activeTab].description}
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="mb-6"
-                >
-                  {tabContents[activeTab].cta}
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4, type: "spring" }}
-                  className="flex justify-end"
-                >
-                  <div className="h-32 w-32 overflow-hidden bg-transparent">
-                    <motion.div
-                      initial={{ scale: 0.8 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.5, type: "spring" }}
-                      style={{
-                        position: "relative",
-                        width: "100%",
-                        height: "100%",
-                      }}
+                <div className="flex flex-row">
+                  <div className="flex flex-col">
+                    <motion.h3
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.1 }}
+                      className="mb-6 text-2xl font-bold"
                     >
-                      <Image
-                        src="/images/hero/sponsor.png"
-                        alt="Checklist illustration"
-                        width={120}
-                        height={120}
-                        className="rounded-md object-contain"
-                      />
-                    </motion.div>
+                      {tabContents[activeTab].title}
+                    </motion.h3>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                      className="mb-1"
+                    >
+                      {tabContents[activeTab].description}
+                    </motion.p>
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="mb-6"
+                    >
+                      {tabContents[activeTab].cta}
+                    </motion.p>
                   </div>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, type: "spring" }}
+                    className="flex justify-end"
+                  >
+                    <div className="h-32 w-32 overflow-hidden bg-transparent">
+                      <motion.div
+                        initial={{ scale: 0.8 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.5, type: "spring" }}
+                        style={{
+                          position: "relative",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      >
+                        <Image
+                          src={`/images/hero/${activeTab}.png`}
+                          alt={`${activeTab} illustration`}
+                          width={120}
+                          height={120}
+                          className="rounded-md object-contain"
+                        />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
 
                 {/* Feature Cards with Animation */}
-                <div className="mt-4 flex gap-2">
-                  {tabContents[activeTab].features.map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 + index * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      className={`${feature.highlighted ? "border border-white bg-[#1DA1C9] text-white" : "bg-white text-gray-700"} flex items-center rounded p-2 text-xs transition-all duration-300`}
-                    >
-                      <div
-                        className={`${feature.highlighted ? "bg-white text-[#1DA1C9]" : "bg-[#1DA1C9] text-white"} mr-2 rounded p-1`}
-                      >
-                        {feature.icon}
-                      </div>
-                      {feature.text}
-                    </motion.div>
-                  ))}
-                </div>
               </motion.div>
             </AnimatePresence>
+          </div>
+          <div className="mt-4 flex gap-2">
+            {tabContents[activeTab].features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className={`${
+                  feature.highlighted
+                    ? "border border-white bg-[#1DA1C9] text-white"
+                    : "bg-white text-gray-700"
+                } flex items-center rounded p-2 text-xs transition-all duration-300`}
+              >
+                <div
+                  className={`${
+                    feature.highlighted
+                      ? "bg-white text-[#1DA1C9]"
+                      : "bg-[#1DA1C9] text-white"
+                  } mr-2 rounded p-1`}
+                >
+                  {feature.icon}
+                </div>
+                {feature.text}
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
