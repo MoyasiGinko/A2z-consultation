@@ -570,12 +570,17 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             {/* Enhanced Tab Header */}
+
             <div className="flex">
               {["sponsor", "compliance", "immigration"].map((tab) => (
                 <motion.div
                   key={tab}
-                  className={`flex-1 cursor-pointer p-2 text-center font-semibold
-        ${activeTab === tab ? "bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
+                  className={`relative flex-1 cursor-pointer p-2 text-center font-semibold transition-all duration-300
+        ${
+          activeTab === tab
+            ? "rounded-tl-3xl rounded-tr-3xl bg-transparent text-white"
+            : "bg-white text-gray-700"
+        }
         ${
           activeTab === "sponsor"
             ? tab === "compliance"
@@ -597,7 +602,7 @@ const Hero: React.FC = () => {
                     : ""
                 : "rounded-bl-3xl rounded-br-3xl"
         }`}
-                  onClick={() => handleTabChange(tab as any)}
+                  onClick={() => handleTabChange(tab)}
                   style={{
                     transform:
                       activeTab === tab
@@ -606,12 +611,36 @@ const Hero: React.FC = () => {
                     boxShadow: activeTab === tab ? "" : "none",
                   }}
                   whileHover={{
-                    backgroundColor:
-                      activeTab === tab ? "transparent" : "#e5e7eb",
+                    backgroundColor: activeTab === tab ? "transparent" : "#fff",
                     translateZ: 5,
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
+                  {/* Concave corner highlights that appear outside the rounded borders */}
+                  {activeTab === tab && (
+                    <>
+                      {/* Top-left corner - rotated concave shape */}
+                      <div
+                        className="absolute -left-1  -top-1 -z-10 h-8 w-8"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 0 0, transparent 50%, #fff 50%)",
+                          transform: "translate(-4.8px, -5px) rotate(180deg)",
+                        }}
+                      />
+
+                      {/* Top-right corner - rotated concave shape */}
+                      <div
+                        className="absolute -right-1 -top-1 -z-10 h-8 w-8"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 100% 0, transparent 50%, #fff 50%)",
+                          transform: "translate(4.8px, -5px) rotate(-180deg)",
+                        }}
+                      />
+                    </>
+                  )}
+
                   <motion.div
                     initial={{ y: 5, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -620,20 +649,19 @@ const Hero: React.FC = () => {
                         0.1 *
                         ["sponsor", "compliance", "immigration"].indexOf(tab),
                     }}
-                    className="text-xs sm:text-sm"
+                    className="relative z-20 text-xs sm:text-sm"
                   >
                     {tab.toUpperCase()}
                   </motion.div>
                   {activeTab === tab && (
                     <motion.div
-                      className="mx-auto mt-1 h-1 w-1/2 rounded-full bg-white"
+                      className="relative z-20 mx-auto mt-1 h-1 w-1/2 rounded-full bg-white"
                       layoutId="activeTab"
                     />
                   )}
                 </motion.div>
               ))}
             </div>
-
             {/* Card Content with Enhanced 3D Animation || cards color */}
             <AnimatePresence mode="wait">
               <motion.div

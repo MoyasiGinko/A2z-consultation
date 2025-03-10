@@ -569,49 +569,40 @@ const Hero: React.FC = () => {
             }}
             transition={{ duration: 0.3 }}
           >
-            {/* Enhanced Tab Header */}
-            <div className="flex">
-              {["sponsor", "compliance", "immigration"].map((tab) => (
+            {/* Redesigned Tab Header with Rounded Active Tabs */}
+            <div className="relative flex">
+              {/* Tab Background - stays fixed */}
+              <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-gray-100 to-gray-200" />
+
+              {/* Tabs with Rounded Active Design */}
+              {["sponsor", "compliance", "immigration"].map((tab, index) => (
                 <motion.div
                   key={tab}
-                  className={`flex-1 cursor-pointer p-2 text-center font-semibold
-        ${activeTab === tab ? "bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
-        ${
-          activeTab === "sponsor"
-            ? tab === "compliance"
-              ? "rounded-bl-3xl rounded-br-none"
-              : tab === "immigration"
-                ? "rounded-none"
-                : ""
-            : activeTab === "immigration"
-              ? tab === "sponsor"
-                ? "rounded-none"
-                : tab === "compliance"
-                  ? "rounded-bl-none rounded-br-3xl"
-                  : ""
-              : activeTab === "compliance"
-                ? tab === "sponsor"
-                  ? "rounded-bl-none rounded-br-3xl"
-                  : tab === "immigration"
-                    ? "rounded-bl-3xl rounded-br-none"
-                    : ""
-                : "rounded-bl-3xl rounded-br-3xl"
-        }`}
+                  className={`relative z-10 flex-1 cursor-pointer p-2 text-center font-semibold transition-all duration-300
+          ${activeTab === tab ? "text-white" : "text-gray-700"}`}
                   onClick={() => handleTabChange(tab as any)}
-                  style={{
-                    transform:
-                      activeTab === tab
-                        ? "perspective(1000px) translateZ(10px)"
-                        : "perspective(1000px)",
-                    boxShadow: activeTab === tab ? "" : "none",
-                  }}
                   whileHover={{
                     backgroundColor:
                       activeTab === tab ? "transparent" : "#e5e7eb",
-                    translateZ: 5,
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
+                  {/* Active Tab Background with Rounded Design */}
+                  {activeTab === tab && (
+                    <motion.div
+                      layoutId="activeTabBackground"
+                      className="absolute inset-0 z-0 bg-red-500"
+                      initial={false}
+                      style={{
+                        borderTopLeftRadius: "16px",
+                        borderTopRightRadius: "16px",
+                        borderBottomLeftRadius: index === 0 ? "0" : "16px",
+                        borderBottomRightRadius: index === 2 ? "0" : "16px",
+                      }}
+                    />
+                  )}
+
+                  {/* Tab Text */}
                   <motion.div
                     initial={{ y: 5, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -620,21 +611,23 @@ const Hero: React.FC = () => {
                         0.1 *
                         ["sponsor", "compliance", "immigration"].indexOf(tab),
                     }}
-                    className="text-xs sm:text-sm"
+                    className="relative z-10 text-xs sm:text-sm"
                   >
                     {tab.toUpperCase()}
                   </motion.div>
+
+                  {/* Active Tab Indicator */}
                   {activeTab === tab && (
                     <motion.div
-                      className="mx-auto mt-1 h-1 w-1/2 rounded-full bg-white"
-                      layoutId="activeTab"
+                      className="relative z-10 mx-auto mt-1 h-1 w-1/2 rounded-full bg-white"
+                      layoutId="activeTabIndicator"
                     />
                   )}
                 </motion.div>
               ))}
             </div>
 
-            {/* Card Content with Enhanced 3D Animation || cards color */}
+            {/* Card Content with Enhanced 3D Animation */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -645,7 +638,6 @@ const Hero: React.FC = () => {
                 className="relative bg-transparent p-4 text-white sm:p-6"
                 style={{
                   transform: "perspective(1000px)",
-                  // boxShadow: "inset 0 2px 10px rgba(0,0,0,0.1)",
                 }}
               >
                 {/* Enhanced 3D Background Pattern */}
@@ -742,6 +734,7 @@ const Hero: React.FC = () => {
                 </div>
               </motion.div>
             </AnimatePresence>
+
             {/* Tab Progress Indicator */}
             {autoRotate && (
               <motion.div
