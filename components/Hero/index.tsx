@@ -537,7 +537,7 @@ const Hero: React.FC = () => {
         >
           {/* Animated 3D highlight effect */}
           <motion.div
-            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-blue-400 to-blue-300 opacity-20"
+            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-sky-400 to-blue-300 opacity-20"
             style={{
               transform: "perspective(1000px) rotateX(3deg) rotateY(-2deg)",
               filter: "blur(2px)",
