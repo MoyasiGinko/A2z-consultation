@@ -562,7 +562,8 @@ const Hero: React.FC = () => {
               transform: "perspective(1000px)",
               boxShadow:
                 "0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -5px rgba(0, 0, 0, 0.05)",
-              height: "300px", // Set fixed height
+              height: "auto", // Changed from fixed height to auto
+              minHeight: "320px",
             }}
             whileHover={{
               boxShadow:
@@ -570,12 +571,12 @@ const Hero: React.FC = () => {
             }}
             transition={{ duration: 0.3 }}
           >
-            {/* Enhanced Tab Header */}
-            <div className="flex">
+            {/* Enhanced Tab Header with responsive text sizes */}
+            <div className="flex flex-wrap">
               {["sponsor", "compliance", "immigration"].map((tab) => (
                 <motion.div
                   key={tab}
-                  className={`flex-1 cursor-pointer p-2 text-center font-semibold
+                  className={`flex-1 cursor-pointer p-1 text-center font-semibold sm:p-2
         ${activeTab === tab ? "rounded-tl-3xl rounded-tr-3xl bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
         ${
           activeTab === "sponsor"
@@ -635,7 +636,7 @@ const Hero: React.FC = () => {
               ))}
             </div>
 
-            {/* Card Content with Enhanced 3D Animation || cards color */}
+            {/* Card Content with responsive layout */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -643,18 +644,17 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="relative bg-transparent p-4 text-white sm:p-6"
+                className="relative bg-transparent p-3 text-white sm:p-6"
                 style={{
                   transform: "perspective(1000px)",
-                  // boxShadow: "inset 0 2px 10px rgba(0,0,0,0.1)",
                 }}
               >
-                {/* Enhanced 3D Background Pattern */}
+                {/* Background Pattern */}
                 <div className="absolute inset-0 overflow-hidden opacity-10">
                   {[...Array(20)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute h-8 w-8 rotate-45 rounded-md border border-white"
+                      className="absolute h-6 w-6 rotate-45 rounded-md border border-white sm:h-8 sm:w-8"
                       style={{
                         left: `${Math.random() * 100}%`,
                         top: `${Math.random() * 100}%`,
@@ -683,13 +683,14 @@ const Hero: React.FC = () => {
                   ))}
                 </div>
 
+                {/* Responsive content layout - stacked on mobile, side-by-side on larger screens */}
                 <div className="relative z-10 flex flex-col sm:flex-row">
-                  <div className="flex flex-col">
+                  <div className="flex flex-1 flex-col">
                     <motion.h3
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="mb-4 text-xl font-bold sm:mb-6 sm:text-2xl"
+                      className="mb-2 text-lg font-bold sm:mb-6 sm:text-2xl"
                       style={{
                         textShadow: "0 2px 4px rgba(0,0,0,0.2)",
                       }}
@@ -701,7 +702,7 @@ const Hero: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="mb-1"
+                      className="mb-1 text-sm sm:text-base"
                     >
                       {tabContents[activeTab].description}
                     </motion.p>
@@ -709,18 +710,20 @@ const Hero: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="mb-6"
+                      className="mb-4 text-sm sm:mb-6 sm:text-base"
                     >
                       {tabContents[activeTab].cta}
                     </motion.p>
                   </div>
+
+                  {/* Responsive image container */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4, type: "spring" }}
-                    className="mt-4 flex justify-center sm:mt-0 sm:justify-end"
+                    className="flex justify-center sm:justify-end"
                   >
-                    <div className="mt-8 h-36 w-36 overflow-hidden bg-transparent sm:h-32 sm:w-32">
+                    <div className="mt-2 h-24 w-24 overflow-hidden bg-transparent sm:mt-8 sm:h-32 sm:w-32">
                       <motion.div
                         animate={floatingAnimation}
                         style={{
@@ -733,8 +736,8 @@ const Hero: React.FC = () => {
                         <Image
                           src={`/images/hero/${activeTab}.png`}
                           alt={`${activeTab} illustration`}
-                          width={160}
-                          height={160}
+                          width={120}
+                          height={120}
                           className="rounded-md object-contain drop-shadow-lg"
                         />
                       </motion.div>
@@ -743,6 +746,7 @@ const Hero: React.FC = () => {
                 </div>
               </motion.div>
             </AnimatePresence>
+
             {/* Tab Progress Indicator */}
             {autoRotate && (
               <motion.div
