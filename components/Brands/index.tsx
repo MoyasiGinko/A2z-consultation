@@ -109,8 +109,8 @@ const Brands: React.FC = () => {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
           <h2
-            className={`
-            mb-4 text-3xl font-bold transition-all
+            className={`mb-4
+            text-3xl font-bold text-gray-950 transition-all
             delay-300 duration-700 md:text-4xl
             ${inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
           `}
