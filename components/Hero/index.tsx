@@ -575,7 +575,7 @@ const Hero: React.FC = () => {
                 <motion.div
                   key={tab}
                   className={`flex-1 cursor-pointer p-2 text-center font-semibold
-        ${activeTab === tab ? "bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
+        ${activeTab === tab ? "rounded-tl-3xl rounded-tr-3xl bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
         ${
           activeTab === "sponsor"
             ? tab === "compliance"
@@ -610,7 +610,7 @@ const Hero: React.FC = () => {
                       activeTab === tab ? "transparent" : "#e5e7eb",
                     translateZ: 5,
                   }}
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={{ scale: 1 }}
                 >
                   <motion.div
                     initial={{ y: 5, opacity: 0 }}
