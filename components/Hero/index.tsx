@@ -277,7 +277,7 @@ const Hero: React.FC = () => {
   };
 
   const floatingAnimation = {
-    y: [0, -10, 0],
+    y: [0, -1, 0],
     transition: {
       y: {
         duration: 2,
@@ -533,7 +533,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full max-w-md md:w-1/2"
+          className="relative w-full max-w-md md:w-[60%]"
         >
           {/* Animated 3D highlight effect */}
           <motion.div
@@ -719,7 +719,7 @@ const Hero: React.FC = () => {
                     transition={{ delay: 0.4, type: "spring" }}
                     className="mt-4 flex justify-center sm:mt-0 sm:justify-end"
                   >
-                    <div className="h-28 w-28 overflow-hidden bg-transparent sm:h-32 sm:w-32">
+                    <div className="mt-8 h-36 w-36 overflow-hidden bg-transparent sm:h-32 sm:w-32">
                       <motion.div
                         animate={floatingAnimation}
                         style={{
@@ -732,8 +732,8 @@ const Hero: React.FC = () => {
                         <Image
                           src={`/images/hero/${activeTab}.png`}
                           alt={`${activeTab} illustration`}
-                          width={120}
-                          height={120}
+                          width={160}
+                          height={160}
                           className="rounded-md object-contain drop-shadow-lg"
                         />
                       </motion.div>
