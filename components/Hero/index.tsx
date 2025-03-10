@@ -562,6 +562,7 @@ const Hero: React.FC = () => {
               transform: "perspective(1000px)",
               boxShadow:
                 "0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -5px rgba(0, 0, 0, 0.05)",
+              height: "300px", // Set fixed height
             }}
             whileHover={{
               boxShadow:
@@ -745,7 +746,7 @@ const Hero: React.FC = () => {
             {/* Tab Progress Indicator */}
             {autoRotate && (
               <motion.div
-                className="h-1 bg-gradient-to-r from-[#04A4D8] to-[#025772]"
+                className="absolute bottom-0 h-1 bg-gradient-to-r from-[#04A4D8] to-[#025772]"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 6, repeat: Infinity }}
