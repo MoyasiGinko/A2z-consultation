@@ -289,12 +289,11 @@ const HeroDesktop: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-blue-50 via-white to-blue-50">
+    <div className="relative min-h-screen w-full overflow-hidden bg-white">
       {/* Enhanced 3D background with gradients */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute h-full w-full bg-white opacity-70"></div>
 
-        {/* 3D surface effect with gradient blobs */}
         {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
@@ -329,7 +328,6 @@ const HeroDesktop: React.FC = () => {
           />
         ))}
 
-        {/* Additional 3D surface elements */}
         <div className="absolute h-full w-full overflow-hidden">
           {[...Array(5)].map((_, i) => (
             <motion.div
@@ -355,7 +353,7 @@ const HeroDesktop: React.FC = () => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Main content */}
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-8 py-28 md:flex-row md:px-16 md:py-46 lg:px-12">
@@ -431,24 +429,25 @@ const HeroDesktop: React.FC = () => {
                 <br />
                 All In One Platform
               </p>
-              <motion.div
+              {/* <motion.div
                 className="absolute -right-10 bottom-0 h-10 w-10 rounded-full bg-gradient-to-b from-blue-300 to-blue-400 opacity-30"
                 animate={floatingAnimation}
-              />
+              /> */}
             </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="transform-gpu"
-            >
+            <motion.div variants={itemVariants} className="transform-gpu">
               <Link href="/consultation" className="group inline-block">
                 <motion.button
-                  className="relative overflow-hidden rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition duration-300 hover:shadow-xl"
+                  className="relative overflow-hidden rounded-md bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-2xl  hover:shadow-2xl"
                   style={{
-                    // textShadow: "0 1px 3px rgba(0,0,0,0.2)",
                     transform: "perspective(1000px)",
+                    boxShadow:
+                      "0 0 10px rgba(0, 198, 243, 0.2), 0 0 20px rgba(0, 219, 243, 0.3)",
+                  }}
+                  whileHover={{
+                    background: "linear-gradient(to right, #1DA1C9, #0C87AF)",
+                    boxShadow:
+                      "0 0 20px rgba(0, 166, 243, 0.5), 0 0 30px rgba(0, 203, 243, 0.5)",
                   }}
                 >
                   <motion.span className="relative z-10 flex items-center">
@@ -477,10 +476,22 @@ const HeroDesktop: React.FC = () => {
                     </motion.svg>
                   </motion.span>
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-r from-[#0A7A9E] to-[#065E7A] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0 rounded-md bg-gradient-to-r from-sky-500 to-sky-800 opacity-50 blur-md"
+                    animate={{ opacity: [0.5, 0.8, 0.5] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                    }}
+                  />
+                  <motion.div
+                    className="absolute inset-0 rounded-md bg-sky-400 opacity-20 blur-lg"
+                    animate={{ opacity: [0.2, 0.4, 0.2] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                    }}
                   />
                 </motion.button>
               </Link>
@@ -488,7 +499,7 @@ const HeroDesktop: React.FC = () => {
           </motion.div>
 
           {/* Enhanced 3D decorative elements */}
-          <motion.div
+          {/* <motion.div
             className="absolute -left-10 -top-16 h-32 w-32 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 opacity-70 shadow-xl"
             style={{
               filter: "blur(2px)",
@@ -525,7 +536,7 @@ const HeroDesktop: React.FC = () => {
               repeat: Infinity,
               repeatType: "mirror",
             }}
-          />
+          /> */}
         </motion.div>
 
         {/* Right Card with Enhanced 3D and Shadow Effects */}
@@ -561,15 +572,15 @@ const HeroDesktop: React.FC = () => {
             style={{
               transform: "perspective(1000px)",
               boxShadow:
-                "0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -5px rgba(0, 0, 0, 0.05)",
+                "0 0 10px rgba(0, 198, 243, 0.2), 0 0 20px rgba(0, 219, 243, 0.3)",
               height: "auto", // Changed from fixed height to auto
               minHeight: "320px",
             }}
-            whileHover={{
-              boxShadow:
-                "0 20px 40px -5px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1)",
-            }}
-            transition={{ duration: 0.3 }}
+            // whileHover={{
+            //   background: "linear-gradient(to right, #1DA1C9, #0C87AF)",
+            //   boxShadow:
+            //     "0 0 20px rgba(0, 166, 243, 0.5), 0 0 30px rgba(0, 203, 243, 0.5)",
+            // }}
           >
             {/* Enhanced Tab Header with responsive text sizes */}
             <div className="flex flex-wrap">

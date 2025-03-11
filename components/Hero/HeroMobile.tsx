@@ -25,12 +25,6 @@ const HeroMobile: React.FC = () => {
       title: "Successful Skilled Worker VISA",
       imageName: "immigration",
     },
-    {
-      id: 4,
-      type: "All IN ONE",
-      title: "All In One Platform",
-      imageName: "all-in-one",
-    },
   ];
 
   // Animation variants
@@ -84,7 +78,7 @@ const HeroMobile: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 + card.id * 0.1 }}
-      className="relative min-h-40 min-w-full max-w-56 overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-2 text-white shadow-lg sm:h-48 md:h-56"
+      className="relative min-h-44 w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-2 text-white shadow-lg sm:h-48 md:h-56"
     >
       <div className="mb-1 text-center text-xs font-semibold uppercase sm:text-sm md:text-base">
         {card.type}
@@ -264,14 +258,21 @@ const HeroMobile: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Mobile View - Grid of Service Cards - now using map to render dynamic content */}
+        {/* Service Cards using Flexbox layout - 1 in first row, 2 in second row */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mx-auto mt-8 grid w-full grid-cols-2 justify-items-center gap-4"
+          className="mx-auto mt-8 flex w-full flex-wrap gap-4"
         >
-          {serviceCards.map((card) => renderServiceCard(card))}
+          {/* First Row - Single Card with Full Width */}
+          <div className="w-full">{renderServiceCard(serviceCards[0])}</div>
+
+          {/* Second Row - Two Cards Side by Side */}
+          <div className="flex w-full gap-4">
+            <div className="w-1/2">{renderServiceCard(serviceCards[1])}</div>
+            <div className="w-1/2">{renderServiceCard(serviceCards[2])}</div>
+          </div>
         </motion.div>
       </div>
     </div>
