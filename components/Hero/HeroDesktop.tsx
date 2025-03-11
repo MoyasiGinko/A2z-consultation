@@ -568,6 +568,26 @@ const HeroDesktop: React.FC = () => {
           />
 
           <motion.div
+            className="absolute inset-0 h-full w-full rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-50"
+            style={{
+              filter: "blur(50px)",
+              transform: "perspective(1000px) rotateX(10deg) rotateY(-10deg)",
+            }}
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, 10, 0],
+              y: [0, -10, 0],
+              rotateX: [10, 15, 10],
+              rotateY: [-10, -15, -10],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
+          />
+
+          <motion.div
             className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#04A4D8] to-[#025772] shadow-xl"
             style={{
               transform: "perspective(1000px)",
