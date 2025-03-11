@@ -569,7 +569,7 @@ const HeroDesktop: React.FC = () => {
 
           {/* Animated 3D card effect */}
           <motion.div
-            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-[#18b1ff] to-[#95deff] opacity-50"
+            className="absolute -left-4 -top-4 h-[80%] w-full rounded-lg bg-gradient-to-br from-[#18b1ff] to-[#95deff] opacity-50"
             style={{
               transform: "perspective(1000px) rotateX(3deg) rotateY(-2deg)",
               filter: "blur(2px)",
