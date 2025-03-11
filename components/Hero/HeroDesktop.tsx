@@ -750,7 +750,7 @@ const HeroDesktop: React.FC = () => {
                     transition={{ delay: 0.4, type: "spring" }}
                     className="flex justify-center sm:justify-end"
                   >
-                    <div className="mt-2 h-24 w-24 overflow-hidden bg-transparent sm:mt-8 sm:h-32 sm:w-32">
+                    <div className="mt-2 h-24 w-24 overflow-hidden bg-transparent sm:mt-8 sm:h-36 sm:w-36">
                       <motion.div
                         animate={floatingAnimation}
                         style={{
@@ -763,9 +763,8 @@ const HeroDesktop: React.FC = () => {
                         <Image
                           src={`/images/hero/${activeTab}.png`}
                           alt={`${activeTab} illustration`}
-                          width={120}
-                          height={120}
-                          className="rounded-md object-contain drop-shadow-lg"
+                          layout="fill"
+                          className="rounded-md object-cover drop-shadow-lg"
                         />
                       </motion.div>
                     </div>
