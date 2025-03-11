@@ -131,7 +131,7 @@ const Brands: React.FC = () => {
 
         <div
           ref={sliderRef}
-          className="brand-slider-container w-full overflow-hidden"
+          className="brand-slider-container mx-auto w-[95%] overflow-hidden md:w-[80%]"
         >
           {/* First row - moving left to right */}
           <div className="slider-row relative flex h-8 md:h-12 lg:h-18">
