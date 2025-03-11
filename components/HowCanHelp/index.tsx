@@ -312,10 +312,10 @@ const HowWeCanHelpYou = () => {
                       variants={tabVariants}
                       custom={index}
                       onClick={() => handleTabChange(tab.id)}
-                      className={`group relative flex h-10 items-center justify-center rounded-full px-4 font-medium shadow-lg transition-all duration-300 sm:h-11 sm:px-5 md:h-12 md:px-8 lg:px-10 ${
+                      className={`group relative flex h-10 items-center justify-center rounded-full px-4 font-medium shadow-lg sm:h-11 sm:px-5 md:h-12 md:px-8 lg:px-10 ${
                         activeTab === tab.id
-                          ? "scale-110 bg-white text-sky-600 shadow-xl"
-                          : "bg-white/90 text-sky-800 hover:scale-105 hover:bg-white"
+                          ? "bg-white text-sky-600 shadow-xl"
+                          : "bg-white/90 text-sky-800 hover:bg-white"
                       }`}
                       style={{
                         boxShadow:
