@@ -798,7 +798,7 @@ const HeroDesktop: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.1 }}
-                className={`relative flex flex-1 items-center rounded-lg p-2 shadow-md transition-all duration-300 hover:shadow-lg ${
+                className={`relative flex h-17 flex-1 items-center rounded-lg p-2 shadow-md transition-all duration-300 hover:shadow-lg ${
                   feature.highlighted
                     ? "bg-gradient-to-br from-[#04A4D8] to-[#025772] text-white"
                     : "bg-gradient-to-br from-white to-blue-50 text-gray-700"
@@ -819,7 +819,7 @@ const HeroDesktop: React.FC = () => {
                   style={{ zIndex: 0 }}
                 >
                   <motion.div
-                    className={`h-17 w-full ${
+                    className={`h-full w-full ${
                       feature.highlighted
                         ? "bg-gradient-to-r from-blue-300 to-blue-400"
                         : "bg-gradient-to-r from-blue-100 to-blue-200"
