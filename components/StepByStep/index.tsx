@@ -400,6 +400,13 @@ const StepByStep = () => {
       description:
         "Once approved, we help you with the transition to starting your new life in the UK.",
     },
+    {
+      id: 5,
+      image: "/images/steps/step-5.png",
+      title: "Post-Visa Support",
+      description:
+        "Our support doesn't end with your visa approval. We're here to help you settle in and succeed.",
+    },
   ];
 
   // Auto advance steps on scroll
