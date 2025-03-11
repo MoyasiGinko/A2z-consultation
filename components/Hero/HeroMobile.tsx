@@ -79,35 +79,35 @@ const HeroMobile: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 + serviceCards[0].id * 0.1 }}
-      className="relative min-h-44 w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-4 text-white shadow-lg sm:h-48 md:h-56"
+      className="relative min-h-[9rem] w-full min-w-[18rem] overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-3 text-white shadow-lg md:min-h-[12rem] lg:min-h-[15rem]"
     >
-      <div className="mb-2 text-center text-sm font-bold uppercase tracking-wide sm:text-base md:text-lg">
-        {serviceCards[0].type}
-      </div>
       <div className="flex h-full flex-row items-center justify-between">
-        <div className="flex flex-col space-y-3">
-          <div className="text-sm font-semibold uppercase leading-tight sm:text-base md:text-base">
-            {serviceCards[0].title}
+        <div className="flex flex-col gap-2">
+          <div className="mb-8 text-xs font-bold uppercase leading-tight sm:text-sm md:text-base lg:text-lg">
+            {serviceCards[0].type}
           </div>
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="mr-1 h-4 w-4 text-white"
-            >
-              <path
-                fillRule="evenodd"
-                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <div className="text-xs font-medium sm:text-sm">
+          <div className="mb-4 flex flex-wrap gap-1 text-[10px] font-medium leading-tight sm:text-xs md:text-sm lg:text-base">
+            <span className="h-4 sm:h-5 md:h-6">{serviceCards[0].title}</span>
+          </div>
+          <div className="mb-4 flex flex-wrap items-center gap-1 text-[10px] font-medium leading-tight sm:text-xs md:text-sm lg:text-base">
+            <span className="h-4 sm:h-5 md:h-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-1 inline-block h-3 w-3 text-white sm:h-4 sm:w-4 md:h-5 md:w-5"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                  clipRule="evenodd"
+                />
+              </svg>
               {serviceCards[0].subText}
-            </div>
+            </span>
           </div>
         </div>
-        <div className="relative h-24 w-24 flex-shrink-0 sm:h-28 sm:w-28 md:h-32 md:w-32">
+        <div className="relative h-[7.5rem] w-[7.5rem] flex-shrink-0 sm:h-[8rem] sm:w-[8rem] md:h-[9rem] md:w-[9rem] lg:h-[11rem] lg:w-[11rem]">
           <Image
             src={`/images/hero/${serviceCards[0].imageName}.png`}
             alt={`${serviceCards[0].type} illustration`}
@@ -130,13 +130,13 @@ const HeroMobile: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 + card.id * 0.1 }}
-        className="relative min-h-44 w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-2 text-white shadow-lg sm:h-48 md:h-56"
+        className="relative min-h-[11rem] w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-2 text-white shadow-lg sm:min-h-[14rem] md:min-h-[16rem] lg:min-h-[18rem]"
       >
-        <div className="mb-1 text-center text-xs font-semibold uppercase sm:text-sm md:text-base">
+        <div className="mb-1 text-center text-[10px] font-bold uppercase sm:text-sm md:text-base lg:text-lg">
           {card.type}
         </div>
         <div className="mb-1 flex items-center justify-center">
-          <div className="relative h-32 min-h-24 w-full sm:h-32 sm:w-full md:h-36 md:w-full">
+          <div className="relative min-h-[6rem] w-full sm:h-[9rem] md:h-[11rem] lg:h-[14rem]">
             <Image
               src={`/images/hero/${card.imageName}.png`}
               alt={`${card.type} illustration`}
@@ -145,7 +145,7 @@ const HeroMobile: React.FC = () => {
             />
           </div>
         </div>
-        <div className="text-center text-xs sm:text-sm md:text-base">
+        <div className="text-left text-[10px] leading-tight sm:text-sm md:text-base lg:text-lg">
           {card.title}
         </div>
       </motion.div>
@@ -224,9 +224,9 @@ const HeroMobile: React.FC = () => {
         </div>
       </div>
 
-      {/* Main content - mobile layout */}
-      <div className="relative z-10 mx-auto flex flex-col items-center px-6 py-32">
-        {/* Left Content with Enhanced 3D Animation */}
+      {/* Main content - responsive layout */}
+      <div className="relative z-10 mx-auto flex max-w-screen-xl flex-col items-center px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-12 lg:py-32">
+        {/* Content with Enhanced 3D Animation */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -240,7 +240,10 @@ const HeroMobile: React.FC = () => {
             className="relative z-20 text-center"
           >
             {/* Animated "Expert in" text with individual letter animations */}
-            <motion.div variants={itemVariants} className="mb-2 text-xl ">
+            <motion.div
+              variants={itemVariants}
+              className="mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl"
+            >
               {expertInText.map((letter, index) => (
                 <span
                   key={`letter-${index}`}
@@ -253,13 +256,13 @@ const HeroMobile: React.FC = () => {
 
             <motion.h2
               variants={itemVariants}
-              className="mb-1 text-xl font-medium text-sky-900"
+              className="mb-1 text-lg font-medium text-sky-900 sm:text-xl md:text-2xl lg:text-3xl"
             >
               Sponsor Licence
             </motion.h2>
 
             <motion.div variants={itemVariants} className="relative mb-3">
-              <h1 className="text-2xl font-bold text-sky-900 ">
+              <h1 className="text-xl font-bold text-sky-900 sm:text-2xl md:text-3xl lg:text-4xl">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -274,15 +277,18 @@ const HeroMobile: React.FC = () => {
               </h1>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="relative mb-8">
-              <p className="text-sm text-gray-600">
+            <motion.div
+              variants={itemVariants}
+              className="relative mb-6 sm:mb-8 md:mb-10 lg:mb-12"
+            >
+              <p className="text-xs text-gray-600 sm:text-sm md:text-base lg:text-lg">
                 Comprehensive Immigration Support
                 <br />
                 All In One Platform
               </p>
             </motion.div>
 
-            {/* CTA Button - mobile styling */}
+            {/* CTA Button - responsive styling */}
             <motion.div
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
@@ -291,7 +297,7 @@ const HeroMobile: React.FC = () => {
             >
               <Link href="/consultation" className="group inline-block w-full">
                 <motion.button
-                  className="relative w-56 overflow-hidden rounded-lg bg-gradient-to-r from-sky-500 to-sky-800 px-4 py-3 text-center font-medium text-white shadow-lg transition duration-300 hover:shadow-xl"
+                  className="relative w-48 overflow-hidden rounded-lg bg-gradient-to-r from-sky-500 to-sky-800 px-4 py-3 text-center text-sm font-medium text-white shadow-lg transition duration-300 hover:shadow-xl sm:w-56 sm:text-base md:w-64 md:text-lg lg:w-72"
                   style={{
                     transform: "perspective(1000px)",
                   }}
@@ -311,18 +317,18 @@ const HeroMobile: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Service Cards using Flexbox layout - 1 in first row, 2 in second row */}
+        {/* Service Cards using Flexbox layout - responsive design */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mx-auto mt-8 flex w-full flex-wrap gap-4"
+          className="mx-auto mt-6 flex w-full flex-wrap gap-3 sm:mt-8 sm:gap-4 md:mt-10 md:gap-6 lg:mt-12 lg:gap-8"
         >
           {/* First Row - Single Card with Full Width - Using custom first card */}
           <div className="w-full">{renderFirstCard()}</div>
 
-          {/* Second Row - Two Cards Side by Side */}
-          <div className="flex w-full gap-4">
+          {/* Second Row - Two Cards Side by Side - Responsive width */}
+          <div className="flex w-full gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             <div className="w-1/2">{renderServiceCard(serviceCards[1])}</div>
             <div className="w-1/2">{renderServiceCard(serviceCards[2])}</div>
           </div>
