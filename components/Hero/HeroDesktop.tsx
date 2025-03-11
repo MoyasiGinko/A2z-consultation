@@ -546,6 +546,7 @@ const HeroDesktop: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="relative w-full max-w-xl md:w-[60%]"
         >
+          {/* Animated 3D shadow effect */}
           <motion.div
             className="absolute inset-0 -left-8 h-full w-full rounded-full bg-gradient-to-br from-blue-400 to-sky-500 opacity-90"
             style={{
@@ -568,7 +569,7 @@ const HeroDesktop: React.FC = () => {
 
           {/* Animated 3D card effect */}
           <motion.div
-            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-sky-500 to-sky-600 opacity-50"
+            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-[#18b1ff] to-[#95deff] opacity-50"
             style={{
               transform: "perspective(1000px) rotateX(3deg) rotateY(-2deg)",
               filter: "blur(2px)",
