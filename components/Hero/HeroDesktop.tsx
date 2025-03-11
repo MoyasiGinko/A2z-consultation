@@ -635,7 +635,7 @@ const HeroDesktop: React.FC = () => {
                     }}
                     className="text-xs sm:text-sm"
                   >
-                    {tab === "sponsor" ? "SPONSOR LICENSE" : tab.toUpperCase()}
+                    {tab === "sponsor" ? "SPONSOR LICENCE" : tab.toUpperCase()}
                   </motion.div>
                   {activeTab === tab && (
                     <motion.div
