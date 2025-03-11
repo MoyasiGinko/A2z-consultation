@@ -10,19 +10,20 @@ const HeroMobile: React.FC = () => {
     {
       id: 1,
       type: "SPONSOR LICENCE",
-      title: "Free Expert Eligibility Assessment",
+      title: "GET APPROVED QUICKLY & SECURELY.",
+      subText: "CALL US FOR A FREE ELIGIBILITY ASSESSMENT!",
       imageName: "sponsor",
     },
     {
       id: 2,
       type: "COMPLIANCE",
-      title: "Stay Compliant & Audit Ready",
+      title: "Stay Compliant And Audit Ready All Time",
       imageName: "compliance",
     },
     {
       id: 3,
       type: "SKILLED WORKER VISA",
-      title: "Successful Skilled Worker VISA",
+      title: "Nothing Hidden, Fully Transparent Process",
       imageName: "immigration",
     },
   ];
@@ -71,33 +72,85 @@ const HeroMobile: React.FC = () => {
     duration: 10 + i * 2,
   }));
 
-  // Service card renderer for mobile view - now using the data from the array
-  const renderServiceCard = (card) => (
+  // Customized renderer for the first (sponsor) card
+  const renderFirstCard = () => (
     <motion.div
-      key={card.id}
+      key={serviceCards[0].id}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 + card.id * 0.1 }}
-      className="relative min-h-44 w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-2 text-white shadow-lg sm:h-48 md:h-56"
+      transition={{ delay: 0.2 + serviceCards[0].id * 0.1 }}
+      className="relative min-h-44 w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-4 text-white shadow-lg sm:h-48 md:h-56"
     >
-      <div className="mb-1 text-center text-xs font-semibold uppercase sm:text-sm md:text-base">
-        {card.type}
+      <div className="mb-2 text-center text-sm font-bold uppercase tracking-wide sm:text-base md:text-lg">
+        {serviceCards[0].type}
       </div>
-      <div className="mb-1 flex items-center justify-center">
-        <div className="relative h-32 min-h-24 w-full sm:h-32 sm:w-full md:h-36 md:w-full">
+      <div className="flex h-full flex-row items-center justify-between">
+        <div className="flex flex-col space-y-3">
+          <div className="text-sm font-semibold uppercase leading-tight sm:text-base md:text-base">
+            {serviceCards[0].title}
+          </div>
+          <div className="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="mr-1 h-4 w-4 text-white"
+            >
+              <path
+                fillRule="evenodd"
+                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <div className="text-xs font-medium sm:text-sm">
+              {serviceCards[0].subText}
+            </div>
+          </div>
+        </div>
+        <div className="relative h-24 w-24 flex-shrink-0 sm:h-28 sm:w-28 md:h-32 md:w-32">
           <Image
-            src={`/images/hero/${card.imageName}.png`}
-            alt={`${card.type} illustration`}
+            src={`/images/hero/${serviceCards[0].imageName}.png`}
+            alt={`${serviceCards[0].type} illustration`}
             layout="fill"
             className="rounded-md object-cover"
           />
         </div>
       </div>
-      <div className="text-center text-xs sm:text-sm md:text-base">
-        {card.title}
-      </div>
     </motion.div>
   );
+
+  // Service card renderer for other cards - using the data from the array
+  const renderServiceCard = (card) => {
+    // Skip the first card as it has a custom renderer
+    if (card.id === 1) return null;
+
+    return (
+      <motion.div
+        key={card.id}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 + card.id * 0.1 }}
+        className="relative min-h-44 w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] p-2 text-white shadow-lg sm:h-48 md:h-56"
+      >
+        <div className="mb-1 text-center text-xs font-semibold uppercase sm:text-sm md:text-base">
+          {card.type}
+        </div>
+        <div className="mb-1 flex items-center justify-center">
+          <div className="relative h-32 min-h-24 w-full sm:h-32 sm:w-full md:h-36 md:w-full">
+            <Image
+              src={`/images/hero/${card.imageName}.png`}
+              alt={`${card.type} illustration`}
+              layout="fill"
+              className="rounded-md object-cover"
+            />
+          </div>
+        </div>
+        <div className="text-center text-xs sm:text-sm md:text-base">
+          {card.title}
+        </div>
+      </motion.div>
+    );
+  };
 
   // Animation letters - stored as array for dynamic generation
   const expertInText = "Expert in".split("");
@@ -265,8 +318,8 @@ const HeroMobile: React.FC = () => {
           transition={{ delay: 0.8 }}
           className="mx-auto mt-8 flex w-full flex-wrap gap-4"
         >
-          {/* First Row - Single Card with Full Width */}
-          <div className="w-full">{renderServiceCard(serviceCards[0])}</div>
+          {/* First Row - Single Card with Full Width - Using custom first card */}
+          <div className="w-full">{renderFirstCard()}</div>
 
           {/* Second Row - Two Cards Side by Side */}
           <div className="flex w-full gap-4">
