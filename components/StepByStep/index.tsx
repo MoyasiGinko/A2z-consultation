@@ -140,7 +140,7 @@ const JourneyPath = ({ currentStep, totalSteps }) => {
     <div className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2">
       <svg
         viewBox="0 0 2 100"
-        className="h-full w-full overflow-visible"
+        className="h-full w-full translate-x-2 overflow-visible"
         preserveAspectRatio="none"
       >
         <motion.path
@@ -177,7 +177,7 @@ const JourneyPath = ({ currentStep, totalSteps }) => {
           style={{ top: `${(i / (totalSteps - 1)) * 100}%` }}
           animate={{
             scale: currentStep >= i ? 1.2 : 0.8,
-            backgroundColor: currentStep >= i ? "#2B92F5" : "#E2E8F0",
+            backgroundColor: currentStep >= i ? "#11d2dA" : "#E2E8F0",
           }}
         />
       ))}
