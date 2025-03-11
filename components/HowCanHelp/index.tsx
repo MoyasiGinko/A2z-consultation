@@ -272,7 +272,7 @@ const HowWeCanHelpYou = () => {
         </motion.p>
 
         <motion.div
-          className="relative rounded-[30px] p-[2px] sm:rounded-[40px]"
+          className="relative mx-auto max-w-7xl rounded-[30px] p-[2px] sm:rounded-[40px]"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={
             isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }
