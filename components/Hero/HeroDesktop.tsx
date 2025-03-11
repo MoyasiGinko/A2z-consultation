@@ -546,9 +546,29 @@ const HeroDesktop: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="relative w-full max-w-xl md:w-[60%]"
         >
-          {/* Animated 3D highlight effect */}
           <motion.div
-            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-sky-400 to-blue-300 opacity-20"
+            className="absolute inset-0 -left-8 h-full w-full rounded-full bg-gradient-to-br from-blue-400 to-sky-500 opacity-90"
+            style={{
+              filter: "blur(200px)",
+              transform: "perspective(1000px) rotateX(10deg) rotateY(-10deg)",
+            }}
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 50, 0],
+              y: [0, -50, 0],
+              rotateX: [10, 15, 10],
+              rotateY: [-10, -15, -10],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
+          />
+
+          {/* Animated 3D card effect */}
+          <motion.div
+            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-sky-500 to-sky-600 opacity-50"
             style={{
               transform: "perspective(1000px) rotateX(3deg) rotateY(-2deg)",
               filter: "blur(2px)",
@@ -562,26 +582,6 @@ const HeroDesktop: React.FC = () => {
             }}
             transition={{
               duration: 6,
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-          />
-
-          <motion.div
-            className="absolute inset-0 h-full w-full rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-50"
-            style={{
-              filter: "blur(50px)",
-              transform: "perspective(1000px) rotateX(10deg) rotateY(-10deg)",
-            }}
-            animate={{
-              scale: [1, 1.1, 1],
-              x: [0, 10, 0],
-              y: [0, -10, 0],
-              rotateX: [10, 15, 10],
-              rotateY: [-10, -15, -10],
-            }}
-            transition={{
-              duration: 8,
               repeat: Infinity,
               repeatType: "mirror",
             }}
