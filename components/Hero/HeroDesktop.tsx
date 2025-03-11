@@ -16,7 +16,7 @@ type TabContent = {
   }[];
 };
 
-const Hero: React.FC = () => {
+const HeroDesktop: React.FC = () => {
   // Define tab state
   const [activeTab, setActiveTab] = useState<
     "sponsor" | "compliance" | "immigration"
@@ -823,4 +823,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default HeroDesktop;

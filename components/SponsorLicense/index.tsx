@@ -208,7 +208,7 @@ const SponsorLicenceSection: React.FC = () => {
       >
         <div className="grid gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
           {/* Content Section */}
-          <div className="order-2 flex flex-col justify-center lg:order-1">
+          <div className="order-1 flex flex-col justify-center sm:order-2 md:order-2 lg:order-2">
             <motion.div
               variants={titleVariants}
               className="mb-8 md:mb-10 lg:mb-12"
@@ -244,7 +244,7 @@ const SponsorLicenceSection: React.FC = () => {
 
           {/* Image Section */}
           <motion.div
-            className="order-1 flex items-center justify-center lg:order-2 lg:justify-end"
+            className="order-2 flex items-center justify-center md:order-1 lg:order-1 lg:justify-center"
             variants={imageVariants}
           >
             <div className="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:max-w-md md:p-2 lg:w-96 lg:max-w-lg xl:max-w-xl">

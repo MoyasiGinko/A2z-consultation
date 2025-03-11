@@ -330,7 +330,7 @@ const HowWeCanHelpYou = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       {tab.title}
-                      {activeTab === tab.id && (
+                      {/* {activeTab === tab.id && (
                         <motion.span
                           layoutId="activeTab"
                           className="absolute inset-0 rounded-full ring-2 ring-sky-300"
@@ -338,7 +338,7 @@ const HowWeCanHelpYou = () => {
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.3 }}
                         />
-                      )}
+                      )} */}
                       <motion.span
                         className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-sky-400 to-sky-600 opacity-0 blur-sm transition-opacity duration-300"
                         animate={{
