@@ -12,62 +12,158 @@ import {
 } from "framer-motion";
 
 // Animated path component for journey visualization
-const JourneyPath = ({ currentStep, totalSteps }) => {
-  const pathLength = useMotionValue(0);
-  const springPathLength = useSpring(pathLength, {
-    stiffness: 100,
-    damping: 30,
+// Enhanced animated path component with optimized performance and advanced animations
+const JourneyPath = ({ scrollProgress, totalSteps }) => {
+  // Use more responsive spring settings for smoother tracking
+  const springPathLength = useSpring(scrollProgress, {
+    stiffness: 170, // Higher stiffness for faster response
+    damping: 26, // Balanced damping for minimal oscillation
+    mass: 0.5, // Lower mass for faster movement
   });
 
-  useEffect(() => {
-    pathLength.set(currentStep / (totalSteps - 1));
-  }, [currentStep, totalSteps, pathLength]);
+  // Direct transform for path dash offset - no useMemo needed
+  const pathDashOffset = useTransform(springPathLength, (v) => 100 - v * 100);
+
+  // Use a separate spring for ball position to allow custom easing
+  const ballPositionSpring = useSpring(scrollProgress, {
+    stiffness: 200,
+    damping: 30,
+    mass: 0.4,
+    restDelta: 0.001, // More precise resting position
+  });
+
+  // Calculate milestone positions directly
+  const milestones = [...Array(totalSteps)].map((_, i) => i / (totalSteps - 1));
 
   return (
-    <div className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2">
+    <div className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 transform">
+      {/* Responsive SVG with better viewBox */}
       <svg
-        viewBox="0 0 2 100"
-        className="h-full w-full translate-x-2 overflow-visible"
+        viewBox="0 0 4 100"
+        className="absolute h-full w-full overflow-visible"
         preserveAspectRatio="none"
+        style={{ left: 0 }}
       >
+        {/* Background track with rounded ends */}
         <motion.path
-          d="M 1,0 L 1,100"
+          d="M 2,1 L 2,99"
           stroke="#E2E8F0"
           strokeWidth="2"
+          strokeLinecap="round"
           fill="none"
         />
+
+        {/* Progress track with gradient and rounded ends */}
         <motion.path
-          d="M 1,0 L 1,100"
-          stroke="url(#gradient)"
+          d="M 2,1 L 2,99"
+          stroke="url(#progressGradient)"
           strokeWidth="2"
+          strokeLinecap="round"
           fill="none"
           strokeDasharray="100"
-          style={{
-            strokeDashoffset: useTransform(
-              springPathLength,
-              (v) => 100 - v * 100,
-            ),
-          }}
+          style={{ strokeDashoffset: pathDashOffset }}
         />
+
+        {/* Enhanced gradient definition with more color stops */}
         <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <linearGradient
+            id="progressGradient"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
             <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="100%" stopColor="#1E40AF" />
+            <stop offset="25%" stopColor="#2563EB" />
+            <stop offset="50%" stopColor="#1D4ED8" />
+            <stop offset="75%" stopColor="#1E40AF" />
+            <stop offset="100%" stopColor="#1E3A8A" />
           </linearGradient>
+
+          {/* Gradient for the ball glow effect */}
+          <radialGradient
+            id="ballGlow"
+            cx="0.5"
+            cy="0.5"
+            r="0.5"
+            fx="0.5"
+            fy="0.5"
+          >
+            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.8)" />
+            <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+          </radialGradient>
         </defs>
       </svg>
 
-      {[...Array(totalSteps)].map((_, i) => (
+      {/* Advanced ball indicator with dynamic effects */}
+      <motion.div
+        className="absolute left-1/2 -translate-x-1/2 transform"
+        style={{
+          top: useTransform(ballPositionSpring, [0, 1], ["0%", "100%"]),
+          zIndex: 30,
+        }}
+      >
+        {/* Ball glow effect */}
         <motion.div
-          key={i}
-          className="absolute left-1/2 h-4 w-4 -translate-x-1/2 transform rounded-full bg-white shadow-md"
-          style={{ top: `${(i / (totalSteps - 1)) * 100}%` }}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full"
+          style={{
+            width: "24px",
+            height: "24px",
+            background: "url(#ballGlow)",
+            opacity: 0.6,
+          }}
           animate={{
-            scale: currentStep >= i ? 1.2 : 0.8,
-            backgroundColor: currentStep >= i ? "#11d2dA" : "#E2E8F0",
+            scale: [1, 1.4, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
         />
-      ))}
+
+        {/* Main ball with dynamic color based on scroll position */}
+        <motion.div
+          className="relative h-7 w-7 rounded-full shadow-lg"
+          style={{
+            backgroundColor: "#3B82F6", // Default color
+            boxShadow: "0 0 15px rgba(59, 130, 246, 0.5)",
+          }}
+          animate={{
+            scale: [0.95, 1.05, 0.95],
+            backgroundColor: milestones.map((_, i) =>
+              i === 0
+                ? "#3B82F6"
+                : i === totalSteps - 1
+                  ? "#1E3A8A"
+                  : `hsl(${220 - i * 5}, 84%, 54%)`,
+            )[
+              Math.min(
+                Math.floor(scrollProgress.get() * totalSteps),
+                totalSteps - 1,
+              )
+            ],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          {/* Inner ball detail */}
+          <motion.div
+            className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-white"
+            animate={{
+              opacity: [0.6, 0.9, 0.6],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
@@ -243,7 +339,17 @@ const AdvancedStepCard = ({ step, isActive }) => {
 const StepByStep = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const containerRef = useRef(null);
+  const stepsContainerRef = useRef(null);
+  const scrollYProgressValue = useMotionValue(0);
+
+  // Use useScroll for the main container
   const { scrollYProgress } = useScroll({ target: containerRef });
+
+  // Use a separate scroll instance specifically for the steps section
+  const { scrollYProgress: stepsScrollProgress } = useScroll({
+    target: stepsContainerRef,
+    offset: ["start start", "end end"],
+  });
 
   const steps = [
     {
@@ -282,6 +388,14 @@ const StepByStep = () => {
         "Our support doesn't end with your visa approval. We're here to help you settle in and succeed.",
     },
   ];
+
+  // Update scrollYProgressValue from stepsScrollProgress
+  useEffect(() => {
+    const unsubscribe = stepsScrollProgress.onChange((value) => {
+      scrollYProgressValue.set(value);
+    });
+    return () => unsubscribe();
+  }, [stepsScrollProgress, scrollYProgressValue]);
 
   // Auto advance steps on scroll
   useEffect(() => {
@@ -353,8 +467,11 @@ const StepByStep = () => {
           </div>
 
           {/* Interactive steps */}
-          <div className="relative mt-32">
-            <JourneyPath currentStep={currentStep} totalSteps={steps.length} />
+          <div className="relative mt-32" ref={stepsContainerRef}>
+            <JourneyPath
+              scrollProgress={scrollYProgressValue}
+              totalSteps={steps.length}
+            />
 
             <div className="space-y-40">
               {steps.map((step, index) => (
