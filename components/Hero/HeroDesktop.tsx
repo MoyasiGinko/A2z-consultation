@@ -572,15 +572,15 @@ const HeroDesktop: React.FC = () => {
             style={{
               transform: "perspective(1000px)",
               boxShadow:
-                "0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -5px rgba(0, 0, 0, 0.05)",
+                "0 0 10px rgba(0, 198, 243, 0.2), 0 0 20px rgba(0, 219, 243, 0.3)",
               height: "auto", // Changed from fixed height to auto
               minHeight: "320px",
             }}
-            whileHover={{
-              boxShadow:
-                "0 20px 40px -5px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1)",
-            }}
-            transition={{ duration: 0.3 }}
+            // whileHover={{
+            //   background: "linear-gradient(to right, #1DA1C9, #0C87AF)",
+            //   boxShadow:
+            //     "0 0 20px rgba(0, 166, 243, 0.5), 0 0 30px rgba(0, 203, 243, 0.5)",
+            // }}
           >
             {/* Enhanced Tab Header with responsive text sizes */}
             <div className="flex flex-wrap">
