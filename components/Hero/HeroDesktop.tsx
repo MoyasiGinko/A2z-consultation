@@ -435,18 +435,19 @@ const HeroDesktop: React.FC = () => {
               /> */}
             </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="transform-gpu"
-            >
+            <motion.div variants={itemVariants} className="transform-gpu">
               <Link href="/consultation" className="group inline-block">
                 <motion.button
-                  className="relative overflow-hidden rounded-md bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition duration-300 hover:shadow-xl"
+                  className="relative overflow-hidden rounded-md bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-2xl  hover:shadow-2xl"
                   style={{
-                    // textShadow: "0 1px 3px rgba(0,0,0,0.2)",
                     transform: "perspective(1000px)",
+                    boxShadow:
+                      "0 0 10px rgba(0, 198, 243, 0.2), 0 0 20px rgba(0, 219, 243, 0.3)",
+                  }}
+                  whileHover={{
+                    background: "linear-gradient(to right, #1DA1C9, #0C87AF)",
+                    boxShadow:
+                      "0 0 20px rgba(0, 166, 243, 0.5), 0 0 30px rgba(0, 203, 243, 0.5)",
                   }}
                 >
                   <motion.span className="relative z-10 flex items-center">
@@ -474,12 +475,24 @@ const HeroDesktop: React.FC = () => {
                       />
                     </motion.svg>
                   </motion.span>
-                  {/* <motion.div
-                    className="absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-r from-[#0A7A9E] to-[#065E7A] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  /> */}
+                  <motion.div
+                    className="absolute inset-0 rounded-md bg-gradient-to-r from-sky-500 to-sky-800 opacity-50 blur-md"
+                    animate={{ opacity: [0.5, 0.8, 0.5] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                    }}
+                  />
+                  <motion.div
+                    className="absolute inset-0 rounded-md bg-sky-400 opacity-20 blur-lg"
+                    animate={{ opacity: [0.2, 0.4, 0.2] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                    }}
+                  />
                 </motion.button>
               </Link>
             </motion.div>
