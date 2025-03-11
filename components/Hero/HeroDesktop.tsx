@@ -53,7 +53,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -73,7 +73,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -93,7 +93,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -120,7 +120,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -140,7 +140,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -160,7 +160,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -187,7 +187,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -207,7 +207,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -227,7 +227,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -372,7 +372,7 @@ const HeroDesktop: React.FC = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="mb-2 text-xl font-medium text-sky-800 sm:text-2xl md:text-3xl"
+              className="mb-2 text-xl font-bold text-sky-800 sm:text-2xl md:text-3xl"
             >
               <span className="inline-block">E</span>
               <span className="inline-block">x</span>
@@ -418,7 +418,7 @@ const HeroDesktop: React.FC = () => {
 
             <motion.h2
               variants={itemVariants}
-              className="mb-6 text-xl font-medium text-sky-800  sm:text-2xl md:text-3xl"
+              className="mb-6 text-xl font-bold text-sky-800  sm:text-2xl md:text-3xl"
             >
               & Work Permit Visas
             </motion.h2>
@@ -438,7 +438,7 @@ const HeroDesktop: React.FC = () => {
             <motion.div variants={itemVariants} className="transform-gpu">
               <Link href="/consultation" className="group inline-block">
                 <motion.button
-                  className="relative overflow-hidden rounded-md bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-2xl  hover:shadow-2xl"
+                  className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-2xl  hover:shadow-2xl"
                   style={{
                     transform: "perspective(1000px)",
                     boxShadow:
@@ -544,7 +544,7 @@ const HeroDesktop: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full max-w-md md:w-[60%]"
+          className="relative w-full max-w-lg md:w-[60%]"
         >
           {/* Animated 3D highlight effect */}
           <motion.div
@@ -583,12 +583,12 @@ const HeroDesktop: React.FC = () => {
             // }}
           >
             {/* Enhanced Tab Header with responsive text sizes */}
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap gap-0">
               {["sponsor", "compliance", "immigration"].map((tab) => (
                 <motion.div
                   key={tab}
                   className={`flex-1 cursor-pointer p-1 text-center font-semibold sm:p-2
-        ${activeTab === tab ? "rounded-tl-3xl rounded-tr-3xl bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
+        ${activeTab === tab ? "rounded-tl-3xl rounded-tr-3xl bg-transparent text-white" : "border-none bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
         ${
           activeTab === "sponsor"
             ? tab === "compliance"
@@ -635,7 +635,7 @@ const HeroDesktop: React.FC = () => {
                     }}
                     className="text-xs sm:text-sm"
                   >
-                    {tab.toUpperCase()}
+                    {tab === "sponsor" ? "SPONSOR LICENSE" : tab.toUpperCase()}
                   </motion.div>
                   {activeTab === tab && (
                     <motion.div
@@ -782,7 +782,7 @@ const HeroDesktop: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.1 }}
-                className={`relative flex flex-1 items-center rounded-lg p-3 shadow-md transition-all duration-300 hover:shadow-lg ${
+                className={`relative flex flex-1 items-center rounded-lg p-2 shadow-md transition-all duration-300 hover:shadow-lg ${
                   feature.highlighted
                     ? "bg-gradient-to-br from-[#04A4D8] to-[#025772] text-white"
                     : "bg-gradient-to-br from-white to-blue-50 text-gray-700"
@@ -819,7 +819,7 @@ const HeroDesktop: React.FC = () => {
                   />
                 </motion.div>
 
-                <div className="relative z-10 mr-3 flex-shrink-0">
+                <div className="relative z-10 mr-2 flex-shrink-0 text-lg sm:text-xl">
                   {feature.icon}
                 </div>
                 <div className="relative z-10 text-xs sm:text-sm">
