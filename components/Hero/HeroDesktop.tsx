@@ -53,7 +53,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -73,7 +73,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -93,7 +93,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -120,7 +120,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -140,7 +140,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -160,7 +160,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -187,7 +187,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -207,7 +207,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -227,7 +227,7 @@ const HeroDesktop: React.FC = () => {
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -372,7 +372,7 @@ const HeroDesktop: React.FC = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="mb-2 text-xl font-medium text-sky-800 sm:text-2xl md:text-3xl"
+              className="mb-2 text-xl font-bold text-sky-800 sm:text-2xl md:text-3xl"
             >
               <span className="inline-block">E</span>
               <span className="inline-block">x</span>
@@ -418,7 +418,7 @@ const HeroDesktop: React.FC = () => {
 
             <motion.h2
               variants={itemVariants}
-              className="mb-6 text-xl font-medium text-sky-800  sm:text-2xl md:text-3xl"
+              className="mb-6 text-xl font-bold text-sky-800  sm:text-2xl md:text-3xl"
             >
               & Work Permit Visas
             </motion.h2>
@@ -438,7 +438,7 @@ const HeroDesktop: React.FC = () => {
             <motion.div variants={itemVariants} className="transform-gpu">
               <Link href="/consultation" className="group inline-block">
                 <motion.button
-                  className="relative overflow-hidden rounded-md bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-2xl  hover:shadow-2xl"
+                  className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-2xl  hover:shadow-2xl"
                   style={{
                     transform: "perspective(1000px)",
                     boxShadow:
@@ -544,11 +544,31 @@ const HeroDesktop: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full max-w-md md:w-[60%]"
+          className="relative w-full max-w-xl md:w-[60%]"
         >
-          {/* Animated 3D highlight effect */}
           <motion.div
-            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-sky-400 to-blue-300 opacity-20"
+            className="absolute inset-0 -left-8 h-full w-full rounded-full bg-gradient-to-br from-blue-400 to-sky-500 opacity-90"
+            style={{
+              filter: "blur(200px)",
+              transform: "perspective(1000px) rotateX(10deg) rotateY(-10deg)",
+            }}
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 50, 0],
+              y: [0, -50, 0],
+              rotateX: [10, 15, 10],
+              rotateY: [-10, -15, -10],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
+          />
+
+          {/* Animated 3D card effect */}
+          <motion.div
+            className="absolute -left-4 -top-4 h-full w-full rounded-lg bg-gradient-to-br from-sky-500 to-sky-600 opacity-50"
             style={{
               transform: "perspective(1000px) rotateX(3deg) rotateY(-2deg)",
               filter: "blur(2px)",
@@ -568,27 +588,20 @@ const HeroDesktop: React.FC = () => {
           />
 
           <motion.div
-            className="overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] shadow-xl"
+            className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#04A4D8] to-[#025772] shadow-xl"
             style={{
               transform: "perspective(1000px)",
-              boxShadow:
-                "0 0 10px rgba(0, 198, 243, 0.2), 0 0 20px rgba(0, 219, 243, 0.3)",
               height: "auto", // Changed from fixed height to auto
-              minHeight: "320px",
+              minHeight: "340px",
             }}
-            // whileHover={{
-            //   background: "linear-gradient(to right, #1DA1C9, #0C87AF)",
-            //   boxShadow:
-            //     "0 0 20px rgba(0, 166, 243, 0.5), 0 0 30px rgba(0, 203, 243, 0.5)",
-            // }}
           >
             {/* Enhanced Tab Header with responsive text sizes */}
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap gap-0">
               {["sponsor", "compliance", "immigration"].map((tab) => (
                 <motion.div
                   key={tab}
                   className={`flex-1 cursor-pointer p-1 text-center font-semibold sm:p-2
-        ${activeTab === tab ? "rounded-tl-3xl rounded-tr-3xl bg-transparent text-white" : "bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
+        ${activeTab === tab ? "rounded-tl-3xl rounded-tr-3xl bg-transparent text-white" : "border-none bg-gradient-to-b from-gray-100 to-gray-200 text-gray-700"}
         ${
           activeTab === "sponsor"
             ? tab === "compliance"
@@ -635,7 +648,7 @@ const HeroDesktop: React.FC = () => {
                     }}
                     className="text-xs sm:text-sm"
                   >
-                    {tab.toUpperCase()}
+                    {tab === "sponsor" ? "SPONSOR LICENCE" : tab.toUpperCase()}
                   </motion.div>
                   {activeTab === tab && (
                     <motion.div
@@ -701,9 +714,10 @@ const HeroDesktop: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="mb-2 text-lg font-bold sm:mb-6 sm:text-2xl"
+                      className="mb-2 text-xl font-extrabold sm:mb-6 sm:text-2xl"
                       style={{
                         textShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                        fontWeight: "bolder",
                       }}
                     >
                       {tabContents[activeTab].title}
@@ -713,7 +727,8 @@ const HeroDesktop: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="mb-1 text-sm sm:text-base"
+                      className="text-shadow-sm mb-1 text-sm text-white/60 sm:text-base"
+                      style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
                     >
                       {tabContents[activeTab].description}
                     </motion.p>
@@ -721,7 +736,8 @@ const HeroDesktop: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="mb-4 text-sm sm:mb-6 sm:text-base"
+                      className="test-shadow-sm mb-4 text-sm text-white/60 sm:mb-6 sm:text-base"
+                      style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
                     >
                       {tabContents[activeTab].cta}
                     </motion.p>
@@ -782,7 +798,7 @@ const HeroDesktop: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.1 }}
-                className={`relative flex flex-1 items-center rounded-lg p-3 shadow-md transition-all duration-300 hover:shadow-lg ${
+                className={`relative flex flex-1 items-center rounded-lg p-2 shadow-md transition-all duration-300 hover:shadow-lg ${
                   feature.highlighted
                     ? "bg-gradient-to-br from-[#04A4D8] to-[#025772] text-white"
                     : "bg-gradient-to-br from-white to-blue-50 text-gray-700"
@@ -819,7 +835,7 @@ const HeroDesktop: React.FC = () => {
                   />
                 </motion.div>
 
-                <div className="relative z-10 mr-3 flex-shrink-0">
+                <div className="relative z-10 mr-2 flex-shrink-0 text-lg sm:text-xl">
                   {feature.icon}
                 </div>
                 <div className="relative z-10 text-xs sm:text-sm">

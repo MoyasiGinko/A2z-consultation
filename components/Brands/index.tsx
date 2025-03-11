@@ -106,7 +106,7 @@ const Brands: React.FC = () => {
       ref={sectionRef}
       className={`brand-showcase py-20 transition-opacity duration-1000 ${inView ? "opacity-100" : "opacity-0"}`}
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl md:max-w-full">
         <div className="mb-12 text-center">
           <h2
             className={`mb-4

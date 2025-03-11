@@ -10,6 +10,7 @@ import {
   useMotionValue,
   useInView,
 } from "framer-motion";
+import StepModal from "./StepModal";
 
 // Animated path component for journey visualization
 // Enhanced animated path component with optimized performance and advanced animations
@@ -191,8 +192,8 @@ const MorphingBlob = ({ isActive }) => {
   );
 };
 
-// Animated step card with parallax effects
-const AdvancedStepCard = ({ step, isActive }) => {
+// Animated step card with parallax effects - now with modal trigger
+const AdvancedStepCard = ({ step, isActive, onLearnMore }) => {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -223,6 +224,11 @@ const AdvancedStepCard = ({ step, isActive }) => {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
+  };
+
+  // Handler for the Learn More button
+  const handleLearnMoreClick = () => {
+    onLearnMore(step);
   };
 
   return (
@@ -284,6 +290,7 @@ const AdvancedStepCard = ({ step, isActive }) => {
                 className="group relative inline-flex items-center overflow-hidden rounded-full bg-sky-600 px-6 py-2 font-medium text-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={handleLearnMoreClick}
               >
                 <span className="absolute left-0 h-full w-0 bg-white opacity-20 transition-all duration-300 group-hover:w-full" />
                 <span className="relative">Learn More</span>
@@ -338,6 +345,11 @@ const AdvancedStepCard = ({ step, isActive }) => {
 // Main component
 const StepByStep = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [selectedStep, setSelectedStep] = useState<(typeof steps)[0] | null>(
+    null,
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const containerRef = useRef(null);
   const stepsContainerRef = useRef(null);
   const scrollYProgressValue = useMotionValue(0);
@@ -388,6 +400,86 @@ const StepByStep = () => {
         "Our support doesn't end with your visa approval. We're here to help you settle in and succeed.",
     },
   ];
+
+  // Additional information for each step to display in the modal
+  const additionalInfo = {
+    1: {
+      expectation:
+        "During the initial assessment, our immigration experts will conduct a comprehensive review of your qualifications, work experience, and personal circumstances to determine your eligibility for the UK Skilled Worker Visa. We'll identify the most suitable visa category and pathway for your specific situation.",
+      documents: [
+        "Updated CV/resume highlighting relevant experience",
+        "Educational qualifications and certificates",
+        "Professional certifications and licenses",
+        "Passport and identification documents",
+        "Current or previous visas (if applicable)",
+      ],
+      timeline:
+        "The initial assessment typically takes 3-5 business days to complete, after which we'll schedule a detailed consultation to discuss your eligibility and options.",
+    },
+    2: {
+      expectation:
+        "Our documentation specialists will guide you through preparing and organizing all required documents for your visa application. We'll provide detailed checklists, document templates, and personalized guidance to ensure your application package is complete and compelling.",
+      documents: [
+        "Certificate of Sponsorship (CoS) from your UK employer",
+        "Proof of English language proficiency",
+        "Bank statements showing required maintenance funds",
+        "Tuberculosis (TB) test results (if applicable)",
+        "Proof of accommodation in the UK",
+      ],
+      timeline:
+        "The documentation preparation phase typically takes 2-3 weeks, depending on the complexity of your case and how quickly you can gather the required documents.",
+    },
+    3: {
+      expectation:
+        "Our team will handle the submission of your visa application, ensuring all forms are correctly completed and all supporting documents are properly organized. We'll monitor the progress of your application and respond to any queries from UK Visas and Immigration (UKVI).",
+      documents: [
+        "Completed visa application form",
+        "Biometric information",
+        "Application fee payment receipt",
+        "Immigration Health Surcharge payment receipt",
+        "Supporting documents as required by UKVI",
+      ],
+      timeline:
+        "Processing times for Skilled Worker Visa applications typically range from 3 to 8 weeks from the date of biometric submission, though priority services are available for faster processing.",
+    },
+    4: {
+      expectation:
+        "Once your visa is approved, we'll help you prepare for your move to the UK. This includes guidance on entry procedures, initial accommodation, setting up bank accounts, registering with healthcare services, and understanding your rights and responsibilities as a visa holder.",
+      documents: [
+        "Visa vignette in your passport",
+        "Decision letter from UKVI",
+        "Biometric Residence Permit (BRP) collection details",
+        "UK entry checklist",
+        "Relocation resources and guides",
+      ],
+      timeline:
+        "Our relocation support begins immediately after visa approval and continues through your first 90 days in the UK to ensure a smooth transition to your new life.",
+    },
+    5: {
+      expectation:
+        "Our relationship doesn't end when you arrive in the UK. We provide ongoing support to help you settle in, understand your visa conditions, and plan for potential extensions or settlement applications in the future. We're here to answer questions and provide guidance throughout your time in the UK.",
+      documents: [
+        "Biometric Residence Permit (BRP)",
+        "National Insurance Number",
+        "NHS registration documents",
+        "Council tax registration",
+        "Visa compliance checklist",
+      ],
+      timeline:
+        "Our post-visa support is available for the duration of your initial visa period, with regular check-ins and updates regarding any changes to immigration rules that may affect you.",
+    },
+  };
+
+  // Function to handle opening the modal with the selected step
+  const handleLearnMore = (step) => {
+    setSelectedStep(step);
+    setIsModalOpen(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   // Update scrollYProgressValue from stepsScrollProgress
   useEffect(() => {
@@ -479,6 +571,7 @@ const StepByStep = () => {
                   key={step.id}
                   step={step}
                   isActive={currentStep === index}
+                  onLearnMore={handleLearnMore}
                 />
               ))}
             </div>
@@ -496,53 +589,51 @@ const StepByStep = () => {
               className="absolute inset-0 -z-10"
               animate={{
                 background: [
-                  "radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.4) 0%, transparent 50%)",
                   "radial-gradient(circle at 80% 70%, rgba(79, 70, 229, 0.4) 0%, transparent 50%)",
+                  "radial-gradient(circle at 40% 50%, rgba(79, 70, 229, 0.4) 0%, transparent 50%)",
                 ],
               }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                repeatType: "mirror",
-              }}
+              transition={{ duration: 10, repeat: Infinity }}
             />
 
-            <motion.h2
-              className="mb-6 text-4xl font-bold"
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Begin Your UK Journey Today
-            </motion.h2>
-
-            <motion.p
-              className="mb-8 text-lg text-blue-100"
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              Take the first step towards your new life in the United Kingdom
-              with our expert guidance.
-            </motion.p>
-
+            <h2 className="mb-4 text-4xl font-bold leading-tight tracking-tight">
+              Ready to Start Your UK Journey?
+            </h2>
+            <p className="mb-8 text-lg opacity-90">
+              Schedule a consultation with our immigration experts today and
+              take the first step toward your new life in the United Kingdom.
+            </p>
             <motion.button
-              className="group relative overflow-hidden rounded-full bg-white px-8 py-4 font-bold text-sky-700 shadow-lg transition-all duration-300 hover:shadow-xl"
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              viewport={{ once: true }}
+              className="group relative inline-flex items-center overflow-hidden rounded-full bg-white px-8 py-3 font-medium text-sky-600 shadow-md"
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10">Start Assessment</span>
-              <span className="absolute bottom-0 left-0 h-0 w-full bg-gradient-to-r from-blue-200 to-indigo-200 transition-all duration-300 group-hover:h-full"></span>
+              <span className="absolute left-0 h-full w-0 bg-sky-50 opacity-20 transition-all duration-300 group-hover:w-full" />
+              <span className="relative">Book Your Consultation</span>
             </motion.button>
           </motion.div>
         </motion.div>
+
+        {/* Background elements */}
+        <motion.div
+          className="absolute -top-96 left-0 right-0 -z-10 text-[400px] font-black leading-none text-blue-900"
+          style={{ opacity: bgOpacity, x: textX }}
+        >
+          UK VISA
+        </motion.div>
       </section>
+
+      {/* Modal for displaying additional step information */}
+      <AnimatePresence>
+        {isModalOpen && selectedStep && (
+          <StepModal
+            isOpen={isModalOpen}
+            step={selectedStep}
+            additionalInfo={additionalInfo[selectedStep.id]}
+            onClose={closeModal}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
