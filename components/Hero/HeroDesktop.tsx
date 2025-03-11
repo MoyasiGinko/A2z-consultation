@@ -544,7 +544,7 @@ const HeroDesktop: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full max-w-lg md:w-[60%]"
+          className="relative w-full max-w-xl md:w-[60%]"
         >
           {/* Animated 3D highlight effect */}
           <motion.div
@@ -568,19 +568,12 @@ const HeroDesktop: React.FC = () => {
           />
 
           <motion.div
-            className="overflow-hidden rounded-lg bg-gradient-to-r from-[#04A4D8] to-[#025772] shadow-xl"
+            className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#04A4D8] to-[#025772] shadow-xl"
             style={{
               transform: "perspective(1000px)",
-              boxShadow:
-                "0 0 10px rgba(0, 198, 243, 0.2), 0 0 20px rgba(0, 219, 243, 0.3)",
               height: "auto", // Changed from fixed height to auto
-              minHeight: "320px",
+              minHeight: "340px",
             }}
-            // whileHover={{
-            //   background: "linear-gradient(to right, #1DA1C9, #0C87AF)",
-            //   boxShadow:
-            //     "0 0 20px rgba(0, 166, 243, 0.5), 0 0 30px rgba(0, 203, 243, 0.5)",
-            // }}
           >
             {/* Enhanced Tab Header with responsive text sizes */}
             <div className="flex flex-wrap gap-0">
@@ -701,9 +694,10 @@ const HeroDesktop: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="mb-2 text-lg font-bold sm:mb-6 sm:text-2xl"
+                      className="mb-2 text-xl font-extrabold sm:mb-6 sm:text-2xl"
                       style={{
                         textShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                        fontWeight: "bolder",
                       }}
                     >
                       {tabContents[activeTab].title}
@@ -713,7 +707,8 @@ const HeroDesktop: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="mb-1 text-sm sm:text-base"
+                      className="text-shadow-sm mb-1 text-sm text-white/60 sm:text-base"
+                      style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
                     >
                       {tabContents[activeTab].description}
                     </motion.p>
@@ -721,7 +716,8 @@ const HeroDesktop: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="mb-4 text-sm sm:mb-6 sm:text-base"
+                      className="test-shadow-sm mb-4 text-sm text-white/60 sm:mb-6 sm:text-base"
+                      style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
                     >
                       {tabContents[activeTab].cta}
                     </motion.p>
