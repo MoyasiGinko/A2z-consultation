@@ -65,7 +65,7 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({
       initial="hidden"
       animate={controls}
       variants={{
-        hidden: { opacity: 0, y: 50 },
+        hidden: { opacity: 0, y: 1 },
         visible: {
           opacity: 1,
           y: 0,
@@ -77,7 +77,7 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({
         },
       }}
       whileHover={{
-        y: -10,
+        y: -1,
         transition: { duration: 0.3 },
       }}
     >
