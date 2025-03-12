@@ -6,13 +6,15 @@ const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setTheme("light");
+    if (theme === "dark") {
+      setTheme("light");
+    } else setTheme("light");
   }, [setTheme]);
 
   return (
     <button
       aria-label="theme toggler"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(theme === "dark" ? "light" : "light")}
       className="bg-gray-2 dark:bg-dark-bg relative mr-1.5 flex cursor-pointer items-center justify-center rounded-full text-black dark:text-white lg:static"
     >
       <Image
