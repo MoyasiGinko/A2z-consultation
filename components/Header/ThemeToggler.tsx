@@ -9,7 +9,7 @@ const ThemeToggler = () => {
     if (theme === "dark") {
       setTheme("light");
     } else setTheme("light");
-  }, [setTheme]);
+  }, [setTheme, theme]);
 
   return (
     <button
