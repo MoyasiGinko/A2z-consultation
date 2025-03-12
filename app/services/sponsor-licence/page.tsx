@@ -6,6 +6,7 @@ import Brands from "@/components/Brands";
 import StatsSection from "@/components/Stats";
 import TabContainer from "@/components/Services/SponsorPage/TabContainer";
 import CTAsection from "@/components/Services/SponsorPage/CTA-Section";
+import PricingPackages from "@/components/Services/SponsorPage/PricingPlan";
 
 export const metadata: Metadata = {
   title: "Sponsor Licence Page - A2Z",
@@ -21,6 +22,7 @@ const SponsorPage = () => {
       <StatsSection />
       <TabContainer />
       <CTAsection />
+      <PricingPackages />
     </div>
   );
 };
