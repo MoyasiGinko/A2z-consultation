@@ -1,9 +1,10 @@
 import React from "react";
 import { Metadata } from "next";
 import BoosterCard from "@/components/Boosters";
-import SponsorBanner from "@/components/Services/SponsorPage";
+import SponsorBanner from "@/components/Services/SponsorPage/SponsorBanner";
 import Brands from "@/components/Brands";
 import StatsSection from "@/components/Stats";
+import TabContainer from "@/components/Services/SponsorPage/TabContainer";
 
 export const metadata: Metadata = {
   title: "Sponsor Licence Page - A2Z",
@@ -17,6 +18,7 @@ const SponsorPage = () => {
       <SponsorBanner />
       <Brands />
       <StatsSection />
+      <TabContainer />
     </div>
   );
 };
