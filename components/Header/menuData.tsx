@@ -7,6 +7,12 @@ const menuData: Menu[] = [
     newTab: false,
     submenu: [
       {
+        id: 55,
+        title: "Sponsor Licence",
+        newTab: false,
+        path: "/services/sponsor-licence",
+      },
+      {
         id: 51,
         title: "Visit Visa",
         newTab: false,
@@ -18,12 +24,7 @@ const menuData: Menu[] = [
         newTab: false,
         path: "/services/skilled-worker-visa",
       },
-      {
-        id: 55,
-        title: "Graduate Visa",
-        newTab: false,
-        path: "/services/graduate-visa",
-      },
+
       {
         id: 56,
         title: "Student Visa",
