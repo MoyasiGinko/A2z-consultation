@@ -166,7 +166,7 @@ const PricingPackages: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-16">
+    <div className="w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-24">
       <h1 className="mb-12 text-center text-4xl font-bold text-teal-600">
         Our Packages
       </h1>
