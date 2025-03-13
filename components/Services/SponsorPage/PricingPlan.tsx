@@ -10,8 +10,10 @@ interface PricingPackage {
   name: string;
   tagline: string;
   color: string;
+  glowColor: string;
   features: PackageFeature[];
-  description?: string;
+  description: string;
+  alwaysExpanded?: boolean;
 }
 
 const PricingPackages: React.FC = () => {
@@ -19,7 +21,7 @@ const PricingPackages: React.FC = () => {
     [key: string]: boolean;
   }>({
     Gold: false,
-    Platinum: false,
+    Platinum: true, // Platinum is expanded by default
     VIP: false,
   });
 
@@ -28,17 +30,7 @@ const PricingPackages: React.FC = () => {
       name: "Gold",
       tagline: "Esse magna sunt pariatur culpa quis",
       color: "bg-[#3d6582]",
-      features: [
-        { text: "Anim magna proident" },
-        { text: "Voluptate labore fugiat amet" },
-        { text: "Cillum dolore sit cillum" },
-        { text: "Veniam aute mollit veniam" },
-      ],
-    },
-    {
-      name: "Platinum",
-      tagline: "Esse magna sunt pariatur culpa quis",
-      color: "bg-[#7986cb]",
+      glowColor: "from-[#3d6582]/20",
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
@@ -46,18 +38,36 @@ const PricingPackages: React.FC = () => {
         { text: "Veniam aute mollit veniam" },
       ],
       description:
-        "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor.Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
+        "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
     },
     {
-      name: "VIP",
+      name: "Platinum",
       tagline: "Esse magna sunt pariatur culpa quis",
-      color: "bg-[#ffb900]",
+      color: "bg-[#7986cb]",
+      glowColor: "from-[#7986cb]/20",
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
         { text: "Cillum dolore sit cillum" },
         { text: "Veniam aute mollit veniam" },
       ],
+      description:
+        "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
+      alwaysExpanded: true, // Flag to indicate this package should always show description
+    },
+    {
+      name: "VIP",
+      tagline: "Esse magna sunt pariatur culpa quis",
+      color: "bg-[#ffb900]",
+      glowColor: "from-[#ffb900]/20",
+      features: [
+        { text: "Anim magna proident" },
+        { text: "Voluptate labore fugiat amet" },
+        { text: "Cillum dolore sit cillum" },
+        { text: "Veniam aute mollit veniam" },
+      ],
+      description:
+        "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
     },
   ];
 
@@ -74,16 +84,21 @@ const PricingPackages: React.FC = () => {
         Our Packages
       </h1>
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
         {packages.map((pkg) => (
           <motion.div
             key={pkg.name}
-            className="overflow-hidden rounded-lg bg-white shadow-lg"
+            className="relative overflow-hidden rounded-lg bg-white shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             whileHover={{ y: -5 }}
           >
+            {/* Glow Effect Background */}
+            <div
+              className={`bg-gradient-radial absolute inset-0 -z-10 ${pkg.glowColor} to-transparent opacity-70 blur-xl`}
+            ></div>
+
             {/* Package Header */}
             <div className={`${pkg.color} px-6 py-4 text-center`}>
               <h2 className="text-3xl font-bold text-yellow-300">{pkg.name}</h2>
@@ -123,26 +138,25 @@ const PricingPackages: React.FC = () => {
                 </ul>
               </div>
 
-              {/* Description - Only for Platinum or if expanded */}
-              {(pkg.name === "Platinum" || expandedStates[pkg.name]) &&
-                pkg.description && (
-                  <motion.div
-                    className="mt-4 text-sm text-gray-600"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {pkg.description}
-                  </motion.div>
-                )}
+              {/* Description - Always shown for Platinum, shown if expanded for others */}
+              {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
+                <motion.div
+                  className="mt-4 text-sm text-gray-600"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {pkg.description}
+                </motion.div>
+              )}
 
-              {/* Read More Button - Only for packages with description */}
-              {pkg.description && pkg.name !== "Platinum" && (
+              {/* Read More Button - Only for non-always expanded packages */}
+              {!pkg.alwaysExpanded && (
                 <button
                   className="mt-2 flex items-center text-sm text-teal-600"
                   onClick={() => toggleReadMore(pkg.name)}
                 >
-                  Read more
+                  {expandedStates[pkg.name] ? "Read less" : "Read more"}
                   <svg
                     className={`ml-1 h-4 w-4 transition-transform ${expandedStates[pkg.name] ? "rotate-180" : ""}`}
                     fill="none"
@@ -161,7 +175,7 @@ const PricingPackages: React.FC = () => {
 
               {/* CTA Button */}
               <motion.button
-                className={`mt-6 w-full border px-4 py-2 ${pkg.name === "Platinum" ? "bg-[#7986cb] text-white" : "border-gray-300 text-teal-600"} rounded-md transition-colors hover:bg-opacity-90`}
+                className={`mt-6 w-full rounded-md border px-4 py-2 ${pkg.color} text-white transition-colors hover:bg-opacity-90`}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
