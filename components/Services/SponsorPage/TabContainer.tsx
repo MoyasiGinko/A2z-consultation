@@ -7,7 +7,7 @@ const TabContainer: React.FC = () => {
   const tabs = ["IMMIGRATION", "COMPLIANCE", "RECRUITMENT", "SPONSOR LICENCE"];
 
   return (
-    <div className="font-sans mx-4 mx-auto max-w-6xl md:mx-auto">
+    <div className="font-sans mx-auto max-w-6xl md:mx-auto">
       <nav className="rounded-2xl rounded-t-lg bg-[#ffd4c2] p-3 md:rounded-t-lg md:p-2">
         <div className="relative flex w-full flex-col gap-2.5 md:flex-row md:gap-0">
           {tabs.map((tab) => (

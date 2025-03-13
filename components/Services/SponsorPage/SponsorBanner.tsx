@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const SponsorBanner: React.FC = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -40,136 +41,12 @@ const SponsorBanner: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex flex-col">
-            {/* Step 1 */}
-            <div className="mb-2 flex items-start">
-              <motion.div
-                className="mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#ff7a7a] font-bold text-white"
-                animate={{
-                  scale: activeStep === 1 ? [1, 1.1, 1] : 1,
-                  backgroundColor: "#ff7a7a",
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                1
-              </motion.div>
-              <motion.div
-                className="flex flex-col"
-                animate={{
-                  opacity: activeStep === 1 ? 1 : 0.7,
-                  x: activeStep === 1 ? [0, 5, 0] : 0,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <h3 className="mb-2 text-sm font-bold tracking-wider text-[#ff7a7a]">
-                  A SPONSOR LICENCE IS GREAT!
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  It will help you
-                  to................................................................
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Connecting line */}
-            <div className="mb-2 ml-5 h-6 w-0.5 bg-gray-200"></div>
-
-            {/* Step 2 */}
-            <div className="mb-2 flex items-start">
-              <motion.div
-                className="mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#ffb347] font-bold text-white"
-                animate={{
-                  scale: activeStep === 2 ? [1, 1.1, 1] : 1,
-                  backgroundColor: "#ffb347",
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                2
-              </motion.div>
-              <motion.div
-                className="flex flex-col"
-                animate={{
-                  opacity: activeStep === 2 ? 1 : 0.7,
-                  x: activeStep === 2 ? [0, 5, 0] : 0,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <h3 className="mb-2 text-sm font-bold tracking-wider text-[#ffb347]">
-                  SOFT CREDIT CHECK
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  The lender performs a soft credit check assessing your credit
-                  score and history
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Connecting line */}
-            <div className="mb-2 ml-5 h-6 w-0.5 bg-gray-200"></div>
-
-            {/* Step 3 */}
-            <div className="mb-2 flex items-start">
-              <motion.div
-                className="mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#4e9eff] font-bold text-white"
-                animate={{
-                  scale: activeStep === 3 ? [1, 1.1, 1] : 1,
-                  backgroundColor: "#4e9eff",
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                3
-              </motion.div>
-              <motion.div
-                className="flex flex-col"
-                animate={{
-                  opacity: activeStep === 3 ? 1 : 0.7,
-                  x: activeStep === 3 ? [0, 5, 0] : 0,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <h3 className="mb-2 text-sm font-bold tracking-wider text-[#4e9eff]">
-                  GRANT OR DENY
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  The lender either denies or grants your pre-qualification. If
-                  you pre-qualify, you'll receive information about the loan you
-                  may receive.
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Connecting line */}
-            <div className="mb-2 ml-5 h-6 w-0.5 bg-gray-200"></div>
-
-            {/* Step 4 */}
-            <div className="flex items-start">
-              <motion.div
-                className="mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#4cd964] font-bold text-white"
-                animate={{
-                  scale: activeStep === 4 ? [1, 1.1, 1] : 1,
-                  backgroundColor: "#4cd964",
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                4
-              </motion.div>
-              <motion.div
-                className="flex flex-col"
-                animate={{
-                  opacity: activeStep === 4 ? 1 : 0.7,
-                  x: activeStep === 4 ? [0, 5, 0] : 0,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <h3 className="mb-2 text-sm font-bold tracking-wider text-[#4cd964]">
-                  ACCEPT OR DECLINE
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  You can either accept or decline the pre-qualified offer.
-                </p>
-              </motion.div>
-            </div>
-          </div>
+          <Image
+            src="/images/features/sponsor-banner.png"
+            alt="Sponsor Licence"
+            width={500}
+            height={500}
+          />
         </motion.div>
       </div>
     </div>
