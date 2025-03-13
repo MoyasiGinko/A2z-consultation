@@ -58,7 +58,7 @@ const TabContainer: React.FC = () => {
   const activeTabIndex = tabs.indexOf(hoveredTab);
 
   return (
-    <div className="font-sans mx-auto max-w-6xl md:mx-auto">
+    <div className="font-sans mx-auto max-w-6xl shadow-2xl md:mx-auto">
       <nav
         ref={navRef}
         className="rounded-t-lg bg-gradient-to-r from-sky-400 via-sky-500 to-sky-400 p-3 md:p-2"
@@ -107,7 +107,7 @@ const TabContainer: React.FC = () => {
 
       {/* Fixed height container with responsive layout */}
       <div className="overflow-hidden rounded-b-lg bg-white">
-        <div className="flex flex-col md:h-96 md:flex-row">
+        <div className="flex  flex-col md:h-[500px] md:flex-row">
           {/* Left side text content */}
           <div className="flex flex-col justify-center p-6 md:w-1/2 md:p-12">
             <div className="transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
