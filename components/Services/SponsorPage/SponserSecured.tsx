@@ -24,7 +24,7 @@ const SponsorSecured: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white px-4 py-16">
+    <div className="w-full bg-white px-4 py-24">
       <div className="mx-auto max-w-6xl">
         {/* Header Section */}
         <motion.h1

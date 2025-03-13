@@ -15,7 +15,7 @@ const FAQ: React.FC = () => {
       question: "What is a sponsor licence, and why do I need one?",
       answer: (
         <p>
-          A <span className="text-teal-700">sponsor licence</span> allows UK
+          A <span className="text-black">sponsor licence</span> allows UK
           businesses to legally hire skilled workers from outside the UK.
           Without it, you cannot sponsor visas for international employees.
         </p>
@@ -86,7 +86,7 @@ const FAQ: React.FC = () => {
     <div className="w-full bg-white px-4 py-16">
       <div className="mx-auto max-w-3xl">
         <motion.h1
-          className="mb-16 text-center text-4xl font-bold text-[#0e4a3a]"
+          className="mb-16 text-center text-4xl font-bold text-black"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -107,7 +107,7 @@ const FAQ: React.FC = () => {
                 className="flex w-full items-center justify-between py-2 text-left focus:outline-none"
                 onClick={() => toggleQuestion(index)}
               >
-                <h3 className="text-lg font-medium text-[#0e4a3a]">
+                <h3 className="text-lg font-medium text-black">
                   {item.question}
                 </h3>
                 <motion.div

@@ -134,10 +134,10 @@ const CTAsection = () => {
       {!isMobile && <Particles />}
 
       {/* Enhanced gradient overlay with better visual depth */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#002A62] via-blue-800 to-[#002A62]" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-12 lg:gap-16 xl:gap-20">
+        <div className="flex flex-col gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:gap-16 xl:gap-20">
           {/* Enhanced Image Section with better animations */}
           <motion.figure
             className="relative mx-auto flex h-[260px] w-[90%] max-w-md items-center justify-center overflow-hidden rounded-3xl sm:h-[280px] md:h-[300px] lg:order-1 lg:col-span-7 lg:h-[360px] lg:w-full lg:max-w-none lg:justify-end xl:h-[400px]"
@@ -166,7 +166,7 @@ const CTAsection = () => {
             {/* Enhanced Passport with floating animation */}
             {isMounted && (
               <motion.div
-                className="relative h-[85%] w-[85%] overflow-hidden rounded-2xl shadow-2xl"
+                className="relative h-[85%] w-[100%] overflow-hidden rounded-2xl shadow-2xl"
                 animate={{
                   y: [0, -8, 0],
                   rotate: [0, 0.8, 0],
@@ -179,8 +179,8 @@ const CTAsection = () => {
                 }}
               >
                 <Image
-                  src="/images/hero/uk-passport.png"
-                  alt="UK Passport"
+                  src="/images/features/gift-1.png"
+                  alt="Gift Image"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 40vw"
@@ -233,7 +233,7 @@ const CTAsection = () => {
 
           {/* Enhanced Text Section with staggered animations */}
           <motion.div
-            className="mx-auto max-w-md text-center lg:col-span-5 lg:mx-0 lg:grid lg:max-w-none lg:place-items-center lg:text-left"
+            className="mx-auto w-full max-w-[500px] text-left lg:col-span-5 lg:mx-0 lg:grid lg:max-w-full lg:place-items-center lg:text-left"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -241,7 +241,7 @@ const CTAsection = () => {
           >
             <div>
               <motion.h2
-                className="mb-2 text-2xl font-black leading-tight sm:text-3xl md:mb-3 lg:mb-5 lg:text-4xl xl:mb-6 xl:text-5xl"
+                className="mb-2 text-2xl font-thin leading-tight sm:text-3xl md:mb-3 lg:mb-5 lg:text-4xl xl:mb-6 xl:text-5xl"
                 variants={itemVariants}
               >
                 <span className="block">DOWNLOAD OUR FREE</span>
@@ -266,7 +266,7 @@ const CTAsection = () => {
               </motion.h2>
               <motion.div variants={itemVariants}>
                 <motion.button
-                  className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-sky-500 to-sky-400 px-6 py-3 font-bold text-white shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
+                  className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-gray-50 to-sky-50 px-6 py-3 font-bold text-blue-950 shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
