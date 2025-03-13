@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface PackageFeature {
   text: string;
@@ -9,15 +9,18 @@ interface PackageFeature {
 interface PricingPackage {
   name: string;
   tagline: string;
+  text: string;
   color: string;
+  ring: string;
   glowColor: string;
-  shadowColor: string; // New property for background shadow color
+  shadowColor: string;
   features: PackageFeature[];
   description: string;
   alwaysExpanded?: boolean;
 }
 
 const PricingPackages: React.FC = () => {
+  // Expanded states for description sections
   const [expandedStates, setExpandedStates] = useState<{
     [key: string]: boolean;
   }>({
@@ -26,13 +29,89 @@ const PricingPackages: React.FC = () => {
     VIP: false,
   });
 
+  // State to track each card's height
+  const [cardHeights, setCardHeights] = useState<{
+    [key: string]: number;
+  }>({
+    Gold: 0,
+    Platinum: 0,
+    VIP: 0,
+  });
+
+  // Create refs for each card
+  const cardRefs = {
+    Gold: useRef<HTMLDivElement>(null),
+    Platinum: useRef<HTMLDivElement>(null),
+    VIP: useRef<HTMLDivElement>(null),
+  };
+
+  // Function to update card heights
+  const updateCardHeight = (packageName: string) => {
+    if (cardRefs[packageName]?.current) {
+      const height = cardRefs[packageName].current.offsetHeight;
+      setCardHeights((prev) => ({
+        ...prev,
+        [packageName]: height,
+      }));
+    }
+  };
+
+  // Update all card heights on initial render and window resize
+  useEffect(() => {
+    const updateAllCardHeights = () => {
+      Object.keys(cardRefs).forEach((packageName) => {
+        updateCardHeight(packageName);
+      });
+    };
+
+    // Initial measurement after component mounts
+    updateAllCardHeights();
+
+    // Set up resize observer for each card
+    const observers = Object.entries(cardRefs)
+      .map(([packageName, ref]) => {
+        if (!ref.current) return null;
+
+        const observer = new ResizeObserver(() => {
+          updateCardHeight(packageName);
+        });
+
+        observer.observe(ref.current);
+        return observer;
+      })
+      .filter(Boolean);
+
+    // Also listen for window resize events as a fallback
+    window.addEventListener("resize", updateAllCardHeights);
+
+    // Cleanup
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+      window.removeEventListener("resize", updateAllCardHeights);
+    };
+  }, []);
+
+  // Update heights when expanded states change
+  useEffect(() => {
+    // Use setTimeout to ensure the DOM has updated after state change
+    const timeoutId = setTimeout(() => {
+      Object.keys(expandedStates).forEach((packageName) => {
+        updateCardHeight(packageName);
+      });
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
+  }, [expandedStates]);
+
   const packages: PricingPackage[] = [
     {
       name: "Gold",
       tagline: "Esse magna sunt pariatur culpa quis",
-      color: "bg-[#3d6582]",
+      color: "#3d6582",
+      ring: "#3d6582",
+      text: "#ffb900",
       glowColor: "from-[#3d6582]/20",
-      shadowColor: "bg-[#3d6582]/10", // 10% opacity of the gold color
+      shadowColor: "bg-[#3d6582]/10",
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
@@ -45,9 +124,11 @@ const PricingPackages: React.FC = () => {
     {
       name: "Platinum",
       tagline: "Esse magna sunt pariatur culpa quis",
-      color: "bg-[#7986cb]",
+      color: "#7986cb",
+      ring: "#7986cb",
+      text: "#fff",
       glowColor: "from-[#7986cb]/20",
-      shadowColor: "bg-[#7986cb]/10", // 10% opacity of the platinum color
+      shadowColor: "bg-[#7986cb]/10",
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
@@ -56,14 +137,16 @@ const PricingPackages: React.FC = () => {
       ],
       description:
         "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
-      alwaysExpanded: true, // Flag to indicate this package should always show description
+      alwaysExpanded: true,
     },
     {
       name: "VIP",
       tagline: "Esse magna sunt pariatur culpa quis",
-      color: "bg-[#ffb900]",
+      color: "#ffb900",
+      ring: "#ffb900",
+      text: "#000",
       glowColor: "from-[#ffb900]/20",
-      shadowColor: "bg-[#ffb900]/10", // 10% opacity of the VIP color
+      shadowColor: "bg-[#ffb900]/10",
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
@@ -91,26 +174,41 @@ const PricingPackages: React.FC = () => {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
         {packages.map((pkg) => (
           <div key={pkg.name} className="relative">
-            {/* Background Shadow */}
-            <div
+            {/* Dynamic Shadow - Using explicit height from state */}
+            <motion.div
               className={`absolute -inset-4 rounded-xl ${pkg.shadowColor} blur-md`}
-            ></div>
+              animate={{
+                height: cardHeights[pkg.name]
+                  ? `calc(${cardHeights[pkg.name]}px + 2rem)`
+                  : "auto",
+              }}
+              transition={{
+                duration: 0.3,
+                easings: "easeInOut",
+              }}
+              initial={false}
+            ></motion.div>
 
             <motion.div
+              ref={cardRefs[pkg.name]}
               className="relative overflow-hidden rounded-lg bg-white/50 shadow-xl backdrop-blur-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
+              layout
             >
               {/* Glow Effect Background */}
               <div
                 className={`bg-gradient-radial absolute inset-0 -z-10 ${pkg.glowColor} to-transparent opacity-70 blur-xl`}
               ></div>
 
-              {/* Package Header */}
-              <div className={`${pkg.color} px-6 py-4 text-center`}>
-                <h2 className="text-3xl font-bold text-yellow-300">
+              {/* Package Header - Using inline style */}
+              <div
+                className="px-6 py-4 text-center"
+                style={{ backgroundColor: pkg.color }}
+              >
+                <h2 className="text-3xl font-bold" style={{ color: pkg.text }}>
                   {pkg.name}
                 </h2>
               </div>
@@ -150,16 +248,23 @@ const PricingPackages: React.FC = () => {
                 </div>
 
                 {/* Description - Always shown for Platinum, shown if expanded for others */}
-                {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
-                  <motion.div
-                    className="mt-4 text-sm text-gray-600"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {pkg.description}
-                  </motion.div>
-                )}
+                <AnimatePresence>
+                  {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
+                    <motion.div
+                      className="mt-4 text-sm text-gray-600"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      onAnimationComplete={() => {
+                        // Update height after animation completes
+                        updateCardHeight(pkg.name);
+                      }}
+                    >
+                      {pkg.description}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {/* Read More Button - Only for non-always expanded packages */}
                 {!pkg.alwaysExpanded && (
@@ -184,10 +289,19 @@ const PricingPackages: React.FC = () => {
                   </button>
                 )}
 
-                {/* CTA Button */}
+                {/* CTA Button - Using inline style */}
                 <motion.button
-                  className={`mt-6 w-full rounded-md border px-4 py-2 ${pkg.color} text-white transition-colors hover:bg-opacity-90`}
-                  whileHover={{ scale: 1.03 }}
+                  className="mt-6 w-full rounded-xl border-2 px-4 py-2 "
+                  style={{
+                    borderColor: pkg.ring,
+                    color: pkg.color,
+                  }}
+                  whileHover={{
+                    scale: 1.03,
+                    backgroundColor: "#7986cb",
+                    color: "#fff",
+                    borderColor: "#7986cb",
+                  }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Get in touch
