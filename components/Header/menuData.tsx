@@ -14,15 +14,15 @@ const menuData: Menu[] = [
       },
       {
         id: 51,
-        title: "Visit Visa",
+        title: "Visa Processing",
         newTab: false,
-        path: "/services/visit-visa",
+        path: "/services/visa-processing",
       },
       {
         id: 54,
-        title: "Skilled Worker Visa",
+        title: "Compliance",
         newTab: false,
-        path: "/services/skilled-worker-visa",
+        path: "/services/compliance",
       },
 
       {

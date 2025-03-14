@@ -7,7 +7,7 @@ interface FAQItem {
   answer: React.ReactNode;
 }
 
-const FAQ: React.FC = () => {
+const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqItems: FAQItem[] = [
@@ -167,4 +167,4 @@ const FAQ: React.FC = () => {
   );
 };
 
-export default FAQ;
+export default FAQSection;
