@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 
@@ -26,8 +27,10 @@ const VisaSteps: React.FC = () => {
             </div>
           </div>
 
+          {/* <div className="hidden w-1/6 md:block"></div> */}
+
           {/* Right side - steps content */}
-          <div className="items-right justify-right mt-8 flex w-full flex-col py-10 md:mt-0 md:w-2/4">
+          <div className="items-right justify-right mt-8 flex w-full flex-col py-10 md:mt-0 md:w-3/4">
             <h2 className="mb-6 text-center text-lg font-semibold md:text-left">
               STEP BY STEP PROCESS
             </h2>
