@@ -1,6 +1,5 @@
 // ServiceCards.tsx
 import React from "react";
-import Image from "next/image";
 
 interface ServiceCardProps {
   number: number;
@@ -17,19 +16,26 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   return (
     <div
-      className={`overflow-hidden rounded-lg shadow-md ${bgColor} flex h-full flex-col`}
+      className={`${bgColor} relative flex h-full flex-col rounded-lg shadow-md`}
     >
-      <div className="flex-grow p-6">
-        <div className="mb-4 flex items-center">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 font-bold text-white">
-            {number}
-          </div>
-          <h3 className="ml-3 text-lg font-bold">{title}</h3>
+      {/* Diamond badge in top left corner */}
+      <div className="absolute -left-2 -top-2">
+        <div className="flex h-10 w-10 rotate-45 transform items-center justify-center border-4 border-white bg-blue-600 text-white  outline-none">
+          <span className="-rotate-45 text-lg font-bold">{number}</span>
         </div>
-        <p className="text-sm">{description}</p>
       </div>
-      <div className="p-4">
-        <button className="rounded bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow hover:bg-gray-100">
+
+      <div className="flex-grow px-6 pb-4 pt-12">
+        {/* Title at the top */}
+        <h3 className="mb-2 text-lg font-bold text-black">{title}</h3>
+
+        {/* Description text */}
+        <p className="text-xs leading-relaxed text-black">{description}</p>
+      </div>
+
+      {/* Button at the bottom */}
+      <div className="px-6 pb-6">
+        <button className="rounded bg-white px-4 py-1 text-xs font-medium text-gray-800 shadow hover:bg-gray-50">
           Get in touch
         </button>
       </div>
@@ -43,15 +49,15 @@ const ComplianceDetails: React.FC = () => {
       number: 1,
       title: "Digital HR Services",
       description:
-        "Time management is an essential for your business because the human resources in your company will be well informed of work tasks. The performance of each person will be maximized and directed.",
-      bgColor: "bg-blue-100",
+        "Time management is very good for your business because the human recourses in your company will be well structured so that the performance of each person will be maximized and directed.",
+      bgColor: "bg-blue-200",
     },
     {
       number: 2,
       title: "SMS Portal Management",
       description:
         "Being disciplined is a good way to organize your company ecosystem. Systems with tips, all business activities that occur will be well organized.",
-      bgColor: "bg-cyan-200",
+      bgColor: "bg-blue-100",
     },
     {
       number: 3,
@@ -63,23 +69,32 @@ const ComplianceDetails: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-center text-2xl font-bold text-blue-900 sm:mb-12 sm:text-3xl">
-          OUR TOP NOTCH <br />
-          SERVICES IN DETAILS
-        </h2>
+    <div className="w-full bg-gray-200 py-12">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex flex-col items-center md:flex-row md:items-center">
+          {/* Left side - Title */}
+          <div className="mb-8 md:mb-0 md:w-1/4 md:pr-8">
+            <h2 className="text-2xl font-bold text-blue-900">
+              OUR TOP NOTCH
+              <br />
+              SERVICES IN DETAILS
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.number}
-              number={service.number}
-              title={service.title}
-              description={service.description}
-              bgColor={service.bgColor}
-            />
-          ))}
+          {/* Right side - Cards */}
+          <div className="md:w-3/4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {services.map((service) => (
+                <ServiceCard
+                  key={service.number}
+                  number={service.number}
+                  title={service.title}
+                  description={service.description}
+                  bgColor={service.bgColor}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
