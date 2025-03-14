@@ -14,9 +14,9 @@ const menuData: Menu[] = [
       },
       {
         id: 51,
-        title: "Visit Visa",
+        title: "Visa Processing",
         newTab: false,
-        path: "/services/visit-visa",
+        path: "/services/visa-processing",
       },
       {
         id: 54,

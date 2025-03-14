@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const SponsorSecured: React.FC = () => {
+const VisaServices: React.FC = () => {
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -201,4 +201,4 @@ const SponsorSecured: React.FC = () => {
   );
 };
 
-export default SponsorSecured;
+export default VisaServices;
