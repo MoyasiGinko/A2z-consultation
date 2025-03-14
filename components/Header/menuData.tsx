@@ -20,9 +20,9 @@ const menuData: Menu[] = [
       },
       {
         id: 54,
-        title: "Skilled Worker Visa",
+        title: "Compliance",
         newTab: false,
-        path: "/services/skilled-worker-visa",
+        path: "/services/compliance",
       },
 
       {
