@@ -1,40 +1,32 @@
 "use client";
+// File: /components/Blog/BlogItem.tsx
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { BlogType } from "@/types/blog";
 
 interface BlogItemProps {
-  blog: {
-    id: number;
-    title: string;
-    excerpt: string;
-    category: string;
-    date: string;
-    readTime: string;
-    thumbnail: string;
-    slug: string;
-  };
+  post: BlogType;
 }
 
-const BlogItem = ({ blog }: BlogItemProps) => {
-  const { title, excerpt, category, date, readTime, thumbnail, slug } = blog;
-
+const BlogItem: React.FC<BlogItemProps> = ({ post }) => {
   return (
     <div className="overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-md">
       <div className="relative">
         <Image
-          src={thumbnail || "/images/blog/placeholder.jpg"}
-          alt={title}
+          src={post.thumbnail || "/images/blog/placeholder.jpg"}
+          alt={post.title}
           width={400}
           height={250}
           className="h-48 w-full object-cover"
         />
         <span className="absolute left-4 top-4 rounded-full bg-blue-500 px-3 py-1 text-xs font-semibold text-white">
-          {category}
+          {post.category}
         </span>
       </div>
       <div className="p-5">
         <div className="mb-3 flex items-center text-xs text-gray-500">
-          <span className="mr-3">{date}</span>
+          <span className="mr-3">{post.date}</span>
           <span className="flex items-center">
             <svg
               className="mr-1 h-4 w-4"
@@ -48,13 +40,13 @@ const BlogItem = ({ blog }: BlogItemProps) => {
                 clipRule="evenodd"
               />
             </svg>
-            {readTime}
+            {post.readTime}
           </span>
         </div>
-        <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-        <p className="mb-4 text-sm text-gray-600">{excerpt}</p>
+        <h3 className="mb-2 text-lg font-semibold">{post.title}</h3>
+        <p className="mb-4 text-sm text-gray-600">{post.excerpt}</p>
         <Link
-          href={`/blog/${slug}`}
+          href={`/blog/${post.slug}`}
           className="text-xs font-semibold uppercase tracking-wider text-blue-500 hover:text-blue-700"
         >
           READ MORE
