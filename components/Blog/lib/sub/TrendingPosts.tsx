@@ -14,7 +14,7 @@ const TrendingPosts = () => {
           <div key={index} className="flex items-center space-x-3">
             <div className="flex-shrink-0">
               <Image
-                src="/images/blog/placeholder.jpg"
+                src="/images/blog/blog-01.png"
                 alt="Trending post"
                 width={60}
                 height={60}

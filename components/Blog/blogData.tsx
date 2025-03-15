@@ -9,7 +9,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 20, 2024",
     readTime: "5 min read",
-    thumbnail: "/images/blog/blog-1.jpg",
+    thumbnail: "/images/blog/blog-01.png",
     slug: "how-to-build-a-website-1",
   },
   {
@@ -20,7 +20,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 21, 2024",
     readTime: "5 min read",
-    thumbnail: "/images/blog/blog-2.jpg",
+    thumbnail: "/images/blog/blog-02.png",
     slug: "how-to-build-a-website-2",
   },
   {
@@ -31,7 +31,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 22, 2024",
     readTime: "6 min read",
-    thumbnail: "/images/blog/blog-3.jpg",
+    thumbnail: "/images/blog/blog-03.png",
     slug: "how-to-build-a-website-3",
   },
   {
@@ -42,7 +42,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 23, 2024",
     readTime: "4 min read",
-    thumbnail: "/images/blog/blog-4.jpg",
+    thumbnail: "/images/blog/blog-04.png",
     slug: "how-to-build-a-website-4",
   },
   {
@@ -53,7 +53,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 24, 2024",
     readTime: "5 min read",
-    thumbnail: "/images/blog/blog-5.jpg",
+    thumbnail: "/images/blog/blog-05.png",
     slug: "how-to-build-a-website-5",
   },
   {
@@ -64,7 +64,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 25, 2024",
     readTime: "7 min read",
-    thumbnail: "/images/blog/blog-6.jpg",
+    thumbnail: "/images/blog/blog-01.png",
     slug: "how-to-build-a-website-6",
   },
   {
@@ -75,7 +75,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 26, 2024",
     readTime: "5 min read",
-    thumbnail: "/images/blog/blog-7.jpg",
+    thumbnail: "/images/blog/blog-02.png",
     slug: "how-to-build-a-website-7",
   },
   {
@@ -86,7 +86,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 27, 2024",
     readTime: "6 min read",
-    thumbnail: "/images/blog/blog-8.jpg",
+    thumbnail: "/images/blog/blog-03.png",
     slug: "how-to-build-a-website-8",
   },
   {
@@ -97,7 +97,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 28, 2024",
     readTime: "5 min read",
-    thumbnail: "/images/blog/blog-9.jpg",
+    thumbnail: "/images/blog/blog-04.png",
     slug: "how-to-build-a-website-9",
   },
   {
@@ -108,7 +108,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 29, 2024",
     readTime: "4 min read",
-    thumbnail: "/images/blog/blog-10.jpg",
+    thumbnail: "/images/blog/blog-05.png",
     slug: "how-to-build-a-website-10",
   },
   {
@@ -119,7 +119,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jun 30, 2024",
     readTime: "5 min read",
-    thumbnail: "/images/blog/blog-11.jpg",
+    thumbnail: "/images/blog/blog-01.png",
     slug: "how-to-build-a-website-11",
   },
   {
@@ -130,7 +130,7 @@ const BlogData: BlogType[] = [
     category: "Web Design",
     date: "Jul 1, 2024",
     readTime: "6 min read",
-    thumbnail: "/images/blog/blog-12.jpg",
+    thumbnail: "/images/blog/blog-02.png",
     slug: "how-to-build-a-website-12",
   },
 ];
