@@ -1,47 +1,137 @@
-import { Blog } from "@/types/blog";
+import { BlogType } from "@/types/blog";
 
-const BlogData: Blog[] = [
+const BlogData: BlogType[] = [
   {
-    _id: 1,
-    mainImage: "/images/blog/blog-01.png",
-    title: "Free advertising for your online business",
-    metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+    id: 1,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 20, 2024",
+    readTime: "5 min read",
+    thumbnail: "/images/blog/blog-01.png",
+    slug: "how-to-build-a-website-1",
   },
   {
-    _id: 2,
-    mainImage: "/images/blog/blog-02.png",
-    title: "9 simple ways to improve your design skills",
-    metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+    id: 2,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 21, 2024",
+    readTime: "5 min read",
+    thumbnail: "/images/blog/blog-02.png",
+    slug: "how-to-build-a-website-2",
   },
   {
-    _id: 2,
-    mainImage: "/images/blog/blog-03.png",
-    title: "Tips to quickly improve your coding speed.",
-    metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+    id: 3,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 22, 2024",
+    readTime: "6 min read",
+    thumbnail: "/images/blog/blog-03.png",
+    slug: "how-to-build-a-website-3",
   },
   {
-    _id: 1,
-    mainImage: "/images/blog/blog-03.png",
-    title: "Free advertising for your online business",
-    metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+    id: 4,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 23, 2024",
+    readTime: "4 min read",
+    thumbnail: "/images/blog/blog-04.png",
+    slug: "how-to-build-a-website-4",
   },
   {
-    _id: 2,
-    mainImage: "/images/blog/blog-04.png",
-    title: "9 simple ways to improve your design skills",
-    metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+    id: 5,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 24, 2024",
+    readTime: "5 min read",
+    thumbnail: "/images/blog/blog-05.png",
+    slug: "how-to-build-a-website-5",
   },
   {
-    _id: 2,
-    mainImage: "/images/blog/blog-01.png",
-    title: "Tips to quickly improve your coding speed.",
-    metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+    id: 6,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 25, 2024",
+    readTime: "7 min read",
+    thumbnail: "/images/blog/blog-01.png",
+    slug: "how-to-build-a-website-6",
+  },
+  {
+    id: 7,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 26, 2024",
+    readTime: "5 min read",
+    thumbnail: "/images/blog/blog-02.png",
+    slug: "how-to-build-a-website-7",
+  },
+  {
+    id: 8,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 27, 2024",
+    readTime: "6 min read",
+    thumbnail: "/images/blog/blog-03.png",
+    slug: "how-to-build-a-website-8",
+  },
+  {
+    id: 9,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 28, 2024",
+    readTime: "5 min read",
+    thumbnail: "/images/blog/blog-04.png",
+    slug: "how-to-build-a-website-9",
+  },
+  {
+    id: 10,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 29, 2024",
+    readTime: "4 min read",
+    thumbnail: "/images/blog/blog-05.png",
+    slug: "how-to-build-a-website-10",
+  },
+  {
+    id: 11,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jun 30, 2024",
+    readTime: "5 min read",
+    thumbnail: "/images/blog/blog-01.png",
+    slug: "how-to-build-a-website-11",
+  },
+  {
+    id: 12,
+    title: "How to build a website",
+    excerpt:
+      "Learn all the basics and get started with web development and everything else you need to know.",
+    category: "Web Design",
+    date: "Jul 1, 2024",
+    readTime: "6 min read",
+    thumbnail: "/images/blog/blog-02.png",
+    slug: "how-to-build-a-website-12",
   },
 ];
 
