@@ -6,14 +6,16 @@ export type Author = {
   _ref?: number | string;
 };
 
-export type Blog = {
-  _id: number;
+export type BlogType = {
+  id: number;
   title: string;
   slug?: any;
   metadata?: string;
-  body?: string;
-  mainImage?: any;
+  excerpt?: string;
+  category?: string;
+  thumbnail?: any;
   author?: Author;
   tags?: string[];
-  publishedAt?: string;
+  date?: string;
+  readTime: string;
 };
