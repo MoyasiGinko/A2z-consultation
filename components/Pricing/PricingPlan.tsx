@@ -25,7 +25,7 @@ const PricingPackages: React.FC = () => {
     [key: string]: boolean;
   }>({
     Gold: false,
-    Platinum: true, // Platinum is expanded by default
+    Platinum: false, // Platinum is expanded by default
     VIP: false,
   });
 
@@ -137,7 +137,9 @@ const PricingPackages: React.FC = () => {
       ],
       description:
         "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
-      alwaysExpanded: true,
+      // To make a package always show expanded content without a read more button,
+      // set the alwaysExpanded property to true. Currently disabled for Platinum.
+      // alwaysExpanded: true,
     },
     {
       name: "VIP",
@@ -268,28 +270,26 @@ const PricingPackages: React.FC = () => {
                   )}
                 </AnimatePresence>
 
-                {/* Read More Button - Only for non-always expanded packages */}
-                {!pkg.alwaysExpanded && (
-                  <button
-                    className="mt-2 flex items-center text-sm text-teal-600"
-                    onClick={() => toggleReadMore(pkg.name)}
+                {/* Read More Button - Now for all packages including Platinum */}
+                <button
+                  className="mt-2 flex items-center text-sm text-teal-600"
+                  onClick={() => toggleReadMore(pkg.name)}
+                >
+                  {expandedStates[pkg.name] ? "Read less" : "Read more"}
+                  <svg
+                    className={`ml-1 h-4 w-4 transition-transform ${expandedStates[pkg.name] ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    {expandedStates[pkg.name] ? "Read less" : "Read more"}
-                    <svg
-                      className={`ml-1 h-4 w-4 transition-transform ${expandedStates[pkg.name] ? "rotate-180" : ""}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                )}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
 
                 {/* CTA Button - Using inline style */}
                 <motion.button
