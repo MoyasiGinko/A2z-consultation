@@ -94,7 +94,7 @@ const TabContainer: React.FC = () => {
 
   return (
     <motion.section
-      className="py-16"
+      className="mb-12 py-16"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
