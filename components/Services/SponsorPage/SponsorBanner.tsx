@@ -15,7 +15,7 @@ const SponsorBanner: React.FC = () => {
   }, []);
 
   return (
-    <div className="font-sans mx-auto flex max-w-6xl flex-col items-center justify-between p-6 md:flex-row md:p-10">
+    <div className="font-sans mx-auto flex max-w-6xl flex-col items-center justify-between p-6 md:flex-row md:gap-8 md:p-10">
       <div className="mb-10 w-full md:mb-0 md:w-1/2 md:pr-10">
         <h1 className="mb-6 text-4xl font-bold leading-tight text-[#0096c7]">
           How Sponsor Licence
@@ -34,9 +34,9 @@ const SponsorBanner: React.FC = () => {
         </button>
       </div>
 
-      <div className="flex w-full items-center justify-center md:w-1/2">
+      <div className="flex h-full w-full items-center justify-center md:w-1/2">
         <motion.div
-          className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl"
+          className="w-full max-w-[600px] rounded-2xl bg-white p-20 shadow-2xl shadow-sky-500/30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
