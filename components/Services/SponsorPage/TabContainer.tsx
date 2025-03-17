@@ -253,12 +253,12 @@ const TabContainer: React.FC = () => {
                   )}
 
                   <motion.button
-                    className="font-mono md:font-sans rounded-xl bg-[#FFF9EB] px-4 py-2.5 text-sm uppercase tracking-wider text-[#533900] transition-all duration-300 hover:bg-[#1a1a1a] hover:text-white md:px-6 md:py-3"
+                    className="font-mono md:font-sans rounded-lg bg-[#FFF9EB] px-4 py-2.5 text-sm uppercase tracking-wider text-[#533900] transition-all duration-300 hover:bg-[#1a1a1a] hover:text-white md:px-6 md:py-3"
                     variants={buttonVariants}
                     initial="idle"
                     whileHover="hover"
                     whileTap={{ scale: 0.95 }}
-                    style={{ boxShadow: "0 4px 6px 0 rgba(0, 0, 0, 0.25)" }}
+                    style={{ boxShadow: "0 4px 2px 0 rgba(0, 0, 0, 0.25)" }}
                   >
                     LEARN MORE
                   </motion.button>
