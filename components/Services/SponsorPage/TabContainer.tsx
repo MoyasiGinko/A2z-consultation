@@ -9,6 +9,7 @@ const TabContainer: React.FC = () => {
     Array<{ left: number; width: number }>
   >([]);
   const navRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const tabs = [
     "EXPERT REVIEW",
@@ -17,17 +18,18 @@ const TabContainer: React.FC = () => {
     "SPONSORSHIP APPROVED",
   ];
 
-  // Measure tabs once on mount and when window resizes
+  // Measure tabs precisely using refs for each tab
   useEffect(() => {
     const measureTabs = () => {
       if (!navRef.current) return;
 
       const navElement = navRef.current;
-      const tabElements = Array.from(navElement.querySelectorAll("[data-tab]"));
       const navRect = navElement.getBoundingClientRect();
 
-      const positions = tabElements.map((tab) => {
-        const rect = tab.getBoundingClientRect();
+      const positions = tabRefs.current.map((tabRef) => {
+        if (!tabRef) return { left: 0, width: 0 };
+
+        const rect = tabRef.getBoundingClientRect();
         return {
           left: rect.left - navRect.left,
           width: rect.width,
@@ -62,34 +64,36 @@ const TabContainer: React.FC = () => {
       <div className="font-sans mx-auto max-w-6xl shadow-2xl md:mx-auto">
         <nav
           ref={navRef}
-          className="rounded-t-lg bg-gradient-to-r from-sky-400 via-sky-500 to-sky-400 p-3 md:p-2"
+          className="rounded-t-lg bg-gradient-to-r from-[#ffd4c2] via-[#ffd4c2]/95 to-[#ffd4c2] p-3 md:p-2"
         >
           <div className="relative flex w-full flex-col gap-2.5 md:flex-row md:gap-0">
             {tabs.map((tab, index) => (
               <div
                 key={tab}
-                data-tab={index}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
                 className={`relative z-10 flex items-center justify-center rounded-md px-6 py-2.5 transition-all
-              duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] md:flex-1 md:py-3
-              ${hoveredTab === tab ? "rounded-lg bg-[#1a1a1a] md:bg-transparent" : ""}
-              hover:rounded-lg hover:bg-black hover:bg-opacity-5 hover:md:bg-transparent`}
+                duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] md:flex-1 md:py-3
+                ${hoveredTab === tab ? "rounded-lg bg-[#1b1a1a] md:bg-transparent" : ""}
+                hover:rounded-lg hover:bg-black hover:md:bg-transparent`}
                 onMouseEnter={() => setHoveredTab(tab)}
               >
                 <span
                   className={`font-mono md:font-sans whitespace-nowrap
-                text-sm font-medium transition-colors
-                duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
-                ${hoveredTab === tab ? "text-white" : "text-gray-800"}`}
+                  text-sm font-medium transition-colors
+                  duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+                  ${hoveredTab === tab ? "text-white" : "text-gray-800"}`}
                 >
                   {tab}
                 </span>
               </div>
             ))}
 
-            {/* Optimized highlighter with precomputed positions */}
+            {/* Improved highlighter with precise positioning */}
             {tabPositions.length > 0 && (
               <motion.div
-                className="pointer-events-none absolute top-0 hidden h-full rounded-md bg-[#1a1a1a] will-change-transform md:block"
+                className="pointer-events-none absolute top-0 -ml-2 hidden h-full rounded-md bg-[#1a1a1a] will-change-transform md:block"
                 initial={false}
                 animate={{
                   x: tabPositions[activeTabIndex]?.left || 0,
@@ -101,6 +105,12 @@ const TabContainer: React.FC = () => {
                   damping: 30,
                   mass: 1,
                 }}
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  height: "100%",
+                  borderRadius: "0.375rem",
+                }}
               />
             )}
           </div>
@@ -108,7 +118,7 @@ const TabContainer: React.FC = () => {
 
         {/* Fixed height container with responsive layout */}
         <div className="overflow-hidden rounded-b-lg bg-white">
-          <div className="flex  flex-col md:h-[500px] md:flex-row">
+          <div className="flex flex-col md:h-[500px] md:flex-row">
             {/* Left side text content */}
             <div className="flex flex-col justify-center p-6 md:w-1/2 md:p-12">
               <div className="transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
