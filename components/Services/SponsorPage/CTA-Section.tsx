@@ -206,7 +206,7 @@ const CTAsection = () => {
               </motion.h2>
               <motion.div variants={itemVariants}>
                 <motion.button
-                  className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-gray-50 to-sky-50 px-6 py-3 font-bold text-blue-950 shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
+                  className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-gray-50 to-sky-50 px-6 py-3 font-bold text-blue-950 shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
