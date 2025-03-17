@@ -99,14 +99,16 @@ const TabContainer: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
     >
-      <motion.h1
-        className="text-shadow-md mb-6 bg-gradient-to-r from-[#4fb4dc] via-[#0971a9] to-[#146185] bg-clip-text text-center text-3xl font-bold text-transparent md:mb-12 md:text-4xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        Process of Obtaining Sponsor Licence
-      </motion.h1>
+      <div className="flex justify-center">
+        <motion.h1
+          className="mb-12 inline-block bg-gradient-to-r from-[#3985ad] via-[#0369a0] to-[#075178] bg-clip-text text-center text-4xl font-bold text-transparent md:mb-12 md:text-4xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          Process of Obtaining Sponsor Licence
+        </motion.h1>
+      </div>
 
       <motion.div
         className="font-sans mx-auto max-w-6xl overflow-hidden rounded-lg shadow-2xl md:mx-auto"

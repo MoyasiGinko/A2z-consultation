@@ -167,9 +167,11 @@ const PricingPackages: React.FC = () => {
 
   return (
     <div className="w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-24">
-      <h1 className="mb-12 text-center text-4xl font-bold text-teal-600">
-        Our Packages
-      </h1>
+      <div className="flex justify-center">
+        <h1 className="mb-12 inline-block bg-gradient-to-r from-[#459ed2] via-[#0383c8] to-[#0c7cb0] bg-clip-text text-center text-4xl font-bold text-transparent">
+          Our Packages
+        </h1>
+      </div>
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
         {packages.map((pkg) => (
