@@ -12,12 +12,7 @@ const menuData: Menu[] = [
         newTab: false,
         path: "/services/sponsor-licence",
       },
-      {
-        id: 51,
-        title: "Visa Processing",
-        newTab: false,
-        path: "/services/visa-processing",
-      },
+
       {
         id: 54,
         title: "Compliance",
@@ -26,16 +21,10 @@ const menuData: Menu[] = [
       },
 
       {
-        id: 56,
-        title: "Student Visa",
+        id: 51,
+        title: "Skilled Worker Visa",
         newTab: false,
-        path: "/services/student-visa",
-      },
-      {
-        id: 57,
-        title: "Spouse Visa",
-        newTab: false,
-        path: "/services/spouse-visa",
+        path: "/services/skilled-worker-visa",
       },
     ],
   },
@@ -63,13 +52,6 @@ const menuData: Menu[] = [
     title: "Free Stuff",
     newTab: false,
     path: "/free-stuff",
-  },
-
-  {
-    id: 6,
-    title: "Testimonials",
-    newTab: false,
-    path: "/testimonials",
   },
 ];
 

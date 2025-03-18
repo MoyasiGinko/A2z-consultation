@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface PackageFeature {
@@ -12,7 +12,6 @@ interface PricingPackage {
   text: string;
   color: string;
   ring: string;
-  glowColor: string;
   shadowColor: string;
   features: PackageFeature[];
   description: string;
@@ -25,17 +24,8 @@ const PricingPackages: React.FC = () => {
     [key: string]: boolean;
   }>({
     Gold: false,
-    Platinum: true, // Platinum is expanded by default
+    Platinum: false,
     VIP: false,
-  });
-
-  // State to track each card's height
-  const [cardHeights, setCardHeights] = useState<{
-    [key: string]: number;
-  }>({
-    Gold: 0,
-    Platinum: 0,
-    VIP: 0,
   });
 
   // Create refs for each card
@@ -45,64 +35,6 @@ const PricingPackages: React.FC = () => {
     VIP: useRef<HTMLDivElement>(null),
   };
 
-  // Function to update card heights
-  const updateCardHeight = (packageName: string) => {
-    if (cardRefs[packageName]?.current) {
-      const height = cardRefs[packageName].current.offsetHeight;
-      setCardHeights((prev) => ({
-        ...prev,
-        [packageName]: height,
-      }));
-    }
-  };
-
-  // Update all card heights on initial render and window resize
-  useEffect(() => {
-    const updateAllCardHeights = () => {
-      Object.keys(cardRefs).forEach((packageName) => {
-        updateCardHeight(packageName);
-      });
-    };
-
-    // Initial measurement after component mounts
-    updateAllCardHeights();
-
-    // Set up resize observer for each card
-    const observers = Object.entries(cardRefs)
-      .map(([packageName, ref]) => {
-        if (!ref.current) return null;
-
-        const observer = new ResizeObserver(() => {
-          updateCardHeight(packageName);
-        });
-
-        observer.observe(ref.current);
-        return observer;
-      })
-      .filter(Boolean);
-
-    // Also listen for window resize events as a fallback
-    window.addEventListener("resize", updateAllCardHeights);
-
-    // Cleanup
-    return () => {
-      observers.forEach((observer) => observer?.disconnect());
-      window.removeEventListener("resize", updateAllCardHeights);
-    };
-  }, []);
-
-  // Update heights when expanded states change
-  useEffect(() => {
-    // Use setTimeout to ensure the DOM has updated after state change
-    const timeoutId = setTimeout(() => {
-      Object.keys(expandedStates).forEach((packageName) => {
-        updateCardHeight(packageName);
-      });
-    }, 50);
-
-    return () => clearTimeout(timeoutId);
-  }, [expandedStates]);
-
   const packages: PricingPackage[] = [
     {
       name: "Gold",
@@ -110,8 +42,7 @@ const PricingPackages: React.FC = () => {
       color: "#3d6582",
       ring: "#3d6582",
       text: "#ffb900",
-      glowColor: "from-[#3d6582]/20",
-      shadowColor: "bg-[#3d6582]/10",
+      shadowColor: "rgba(135, 206, 235, 0.1)", // Sky color with alpha
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
@@ -127,8 +58,7 @@ const PricingPackages: React.FC = () => {
       color: "#7986cb",
       ring: "#7986cb",
       text: "#fff",
-      glowColor: "from-[#7986cb]/20",
-      shadowColor: "bg-[#7986cb]/10",
+      shadowColor: "rgba(121, 134, 203, 0.1)", // RGB version of #7986cb with alpha
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
@@ -137,7 +67,6 @@ const PricingPackages: React.FC = () => {
       ],
       description:
         "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
-      alwaysExpanded: true,
     },
     {
       name: "VIP",
@@ -145,8 +74,7 @@ const PricingPackages: React.FC = () => {
       color: "#ffb900",
       ring: "#ffb900",
       text: "#000",
-      glowColor: "from-[#ffb900]/20",
-      shadowColor: "bg-[#ffb900]/10",
+      shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
       features: [
         { text: "Anim magna proident" },
         { text: "Voluptate labore fugiat amet" },
@@ -165,116 +93,228 @@ const PricingPackages: React.FC = () => {
     }));
   };
 
+  // Generate box shadow style string with glow effect and blur
+  const getGlowBoxShadow = (color: string) => {
+    return `0 0 30px 10px ${color}, 0 15px 45px 7px ${color}, 0 20px 60px 20px ${color}, 0 25px 75px 25px ${color}`;
+  };
+
+  // Enhanced animation variants for main container
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  // Enhanced animation variants for card
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  // Enhanced animation variants for feature items
+  const featureVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        damping: 15,
+      },
+    },
+  };
+
   return (
-    <div className="w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-24">
-      <h1 className="mb-12 text-center text-4xl font-bold text-teal-600">
-        Our Packages
-      </h1>
+    <div className="min-h-screen w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-24">
+      <motion.div
+        className="flex justify-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <h1 className="mb-12 inline-block bg-gradient-to-r from-[#459ed2] via-[#0383c8] to-[#0c7cb0] bg-clip-text text-center text-4xl font-bold text-transparent">
+          Our Packages
+        </h1>
+      </motion.div>
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
-        {packages.map((pkg) => (
-          <div key={pkg.name} className="relative">
-            {/* Dynamic Shadow - Using explicit height from state */}
-            <motion.div
-              className={`absolute -inset-4 rounded-xl ${pkg.shadowColor} blur-md`}
-              animate={{
-                height: cardHeights[pkg.name]
-                  ? `calc(${cardHeights[pkg.name]}px + 2rem)`
-                  : "auto",
-              }}
-              transition={{
-                duration: 0.3,
-                easings: "easeInOut",
-              }}
-              initial={false}
-            ></motion.div>
-
+      <motion.div
+        className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {packages.map((pkg, index) => (
+          <motion.div
+            key={pkg.name}
+            className="relative"
+            variants={cardVariants}
+            layout
+            transition={{
+              layout: { duration: 0.4, ease: "easeInOut" },
+            }}
+          >
             <motion.div
               ref={cardRefs[pkg.name]}
-              className="relative overflow-hidden rounded-lg bg-white/50 shadow-xl backdrop-blur-lg"
+              className="relative overflow-hidden rounded-xl bg-white backdrop-blur-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -5 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.2,
+                type: "spring",
+              }}
+              whileHover={{
+                y: -5,
+                boxShadow: getGlowBoxShadow(pkg.shadowColor),
+                transition: {
+                  y: { type: "spring", stiffness: 300, damping: 10 },
+                  boxShadow: { duration: 0.2 },
+                },
+              }}
               layout
+              style={{
+                boxShadow: getGlowBoxShadow(pkg.shadowColor),
+              }}
             >
-              {/* Glow Effect Background */}
-              <div
-                className={`bg-gradient-radial absolute inset-0 -z-10 ${pkg.glowColor} to-transparent opacity-70 blur-xl`}
-              ></div>
-
               {/* Package Header - Using inline style */}
-              <div
+              <motion.div
                 className="px-6 py-4 text-center"
                 style={{ backgroundColor: pkg.color }}
+                whileHover={{
+                  scale: 1.01,
+                  transition: { duration: 0.2 },
+                }}
               >
-                <h2 className="text-3xl font-bold" style={{ color: pkg.text }}>
+                <motion.h2
+                  className="text-3xl font-bold"
+                  style={{ color: pkg.text }}
+                  animate={{
+                    textShadow: [
+                      "0 0 0px rgba(0,0,0,0)",
+                      "0 0 5px rgba(0,0,0,0.2)",
+                      "0 0 0px rgba(0,0,0,0)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                >
                   {pkg.name}
-                </h2>
-              </div>
+                </motion.h2>
+              </motion.div>
+              <div className="z-999 bg-white py-2">
+                {/* Package Content */}
+                <div className="p-6">
+                  <p className="mb-4 italic text-gray-700">{pkg.tagline}</p>
 
-              {/* Package Content */}
-              <div className="p-6">
-                <p className="mb-4 italic text-gray-700">{pkg.tagline}</p>
-
-                <div className="mb-4">
-                  <h3 className="mb-3 font-medium">Features</h3>
-                  <ul className="space-y-2">
-                    {pkg.features.map((feature, index) => (
-                      <motion.li
-                        key={index}
-                        className="flex items-start"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <svg
-                          className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-teal-500"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                  <div className="mb-4">
+                    <h3 className="mb-3 font-medium">Features</h3>
+                    <ul className="space-y-2">
+                      {pkg.features.map((feature, idx) => (
+                        <motion.li
+                          key={idx}
+                          className="flex items-start"
+                          variants={featureVariants}
+                          initial="hidden"
+                          animate="visible"
+                          transition={{ delay: index * 0.1 + idx * 0.1 }}
+                          whileHover={{ x: 5, transition: { duration: 0.2 } }}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span>{feature.text}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
+                          <motion.svg
+                            className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-teal-500"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{
+                              scale: 1,
+                              opacity: 1,
+                              rotate: [0, 10, 0],
+                            }}
+                            transition={{
+                              delay: index * 0.1 + idx * 0.1 + 0.2,
+                              duration: 0.5,
+                              rotate: {
+                                duration: 0.3,
+                                delay: index * 0.1 + idx * 0.1 + 0.2,
+                              },
+                            }}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </motion.svg>
+                          <span>{feature.text}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
 
-                {/* Description - Always shown for Platinum, shown if expanded for others */}
-                <AnimatePresence>
-                  {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
-                    <motion.div
-                      className="mt-4 text-sm text-gray-600"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      onAnimationComplete={() => {
-                        // Update height after animation completes
-                        updateCardHeight(pkg.name);
-                      }}
-                    >
-                      {pkg.description}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                  {/* Description - with improved animation */}
+                  <AnimatePresence mode="sync">
+                    {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
+                      <motion.div
+                        className="mt-4 text-sm text-gray-600"
+                        initial={{ height: 0, opacity: 0, y: -10 }}
+                        animate={{
+                          height: "auto",
+                          opacity: 1,
+                          y: 0,
+                          transition: {
+                            height: {
+                              duration: 0.4,
+                              ease: [0.04, 0.62, 0.23, 0.98],
+                            },
+                            opacity: { duration: 0.4, delay: 0.1 },
+                            y: { duration: 0.3, delay: 0.1 },
+                          },
+                        }}
+                        exit={{
+                          height: 0,
+                          opacity: 0,
+                          y: -10,
+                          transition: {
+                            height: { duration: 0.3 },
+                            opacity: { duration: 0.2 },
+                            y: { duration: 0.2 },
+                          },
+                        }}
+                      >
+                        <p className="mb-4">{pkg.description}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                {/* Read More Button - Only for non-always expanded packages */}
-                {!pkg.alwaysExpanded && (
-                  <button
-                    className="mt-2 flex items-center text-sm text-teal-600"
+                  {/* Read More Button */}
+                  <motion.button
+                    className="mt-4 flex items-center text-sm text-teal-600"
                     onClick={() => toggleReadMore(pkg.name)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {expandedStates[pkg.name] ? "Read less" : "Read more"}
-                    <svg
-                      className={`ml-1 h-4 w-4 transition-transform ${expandedStates[pkg.name] ? "rotate-180" : ""}`}
+                    <motion.svg
+                      className="ml-1 h-4 w-4"
+                      animate={{
+                        rotate: expandedStates[pkg.name] ? 180 : 0,
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -285,32 +325,52 @@ const PricingPackages: React.FC = () => {
                         strokeWidth="2"
                         d="M19 9l-7 7-7-7"
                       />
-                    </svg>
-                  </button>
-                )}
+                    </motion.svg>
+                  </motion.button>
 
-                {/* CTA Button - Using inline style */}
-                <motion.button
-                  className="mt-6 w-full rounded-xl border-2 px-4 py-2 "
-                  style={{
-                    borderColor: pkg.ring,
-                    color: pkg.color,
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    backgroundColor: "#7986cb",
-                    color: "#fff",
-                    borderColor: "#7986cb",
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Get in touch
-                </motion.button>
+                  {/* CTA Button - Using inline style */}
+                  <motion.button
+                    className="mb-4 mt-8 w-full rounded-xl border-2 px-4 py-2"
+                    style={{
+                      borderColor: pkg.ring,
+                      color: pkg.color,
+                    }}
+                    whileHover={{
+                      scale: 1.03,
+                      backgroundColor: pkg.color,
+                      color: pkg.text,
+                      borderColor: pkg.color,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeOut",
+                      },
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      transition: {
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      },
+                    }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        delay: 0.5 + index * 0.2,
+                        duration: 0.3,
+                      },
+                    }}
+                  >
+                    Get in touch
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

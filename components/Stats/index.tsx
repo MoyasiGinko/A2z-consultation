@@ -47,7 +47,7 @@ const StatsSection: React.FC = () => {
     <section ref={sectionRef} className="bg-white py-16">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="mb-2 text-center text-3xl font-bold lg:mb-4 lg:text-4xl"
+          className="mb-2 text-center text-3xl font-bold text-black lg:mb-4 lg:text-4xl"
           initial={{ opacity: 0, y: -20 }}
           animate={controls}
           variants={{
@@ -62,7 +62,7 @@ const StatsSection: React.FC = () => {
         </motion.h2>
 
         <motion.p
-          className="mb-16 text-center font-medium text-gray-600 lg:mb-20"
+          className="mb-8 text-center font-medium text-gray-600"
           initial={{ opacity: 0 }}
           animate={controls}
           variants={{

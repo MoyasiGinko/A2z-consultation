@@ -83,7 +83,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full py-0.5 ${
+      className={`fixed left-0  top-0 z-50 w-full py-4 ${
         hideOnScroll ? "-translate-y-full" : "translate-y-0"
       } ${stickyMenu ? "bg-white shadow dark:bg-black" : ""}`}
     >
@@ -95,14 +95,14 @@ const Header = () => {
               alt="logo"
               width={200}
               height={50}
-              className="hidden h-18 w-56 dark:block"
+              className="hidden h-9 w-56 dark:block"
             />
             <Image
               src="/images/logo/logo-dark.png"
               alt="logo"
               width={200}
               height={50}
-              className="h-18 w-56 dark:hidden"
+              className="h-9 w-56 dark:hidden"
             />
           </a>
 
@@ -149,7 +149,7 @@ const Header = () => {
 
         {/* Nav Menu Start   */}
         <div
-          className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto xl:w-full ${
+          className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto xl:w-4/6 ${
             navigationOpen &&
             "navbar !visible mt-4 h-auto max-h-[400px] rounded-md bg-white p-7.5 shadow-solid-5 dark:bg-blacksection xl:h-auto xl:p-0 xl:shadow-none xl:dark:bg-transparent"
           }`}
@@ -208,7 +208,7 @@ const Header = () => {
 
             <Link
               href="/get-in-touch"
-              className="flex items-center justify-center rounded-full bg-sky-500 px-7.5 py-2.5 text-regular text-white duration-300 ease-in-out hover:bg-primaryho"
+              className="flex items-center justify-center rounded-md bg-sky-500 px-4 py-2 text-sm text-white duration-300 ease-in-out hover:bg-primaryho"
             >
               Get in Touch
             </Link>
