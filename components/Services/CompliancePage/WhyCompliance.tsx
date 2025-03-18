@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useId, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 
 interface ListItemProps {
@@ -26,7 +25,7 @@ const WhyCompliance: React.FC = () => {
     }
   }, [isInView, controls]);
 
-  // Handle image loading state
+  // Handle video loading state
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -44,7 +43,7 @@ const WhyCompliance: React.FC = () => {
     },
   };
 
-  const imageVariants = {
+  const videoVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -242,72 +241,29 @@ const WhyCompliance: React.FC = () => {
             </motion.ul>
           </div>
 
-          {/* Image Section */}
+          {/* Video Section (replacing Image Section) */}
           <motion.div
             className="order-2 flex items-center justify-center md:order-1 lg:order-1 lg:justify-center"
-            variants={imageVariants}
+            variants={videoVariants}
           >
-            <div className="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:max-w-md md:p-2 lg:w-96 lg:max-w-lg xl:max-w-xl">
-              <div className="relative overflow-hidden rounded-2xl">
+            <div className="relative h-[320px] w-[502px] rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:max-w-lg md:p-2 lg:max-w-xl xl:max-w-2xl">
+              <div className="relative h-full w-full overflow-hidden rounded-2xl">
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: isLoaded ? 1 : 0 }}
                   transition={{ duration: 0.5 }}
+                  className="h-full w-full"
                 >
-                  <Image
-                    src="/images/hero/sponsor-passport.png"
-                    alt="UK Sponsor License illustration"
-                    width={600}
-                    height={450}
-                    className="w-full object-cover"
-                    priority={true}
+                  <iframe
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Example YouTube embed URL
+                    title="UK Sponsor License video"
+                    className="h-full w-full"
+                    allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     onLoad={() => setIsLoaded(true)}
-                  />
+                  ></iframe>
                 </motion.div>
-
-                {/* Floating elements animation */}
-                <motion.div
-                  className="absolute right-1/4 top-1/4 h-12 w-12 rounded-full bg-blue-100/30 "
-                  custom={-15}
-                  variants={floatingElementVariants}
-                  animate="animate"
-                />
-                <motion.div
-                  className="absolute bottom-1/4 left-1/4 h-8 w-8 rounded-full bg-blue-200/40 "
-                  custom={15}
-                  variants={floatingElementVariants}
-                  animate="animate"
-                />
-                <motion.div
-                  className="left-1/6 absolute top-1/3 h-6 w-6 rounded-full bg-blue-300/30 "
-                  custom={-10}
-                  variants={floatingElementVariants}
-                  animate="animate"
-                />
-                <motion.div
-                  className="right-1/6 absolute bottom-1/3 h-10 w-10 rounded-full bg-blue-400/20 "
-                  custom={20}
-                  variants={floatingElementVariants}
-                  animate="animate"
-                />
               </div>
-
-              {/* Image frame glow effect */}
-              <motion.div
-                className="absolute inset-0 rounded-3xl opacity-50"
-                animate={{
-                  boxShadow: [
-                    "0 0 10px 2px rgba(0,162,251,0.3)",
-                    "0 0 20px 5px rgba(0,162,251,0.5)",
-                    "0 0 10px 2px rgba(0,162,251,0.3)",
-                  ],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
             </div>
           </motion.div>
         </div>
