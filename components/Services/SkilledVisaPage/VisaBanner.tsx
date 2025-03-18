@@ -32,7 +32,7 @@ const VisaBanner: React.FC = () => {
 
       <div className="relative flex w-full items-center justify-center md:w-1/2">
         <motion.div
-          className="absolute inset-0 max-h-[300px] max-w-[500px] rounded-full bg-gradient-to-br from-red-400 to-sky-500 opacity-90"
+          className="absolute inset-0 max-h-[300px] max-w-[500px] rounded-full bg-gradient-to-br from-red-400/55 to-red-500/60 opacity-90"
           style={{
             filter: "blur(200px)",
             transform: "perspective(1000px) rotateX(10deg) rotateY(-10deg)",

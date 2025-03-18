@@ -18,12 +18,11 @@ const ComplianceBanner: React.FC = () => {
     <div className="font-sans mx-auto flex max-w-6xl flex-col items-center justify-between p-6 md:flex-row md:p-10">
       <div className="mb-10 w-full md:mb-0 md:w-1/2 md:pr-10">
         <h1 className="mb-6 text-4xl font-bold leading-tight text-[#0096c7]">
-          Seamless visa processing
+          Book an Appointment for Digital Compliance Support!
         </h1>
         <p className="mb-8 max-w-lg text-base leading-relaxed text-gray-600">
-          A2zimmigration solution takes care of all things immigration,
-          requesting and assigning certificates of sponsorship and submitting
-          visa applications, all overseen by immigration experts.
+          Unburden your team, avoid expensive penalties and gain peace of mind
+          with automated, real-time compliance monitoring.
         </p>
         <button className="rounded bg-[#0096c7] px-6 py-3 font-semibold text-white transition-colors duration-300 hover:bg-[#0077b6]">
           Get in touch
@@ -32,7 +31,7 @@ const ComplianceBanner: React.FC = () => {
 
       <div className="relative flex w-full items-center justify-center md:w-1/2">
         <motion.div
-          className="absolute inset-0 max-h-[300px] max-w-[500px] rounded-full bg-gradient-to-br from-red-400 to-sky-500 opacity-90"
+          className="absolute inset-0 max-h-[300px] max-w-[500px] rounded-full bg-gradient-to-br from-sky-400/80 to-sky-500/90 opacity-90"
           style={{
             filter: "blur(200px)",
             transform: "perspective(1000px) rotateX(10deg) rotateY(-10deg)",
@@ -57,7 +56,7 @@ const ComplianceBanner: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Image
-            src="/images/features/visa-banner.png"
+            src="/images/features/compliance-banner.png"
             alt="Sponsor Licence"
             width={500}
             height={500}
