@@ -3,10 +3,10 @@ import { Metadata } from "next";
 import Brands from "@/components/Brands";
 import StatsSection from "@/components/Stats";
 import WhoLovesUs from "@/components/WhoLoveUs";
-import VisaBanner from "@/components/Services/ProcessingPage/VisaBanner";
-import VisaSteps from "@/components/Services/ProcessingPage/VisaSteps";
-import VisaCTA from "@/components/Services/ProcessingPage/Visa-CTA";
-import VisaServices from "@/components/Services/ProcessingPage/VIsa-Services";
+import VisaBanner from "@/components/Services/SkilledVisaPage/VisaBanner";
+import VisaSteps from "@/components/Services/SkilledVisaPage/VisaSteps";
+import VisaCTA from "@/components/Services/SkilledVisaPage/Visa-CTA";
+import VisaServices from "@/components/Services/SkilledVisaPage/VIsa-Services";
 import PricingPackages from "@/components/Pricing/PricingPlan";
 import FAQSection from "@/components/FAQ/FAQ-Section";
 
