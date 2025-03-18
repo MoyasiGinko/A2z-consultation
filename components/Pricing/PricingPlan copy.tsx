@@ -118,7 +118,7 @@ const PricingPackages: React.FC = () => {
           >
             <motion.div
               ref={cardRefs[pkg.name]}
-              className="relative overflow-hidden rounded-xl bg-white backdrop-blur-lg"
+              className="relative overflow-hidden rounded-lg bg-white/50 backdrop-blur-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -137,98 +137,97 @@ const PricingPackages: React.FC = () => {
                   {pkg.name}
                 </h2>
               </div>
-              <div className="z-999 bg-white py-2">
-                {/* Package Content */}
-                <div className="p-6">
-                  <p className="mb-4 italic text-gray-700">{pkg.tagline}</p>
 
-                  <div className="mb-4">
-                    <h3 className="mb-3 font-medium">Features</h3>
-                    <ul className="space-y-2">
-                      {pkg.features.map((feature, index) => (
-                        <motion.li
-                          key={index}
-                          className="flex items-start"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <svg
-                            className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-teal-500"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span>{feature.text}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
+              {/* Package Content */}
+              <div className="p-6">
+                <p className="mb-4 italic text-gray-700">{pkg.tagline}</p>
 
-                  {/* Description - with improved animation */}
-                  <AnimatePresence mode="sync">
-                    {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
-                      <motion.div
-                        className="mt-4 text-sm text-gray-600"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{
-                          height: { duration: 0.3, ease: "easeInOut" },
-                          opacity: { duration: 0.2 },
-                        }}
+                <div className="mb-4">
+                  <h3 className="mb-3 font-medium">Features</h3>
+                  <ul className="space-y-2">
+                    {pkg.features.map((feature, index) => (
+                      <motion.li
+                        key={index}
+                        className="flex items-start"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
                       >
-                        <p className="mb-4">{pkg.description}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Read More Button */}
-                  <button
-                    className="mt-4 flex items-center text-sm text-teal-600"
-                    onClick={() => toggleReadMore(pkg.name)}
-                  >
-                    {expandedStates[pkg.name] ? "Read less" : "Read more"}
-                    <svg
-                      className={`ml-1 h-4 w-4 transition-transform ${expandedStates[pkg.name] ? "rotate-180" : ""}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-
-                  {/* CTA Button - Using inline style */}
-                  <motion.button
-                    className="mb-4 mt-8 w-full rounded-xl border-2 px-4 py-2"
-                    style={{
-                      borderColor: pkg.ring,
-                      color: pkg.color,
-                    }}
-                    whileHover={{
-                      scale: 1.03,
-                      backgroundColor: pkg.color,
-                      color: pkg.text,
-                      borderColor: pkg.color,
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Get in touch
-                  </motion.button>
+                        <svg
+                          className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-teal-500"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span>{feature.text}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
                 </div>
+
+                {/* Description - with improved animation */}
+                <AnimatePresence mode="sync">
+                  {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
+                    <motion.div
+                      className="mt-4 text-sm text-gray-600"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{
+                        height: { duration: 0.3, ease: "easeInOut" },
+                        opacity: { duration: 0.2 },
+                      }}
+                    >
+                      {pkg.description}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Read More Button */}
+                <button
+                  className="mt-2 flex items-center text-sm text-teal-600"
+                  onClick={() => toggleReadMore(pkg.name)}
+                >
+                  {expandedStates[pkg.name] ? "Read less" : "Read more"}
+                  <svg
+                    className={`ml-1 h-4 w-4 transition-transform ${expandedStates[pkg.name] ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                {/* CTA Button - Using inline style */}
+                <motion.button
+                  className="mt-6 w-full rounded-xl border-2 px-4 py-2"
+                  style={{
+                    borderColor: pkg.ring,
+                    color: pkg.color,
+                  }}
+                  whileHover={{
+                    scale: 1.03,
+                    backgroundColor: pkg.color,
+                    color: pkg.text,
+                    borderColor: pkg.color,
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Get in touch
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>
