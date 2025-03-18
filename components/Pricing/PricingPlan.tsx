@@ -98,19 +98,67 @@ const PricingPackages: React.FC = () => {
     return `0 0 30px 10px ${color}, 0 15px 45px 7px ${color}, 0 20px 60px 20px ${color}, 0 25px 75px 25px ${color}`;
   };
 
+  // Enhanced animation variants for main container
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  // Enhanced animation variants for card
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  // Enhanced animation variants for feature items
+  const featureVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        damping: 15,
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-24">
-      <div className="flex justify-center">
+      <motion.div
+        className="flex justify-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <h1 className="mb-12 inline-block bg-gradient-to-r from-[#459ed2] via-[#0383c8] to-[#0c7cb0] bg-clip-text text-center text-4xl font-bold text-transparent">
           Our Packages
         </h1>
-      </div>
+      </motion.div>
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
-        {packages.map((pkg) => (
+      <motion.div
+        className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {packages.map((pkg, index) => (
           <motion.div
             key={pkg.name}
             className="relative"
+            variants={cardVariants}
             layout
             transition={{
               layout: { duration: 0.4, ease: "easeInOut" },
@@ -121,22 +169,52 @@ const PricingPackages: React.FC = () => {
               className="relative overflow-hidden rounded-xl bg-white backdrop-blur-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -5 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.2,
+                type: "spring",
+              }}
+              whileHover={{
+                y: -5,
+                boxShadow: getGlowBoxShadow(pkg.shadowColor),
+                transition: {
+                  y: { type: "spring", stiffness: 300, damping: 10 },
+                  boxShadow: { duration: 0.2 },
+                },
+              }}
               layout
               style={{
                 boxShadow: getGlowBoxShadow(pkg.shadowColor),
               }}
             >
               {/* Package Header - Using inline style */}
-              <div
+              <motion.div
                 className="px-6 py-4 text-center"
                 style={{ backgroundColor: pkg.color }}
+                whileHover={{
+                  scale: 1.01,
+                  transition: { duration: 0.2 },
+                }}
               >
-                <h2 className="text-3xl font-bold" style={{ color: pkg.text }}>
+                <motion.h2
+                  className="text-3xl font-bold"
+                  style={{ color: pkg.text }}
+                  animate={{
+                    textShadow: [
+                      "0 0 0px rgba(0,0,0,0)",
+                      "0 0 5px rgba(0,0,0,0.2)",
+                      "0 0 0px rgba(0,0,0,0)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                >
                   {pkg.name}
-                </h2>
-              </div>
+                </motion.h2>
+              </motion.div>
               <div className="z-999 bg-white py-2">
                 {/* Package Content */}
                 <div className="p-6">
@@ -145,19 +223,35 @@ const PricingPackages: React.FC = () => {
                   <div className="mb-4">
                     <h3 className="mb-3 font-medium">Features</h3>
                     <ul className="space-y-2">
-                      {pkg.features.map((feature, index) => (
+                      {pkg.features.map((feature, idx) => (
                         <motion.li
-                          key={index}
+                          key={idx}
                           className="flex items-start"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
+                          variants={featureVariants}
+                          initial="hidden"
+                          animate="visible"
+                          transition={{ delay: index * 0.1 + idx * 0.1 }}
+                          whileHover={{ x: 5, transition: { duration: 0.2 } }}
                         >
-                          <svg
+                          <motion.svg
                             className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-teal-500"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{
+                              scale: 1,
+                              opacity: 1,
+                              rotate: [0, 10, 0],
+                            }}
+                            transition={{
+                              delay: index * 0.1 + idx * 0.1 + 0.2,
+                              duration: 0.5,
+                              rotate: {
+                                duration: 0.3,
+                                delay: index * 0.1 + idx * 0.1 + 0.2,
+                              },
+                            }}
                           >
                             <path
                               strokeLinecap="round"
@@ -165,7 +259,7 @@ const PricingPackages: React.FC = () => {
                               strokeWidth="2"
                               d="M5 13l4 4L19 7"
                             />
-                          </svg>
+                          </motion.svg>
                           <span>{feature.text}</span>
                         </motion.li>
                       ))}
@@ -177,12 +271,29 @@ const PricingPackages: React.FC = () => {
                     {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
                       <motion.div
                         className="mt-4 text-sm text-gray-600"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{
-                          height: { duration: 0.3, ease: "easeInOut" },
-                          opacity: { duration: 0.2 },
+                        initial={{ height: 0, opacity: 0, y: -10 }}
+                        animate={{
+                          height: "auto",
+                          opacity: 1,
+                          y: 0,
+                          transition: {
+                            height: {
+                              duration: 0.4,
+                              ease: [0.04, 0.62, 0.23, 0.98],
+                            },
+                            opacity: { duration: 0.4, delay: 0.1 },
+                            y: { duration: 0.3, delay: 0.1 },
+                          },
+                        }}
+                        exit={{
+                          height: 0,
+                          opacity: 0,
+                          y: -10,
+                          transition: {
+                            height: { duration: 0.3 },
+                            opacity: { duration: 0.2 },
+                            y: { duration: 0.2 },
+                          },
                         }}
                       >
                         <p className="mb-4">{pkg.description}</p>
@@ -191,13 +302,19 @@ const PricingPackages: React.FC = () => {
                   </AnimatePresence>
 
                   {/* Read More Button */}
-                  <button
+                  <motion.button
                     className="mt-4 flex items-center text-sm text-teal-600"
                     onClick={() => toggleReadMore(pkg.name)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {expandedStates[pkg.name] ? "Read less" : "Read more"}
-                    <svg
-                      className={`ml-1 h-4 w-4 transition-transform ${expandedStates[pkg.name] ? "rotate-180" : ""}`}
+                    <motion.svg
+                      className="ml-1 h-4 w-4"
+                      animate={{
+                        rotate: expandedStates[pkg.name] ? 180 : 0,
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -208,8 +325,8 @@ const PricingPackages: React.FC = () => {
                         strokeWidth="2"
                         d="M19 9l-7 7-7-7"
                       />
-                    </svg>
-                  </button>
+                    </motion.svg>
+                  </motion.button>
 
                   {/* CTA Button - Using inline style */}
                   <motion.button
@@ -223,8 +340,28 @@ const PricingPackages: React.FC = () => {
                       backgroundColor: pkg.color,
                       color: pkg.text,
                       borderColor: pkg.color,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeOut",
+                      },
                     }}
-                    whileTap={{ scale: 0.98 }}
+                    whileTap={{
+                      scale: 0.98,
+                      transition: {
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      },
+                    }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        delay: 0.5 + index * 0.2,
+                        duration: 0.3,
+                      },
+                    }}
                   >
                     Get in touch
                   </motion.button>
@@ -233,7 +370,7 @@ const PricingPackages: React.FC = () => {
             </motion.div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
