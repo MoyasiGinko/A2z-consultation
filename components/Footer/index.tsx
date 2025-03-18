@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
       <div className="bg-blue-950 text-white">
         <div className="container mx-auto grid gap-10 px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 xl:grid-cols-[1.2fr_1fr_0.67fr_0.5fr_1fr] xl:gap-12">
           <motion.div
-            className="bg-transparent p-6 text-white"
+            className="bg-sky-500 p-6 text-white"
             variants={itemVariants}
           >
             <Link href="/" className="mb-2 block py-3">
