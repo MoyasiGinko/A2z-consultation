@@ -31,7 +31,7 @@ const SponsorServices: React.FC = () => {
       ],
     },
     {
-      id: "skilled-worker",
+      id: "skilled-worker-visa",
       title: "Skilled Worker Visa",
       description:
         "Our end-to-end visa application process for skilled workers ensures a smooth experience with guaranteed results and full support throughout the journey.",
@@ -327,32 +327,33 @@ const SponsorServices: React.FC = () => {
               >
                 {service.description}
               </motion.p>
-
-              <motion.button
-                className="flex w-full items-center justify-center rounded-md px-4 py-3 text-white transition-colors duration-300"
-                style={{ backgroundColor: service.color }}
-                variants={buttonVariants}
-                initial="initial"
-                whileHover="hover"
-                whileTap="tap"
-                onClick={() => openServiceModal(service)}
-              >
-                Explore
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ml-2 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              <a href={`/services/${service.id}`}>
+                <motion.button
+                  className="flex w-full items-center justify-center rounded-md px-4 py-3 text-white transition-colors duration-300"
+                  style={{ backgroundColor: service.color }}
+                  variants={buttonVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                  // onClick={() => openServiceModal(service)}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </motion.button>
+                  Explore
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-2 h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </motion.button>
+              </a>
             </motion.div>
           ))}
         </motion.div>

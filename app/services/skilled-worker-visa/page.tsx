@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   // other metadata
 };
 
-const ProcessingPage = () => {
+const SkilledVisaPage = () => {
   return (
     <div className="pb-20 pt-40">
       <VisaBanner />
@@ -32,4 +32,4 @@ const ProcessingPage = () => {
   );
 };
 
-export default ProcessingPage;
+export default SkilledVisaPage;
