@@ -193,7 +193,7 @@ const ComplianceDetails: React.FC = () => {
 
   return (
     <>
-      <div className="mb-2 w-full bg-white py-12 shadow-[0_4px_8px_rgba(0,0,0,0.1),0_-4px_8px_rgba(0,0,0,0.1),4px_0_8px_rgba(0,0,0,0.1),-4px_0_8px_rgba(0,0,0,0.1)]">
+      <div className="w-full bg-gradient-to-r from-slate-50 via-sky-100 to-sky-200 py-12 shadow-[0_1px_2px_rgba(0,0,0,0.05),0_-1px_2px_rgba(0,0,0,0.05),1px_0_2px_rgba(0,0,0,0.05),-1px_0_2px_rgba(0,0,0,0.05)]">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex flex-col items-center md:flex-row md:items-center">
             {/* Left side - Title with animation */}
