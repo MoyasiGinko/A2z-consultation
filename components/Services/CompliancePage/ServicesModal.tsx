@@ -17,6 +17,38 @@ const customStyles = `
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes modalFadeOut {
+    from {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+  }
+
+  @keyframes backdropFadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.6; }
+  }
+
+  @keyframes backdropFadeOut {
+    from { opacity: 0.6; }
+    to { opacity: 0; }
+  }
 `;
 
 // Improved Modal Component
@@ -36,7 +68,7 @@ const Modal: React.FC<ModalProps> = ({
     setTimeout(() => {
       setIsClosing(false);
       onClose();
-    }, 300);
+    }, 200); // Reduced from 300ms to 200ms for snappier feel
   };
 
   // Close modal when clicking outside
@@ -86,12 +118,14 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <>
       <style>{customStyles}</style>
-      {/* Backdrop with smooth fade */}
+      {/* Backdrop with enhanced fade */}
       <div
-        className="fixed inset-0 bg-black transition-opacity duration-300"
+        className="fixed inset-0 bg-black"
         style={{
           zIndex: 9999,
-          opacity: isClosing ? 0 : 0.6,
+          animation: isClosing
+            ? "backdropFadeOut 0.2s ease-out forwards"
+            : "backdropFadeIn 0.3s ease-in forwards",
         }}
         onClick={handleClose}
       />
@@ -101,18 +135,19 @@ const Modal: React.FC<ModalProps> = ({
         className="fixed left-0 top-0 flex h-full w-full items-center justify-center overflow-hidden p-4 sm:p-6"
         style={{ zIndex: 10000 }}
       >
-        {/* Modal content with dynamic sizing */}
+        {/* Modal content with enhanced animations */}
         <div
           ref={modalRef}
-          className={`${bgColor} scrollbar-hide max-h-[90vh] overflow-auto rounded-lg shadow-2xl`}
+          className={`${bgColor} scrollbar-hide max-h-[90vh] overflow-auto rounded-lg shadow-2xl backdrop-blur-sm`}
           style={{
             animation: isClosing
-              ? "modalFadeOut 0.3s ease forwards"
-              : "modalFadeIn 0.3s ease forwards",
+              ? "modalFadeOut 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards"
+              : "modalFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards",
             width: "95%",
             maxWidth: "550px",
-            transform: `scale(${isClosing ? 0.95 : 1})`,
-            transition: "transform 0.3s ease",
+            willChange: "transform, opacity",
+            perspective: "1000px",
+            backfaceVisibility: "hidden",
           }}
         >
           {/* Modal header with title and close button */}
