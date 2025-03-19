@@ -44,6 +44,20 @@ const SponsorServices: React.FC = () => {
         "Comprehensive documentation guidance",
       ],
     },
+    // {
+    //   id: "other-support",
+    //   title: "Other Support",
+    //   description:
+    //     "Cillum qui nulla qui eu ullamco est. Ipsum esse occaecat proident nulla nostrud laborum enim cillum reprehenderit sunt voluptate consequat. Ad cillum cupidatat laborum laborum.",
+    //   icon: "user",
+    //   color: "#1565c0",
+    //   benefits: [
+    //     "Personalized expert support throughout the process",
+    //     "Faster processing with our streamlined systems",
+    //     "Higher success rate than industry average",
+    //     "Comprehensive documentation guidance",
+    //   ],
+    // },
   ]);
 
   // State for managing modal
