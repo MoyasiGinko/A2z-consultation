@@ -16,7 +16,7 @@ const DesktopVisaSteps: React.FC = () => {
             <div className="relative h-full">
               <div className="h-full">
                 <Image
-                  src="/images/features/steps-pillar.png"
+                  src="/images/features/desktop-pillar.svg"
                   alt="Steps timeline"
                   width={100}
                   height={400}
