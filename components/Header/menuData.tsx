@@ -7,24 +7,30 @@ const menuData: Menu[] = [
     newTab: false,
     submenu: [
       {
-        id: 55,
+        id: 51,
         title: "Sponsor Licence",
         newTab: false,
         path: "/services/sponsor-licence",
       },
 
       {
-        id: 54,
+        id: 52,
         title: "Compliance",
         newTab: false,
         path: "/services/compliance",
       },
 
       {
-        id: 51,
+        id: 53,
         title: "Skilled Worker Visa",
         newTab: false,
         path: "/services/skilled-worker-visa",
+      },
+      {
+        id: 54,
+        title: "Other Support",
+        newTab: false,
+        path: "/services/other-support",
       },
     ],
   },

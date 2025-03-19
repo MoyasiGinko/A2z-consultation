@@ -212,9 +212,8 @@ const WhyCompliance: React.FC = () => {
               variants={titleVariants}
               className="mb-8 md:mb-10 lg:mb-12"
             >
-              <h2 className="text-3xl font-bold text-[#286096] md:text-4xl lg:text-5xl">
-                Why Compliance
-                <div className="mt-1 text-[#00a2fb]">Is Important?</div>
+              <h2 className="text-2xl font-bold text-[#286096] md:text-3xl lg:text-4xl">
+                Why Compliance Important?
                 <div className="relative mt-3 h-1 w-full overflow-hidden rounded-full bg-gray-100 md:mt-4">
                   <motion.div
                     className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#00a2fb] to-transparent"
@@ -246,7 +245,7 @@ const WhyCompliance: React.FC = () => {
             className="order-2 flex items-center justify-center md:order-1 lg:order-1 lg:justify-center"
             variants={videoVariants}
           >
-            <div className="relative h-[320px] w-[502px] rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:max-w-lg md:p-2 lg:max-w-xl xl:max-w-2xl">
+            <div className="relative h-[180px] w-[280px] rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:h-[240px] sm:w-[360px] sm:max-w-lg md:h-[320px] md:w-[502px] md:p-2 lg:max-w-xl xl:max-w-2xl">
               <div className="relative h-full w-full overflow-hidden rounded-2xl">
                 <motion.div
                   initial={{ opacity: 0 }}

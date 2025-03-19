@@ -1,13 +1,21 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-const ComplianceSteps: React.FC = () => {
+const DesktopVisaSteps: React.FC = () => {
   return (
     <div className="w-full">
-      <div className="mb-6 text-center">
-        <h1 className="text-3xl font-bold text-cyan-500">Steps of Visa</h1>
-      </div>
+      <motion.div
+        className="flex justify-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <h1 className="mb-12 inline-block bg-gradient-to-r from-[#459ed2] via-[#0383c8] to-[#0c7cb0] bg-clip-text text-center text-4xl font-bold text-transparent">
+          Steps of Visa
+        </h1>
+      </motion.div>
 
       <div className="bg-sky-200 px-4 py-0">
         <div className="mx-auto flex max-w-4xl flex-col md:flex-row">
@@ -16,7 +24,7 @@ const ComplianceSteps: React.FC = () => {
             <div className="relative h-full">
               <div className="h-full">
                 <Image
-                  src="/images/features/steps-pillar.png"
+                  src="/images/features/desktop-pillar.svg"
                   alt="Steps timeline"
                   width={100}
                   height={400}
@@ -96,4 +104,4 @@ const ComplianceSteps: React.FC = () => {
   );
 };
 
-export default ComplianceSteps;
+export default DesktopVisaSteps;
