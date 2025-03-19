@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useMediaQuery } from "./useMediaQuery";
+import { useMediaQuery } from "@/utils/useMediaQuery";
 import HeroDesktop from "./HeroDesktop";
 import HeroMobile from "./HeroMobile";
 
