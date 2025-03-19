@@ -65,79 +65,19 @@ const ComplianceCTA = () => {
     },
   };
 
-  // Enhanced particle system with responsiveness
-  const Particles = () => {
-    // Adjust particle count based on device
-    const particleCount = isMobile ? 10 : 20;
-
-    return (
-      <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: particleCount }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/20"
-            style={{
-              height: `${Math.random() * 3 + 1}px`,
-              width: `${Math.random() * 3 + 1}px`,
-            }}
-            initial={{
-              x: `${Math.random() * 100}%`,
-              y: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.1,
-              scale: Math.random() * 0.5 + 0.5,
-            }}
-            animate={{
-              x: `${Math.random() * 100}%`,
-              y: `${Math.random() * 100}%`,
-              opacity: [
-                Math.random() * 0.3 + 0.1,
-                Math.random() * 0.7 + 0.3,
-                Math.random() * 0.3 + 0.1,
-              ],
-              scale: [
-                Math.random() * 0.5 + 0.5,
-                Math.random() * 0.7 + 0.7,
-                Math.random() * 0.5 + 0.5,
-              ],
-            }}
-            transition={{
-              duration: Math.random() * 15 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "linear",
-            }}
-          />
-        ))}
-      </div>
-    );
-  };
-
   return (
     <motion.section
       ref={sectionRef}
-      className="relative mt-8 overflow-hidden bg-primary py-16 text-white sm:mt-12 md:mt-16 lg:mt-24 xl:mt-40 2xl:py-32"
+      className="relative overflow-hidden py-4 text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Enhanced Animated Background with better performance */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url(/images/hero/bg-section.png)",
-          y: backgroundY,
-          scale: 1.2,
-        }}
-      />
-
-      {/* Conditionally render particles for performance */}
-      {!isMobile && <Particles />}
-
       {/* Enhanced gradient overlay with better visual depth */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#002A62] via-blue-800 to-[#002A62]" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:gap-16 xl:gap-20">
+        <div className="flex flex-col gap-2 sm:gap-5 md:gap-6 lg:flex-row lg:gap-8 xl:gap-10">
           {/* Enhanced Image Section with better animations */}
           <motion.figure
             className="relative mx-auto flex h-[260px] w-[90%] max-w-md items-center justify-center overflow-hidden rounded-3xl sm:h-[280px] md:h-[300px] lg:order-1 lg:col-span-7 lg:h-[360px] lg:w-full lg:max-w-none lg:justify-end xl:h-[400px]"
@@ -233,7 +173,7 @@ const ComplianceCTA = () => {
 
           {/* Enhanced Text Section with staggered animations */}
           <motion.div
-            className="mx-auto w-full max-w-[500px] text-left lg:col-span-5 lg:mx-0 lg:grid lg:max-w-full lg:place-items-center lg:text-left"
+            className="mx-auto w-full max-w-[500px] pb-4 text-center lg:col-span-5 lg:mx-0 lg:grid lg:max-w-full lg:place-items-center lg:text-left"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -247,8 +187,8 @@ const ComplianceCTA = () => {
                 <span className="block">DOWNLOAD OUR FREE</span>
                 <span className="relative block">
                   GUIDE!
-                  <motion.span
-                    className="absolute -right-4 -top-1 h-8 w-8 text-3xl"
+                  {/* <motion.span
+                    className="absolute h-8 w-8 text-lg"
                     animate={{
                       y: [0, -10, 0],
                       rotate: [0, 15, 0],
@@ -261,12 +201,12 @@ const ComplianceCTA = () => {
                     }}
                   >
                     ✨
-                  </motion.span>
+                  </motion.span> */}
                 </span>
               </motion.h2>
               <motion.div variants={itemVariants}>
                 <motion.button
-                  className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-gray-50 to-sky-50 px-6 py-3 font-bold text-blue-950 shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
+                  className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-gray-50 to-sky-50 px-6 py-3 font-bold text-blue-950 shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

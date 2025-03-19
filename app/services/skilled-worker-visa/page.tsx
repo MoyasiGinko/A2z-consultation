@@ -11,7 +11,7 @@ import PricingPackages from "@/components/Pricing/PricingPlan";
 import FAQSection from "@/components/FAQ/FAQ-Section";
 
 export const metadata: Metadata = {
-  title: "Sponsor Licence Page - A2Z",
+  title: "Skilled Worker Visa Page - A2Z",
   description: "A2Z Immigration",
   // other metadata
 };
