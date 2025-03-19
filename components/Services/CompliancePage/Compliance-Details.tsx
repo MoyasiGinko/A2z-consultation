@@ -76,12 +76,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
       {/* Buttons at the bottom */}
       <div className="flex justify-between px-6 pb-6">
-        <button
-          className="rounded bg-white px-4 py-1 text-xs font-medium text-gray-800 shadow transition-all duration-300 hover:bg-gray-50 hover:px-5 hover:shadow-md"
-          onClick={() => {}}
-        >
-          Get in touch
-        </button>
+        <a href="/get-in-touch">
+          <button
+            className="rounded bg-gradient-to-r from-sky-500 to-blue-500 px-4 py-1 text-xs font-medium text-white shadow transition-all duration-300 hover:from-sky-500 hover:to-blue-600 hover:px-5 hover:shadow-md"
+            onClick={() => {}}
+          >
+            Get in touch
+          </button>
+        </a>
         <button
           className={`rounded ${bgColor.replace("bg-", "bg-").replace("100", "300").replace("200", "400")} px-4 py-1 text-xs font-medium text-black shadow transition-all duration-300 hover:px-5 hover:shadow-md`}
           style={{
