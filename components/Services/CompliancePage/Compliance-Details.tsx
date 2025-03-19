@@ -188,14 +188,14 @@ const ComplianceDetails: React.FC = () => {
 
   return (
     <>
-      <div className="w-full bg-gradient-to-r from-slate-50 via-sky-100 to-sky-200 py-12 shadow-[0_1px_2px_rgba(0,0,0,0.05),0_-1px_2px_rgba(0,0,0,0.05),1px_0_2px_rgba(0,0,0,0.05),-1px_0_2px_rgba(0,0,0,0.05)]">
+      <div className="w-full bg-gradient-to-b from-slate-50 via-sky-100 to-sky-200 py-12 shadow-[0_1px_2px_rgba(0,0,0,0.05),0_-1px_2px_rgba(0,0,0,0.05),1px_0_2px_rgba(0,0,0,0.05),-1px_0_2px_rgba(0,0,0,0.05)] md:bg-gradient-to-r md:from-slate-50 md:via-sky-100 md:to-sky-200">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex flex-col items-center md:flex-row md:items-center">
             {/* Left side - Title with animation */}
-            <div className="mb-8 md:mb-0 md:w-1/4 md:pr-8">
+            <div className="mb-8 text-center md:mb-0 md:w-1/4 md:pr-8 md:text-left">
               <h2
                 ref={titleRef}
-                className="text-2xl font-bold text-blue-900"
+                className="bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 bg-clip-text text-2xl font-bold text-transparent"
                 style={{
                   opacity: 0,
                   transform: "translateX(-20px)",
