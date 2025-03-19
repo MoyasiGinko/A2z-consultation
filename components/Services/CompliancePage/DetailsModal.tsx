@@ -112,7 +112,7 @@ const Modal: React.FC<ModalProps> = ({
             <h3 className="text-xl font-bold text-gray-800">{title}</h3>
             <button
               onClick={handleClose}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-bold text-gray-800 transition-all duration-300 hover:bg-gray-100 hover:text-gray-600 hover:shadow-md"
+              className="flex h-8 min-h-[32px] w-8 min-w-[32px] items-center justify-center rounded-full bg-white text-lg font-bold text-gray-800 transition-all duration-300 hover:bg-gray-100 hover:text-gray-600 hover:shadow-md"
               aria-label="Close modal"
             >
               ×
@@ -142,12 +142,14 @@ const Modal: React.FC<ModalProps> = ({
 
           {/* Modal footer with close button */}
           <div className="sticky bottom-0 flex justify-end border-t border-gray-700 border-opacity-20 bg-opacity-95 p-5 backdrop-blur-sm">
-            <button
-              onClick={handleClose}
-              className={`rounded ${bgColor.replace("bg-", "bg-").replace("100", "300").replace("200", "400")} px-6 py-2 text-sm font-medium text-gray-800 shadow transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg`}
-            >
-              Close
-            </button>
+            <a href="/get-in-touch">
+              <button
+                className="rounded bg-gradient-to-r from-sky-500 to-blue-500 px-6 py-2 text-sm font-medium text-white shadow transition-all duration-300 hover:from-sky-500 hover:to-blue-600 hover:px-7 hover:shadow-md"
+                onClick={() => {}}
+              >
+                Get in touch
+              </button>
+            </a>
           </div>
         </div>
       </div>
