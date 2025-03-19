@@ -36,13 +36,6 @@ const ComplianceBanner: React.FC = () => {
             filter: "blur(200px)",
             transform: "perspective(1000px) rotateX(10deg) rotateY(-10deg)",
           }}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -50, 0],
-            rotateX: [10, 15, 10],
-            rotateY: [-10, -15, -10],
-          }}
           transition={{
             duration: 8,
             repeat: Infinity,

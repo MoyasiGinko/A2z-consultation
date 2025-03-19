@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import Modal from "./ServicesModal";
+import Modal from "./DetailsModal";
 
 interface ServiceCardProps {
   number: number;
@@ -113,14 +113,10 @@ const ComplianceDetails: React.FC = () => {
       content,
       bgColor,
     });
-    document.body.classList.add("modal-open");
-    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setModalProps((prev) => ({ ...prev, isOpen: false }));
-    document.body.classList.remove("modal-open");
-    document.body.style.overflow = "auto";
   };
 
   // Title animation
@@ -144,14 +140,6 @@ const ComplianceDetails: React.FC = () => {
 
     return () => {
       observer.disconnect();
-    };
-  }, []);
-
-  // Cleanup body classes when component unmounts
-  useEffect(() => {
-    return () => {
-      document.body.classList.remove("modal-open");
-      document.body.style.overflow = "auto";
     };
   }, []);
 
@@ -205,25 +193,6 @@ const ComplianceDetails: React.FC = () => {
 
   return (
     <>
-      {/* Global styles for animations */}
-      <style jsx global>{`
-        @keyframes modalFadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        /* Ensure modal is properly positioned above everything */
-        body.modal-open {
-          overflow: hidden;
-        }
-      `}</style>
-
       <div className="mb-2 w-full bg-white py-12 shadow-[0_4px_8px_rgba(0,0,0,0.1),0_-4px_8px_rgba(0,0,0,0.1),4px_0_8px_rgba(0,0,0,0.1),-4px_0_8px_rgba(0,0,0,0.1)]">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex flex-col items-center md:flex-row md:items-center">

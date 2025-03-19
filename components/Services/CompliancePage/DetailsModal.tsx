@@ -9,49 +9,6 @@ interface ModalProps {
   bgColor: string;
 }
 
-const customStyles = `
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-
-  @keyframes modalFadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95) translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-  }
-
-  @keyframes modalFadeOut {
-    from {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-    to {
-      opacity: 0;
-      transform: scale(0.95) translateY(10px);
-    }
-  }
-
-  @keyframes backdropFadeIn {
-    from { opacity: 0; }
-    to { opacity: 0.6; }
-  }
-
-  @keyframes backdropFadeOut {
-    from { opacity: 0.6; }
-    to { opacity: 0; }
-  }
-`;
-
-// Improved Modal Component
 const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
@@ -68,7 +25,7 @@ const Modal: React.FC<ModalProps> = ({
     setTimeout(() => {
       setIsClosing(false);
       onClose();
-    }, 200); // Reduced from 300ms to 200ms for snappier feel
+    }, 200);
   };
 
   // Close modal when clicking outside
@@ -100,54 +57,54 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen, onClose]);
 
-  // Prevent scrolling when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
-
   if (!isOpen && !isClosing) return null;
 
   return (
     <>
-      <style>{customStyles}</style>
-      {/* Backdrop with enhanced fade */}
+      {/* Custom styles for hiding scrollbar */}
+      <style jsx global>{`
+        .modal-scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .modal-scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
+      {/* Backdrop with enhanced fade - now using fixed position with pointer-events */}
       <div
-        className="fixed inset-0 bg-black"
+        className="pointer-events-auto fixed inset-0 bg-black"
         style={{
           zIndex: 9999,
-          animation: isClosing
-            ? "backdropFadeOut 0.2s ease-out forwards"
-            : "backdropFadeIn 0.3s ease-in forwards",
+          opacity: isClosing ? 0 : 0.6,
+          transition: isClosing
+            ? "opacity 0.2s ease-out"
+            : "opacity 0.3s ease-in",
+          pointerEvents: "auto",
         }}
         onClick={handleClose}
       />
 
-      {/* Modal container */}
+      {/* Modal container - fixed position to not affect page layout */}
       <div
-        className="fixed left-0 top-0 flex h-full w-full items-center justify-center overflow-hidden p-4 sm:p-6"
+        className="pointer-events-none fixed left-0 top-0 flex h-full w-full items-center justify-center p-4 sm:p-6"
         style={{ zIndex: 10000 }}
       >
-        {/* Modal content with enhanced animations */}
+        {/* Modal content with enhanced animations and hidden scrollbar */}
         <div
           ref={modalRef}
-          className={`${bgColor} scrollbar-hide max-h-[90vh] overflow-auto rounded-lg shadow-2xl backdrop-blur-sm`}
+          className={`${bgColor} modal-scrollbar-hide pointer-events-auto max-h-[90vh] overflow-auto rounded-lg shadow-2xl`}
           style={{
-            animation: isClosing
-              ? "modalFadeOut 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards"
-              : "modalFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+            opacity: isClosing ? 0 : 1,
+            transform: isClosing
+              ? "scale(0.95) translateY(10px)"
+              : "scale(1) translateY(0)",
+            transition: isClosing
+              ? "transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)"
+              : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
             width: "95%",
             maxWidth: "550px",
-            willChange: "transform, opacity",
-            perspective: "1000px",
-            backfaceVisibility: "hidden",
           }}
         >
           {/* Modal header with title and close button */}
