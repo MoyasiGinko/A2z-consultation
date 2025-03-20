@@ -79,7 +79,7 @@ const StatsSection: React.FC = () => {
           right people
         </motion.p>
 
-        <div className="flex flex-col items-center justify-between gap-14 lg:flex-row">
+        <div className="mx-auto flex flex-col items-center justify-between gap-10 lg:w-[80%] lg:flex-row">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.id}
