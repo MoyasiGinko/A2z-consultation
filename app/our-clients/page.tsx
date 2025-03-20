@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import Game from "@/components/Games";
+import ClientsPage from "@/components/OurClients";
 
 export const metadata: Metadata = {
   title: "Our Clients - A2Z",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const OurClientsPage = () => {
   return (
     <div className="pb-20 pt-40">
-      <Game />
+      <ClientsPage />
     </div>
   );
 };
