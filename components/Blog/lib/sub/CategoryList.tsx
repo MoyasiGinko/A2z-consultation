@@ -12,16 +12,18 @@ const CategoryList = () => {
   ];
 
   return (
-    <div className="mb-8 rounded-lg bg-white p-6 shadow-sm">
+    <div className="mb-8 rounded-lg bg-white p-6">
       <h3 className="mb-4 text-xl font-bold">Categories</h3>
       <ul>
         {categories.map((category, index) => (
-          <li
+          <a
             key={index}
-            className={`${index !== categories.length - 1 ? "mb-2" : ""} flex items-center`}
+            className={`${
+              index !== categories.length - 1 ? "mb-2" : ""
+            } flex cursor-pointer items-center rounded-md p-2 text-black shadow-md hover:bg-gradient-to-r hover:from-sky-500 hover:via-sky-600 hover:to-sky-700 hover:text-white`}
           >
             <svg
-              className="mr-2 h-3 w-3 text-blue-500"
+              className="mr-2 h-3 w-3 font-extrabold"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -32,8 +34,8 @@ const CategoryList = () => {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-gray-700">{category}</span>
-          </li>
+            <span>{category}</span>
+          </a>
         ))}
       </ul>
     </div>
