@@ -118,7 +118,7 @@ const BookCallSidebar: React.FC = () => {
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl  px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
             required
           />
         </motion.div>
@@ -139,7 +139,7 @@ const BookCallSidebar: React.FC = () => {
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl  px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
             required
           />
         </motion.div>
@@ -160,7 +160,7 @@ const BookCallSidebar: React.FC = () => {
             placeholder="+44"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl  px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
             required
           />
         </motion.div>
@@ -181,7 +181,7 @@ const BookCallSidebar: React.FC = () => {
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl  px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
             required
           />
         </motion.div>
@@ -250,7 +250,7 @@ const BookCallSidebar: React.FC = () => {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="mb-4 mt-8 text-center text-base"
       >
-        Feel free to share your opinion with us.
+        Feel free to share your opinion with us.
       </motion.p>
     </motion.div>
   );
