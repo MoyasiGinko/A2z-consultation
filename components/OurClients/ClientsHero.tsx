@@ -1,114 +1,180 @@
-// components/ClientsHero.jsx
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { FC, useRef, useState, useEffect } from "react";
 
-const ClientsHero = () => {
+type Client = {
+  name: string;
+  industry: string;
+};
+
+const ClientsHero: FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  // Featured clients that will rotate through
+  const [currentClientIndex, setCurrentClientIndex] = useState(0);
+  const featuredClients: Client[] = [
+    { name: "Tesla", industry: "Automotive" },
+    { name: "Microsoft", industry: "Technology" },
+    { name: "Adidas", industry: "Sportswear" },
+    { name: "Airbnb", industry: "Hospitality" },
+  ];
+
+  // Auto rotate through clients
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentClientIndex((prev) => (prev + 1) % featuredClients.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [featuredClients.length]);
+
+  // Text animation variants
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
-    <div className="relative overflow-hidden bg-blue-50">
-      <div className="absolute inset-0 z-0">
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.05" />
-              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.2" />
-            </linearGradient>
-          </defs>
-          <path
-            fill="url(#grad1)"
-            d="M0,0 C30,40 70,20 100,60 L100,100 L0,100 Z"
+    <motion.div
+      ref={containerRef}
+      className="relative h-screen w-full overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      {/* Parallax Background Image */}
+      <motion.div className="absolute inset-0" style={{ y }}>
+        <Image
+          src="/images/features/blogs-banner.png"
+          alt="Our Clients"
+          fill
+          className="object-cover"
+          priority
+        />
+      </motion.div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-sky-600/80" />
+
+      {/* Animated Particles Background */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-2 w-2 rounded-full bg-white/30 md:h-3 md:w-3"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 5,
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: Math.random() * 5,
+            }}
           />
-        </svg>
+        ))}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div
-            className="mb-6 inline-block rounded-full bg-blue-100 px-6 py-2 font-semibold text-blue-700"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+      {/* Text Content */}
+      <div className="container relative z-10 mx-auto flex h-full flex-col justify-center px-4">
+        <motion.div style={{ opacity }}>
+          <motion.span
+            className="mb-6 inline-block rounded-full bg-sky-500/50 px-4 py-1 text-sm font-medium text-white backdrop-blur-sm"
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={textVariants}
           >
-            Our Success Stories
-          </motion.div>
+            Trusted by industry leaders
+          </motion.span>
 
           <motion.h1
-            className="mb-6 text-4xl font-bold text-gray-800 md:text-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            className="mb-6 bg-gradient-to-b from-blue-600 to-sky-500/80 bg-clip-text text-5xl font-bold leading-tight text-transparent  md:text-7xl"
+            custom={1}
+            initial="hidden"
+            animate="visible"
+            variants={textVariants}
           >
-            Meet Our
-            <br />
-            <span className="text-blue-600">Amazing Clients</span>
+            Our{" "}
+            <span className="bg-gradient-to-b from-blue-600 to-sky-500/80 bg-clip-text text-transparent">
+              Clients
+            </span>
           </motion.h1>
 
           <motion.p
-            className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-gray-600"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mb-8 max-w-xl text-xl text-white/90 md:text-2xl"
+            custom={2}
+            initial="hidden"
+            animate="visible"
+            variants={textVariants}
           >
-            Discover how we've helped entrepreneurs and businesses achieve
-            financial success. From influencers to startups and enterprises, see
-            how our clients transformed their financial challenges into growth
-            opportunities.
+            Building innovative solutions for forward-thinking organizations
+            worldwide.
           </motion.p>
 
+          {/* Animated Client Showcase */}
           <motion.div
-            className="mt-12 flex flex-wrap justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            className="max-w-md rounded-lg bg-white/10 p-6 backdrop-blur-md"
+            custom={3}
+            initial="hidden"
+            animate="visible"
+            variants={textVariants}
           >
-            <div className="rounded-full bg-white p-2 shadow-lg">
-              <img
-                src="/images/clients/logo-1.png"
-                alt="Client Logo"
-                className="h-12 w-auto grayscale transition-all hover:grayscale-0"
-              />
-            </div>
-            <div className="rounded-full bg-white p-2 shadow-lg">
-              <img
-                src="/images/clients/logo-2.png"
-                alt="Client Logo"
-                className="h-12 w-auto grayscale transition-all hover:grayscale-0"
-              />
-            </div>
-            <div className="rounded-full bg-white p-2 shadow-lg">
-              <img
-                src="/images/clients/logo-3.png"
-                alt="Client Logo"
-                className="h-12 w-auto grayscale transition-all hover:grayscale-0"
-              />
-            </div>
-            <div className="rounded-full bg-white p-2 shadow-lg">
-              <img
-                src="/images/clients/logo-4.png"
-                alt="Client Logo"
-                className="h-12 w-auto grayscale transition-all hover:grayscale-0"
-              />
-            </div>
-            <div className="rounded-full bg-white p-2 shadow-lg">
-              <img
-                src="/images/clients/logo-5.png"
-                alt="Client Logo"
-                className="h-12 w-auto grayscale transition-all hover:grayscale-0"
-              />
-            </div>
+            <p className="mb-2 text-white/80">Featured Client</p>
+            <motion.div
+              key={currentClientIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col"
+            >
+              <h3 className="text-2xl font-bold text-white">
+                {featuredClients[currentClientIndex].name}
+              </h3>
+              <p className="text-white/70">
+                {featuredClients[currentClientIndex].industry}
+              </p>
+            </motion.div>
           </motion.div>
+
+          {/* CTA Button */}
         </motion.div>
       </div>
-    </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform flex-col items-center"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
+        <p className="mb-2 text-sm text-white/80">Scroll to explore</p>
+        <div className="flex h-10 w-6 justify-center rounded-full border-2 border-white/30">
+          <motion.div
+            className="mt-2 h-2 w-1 rounded-full bg-white/80"
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
