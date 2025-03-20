@@ -57,7 +57,7 @@ const TrendingPosts = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="mt-8 w-full">
       <motion.h2
         initial="hidden"
         animate="visible"
