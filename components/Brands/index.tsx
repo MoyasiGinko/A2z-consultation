@@ -8,7 +8,6 @@ interface Brand {
   id: string;
   src: string;
   alt: string;
-  className: string;
   animationDelay?: number;
 }
 
@@ -25,77 +24,50 @@ const Brands: React.FC = () => {
       id: "brand1",
       src: "/images/brands/logo-1.png",
       alt: "Premium Brand Partner",
-      className: "w-32 md:w-40 md:mr-4 lg:mr-8 lg:w-52", // Increased sizes
       animationDelay: 0.1,
     },
     {
       id: "brand2",
       src: "/images/brands/logo-2.png",
       alt: "Enterprise Solution Partner",
-      className: "w-32 md:w-40 md:mr-4 lg:mr-8 lg:w-52", // Increased sizes
       animationDelay: 0.2,
     },
     {
       id: "brand3",
       src: "/images/brands/logo-3.png",
       alt: "Technology Innovator",
-      className: "w-16 -ml-2 mr-7 md:w-20 md:mr-12 lg:mr-20 lg:w-24", // Increased sizes
       animationDelay: 0.3,
     },
     {
       id: "brand4",
       src: "/images/brands/logo-4.png",
       alt: "Industry Leader",
-      className: "w-24 mr-7 md:w-28 md:mr-10 lg:mr-16 lg:w-44", // Increased sizes
       animationDelay: 0.4,
     },
     {
       id: "brand5",
       src: "/images/brands/logo-5.png",
       alt: "Global Partner",
-      className: "w-16 mr-4 md:w-20 md:mr-8 lg:mr-10 lg:w-24", // Increased sizes
       animationDelay: 0.5,
     },
     {
       id: "brand6",
       src: "/images/brands/logo-6.png",
       alt: "Strategic Alliance",
-      className: "w-20 mr-6 md:w-24 md:mr-12 lg:mr-20 lg:w-36", // Increased sizes
       animationDelay: 0.6,
     },
   ];
 
   const renderBrandSet = () => {
     return brands.map((brand) => (
-      <div
-        key={brand.id}
-        className="brand-container relative mx-2"
-        onMouseEnter={() => setIsHovering(brand.id)}
-        onMouseLeave={() => setIsHovering(null)}
-      >
-        <div
-          className={`
-            brand-wrapper transition-all duration-500 ease-in-out
-            ${isHovering === brand.id ? "scale-130 z-10" : "scale-100"}
-          `}
-        >
+      <div key={brand.id} className="brand-container relative mx-4">
+        <div className="logo-container h-12 w-24 md:h-14 md:w-28 lg:h-16 lg:w-32">
           <Image
             src={brand.src}
             alt={brand.alt}
-            width={180}
-            height={90}
-            className={`
-              ${brand.className} mx-4
-              filter transition-all
-              duration-300 hover:drop-shadow-xl
-              ${isHovering === brand.id ? "brightness-110" : "brightness-100"}
-            `}
+            fill
+            className="object-contain"
           />
-          {isHovering === brand.id && (
-            <div className="brand-tooltip animate-fade-in absolute -bottom-8 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0">
-              {brand.alt}
-            </div>
-          )}
         </div>
       </div>
     ));
@@ -134,9 +106,7 @@ const Brands: React.FC = () => {
           className="brand-slider-container mx-auto w-[95%] overflow-hidden md:w-[80%]"
         >
           {/* First row - moving left to right */}
-          <div className="slider-row relative flex h-8 md:h-12 lg:h-18">
-            {" "}
-            {/* Increased height */}
+          <div className="slider-row relative flex h-16 md:h-20 lg:h-24">
             <div className="slider-track flex" data-direction="left">
               {renderBrandSet()}
               {renderBrandSet()}
@@ -147,9 +117,7 @@ const Brands: React.FC = () => {
           </div>
 
           {/* Second row - moving right to left */}
-          <div className="slider-row relative mt-2 flex h-8 md:h-12 lg:h-18">
-            {" "}
-            {/* Increased height */}
+          <div className="slider-row relative mt-4 flex h-16 md:h-20 lg:h-24">
             <div className="slider-track flex" data-direction="right">
               {renderBrandSet()}
               {renderBrandSet()}
@@ -170,21 +138,8 @@ const Brands: React.FC = () => {
           );
         }
 
-        .scale-130 {
-          transform: scale(1.3);
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.3s forwards;
+        .logo-container {
+          position: relative;
         }
 
         .slider-track {
