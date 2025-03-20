@@ -11,14 +11,14 @@ interface BlogItemProps {
 
 const BlogItem: React.FC<BlogItemProps> = ({ post }) => {
   return (
-    <div className="overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-md">
+    <div className="overflow-hidden rounded-sm bg-gradient-to-b from-slate-50 via-cyan-100/50 to-cyan-100/70 shadow-sm transition-shadow duration-300 hover:shadow-md">
       <div className="relative">
         <Image
           src={post.thumbnail || "/images/blog/placeholder.jpg"}
           alt={post.title}
           width={400}
           height={250}
-          className="h-48 w-full object-cover"
+          className="h-56 w-full object-cover p-1"
         />
         <span className="absolute left-4 top-4 rounded-full bg-blue-500 px-3 py-1 text-xs font-semibold text-white">
           {post.category}
