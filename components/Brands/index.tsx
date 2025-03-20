@@ -10,6 +10,7 @@ interface Brand {
   alt: string;
   width?: number; // Custom width for each logo
   height?: number; // Custom height for each logo
+  objectFit?: "cover" | "contain" | "fill"; // Added object-fit control
   animationDelay?: number;
 }
 
@@ -21,14 +22,15 @@ const Brands: React.FC = () => {
     triggerOnce: false,
   });
 
-  // Define brands with individual size controls
+  // Define brands with individual size controls and object-fit properties
   const brands: Brand[] = [
     {
       id: "brand1",
       src: "/images/brands/logo-1.png",
       alt: "Premium Brand Partner",
-      width: 100, // Fixed width
+      width: 140, // Fixed width
       height: 50, // Fixed height
+      objectFit: "fill", // Default to contain
       animationDelay: 0.1,
     },
     {
@@ -37,6 +39,7 @@ const Brands: React.FC = () => {
       alt: "Enterprise Solution Partner",
       width: 100,
       height: 50,
+      objectFit: "contain", // Example of using cover instead
       animationDelay: 0.2,
     },
     {
@@ -45,14 +48,16 @@ const Brands: React.FC = () => {
       alt: "Technology Innovator",
       width: 100,
       height: 50,
+      objectFit: "contain", // Example of using fill
       animationDelay: 0.3,
     },
     {
       id: "brand4",
       src: "/images/brands/logo-4.png",
       alt: "Industry Leader",
-      width: 100,
+      width: 128,
       height: 50,
+      objectFit: "fill",
       animationDelay: 0.4,
     },
     {
@@ -60,7 +65,8 @@ const Brands: React.FC = () => {
       src: "/images/brands/logo-5.png",
       alt: "Global Partner",
       width: 100,
-      height: 50,
+      height: 70,
+      objectFit: "contain",
       animationDelay: 0.5,
     },
     {
@@ -69,6 +75,7 @@ const Brands: React.FC = () => {
       alt: "Strategic Alliance",
       width: 100,
       height: 50,
+      objectFit: "contain",
       animationDelay: 0.6,
     },
     {
@@ -77,6 +84,7 @@ const Brands: React.FC = () => {
       alt: "Innovative Solutions",
       width: 100,
       height: 50,
+      objectFit: "contain",
       animationDelay: 0.7,
     },
     {
@@ -85,6 +93,7 @@ const Brands: React.FC = () => {
       alt: "Trusted Partner",
       width: 100,
       height: 50,
+      objectFit: "contain",
       animationDelay: 0.8,
     },
   ];
@@ -98,12 +107,12 @@ const Brands: React.FC = () => {
       return (
         <div
           key={uniqueId}
-          className="brand-container relative mx-6" // Increased margin between logos
+          className="brand-container relative mx-6 flex items-center justify-center" // Added flex and center alignment
           onMouseEnter={() => setHoveredItem(uniqueId)}
           onMouseLeave={() => setHoveredItem(null)}
         >
           <div
-            className={`logo-container transition-transform duration-300 ${
+            className={`logo-container flex items-center justify-center transition-transform duration-300 ${
               hoveredItem === uniqueId ? "scale-110" : ""
             }`}
             style={{
@@ -116,7 +125,7 @@ const Brands: React.FC = () => {
               src={brand.src}
               alt={brand.alt}
               fill
-              className="object-contain"
+              className={`object-${brand.objectFit || "contain"}`}
             />
           </div>
         </div>
@@ -198,6 +207,9 @@ const Brands: React.FC = () => {
           border-radius: 6px;
           padding: 4px;
           background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .slider-track {
