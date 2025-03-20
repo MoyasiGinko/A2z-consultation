@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Send } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -15,6 +17,8 @@ const BookCallSidebar: React.FC = () => {
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -28,95 +32,214 @@ const BookCallSidebar: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
-    // Reset form or show success message
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      // Handle form submission logic here
+      console.log("Form submitted:", formData);
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      // Reset success state after 3 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+    }, 1000);
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
   };
 
   return (
-    <div className="w-full max-w-sm rounded-lg bg-teal-600 px-6 py-6 text-white shadow-md">
-      <h2 className="mb-1 text-xl font-bold">Book a call</h2>
-      <p className="mb-4 text-sm">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="w-full max-w-sm rounded-xl bg-gradient-to-b from-[#06A2D9] via-[#0698cd] to-[#148fbc] px-6 py-6 text-white shadow-lg"
+    >
+      <motion.h2
+        initial={{ y: -10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="mb-1 text-center text-2xl font-bold"
+        style={{ textShadow: "0 0 8px rgba(255, 255, 255, 0.1)" }}
+      >
+        Book a call
+      </motion.h2>
+      <motion.p
+        initial={{ y: -5, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mb-4 text-center text-sm"
+      >
         Please give us more information to get started.
-      </p>
-
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="mb-1 block text-sm font-medium">
+      </motion.p>
+      <motion.form
+        onSubmit={handleSubmit}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div className="mb-4" variants={itemVariants}>
+          <label
+            htmlFor="name"
+            className="mb-1 block text-base font-medium"
+            style={{ textShadow: "0 0 8px rgba(255, 255, 255, 0.6)" }}
+          >
             Name:
           </label>
-          <input
+          <motion.input
+            whileFocus={{ scale: 1.01 }}
             type="text"
             id="name"
             name="name"
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full rounded border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
             required
           />
-        </div>
+        </motion.div>
 
-        <div className="mb-4">
-          <label htmlFor="email" className="mb-1 block text-sm font-medium">
-            Email
+        <motion.div className="mb-4" variants={itemVariants}>
+          <label
+            htmlFor="email"
+            className="mb-1 block text-base font-medium"
+            style={{ textShadow: "0 0 8px rgba(255, 255, 255, 0.6)" }}
+          >
+            Email:
           </label>
-          <input
+          <motion.input
+            whileFocus={{ scale: 1.01 }}
             type="email"
             id="email"
             name="email"
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full rounded border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
             required
           />
-        </div>
+        </motion.div>
 
-        <div className="mb-4">
-          <label htmlFor="phone" className="mb-1 block text-sm font-medium">
+        <motion.div className="mb-4" variants={itemVariants}>
+          <label
+            htmlFor="phone"
+            className="mb-1 block text-base font-medium"
+            style={{ textShadow: "0 0 8px rgba(255, 255, 255, 0.6)" }}
+          >
             Phone:
           </label>
-          <div className="flex">
-            <span className="inline-flex items-center rounded-l border border-r-0 border-teal-400 bg-gray-50 px-3 text-sm text-gray-500">
-              +44
-            </span>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full rounded-r border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 focus:border-teal-500 focus:outline-none"
-              required
-            />
-          </div>
-        </div>
+          <motion.input
+            whileFocus={{ scale: 1.01 }}
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+44"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
+            required
+          />
+        </motion.div>
 
-        <div className="mb-6">
-          <label htmlFor="message" className="mb-1 block text-sm font-medium">
+        <motion.div className="mb-6" variants={itemVariants}>
+          <label
+            htmlFor="message"
+            className="mb-1 block text-base font-medium"
+            style={{ textShadow: "0 0 8px rgba(255, 255, 255, 0.6)" }}
+          >
             Message:
           </label>
-          <textarea
+          <motion.textarea
+            whileFocus={{ scale: 1.01 }}
             id="message"
             name="message"
             rows={4}
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full rounded border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl border border-teal-400 px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-teal-500 focus:outline-none"
             required
           />
-        </div>
+        </motion.div>
 
-        <button
-          type="submit"
-          className="w-full rounded bg-yellow-400 px-4 py-2 font-medium text-gray-800 transition-colors hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
-        >
-          Send Message
-        </button>
-      </form>
-    </div>
+        <motion.div className="flex justify-center">
+          <motion.button
+            variants={itemVariants}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            type="submit"
+            disabled={isSubmitting}
+            className="flex max-w-80 items-center justify-center rounded-lg bg-yellow-400 px-4 py-2 font-medium text-gray-800 transition-colors hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
+            style={{ boxShadow: "0 0 8px 2px rgba(255, 255, 0, 0.2)" }}
+          >
+            {isSubmitting ? (
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="h-5 w-5 rounded-full border-2 border-gray-800 border-t-transparent"
+              />
+            ) : isSuccess ? (
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="flex items-center"
+              >
+                <span className="mr-2">Sent</span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <motion.path
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.5 }}
+                    d="M3 9.5L7 13.5L15 5.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </motion.span>
+            ) : (
+              <motion.span className="flex items-center">
+                <span className="mr-2 text-lg">Send Message</span>
+                <Send size={16} />
+              </motion.span>
+            )}
+          </motion.button>
+        </motion.div>
+      </motion.form>
+      <motion.p
+        initial={{ y: -5, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mb-4 mt-8 text-center text-base"
+      >
+        Feel free to share your opinion with us.
+      </motion.p>
+    </motion.div>
   );
 };
 
