@@ -99,7 +99,7 @@ const StatsSection: React.FC = () => {
               }}
             >
               <motion.p
-                className="text-5xl font-black text-blue-600"
+                className="bg-gradient-to-t from-[#459ed2] via-[#0383c8] to-[#0c7cb0] bg-clip-text text-4xl font-black text-transparent"
                 initial={{ scale: 0.8 }}
                 animate={controls}
                 variants={{
@@ -116,7 +116,7 @@ const StatsSection: React.FC = () => {
                 <CountUp target={stat.value} />
               </motion.p>
               <motion.p
-                className="mt-2 font-medium text-gray-700"
+                className="mt-2 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 bg-clip-text font-medium text-transparent"
                 initial={{ opacity: 0 }}
                 animate={controls}
                 variants={{
