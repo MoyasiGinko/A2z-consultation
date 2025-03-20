@@ -8,69 +8,132 @@ interface Brand {
   id: string;
   src: string;
   alt: string;
+  width?: number; // Custom width for each logo
+  height?: number; // Custom height for each logo
   animationDelay?: number;
 }
 
 const Brands: React.FC = () => {
-  const [isHovering, setIsHovering] = useState<string | null>(null);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const { ref: sectionRef, inView } = useInView({
     threshold: 0.2,
     triggerOnce: false,
   });
 
+  // Define brands with individual size controls
   const brands: Brand[] = [
     {
       id: "brand1",
       src: "/images/brands/logo-1.png",
       alt: "Premium Brand Partner",
+      width: 100, // Fixed width
+      height: 50, // Fixed height
       animationDelay: 0.1,
     },
     {
       id: "brand2",
       src: "/images/brands/logo-2.png",
       alt: "Enterprise Solution Partner",
+      width: 100,
+      height: 50,
       animationDelay: 0.2,
     },
     {
       id: "brand3",
       src: "/images/brands/logo-3.png",
       alt: "Technology Innovator",
+      width: 100,
+      height: 50,
       animationDelay: 0.3,
     },
     {
       id: "brand4",
       src: "/images/brands/logo-4.png",
       alt: "Industry Leader",
+      width: 100,
+      height: 50,
       animationDelay: 0.4,
     },
     {
       id: "brand5",
       src: "/images/brands/logo-5.png",
       alt: "Global Partner",
+      width: 100,
+      height: 50,
       animationDelay: 0.5,
     },
     {
       id: "brand6",
       src: "/images/brands/logo-6.png",
       alt: "Strategic Alliance",
+      width: 100,
+      height: 50,
       animationDelay: 0.6,
+    },
+    {
+      id: "brand7",
+      src: "/images/brands/logo-7.png",
+      alt: "Innovative Solutions",
+      width: 100,
+      height: 50,
+      animationDelay: 0.7,
+    },
+    {
+      id: "brand8",
+      src: "/images/brands/logo-8.png",
+      alt: "Trusted Partner",
+      width: 100,
+      height: 50,
+      animationDelay: 0.8,
     },
   ];
 
-  const renderBrandSet = () => {
-    return brands.map((brand) => (
-      <div key={brand.id} className="brand-container relative mx-4">
-        <div className="logo-container h-12 w-24 md:h-14 md:w-28 lg:h-16 lg:w-32">
-          <Image
-            src={brand.src}
-            alt={brand.alt}
-            fill
-            className="object-contain"
-          />
+  // Create unique identifiers for each brand in each row
+  const renderBrandSet = (rowId: string) => {
+    return brands.map((brand) => {
+      // Create a unique ID combining row and brand IDs
+      const uniqueId = `${rowId}-${brand.id}`;
+
+      return (
+        <div
+          key={uniqueId}
+          className="brand-container relative mx-6" // Increased margin between logos
+          onMouseEnter={() => setHoveredItem(uniqueId)}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <div
+            className={`logo-container transition-transform duration-300 ${
+              hoveredItem === uniqueId ? "scale-110" : ""
+            }`}
+            style={{
+              width: `${brand.width}px`,
+              height: `${brand.height}px`,
+              position: "relative",
+            }}
+          >
+            <Image
+              src={brand.src}
+              alt={brand.alt}
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
-      </div>
-    ));
+      );
+    });
+  };
+
+  // Define each set with a specific ID for each row and copy
+  const renderMultipleSets = (rowId: string) => {
+    return (
+      <>
+        {renderBrandSet(`${rowId}-set1`)}
+        {renderBrandSet(`${rowId}-set2`)}
+        {renderBrandSet(`${rowId}-set3`)}
+        {renderBrandSet(`${rowId}-set4`)}
+      </>
+    );
   };
 
   return (
@@ -108,22 +171,14 @@ const Brands: React.FC = () => {
           {/* First row - moving left to right */}
           <div className="slider-row relative flex h-16 md:h-20 lg:h-24">
             <div className="slider-track flex" data-direction="left">
-              {renderBrandSet()}
-              {renderBrandSet()}
-              {renderBrandSet()}
-              {renderBrandSet()}
-              {/* Multiple copies to ensure continuous flow */}
+              {renderMultipleSets("row1")}
             </div>
           </div>
 
           {/* Second row - moving right to left */}
-          <div className="slider-row relative mt-4 flex h-16 md:h-20 lg:h-24">
+          <div className="slider-row relative mt-6 flex h-16 md:h-20 lg:h-24">
             <div className="slider-track flex" data-direction="right">
-              {renderBrandSet()}
-              {renderBrandSet()}
-              {renderBrandSet()}
-              {renderBrandSet()}
-              {/* Multiple copies to ensure continuous flow */}
+              {renderMultipleSets("row2")}
             </div>
           </div>
         </div>
@@ -139,14 +194,18 @@ const Brands: React.FC = () => {
         }
 
         .logo-container {
-          position: relative;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          border-radius: 6px;
+          padding: 4px;
+          background-color: white;
         }
 
         .slider-track {
           width: max-content;
-          animation-duration: 20s; /* Faster animation - was 40s */
+          animation-duration: 30s; /* Adjusted animation speed */
           animation-iteration-count: infinite;
           animation-timing-function: linear;
+          will-change: transform; /* Performance optimization */
         }
 
         .slider-track[data-direction="left"] {
@@ -220,7 +279,7 @@ const Brands: React.FC = () => {
           }
         }
 
-        /* Floating animation for brands */
+        /* More subtle floating animation for brands */
         .brand-container {
           animation: float 6s ease-in-out infinite;
         }
@@ -233,12 +292,22 @@ const Brands: React.FC = () => {
           animation-delay: 1s;
         }
 
+        /* Prevent hover effects during animation */
+        @media (prefers-reduced-motion: reduce) {
+          .slider-track {
+            animation: none;
+          }
+          .brand-container {
+            animation: none;
+          }
+        }
+
         @keyframes float {
           0% {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
           }
           100% {
             transform: translateY(0px);
