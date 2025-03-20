@@ -208,7 +208,7 @@ const Header = () => {
 
             <Link
               href="/get-in-touch"
-              className="flex items-center justify-center rounded-md bg-sky-500 px-4 py-2 text-sm text-white duration-300 ease-in-out hover:bg-primaryho"
+              className="flex items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] px-4 py-2 text-sm text-white duration-300 ease-in-out hover:bg-primaryho"
             >
               Get in Touch
             </Link>

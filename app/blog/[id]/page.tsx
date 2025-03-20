@@ -2,6 +2,7 @@ import RelatedPost from "@/components/Blog/lib/RelatedPost";
 import SharePost from "@/components/Blog/lib/SharePost";
 import BlogsBanner from "@/components/Blog/lib/sub/BlogsBanner";
 import BookCallSidebar from "@/components/Blog/lib/sub/BookCall";
+import BookTimeCTA from "@/components/Blog/lib/sub/BookTimeCTA";
 import CategoryList from "@/components/Blog/lib/sub/CategoryList";
 import TrendingPosts from "@/components/Blog/lib/sub/TrendingPosts";
 import { Metadata } from "next";
@@ -149,6 +150,7 @@ const SingleBlogPage = async () => {
           </div>
         </div>
       </section>
+      <BookTimeCTA />
     </>
   );
 };
