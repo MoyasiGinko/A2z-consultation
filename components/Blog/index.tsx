@@ -6,6 +6,7 @@ import BlogGrid from "@/components/Blog/lib/BlogGrid";
 import Sidebar from "@/components/Blog/lib/Sidebar";
 import BlogData from "@/components/Blog/blogData";
 import { BlogType } from "@/types/blog";
+import FindCTA from "./lib/sub/FindCTA";
 
 const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,6 +38,8 @@ const Blog = () => {
           </div>
         </div>
       </section>
+
+      <FindCTA />
     </>
   );
 };
