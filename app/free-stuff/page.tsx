@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import BoosterCard from "@/components/Boosters";
 
 export const metadata: Metadata = {
-  title: "Rewards Page - Cars World  | Play for Free Donation",
-  description: "This is built by Bahadur",
+  title: "Free Stuff - A2Z",
+  description: "A2Z Immigrants",
   // other metadata
 };
 
