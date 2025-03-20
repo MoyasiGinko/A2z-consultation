@@ -3,20 +3,65 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+// Define interface for tab content
+interface TabContent {
+  key: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
 const TabContainer: React.FC = () => {
-  const [hoveredTab, setHoveredTab] = useState<string>("EXPERT REVIEW");
+  // Create dynamic tab content data
+  const tabsData: TabContent[] = [
+    {
+      key: "EXPERT REVIEW",
+      title: "EXPERT REVIEW",
+      description:
+        "Our team of experts will review your eligibility and help you prepare for a successful application.",
+      imageSrc: "/images/features/tab-container-01.png",
+      imageAlt: "Expert reviewing documents",
+    },
+    {
+      key: "SUBMIT APPLICATION",
+      title: "SUBMIT APPLICATION",
+      description:
+        "We'll guide you through every step of submitting your sponsor licence application.",
+      imageSrc: "/images/features/tab-container-02.png",
+      imageAlt: "Submitting application documents",
+    },
+    {
+      key: "ONGOING SUPPORT",
+      title: "ONGOING SUPPORT",
+      description:
+        "Our support continues throughout the application process with dedicated assistance.",
+      imageSrc: "/images/features/tab-container-03.png",
+      imageAlt: "Customer support representative",
+    },
+    {
+      key: "SPONSORSHIP APPROVED",
+      title: "SPONSORSHIP APPROVED",
+      description:
+        "Congratulations on your approved sponsor licence! We'll help you understand your new responsibilities.",
+      imageSrc: "/images/features/tab-container-04.png",
+      imageAlt: "Approved sponsorship certificate",
+    },
+  ];
+
+  const [hoveredTab, setHoveredTab] = useState<string>(tabsData[0].key);
   const [tabPositions, setTabPositions] = useState<
     Array<{ left: number; width: number }>
   >([]);
   const navRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const tabs = [
-    "EXPERT REVIEW",
-    "SUBMIT APPLICATION",
-    "ONGOING SUPPORT",
-    "SPONSORSHIP APPROVED",
-  ];
+  // Get the tabs array from tabsData
+  const tabs = tabsData.map((tab) => tab.key);
+
+  // Get the active tab content
+  const activeTabContent =
+    tabsData.find((tab) => tab.key === hoveredTab) || tabsData[0];
 
   // Measure tabs precisely using refs for each tab
   useEffect(() => {
@@ -92,6 +137,27 @@ const TabContainer: React.FC = () => {
     },
   };
 
+  // Animation variants for images
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.4, 0, 0.2, 1],
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        duration: 0.3,
+        ease: [0.4, 0, 0.2, 1],
+      },
+    },
+  };
+
   return (
     <motion.section
       className="mb-12 py-16"
@@ -122,17 +188,17 @@ const TabContainer: React.FC = () => {
           className="rounded-t-lg bg-gradient-to-r from-[#FFE199] via-[#FFE099] to-[#FFE199] p-3 md:p-2"
         >
           <div className="relative flex w-full flex-col gap-2.5 md:flex-row md:gap-0">
-            {tabs.map((tab, index) => (
+            {tabsData.map((tab, index) => (
               <motion.div
-                key={tab}
+                key={tab.key}
                 ref={(el) => {
                   tabRefs.current[index] = el;
                 }}
                 className={`relative z-10 flex items-center justify-center rounded-md px-6 py-2.5 transition-all
                 duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] md:flex-1 md:py-3
-                ${hoveredTab === tab ? "rounded-lg bg-[#00257C] md:bg-transparent" : ""}
+                ${hoveredTab === tab.key ? "rounded-lg bg-[#00257C] md:bg-transparent" : ""}
                 hover:rounded-lg hover:bg-[#00257C] hover:md:bg-transparent`}
-                onMouseEnter={() => setHoveredTab(tab)}
+                onMouseEnter={() => setHoveredTab(tab.key)}
                 whileTap={{ scale: 0.97 }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -146,13 +212,13 @@ const TabContainer: React.FC = () => {
                   className={`font-mono md:font-sans whitespace-nowrap
                   text-sm font-medium transition-colors
                   duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
-                  ${hoveredTab === tab ? "text-white" : "text-gray-800"}`}
+                  ${hoveredTab === tab.key ? "text-white" : "text-gray-800"}`}
                   animate={{
-                    scale: hoveredTab === tab ? 1.05 : 1,
+                    scale: hoveredTab === tab.key ? 1.05 : 1,
                     transition: { duration: 0.2 },
                   }}
                 >
-                  {tab}
+                  {tab.title}
                 </motion.span>
               </motion.div>
             ))}
@@ -203,56 +269,17 @@ const TabContainer: React.FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
                   >
-                    {hoveredTab}
+                    {activeTabContent.title}
                   </motion.h1>
 
-                  {hoveredTab === "EXPERT REVIEW" && (
-                    <motion.h2
-                      className="font-serif md:font-sans mb-6 text-2xl font-normal leading-tight text-[#1a1a1a] md:mb-8 md:text-4xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      Our team of experts will review your eligibility and help
-                      you prepare for a successful application.
-                    </motion.h2>
-                  )}
-
-                  {hoveredTab === "SUBMIT APPLICATION" && (
-                    <motion.h2
-                      className="font-serif md:font-sans mb-6 text-2xl font-normal leading-tight text-[#1a1a1a] md:mb-8 md:text-4xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      We'll guide you through every step of submitting your
-                      sponsor licence application.
-                    </motion.h2>
-                  )}
-
-                  {hoveredTab === "ONGOING SUPPORT" && (
-                    <motion.h2
-                      className="font-serif md:font-sans mb-6 text-2xl font-normal leading-tight text-[#1a1a1a] md:mb-8 md:text-4xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      Our support continues throughout the application process
-                      with dedicated assistance.
-                    </motion.h2>
-                  )}
-
-                  {hoveredTab === "SPONSORSHIP APPROVED" && (
-                    <motion.h2
-                      className="font-serif md:font-sans mb-6 text-2xl font-normal leading-tight text-[#1a1a1a] md:mb-8 md:text-4xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      Congratulations on your approved sponsor licence! We'll
-                      help you understand your new responsibilities.
-                    </motion.h2>
-                  )}
+                  <motion.h2
+                    className="font-serif md:font-sans mb-6 text-2xl font-normal leading-tight text-[#1a1a1a] md:mb-8 md:text-4xl"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                  >
+                    {activeTabContent.description}
+                  </motion.h2>
 
                   <motion.button
                     className="font-mono md:font-sans rounded-lg bg-[#FFF9EB] px-4 py-2.5 text-sm uppercase tracking-wider text-[#533900] transition-all duration-300 hover:bg-[#1a1a1a] hover:text-white md:px-6 md:py-3"
@@ -268,24 +295,28 @@ const TabContainer: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            {/* Right side image content */}
-            <motion.div
-              className="relative h-64 md:h-auto md:w-1/2"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Image
-                src="/images/features/tab-container.png"
-                alt="Illustration for content"
-                fill
-                style={{ objectFit: "cover", objectPosition: "center" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            </motion.div>
+            {/* Right side image content with dynamic images */}
+            <div className="relative h-64 overflow-hidden md:h-auto md:w-1/2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={hoveredTab}
+                  className="absolute inset-0"
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={imageVariants}
+                >
+                  <Image
+                    src={activeTabContent.imageSrc}
+                    alt={activeTabContent.imageAlt}
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </motion.div>
