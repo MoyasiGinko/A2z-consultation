@@ -225,7 +225,20 @@ const BookCallSidebar: React.FC = () => {
             ) : (
               <motion.span className="flex items-center">
                 <span className="mr-2 text-lg">Send Message</span>
-                <Send size={16} />
+                <motion.div
+                  style={{ marginTop: "2px", marginLeft: "-2px" }}
+                  animate={{
+                    y: [0, -3, 0],
+                    rotate: [0, 5, -5, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                >
+                  <Send size={16} />
+                </motion.div>
               </motion.span>
             )}
           </motion.button>
