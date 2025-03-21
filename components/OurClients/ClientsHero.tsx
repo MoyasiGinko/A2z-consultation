@@ -66,7 +66,7 @@ const ClientsHero: FC = () => {
       </motion.div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-sky-600/50 to-sky-700/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-gray-600/80 to-gray-900/90" />
 
       {/* Animated Particles Background */}
       {/* <div className="absolute inset-0">
