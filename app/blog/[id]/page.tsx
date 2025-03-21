@@ -1,4 +1,3 @@
-import RelatedPost from "@/components/Blog/lib/RelatedPost";
 import SharePost from "@/components/Blog/lib/SharePost";
 import BlogsBanner from "@/components/Blog/lib/sub/BlogsBanner";
 import BookCallSidebar from "@/components/Blog/lib/sub/BookCall";
