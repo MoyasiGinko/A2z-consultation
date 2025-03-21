@@ -41,7 +41,7 @@ const OtherSupport = () => {
                     onClick={() => setSelectedTab(index)}
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-sky-400 shadow-sm dark:bg-slate-700">
-                      <div className="h-6 w-6 text-center opacity-80">
+                      <div className="h-6 w-6 text-center font-bold opacity-80">
                         {/* Placeholder for icon - replace with actual icon component */}
                         <span className="text-sm">{tab.id}</span>
                       </div>
