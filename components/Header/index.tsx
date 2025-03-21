@@ -146,6 +146,7 @@ const Header = () => {
   return (
     <motion.header
       ref={headerRef}
+      className="fixed left-0 top-0 z-50 w-full py-4"
       className={`fixed left-0 top-0 z-50 w-full py-4 ${!isMounted ? "opacity-0" : ""}`}
       initial={{
         y: 0,
@@ -153,7 +154,6 @@ const Header = () => {
         boxShadow: "none",
       }}
       animate={{
-        // y: hideOnScroll ? -100 : 0,
         backgroundColor: stickyMenu ? "rgba(255,255,255,0.98)" : "transparent",
         boxShadow: stickyMenu ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
       }}
@@ -301,14 +301,13 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="w-36">
-            <Link
+          <div>
+            <a
               href="/get-in-touch"
-              className="flex items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] px-5 py-2.5 text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
-              prefetch={true}
+              className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
             >
               Get in Touch
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -402,14 +401,13 @@ const Header = () => {
                 </ul>
               </nav>
 
-              <div className="mt-6 w-36">
-                <Link
+              <div className="mt-6">
+                <a
                   href="/get-in-touch"
-                  className="flex items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] px-5 py-2.5 text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
-                  prefetch={true}
+                  className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
                 >
                   Get in Touch
-                </Link>
+                </a>
               </div>
             </motion.div>
           )}
