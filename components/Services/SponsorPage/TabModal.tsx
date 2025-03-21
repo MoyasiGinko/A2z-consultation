@@ -15,6 +15,7 @@ interface TabModalProps {
     modalContent?: {
       detailedTitle?: string;
       detailedDescription?: string;
+      detailedCTA?: string;
     };
   };
 }
@@ -119,7 +120,6 @@ const TabModal: React.FC<TabModalProps> = ({ isOpen, onClose, content }) => {
                 <h3 className="text-2xl font-bold text-gray-900">
                   {content.modalContent?.detailedTitle}
                 </h3>
-                <div className="mt-2 h-1 w-20 bg-blue-600" />
               </div>
 
               {/* Detailed Description Section */}
@@ -129,8 +129,23 @@ const TabModal: React.FC<TabModalProps> = ({ isOpen, onClose, content }) => {
                 </p>
               </div>
 
+              {/* New CTA Section */}
+              {content.modalContent?.detailedCTA && (
+                <div className="mt-4  border-gray-100">
+                  <div className="mt-4 rounded-xl bg-gradient-to-br from-sky-50 to-blue-50 p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-1">
+                        <p className="text-lg font-medium text-gray-900">
+                          {content.modalContent.detailedCTA}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Call to Action */}
-              <div className="mt-8 flex justify-end border-t border-gray-100 pt-6">
+              <div className="mt-2 flex justify-end border-t border-gray-100 pt-6">
                 <button
                   onClick={onClose}
                   className="mr-4 rounded-lg border border-gray-300 px-6 py-2 text-gray-600 transition-all hover:bg-gray-50"
