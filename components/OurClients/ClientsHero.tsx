@@ -49,7 +49,7 @@ const ClientsHero: FC = () => {
   return (
     <motion.div
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-[70vh] w-full overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -95,7 +95,7 @@ const ClientsHero: FC = () => {
       {/* Text Content */}
       <div className="container relative z-10 mx-auto flex h-full flex-col justify-center px-4">
         <motion.div style={{ opacity }}>
-          <motion.span
+          {/* <motion.span
             className="mb-6 inline-block rounded-full bg-sky-500/50 px-4 py-1 text-sm font-medium text-white backdrop-blur-sm"
             custom={0}
             initial="hidden"
@@ -103,7 +103,7 @@ const ClientsHero: FC = () => {
             variants={textVariants}
           >
             Trusted by industry leaders
-          </motion.span>
+          </motion.span> */}
 
           <motion.h1
             className="mb-6 bg-gradient-to-b from-white to-white/80 bg-clip-text text-5xl font-bold leading-tight text-transparent  md:text-7xl"
@@ -160,7 +160,7 @@ const ClientsHero: FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform flex-col items-center"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
@@ -173,7 +173,7 @@ const ClientsHero: FC = () => {
             transition={{ duration: 1.5, repeat: Infinity }}
           />
         </div>
-      </motion.div>
+      </motion.div> */}
     </motion.div>
   );
 };
