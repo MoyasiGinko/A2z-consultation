@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import BoosterCard from "@/components/Boosters";
+import FreeStuff from "@/components/FreeStuff";
 
 export const metadata: Metadata = {
   title: "Free Stuff - A2Z",
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 const FreeStuffPage = () => {
   return (
-    <div className="pb-20 pt-40">
-      <BoosterCard />
+    <div>
+      <FreeStuff />
     </div>
   );
 };
