@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.0",
     "@reduxjs/toolkit": "^2.3.0",
     "@types/bcrypt": "^5.0.1",
     "@types/node": "^20.8.9",
