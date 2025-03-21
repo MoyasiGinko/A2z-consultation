@@ -146,12 +146,12 @@ const FreeStuff: React.FC = () => {
 
       {/* Hero Section */}
       <motion.section
-        className="relative h-96 w-full bg-blue-900"
+        className="relative h-96 w-full bg-sky-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700 opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-500 to-sky-500 opacity-90" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
           <motion.h1
             className="mb-4 text-4xl font-bold md:text-5xl"
@@ -181,7 +181,7 @@ const FreeStuff: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-4 text-3xl font-bold text-blue-800">
+          <h2 className="mb-4 text-3xl font-bold text-sky-500">
             Essential Resources for Immigrants
           </h2>
           <p className="mx-auto max-w-3xl text-gray-700">
@@ -217,7 +217,7 @@ const FreeStuff: React.FC = () => {
                 />
               </div>
               <div className="flex-grow p-6">
-                <h3 className="mb-2 text-xl font-bold text-blue-800">
+                <h3 className="mb-2 text-xl font-bold text-sky-500">
                   {resource.title}
                 </h3>
                 <p className="mb-4 text-gray-700">{resource.description}</p>
@@ -225,7 +225,7 @@ const FreeStuff: React.FC = () => {
               <div className="px-6 pb-6">
                 <button
                   onClick={() => handleDownloadClick(resource)}
-                  className="inline-block w-full rounded-md bg-blue-800 px-4 py-2 text-center font-medium text-white transition duration-300 hover:bg-blue-700"
+                  className="inline-block w-full rounded-md bg-sky-500 px-4 py-2 text-center font-medium text-white transition duration-300 hover:bg-sky-700"
                 >
                   Download Free Guide
                 </button>
@@ -235,37 +235,30 @@ const FreeStuff: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="bg-gray-50 px-4 py-16 md:px-8">
-        <motion.div
-          className="mx-auto max-w-3xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="mb-4 text-3xl font-bold text-blue-800">
-            Stay Updated
-          </h2>
-          <p className="mb-8 text-gray-700">
-            Subscribe to our newsletter to receive new guides, immigration news,
-            and helpful tips directly to your inbox.
-          </p>
-          <div className="flex flex-col gap-2 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-grow rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button className="rounded-md bg-blue-800 px-6 py-3 font-medium text-white transition duration-300 hover:bg-blue-700">
-              Subscribe
-            </button>
-          </div>
-          <p className="mt-4 text-sm text-gray-500">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
-        </motion.div>
-      </section>
+      {/* Call to Action Section */}
+      <motion.div
+        className="mt-24 text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="mb-6 text-3xl font-bold text-gray-800">
+          Ready to join our success stories?
+        </h2>
+        <a href="/get-in-touch">
+          <motion.button
+            className="rounded-full bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 px-8 py-3 font-bold text-white shadow-lg  hover:shadow-xl"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Book a Consultation
+          </motion.button>
+        </a>
+      </motion.div>
 
       {/* Email Collection Modal */}
       <AnimatePresence>
@@ -284,7 +277,7 @@ const FreeStuff: React.FC = () => {
             >
               <div className="p-6">
                 <div className="mb-4 flex items-start justify-between">
-                  <h3 className="text-xl font-bold text-blue-800">
+                  <h3 className="text-xl font-bold text-sky-500">
                     {isSuccess ? "Thank You!" : "Download Your Free Guide"}
                   </h3>
                   <button
@@ -355,7 +348,7 @@ const FreeStuff: React.FC = () => {
                         type="email"
                         id="email"
                         placeholder="your@email.com"
-                        className={`w-full border p-3 ${emailError ? "border-red-500" : "border-gray-300"} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                        className={`w-full border p-3 ${emailError ? "border-red-500" : "border-gray-300"} rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500`}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
@@ -374,7 +367,7 @@ const FreeStuff: React.FC = () => {
 
                     <button
                       onClick={handleSubmit}
-                      className="flex w-full items-center justify-center rounded-md bg-blue-800 px-4 py-3 font-medium text-white transition duration-300 hover:bg-blue-700"
+                      className="flex w-full items-center justify-center rounded-md bg-sky-500 px-4 py-3 font-medium text-white transition duration-300 hover:bg-sky-700"
                       disabled={isLoading}
                     >
                       {isLoading ? (
