@@ -3,10 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import tabsData from "./TabData";
+import TabModal from "./TabModal";
 
 const TabContainer: React.FC = () => {
   // Create dynamic tab content data
-
   const [hoveredTab, setHoveredTab] = useState<string>(tabsData[0].key);
   const [tabPositions, setTabPositions] = useState<
     Array<{ left: number; width: number }>
@@ -14,12 +14,25 @@ const TabContainer: React.FC = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // New state for modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Get the tabs array from tabsData
   const tabs = tabsData.map((tab) => tab.key);
 
   // Get the active tab content
   const activeTabContent =
     tabsData.find((tab) => tab.key === hoveredTab) || tabsData[0];
+
+  // Function to open modal when Learn More is clicked
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Function to close modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   // Measure tabs precisely using refs for each tab
   useEffect(() => {
@@ -239,6 +252,7 @@ const TabContainer: React.FC = () => {
                     {activeTabContent.description}
                   </motion.h2>
 
+                  {/* Update the button to open modal */}
                   <motion.button
                     className="font-mono md:font-sans rounded-lg bg-[#FFF9EB] px-4 py-2.5 text-sm uppercase tracking-wider text-[#533900] transition-all duration-300 hover:bg-[#1a1a1a] hover:text-white md:px-6 md:py-3"
                     variants={buttonVariants}
@@ -246,6 +260,7 @@ const TabContainer: React.FC = () => {
                     whileHover="hover"
                     whileTap={{ scale: 0.95 }}
                     style={{ boxShadow: "0 4px 2px 0 rgba(0, 0, 0, 0.25)" }}
+                    onClick={handleOpenModal} // Add onClick handler here
                   >
                     LEARN MORE
                   </motion.button>
@@ -278,6 +293,13 @@ const TabContainer: React.FC = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* Add TabModal component */}
+      <TabModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        content={activeTabContent}
+      />
     </motion.section>
   );
 };
