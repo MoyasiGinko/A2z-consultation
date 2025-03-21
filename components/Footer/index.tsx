@@ -110,153 +110,159 @@ const Footer: React.FC = () => {
   return (
     <motion.footer
       ref={footerRef}
-      className="mt-20 overflow-hidden"
+      className="overflow-hidden"
       initial="hidden"
       animate={controls}
       variants={containerVariants}
     >
-      <div className="bg-blue-950 text-white">
-        <div className="container mx-auto grid gap-10 px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 xl:grid-cols-[1.2fr_1fr_0.67fr_0.5fr_1fr] xl:gap-12">
-          <motion.div
-            className="bg-sky-500 p-6 text-white"
-            variants={itemVariants}
-          >
-            <Link href="/" className="mb-2 block py-3">
-              <div className="relative h-12 w-40 xl:w-56">
-                <Image
-                  src="/images/logo/logo-dark.png"
-                  alt="A2Z ImmiMigration"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </Link>
-
-            <p className="mb-6 font-medium">
-              Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
-              stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam
-              amet erat lorem stet eos. Diam amet et kasd eos duo.
-            </p>
-
+      <div className="bg-blue-950 py-10 text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap">
+            {/* 1. Logo and Description Column */}
             <motion.div
-              className="flex h-12"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              className="mb-8 w-full pr-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              variants={itemVariants}
             >
-              <input
-                type="email"
-                placeholder="Your email"
-                className="w-0 flex-1 px-4 text-gray-800 focus:outline-none"
-              />
-              <button className="shrink-0 bg-gray-900 px-4 transition-colors duration-300 hover:bg-black">
-                Sign up
-              </button>
+              <Link href="/" className="mb-4 block">
+                <div className="relative h-10 w-40">
+                  <Image
+                    src="/images/logo/logo-white.png"
+                    alt="IMMIGRATION"
+                    layout="fill"
+                    objectFit="contain"
+                    className="object-left"
+                  />
+                </div>
+              </Link>
+
+              <p className="mb-6 text-sm">
+                Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
+                stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam
+                amet erat lorem stet eos. Diam amet et kasd eos duo.
+              </p>
+
+              <div className="flex h-10">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-0 flex-1 px-4 text-gray-800 focus:outline-none"
+                />
+                <button className="bg-blue-600 px-4 text-white transition-colors hover:bg-blue-700">
+                  Sign up
+                </button>
+              </div>
             </motion.div>
-          </motion.div>
 
-          <motion.div className="py-4 lg:py-10" variants={itemVariants}>
-            <h2 className="relative mb-6 text-2xl font-bold">
-              Get in touch
-              <motion.span
-                className="absolute -bottom-2 left-0 h-1 bg-blue-500"
-                initial={{ width: 0 }}
-                animate={{ width: "40px" }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              />
-            </h2>
-
-            <ul className="space-y-2">
-              {contactInfo.map((item) => (
-                <motion.li
-                  key={item.id}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="flex items-center gap-1.5 transition-colors duration-300 hover:text-blue-300"
-                  >
-                    {item.icon}
-                    <span>{item.text}</span>
-                  </Link>
-                </motion.li>
-              ))}
-              <li className="pl-5 pt-1 text-sm text-gray-300">
-                Registered Company in the UK – Company Number SC659958
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div className="py-4 lg:py-10" variants={itemVariants}>
-            <h2 className="relative mb-6 text-2xl font-bold">
-              Services
-              <motion.span
-                className="absolute -bottom-2 left-0 h-1 bg-blue-500"
-                initial={{ width: 0 }}
-                animate={{ width: "40px" }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              />
-            </h2>
-
-            <ul className="space-y-2">
-              {serviceLinks.map((service) => (
-                <motion.li
-                  key={service.id}
-                  className="transition-transform ease-linear"
-                  whileHover={{ x: 10 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Link
-                    href={service.href}
-                    className="flex items-center gap-1.5 transition-colors duration-300 hover:text-blue-300"
-                  >
-                    <ArrowRight size={16} className="text-blue-500" />
-                    <span>{service.name}</span>
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div className="py-4 lg:py-10" variants={itemVariants}>
-            <div className="relative mx-0 h-28 w-30 items-start xl:w-20">
-              <Image
-                src="/images/logo/oisc.png"
-                alt="OISC icon"
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-            <p className="mt-1 text-sm">OISC Member</p>
-            <p className="text-sm">F202100303</p>
-          </motion.div>
-
-          <motion.div className="py-4 lg:py-10 xl:pl-4" variants={itemVariants}>
-            <div className="mb-6 flex items-center justify-between gap-2">
-              {socialLinks.map((socialLink) => (
-                <motion.a
-                  key={socialLink.id}
-                  href={socialLink.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-white transition-all duration-300 hover:text-blue-400"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {socialLink.icon}
-                </motion.a>
-              ))}
-            </div>
-
-            {/* <motion.button
-              className="w-full rounded bg-blue-600 px-4 py-3 font-bold text-white transition-colors duration-300 hover:bg-blue-700"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
+            {/* 2. Get in Touch Column */}
+            <motion.div
+              className="mb-8 w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              variants={itemVariants}
             >
-              Download our free guide
-            </motion.button> */}
-          </motion.div>
+              <h2 className="mb-4 text-xl font-bold">Get in touch</h2>
+
+              <ul className="space-y-3">
+                {contactInfo.map((item) => (
+                  <motion.li
+                    key={item.id}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-2 transition-colors hover:text-blue-300"
+                    >
+                      {item.icon}
+                      <span className="text-sm">{item.text}</span>
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* 3. Services Column */}
+            <motion.div
+              className="mb-8 w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              variants={itemVariants}
+            >
+              <h2 className="mb-4 text-xl font-bold">Services</h2>
+
+              <ul className="space-y-3">
+                {serviceLinks.map((service) => (
+                  <motion.li
+                    key={service.id}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Link
+                      href={service.href}
+                      className="flex items-center gap-2 transition-colors hover:text-blue-300"
+                    >
+                      <ArrowRight size={16} className="text-blue-500" />
+                      <span className="text-sm">{service.name}</span>
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* 4. OISC Column */}
+            <motion.div
+              className="mb-8 w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              variants={itemVariants}
+            >
+              <div className="mb-2 flex items-center">
+                <div className="relative mb-2 h-24 w-24">
+                  <Image
+                    src="/images/logo/oisc.png"
+                    alt="OISC icon"
+                    layout="fill"
+                    objectFit="contain"
+                    className="object-left"
+                  />
+                </div>
+              </div>
+              <p className="mb-1 text-sm">OISC Member</p>
+              <p className="mb-4 text-sm">F202100303</p>
+            </motion.div>
+
+            {/* 5. Social Media Column */}
+            <motion.div
+              className="w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              variants={itemVariants}
+            >
+              <div>
+                <div className="mb-3 flex space-x-4">
+                  {socialLinks.map((socialLink) => (
+                    <motion.a
+                      key={socialLink.id}
+                      href={socialLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white transition-colors hover:text-blue-400"
+                      whileHover={{ scale: 1.2 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {socialLink.icon}
+                    </motion.a>
+                  ))}
+                </div>
+
+                <div className="mb-4 text-xs">
+                  Registered Company in the UK
+                  <br />
+                  Company Number SC659958
+                </div>
+
+                <motion.button
+                  className="w-full rounded bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Download our guide
+                </motion.button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </motion.footer>
