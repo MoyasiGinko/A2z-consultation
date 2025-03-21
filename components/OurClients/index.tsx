@@ -222,16 +222,18 @@ const ClientsPage: FC = () => {
         <h2 className="mb-6 text-3xl font-bold text-gray-800">
           Ready to join our success stories?
         </h2>
-        <motion.button
-          className="rounded-full bg-blue-600 px-8 py-3 font-bold text-white shadow-lg hover:bg-blue-700"
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Book a Consultation
-        </motion.button>
+        <a href="/get-in-touch">
+          <motion.button
+            className="rounded-full bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 px-8 py-3 font-bold text-white shadow-lg  hover:shadow-xl"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Book a Consultation
+          </motion.button>
+        </a>
       </motion.div>
     </div>
   );

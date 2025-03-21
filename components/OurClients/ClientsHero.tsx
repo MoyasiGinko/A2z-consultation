@@ -113,7 +113,7 @@ const ClientsHero: FC = () => {
             variants={textVariants}
           >
             Our{" "}
-            <span className="bg-gradient-to-b from-blue-600 to-sky-500/80 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-b from-sky-600 to-sky-500/80 bg-clip-text text-transparent">
               Clients
             </span>
           </motion.h1>
