@@ -134,12 +134,12 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
           <h2 className="mb-2 text-3xl font-bold text-gray-800">
             {client.name}
           </h2>
-          <p className="mb-4 text-lg text-indigo-600">{client.title}</p>
+          <p className="mb-4 text-lg text-sky-600">{client.title}</p>
 
           <div className="mb-6 flex space-x-4">
             {client.socialLinks.instagram && (
               <motion.a
-                className="text-gray-600 hover:text-indigo-600"
+                className="text-gray-600 hover:text-sky-600"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2 }}
@@ -150,7 +150,7 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
             )}
             {client.socialLinks.youtube && (
               <motion.a
-                className="text-gray-600 hover:text-indigo-600"
+                className="text-gray-600 hover:text-sky-600"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2 }}
@@ -172,12 +172,12 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
       </div>
 
       <motion.div
-        className="mt-8 rounded-lg bg-indigo-50 p-8"
+        className="mt-8 rounded-lg bg-sky-50 p-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 + index * 0.2 }}
       >
-        <p className="mb-4 text-center text-xl font-medium italic text-indigo-800 md:text-2xl">
+        <p className="mb-4 text-center text-xl font-medium italic text-sky-800 md:text-2xl">
           "{client.testimonial.quote}"
         </p>
         <p className="text-right text-gray-600">
@@ -222,16 +222,18 @@ const ClientsPage: FC = () => {
         <h2 className="mb-6 text-3xl font-bold text-gray-800">
           Ready to join our success stories?
         </h2>
-        <motion.button
-          className="rounded-full bg-blue-600 px-8 py-3 font-bold text-white shadow-lg hover:bg-blue-700"
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Book a Consultation
-        </motion.button>
+        <a href="/get-in-touch">
+          <motion.button
+            className="rounded-full bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 px-8 py-3 font-bold text-white shadow-lg  hover:shadow-xl"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Book a Consultation
+          </motion.button>
+        </a>
       </motion.div>
     </div>
   );

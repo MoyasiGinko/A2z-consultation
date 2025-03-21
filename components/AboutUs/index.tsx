@@ -38,12 +38,12 @@ const AboutUs: React.FC = () => {
 
       {/* Hero Section */}
       <motion.section
-        className="relative h-96 w-full bg-blue-900"
+        className="relative h-96 w-full bg-sky-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700 opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-500/95 to-sky-500 opacity-90" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
           <motion.h1
             className="mb-4 text-4xl font-bold md:text-5xl"
@@ -74,7 +74,7 @@ const AboutUs: React.FC = () => {
           variants={staggerContainer}
         >
           <motion.div variants={fadeIn}>
-            <h2 className="mb-6 text-3xl font-bold text-blue-800">
+            <h2 className="mb-6 text-3xl font-bold text-sky-500">
               Our Journey
             </h2>
             <p className="mb-4 text-gray-700">
@@ -126,7 +126,7 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-3xl font-bold text-blue-800">
+            <h2 className="mb-4 text-3xl font-bold text-sky-500">
               Vision & Mission
             </h2>
           </motion.div>
@@ -142,7 +142,7 @@ const AboutUs: React.FC = () => {
               className="rounded-lg bg-white p-8 shadow-md"
               variants={fadeIn}
             >
-              <h3 className="mb-4 text-center text-2xl font-bold text-blue-800">
+              <h3 className="mb-4 text-center text-2xl font-bold text-sky-500">
                 Our Vision
               </h3>
               <p className="text-gray-700">
@@ -160,7 +160,7 @@ const AboutUs: React.FC = () => {
               className="rounded-lg bg-white p-8 shadow-md"
               variants={fadeIn}
             >
-              <h3 className="mb-4 text-center text-2xl font-bold text-blue-800">
+              <h3 className="mb-4 text-center text-2xl font-bold text-sky-500">
                 Our Mission
               </h3>
               <p className="text-gray-700">
@@ -187,9 +187,7 @@ const AboutUs: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-4 text-3xl font-bold text-blue-800">
-            Our Approach
-          </h2>
+          <h2 className="mb-4 text-3xl font-bold text-sky-500">Our Approach</h2>
           <p className="mx-auto max-w-3xl text-gray-700">
             At A2Z Immigrants, we've developed a distinctive methodology that
             combines legal expertise with human-centered care, ensuring your
@@ -230,7 +228,7 @@ const AboutUs: React.FC = () => {
               variants={fadeIn}
             >
               <div className="mb-4 text-4xl">{item.icon}</div>
-              <h3 className="mb-3 text-xl font-bold text-blue-800">
+              <h3 className="mb-3 text-xl font-bold text-sky-500">
                 {item.title}
               </h3>
               <p className="text-gray-700">{item.description}</p>
@@ -249,7 +247,7 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-3xl font-bold text-blue-800">
+            <h2 className="mb-4 text-3xl font-bold text-sky-500">
               Comprehensive Services
             </h2>
             <p className="mx-auto max-w-3xl text-gray-700">
@@ -291,7 +289,7 @@ const AboutUs: React.FC = () => {
                 variants={fadeIn}
               >
                 <div className="mb-4 text-4xl">{service.icon}</div>
-                <h3 className="mb-3 text-xl font-bold text-blue-800">
+                <h3 className="mb-3 text-xl font-bold text-sky-500">
                   {service.title}
                 </h3>
                 <p className="text-gray-700">{service.description}</p>
@@ -302,7 +300,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Our Success Stories Section */}
-      <section className="bg-gradient-to-b from-white to-blue-50 py-20">
+      <section className="bg-gradient-to-b from-white to-sky-50 py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-8">
           <motion.div
             className="mb-16 text-center"
@@ -311,13 +309,11 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <span className="mb-2 inline-block rounded-full bg-blue-100 px-4 py-1 text-sm font-semibold text-blue-800">
+            <span className="mb-2 inline-block rounded-full bg-sky-100 px-4 py-1 text-sm font-semibold text-sky-500">
               Making A Difference
             </span>
-            <h2 className="mb-4 text-4xl font-bold text-blue-900">
-              Our Global Impact
-            </h2>
-            <div className="mx-auto h-1 w-24 bg-blue-600"></div>
+            <h2 className="mb-4 text-4xl font-bold text-sky-900">Our Impact</h2>
+            <div className="mx-auto h-1 w-24 bg-sky-600"></div>
           </motion.div>
 
           {/* Stats Counters */}
@@ -341,7 +337,7 @@ const AboutUs: React.FC = () => {
                 className="flex flex-col items-center rounded-xl bg-white p-8 text-center shadow-lg transition-transform hover:scale-105"
                 variants={fadeIn}
               >
-                <span className="mb-2 text-4xl font-bold text-blue-700">
+                <span className="mb-2 text-4xl font-bold text-sky-700">
                   {stat.number}
                 </span>
                 <span className="text-gray-600">{stat.label}</span>
@@ -357,7 +353,7 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="mb-6 text-center text-2xl font-bold text-blue-900">
+            <h3 className="mb-6 text-center text-2xl font-bold text-sky-900">
               Awards & Accreditations
             </h3>
 
@@ -374,14 +370,14 @@ const AboutUs: React.FC = () => {
               ].map((award, index) => (
                 <motion.div
                   key={index}
-                  className="flex w-64 flex-col items-center rounded-lg border border-gray-100 bg-gray-50 p-5 text-center transition-all hover:border-blue-200 hover:bg-blue-50"
+                  className="flex w-64 flex-col items-center rounded-lg border border-gray-100 bg-gray-50 p-5 text-center transition-all hover:border-sky-200 hover:bg-sky-50"
                   initial={{ opacity: 0, rotateY: 30 }}
                   whileInView={{ opacity: 1, rotateY: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2, duration: 0.5 }}
                 >
                   <span className="mb-3 text-4xl">{award.icon}</span>
-                  <h4 className="font-bold text-blue-800">{award.title}</h4>
+                  <h4 className="font-bold text-sky-500">{award.title}</h4>
                   <span className="text-sm text-gray-600">{award.year}</span>
                 </motion.div>
               ))}
@@ -390,7 +386,7 @@ const AboutUs: React.FC = () => {
 
           {/* Testimonial Preview */}
           <motion.div
-            className="rounded-2xl bg-blue-900 p-10 text-center text-white"
+            className="rounded-2xl bg-sky-900 p-10 text-center text-white"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -403,13 +399,13 @@ const AboutUs: React.FC = () => {
               uncertain and clarity when I was confused. Today, I'm building my
               dream career in a new country thanks to their expertise.
             </p>
-            <div className="mx-auto mb-4 h-px w-24 bg-blue-300"></div>
+            <div className="mx-auto mb-4 h-px w-24 bg-sky-300"></div>
             <p className="font-medium">Elena Petrov, Software Engineer</p>
-            <p className="text-sm text-blue-300">Bulgaria → Canada, 2021</p>
+            <p className="text-sm text-sky-300">Bulgaria → Canada, 2021</p>
 
             <Link
               href="/our-clients"
-              className="mt-8 inline-block rounded-full border border-white bg-transparent px-8 py-3 font-medium transition-colors hover:bg-white hover:text-blue-900"
+              className="mt-8 inline-block rounded-full border border-white bg-transparent px-8 py-3 font-medium transition-colors hover:bg-white hover:text-sky-900"
             >
               Read More Success Stories
             </Link>
@@ -427,7 +423,7 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-3xl font-bold text-blue-800">
+            <h2 className="mb-4 text-3xl font-bold text-sky-500">
               Leadership Team
             </h2>
             <p className="mx-auto max-w-3xl text-gray-700">
@@ -477,10 +473,10 @@ const AboutUs: React.FC = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-blue-800">
+                  <h3 className="text-xl font-bold text-sky-500">
                     {member.name}
                   </h3>
-                  <p className="mb-3 text-blue-600">{member.role}</p>
+                  <p className="mb-3 text-sky-600">{member.role}</p>
                   <p className="text-gray-700">{member.bio}</p>
                 </div>
               </motion.div>
@@ -496,7 +492,7 @@ const AboutUs: React.FC = () => {
           >
             <Link
               href="/about/team"
-              className="inline-block rounded-md bg-blue-800 px-6 py-3 font-medium text-white transition duration-300 hover:bg-blue-700"
+              className="inline-block rounded-md bg-sky-500 px-6 py-3 font-medium text-white transition duration-300 hover:bg-sky-700"
             >
               Meet Our Full Team
             </Link>
@@ -504,72 +500,8 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Values Section */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
-        <motion.div
-          className="mb-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="mb-4 text-3xl font-bold text-blue-800">Core Values</h2>
-          <p className="mx-auto max-w-3xl text-gray-700">
-            These principles guide every decision we make and every service we
-            provide.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          {[
-            {
-              value: "Integrity",
-              description:
-                "We maintain the highest ethical standards, providing honest assessments and transparent guidance even when it's challenging.",
-              icon: "⚖️",
-            },
-            {
-              value: "Empathy",
-              description:
-                "We recognize the human stories behind every case and approach our work with compassion and cultural sensitivity.",
-              icon: "❤️",
-            },
-            {
-              value: "Excellence",
-              description:
-                "We commit to continuous learning, meticulous attention to detail, and outstanding results in everything we do.",
-              icon: "🌟",
-            },
-            {
-              value: "Advocacy",
-              description:
-                "We champion the rights and dignity of immigrants through our services, community involvement, and policy engagement.",
-              icon: "🔊",
-            },
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="rounded-lg bg-white p-6 text-center shadow-md"
-              variants={fadeIn}
-            >
-              <div className="mb-4 text-3xl">{item.icon}</div>
-              <h3 className="mb-3 text-lg font-bold text-blue-800">
-                {item.value}
-              </h3>
-              <p className="text-gray-700">{item.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
       {/* Call to Action Section */}
-      <section className="bg-blue-800 px-4 py-16 text-white md:px-8">
+      <section className="bg-sky-500 px-4 py-16 text-white md:px-8">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -588,13 +520,13 @@ const AboutUs: React.FC = () => {
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/services"
-              className="rounded-md bg-white px-6 py-3 font-medium text-blue-800 transition duration-300 hover:bg-gray-100"
+              className="rounded-md bg-white px-6 py-3 font-medium text-sky-500 transition duration-300 hover:bg-gray-100"
             >
               Explore Our Services
             </Link>
             <Link
               href="/contact"
-              className="rounded-md border-2 border-white bg-transparent px-6 py-3 font-medium transition duration-300 hover:bg-blue-700"
+              className="rounded-md border-2 border-white bg-transparent px-6 py-3 font-medium transition duration-300 hover:bg-sky-700"
             >
               Schedule a Consultation
             </Link>
