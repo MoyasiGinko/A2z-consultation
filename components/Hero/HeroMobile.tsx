@@ -17,13 +17,13 @@ const HeroMobile: React.FC = () => {
     {
       id: 2,
       type: "COMPLIANCE",
-      title: "Stay Compliant And Audit Ready All Time",
+      title: "STAY COMPLIANT & AUDIT READY AT ALL TIMES",
       imageName: "compliance",
     },
     {
       id: 3,
       type: "SKILLED WORKER VISA",
-      title: "Nothing Hidden, Fully Transparent Process",
+      title: "NOTHING HIDDEN, FULLY TRANSPARENT PROCESS",
       imageName: "immigration",
     },
   ];
