@@ -146,7 +146,7 @@ const Header = () => {
   return (
     <motion.header
       ref={headerRef}
-      className="fixed left-0 top-0 z-50 w-full py-4"
+      // className="fixed left-0 top-0 z-50 w-full py-4"
       className={`fixed left-0 top-0 z-50 w-full py-4 ${!isMounted ? "opacity-0" : ""}`}
       initial={{
         y: 0,
