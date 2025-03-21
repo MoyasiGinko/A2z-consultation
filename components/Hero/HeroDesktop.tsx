@@ -112,7 +112,7 @@ const HeroDesktop: React.FC = () => {
       ],
     },
     compliance: {
-      title: "ENSURE YOUR COMPLIANCE TODAY",
+      title: "STAY COMPLIANT & AUDIT READY AT ALL TIMES",
       description: "STAY AHEAD OF REGULATIONS",
       cta: "GET A COMPLIANCE AUDIT",
       features: [
@@ -180,8 +180,9 @@ const HeroDesktop: React.FC = () => {
     },
     immigration: {
       title: "STREAMLINE YOUR IMMIGRATION PROCESS",
-      description: "LET US GUIDE YOUR JOURNEY",
-      cta: "SCHEDULE A STRATEGY CALL",
+      description:
+        "SUCCESSFUL VISA APPLICATIONS REQUIRE MEETING ELIGIBILITY CRITERIA, ACCURATE DOCUMENTATION, AND SKILLS DEMONSTRATION. OUR MOCK SESSIONS IMPROVE CONFIDENCE AND SUCCESS RATES.",
+      cta: "",
       features: [
         {
           icon: (
@@ -709,8 +710,8 @@ const HeroDesktop: React.FC = () => {
                 </div>
 
                 {/* Responsive content layout - stacked on mobile, side-by-side on larger screens */}
-                <div className="relative z-10 flex flex-col sm:flex-row">
-                  <div className="flex flex-1 flex-col">
+                <div className="relative z-10 flex min-h-[236px] flex-col sm:flex-row">
+                  <div className="flex flex-1 flex-col pr-1">
                     <motion.h3
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -749,9 +750,9 @@ const HeroDesktop: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4, type: "spring" }}
-                    className="flex justify-center sm:justify-end"
+                    className="flex items-center justify-center sm:justify-end"
                   >
-                    <div className="mt-2 h-24 w-24 overflow-hidden bg-transparent sm:mt-8 sm:h-36 sm:w-36">
+                    <div className="mt-2 flex h-24 w-24 items-center justify-center overflow-hidden bg-transparent sm:mt-0 sm:h-36 sm:w-36">
                       <motion.div
                         animate={floatingAnimation}
                         style={{
@@ -760,6 +761,7 @@ const HeroDesktop: React.FC = () => {
                           height: "100%",
                           transform: "perspective(1000px) rotateY(10deg)",
                         }}
+                        className="flex items-center justify-center"
                       >
                         <Image
                           src={`/images/hero/${activeTab}.png`}

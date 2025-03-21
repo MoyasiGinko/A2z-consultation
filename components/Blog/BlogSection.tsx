@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import UnderlineAnimation from "../Common/UnderlineAnimate";
 
 interface BlogPost {
   id: number;
@@ -209,7 +210,7 @@ const BlogSection: React.FC = () => {
           }}
         >
           <motion.h2
-            className="text-center text-3xl font-bold lg:text-4xl"
+            className="bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl font-bold text-transparent "
             initial={{ opacity: 0, y: -20 }}
             animate={controls}
             variants={{
@@ -222,17 +223,7 @@ const BlogSection: React.FC = () => {
           >
             Blog & News
           </motion.h2>
-          <motion.div
-            className="mx-auto mt-4 block h-2 bg-blue-600"
-            initial={{ width: 0 }}
-            animate={{ width: ["0%", "15%", "0%"] }}
-            transition={{
-              duration: 3,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "loop",
-            }}
-          />
+          <UnderlineAnimation />
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">

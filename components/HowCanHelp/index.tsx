@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowRight, FiSend } from "react-icons/fi";
+import UnderlineAnimation from "../Common/UnderlineAnimate";
 
 interface TabContent {
   id: string;
@@ -28,7 +29,7 @@ const HowWeCanHelpYou = () => {
       content: {
         heading: "Transfer money to anyone, instantly! No fees, no BS.",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "We guide businesses through the sponsor licence application process, ensuring Home Office compliance. Our experts prepare documents, conduct mock audits, and train your key personnel to maximize approval chances and minimize delays.",
       },
     },
     {
@@ -40,7 +41,7 @@ const HowWeCanHelpYou = () => {
       content: {
         heading: "Stay compliant with all immigration regulations",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Our services help you navigate complex immigration laws confidently. We implement systems for record maintenance, conduct compliance audits, provide right-to-work check training, and offer ongoing support to ensure your business remains compliant.",
       },
     },
     {
@@ -52,7 +53,7 @@ const HowWeCanHelpYou = () => {
       content: {
         heading: "Streamlined visa process for skilled workers",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Our end-to-end service simplifies international talent recruitment. We handle Sponsorship Certificates, advise on salary requirements, prepare visa applications, and support both employers and employees throughout the process.",
       },
     },
   ];
@@ -248,27 +249,24 @@ const HowWeCanHelpYou = () => {
           variants={titleVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="relative mb-8 text-center text-2xl font-bold tracking-tight text-sky-700 sm:text-3xl md:mb-10 md:text-4xl lg:mb-12 lg:text-5xl"
+          className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl"
         >
           How we can help you?
-          <motion.span
-            className="absolute -bottom-3 left-1/2 h-1 w-16 -translate-x-1/2 transform rounded-full bg-sky-500"
-            initial={{ width: 0 }}
-            animate={isVisible ? { width: 80 } : { width: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          ></motion.span>
+          <UnderlineAnimation />
         </motion.h2>
 
         <motion.p
           variants={subtitleVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="mb-10 text-center text-sm font-medium text-gray-600 sm:text-base md:mb-12 lg:mb-16 lg:text-lg"
+          className="mb-8 text-center text-sm font-medium text-gray-600 sm:text-base md:mb-12 lg:text-lg"
         >
           Immigration Support For Your Business
-          <br className="md:hidden" />
-          <span className="hidden md:inline"> - </span>
-          All Through A Single Platform
+          <span className="hidden md:inline">
+            {" "}
+            - All Through A Single Platform
+          </span>
+          <span className="md:hidden"> - Single Platform Solution</span>
         </motion.p>
 
         <motion.div
@@ -292,7 +290,7 @@ const HowWeCanHelpYou = () => {
               boxShadow: "0 20px 50px rgba(3, 105, 161, 0.3)",
             }}
           >
-            <div className="relative w-full rounded-[30px] p-5 sm:rounded-[40px] sm:p-6 md:p-8 lg:p-10">
+            <div className="relative min-h-[300px] w-full rounded-[30px] p-5 sm:rounded-[40px] sm:p-6 md:min-h-[350px] md:p-8 lg:min-h-[400px] lg:p-10">
               {/* White dots at corners */}
               <div className="absolute left-4 top-4 h-3 w-3 rounded-full bg-white sm:left-6 sm:top-6 sm:h-4 sm:w-4 md:left-8 md:top-8"></div>
               <div className="absolute right-4 top-4 h-3 w-3 rounded-full bg-white sm:right-6 sm:top-6 sm:h-4 sm:w-4 md:right-8 md:top-8"></div>

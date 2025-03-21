@@ -50,8 +50,8 @@ const clientData: ClientInfo[] = [
     imageSrc: "/images/user/user-01.png",
   },
   {
-    id: "mike-thurston",
-    name: "Mike Thurston",
+    id: "nike-thurston",
+    name: "Nike Thurston",
     title: "Founder of THRST",
     socialLinks: {
       instagram: "https://instagram.com/mikethurston",
@@ -77,8 +77,8 @@ const clientData: ClientInfo[] = [
   },
 
   {
-    id: "mike-thurston",
-    name: "Mike Thurston",
+    id: "spike-thurston",
+    name: "Spike Thurston",
     title: "Founder of THRST",
     socialLinks: {
       instagram: "https://instagram.com/mikethurston",

@@ -11,6 +11,7 @@ import {
   useInView,
 } from "framer-motion";
 import StepModal from "./StepModal";
+import UnderlineAnimation from "../Common/UnderlineAnimate";
 
 // Animated path component for journey visualization
 // Enhanced animated path component with optimized performance and advanced animations
@@ -366,36 +367,36 @@ const StepByStep = () => {
   const steps = [
     {
       id: 1,
-      image: "/images/steps/step-1.png",
-      title: "Initial Assessment",
+      image: "/images/steps/step-1.svg",
+      title: "Get your Free Eligibility Assessment",
       description:
-        "We evaluate your eligibility for the UK Skilled Worker Visa based on your qualifications and experience.",
+        "Apply for a sponsor licence to hire international talent. We guide you through preparing and submitting the application, ensuring all documentation meets Home Office requirements.",
     },
     {
       id: 2,
-      image: "/images/steps/step-2.png",
-      title: "Documentation Preparation",
+      image: "/images/steps/step-2.svg",
+      title: "Get your Sponsor Licence",
       description:
-        "Our team helps you gather and prepare all necessary documentation for your visa application.",
+        "Assign a CoS to candidates who meet job and skill requirements. We help secure and allocate the correct type of CoS, ensuring your candidate satisfies salary and skill criteria to avoid delays in the visa process.",
     },
     {
       id: 3,
-      image: "/images/steps/step-3.png",
-      title: "Visa Application",
+      image: "/images/steps/step-3.svg",
+      title: "ASSIGN CERTIFICATE of SPONSORSHIP (CoS) to Your Skilled Worker",
       description:
-        "We guide you through the entire application process, ensuring all requirements are met.",
+        "With the CoS assigned, your candidate can then apply for their Skilled Worker Visa. A2zImmigrations takes care of the entire process, keeping you updated along the way. We also provide a free candidate eligibility check to avoid visa rejections.",
     },
     {
       id: 4,
-      image: "/images/steps/step-4.png",
-      title: "Moving to the UK",
+      image: "/images/steps/step-4.svg",
+      title: "Submit Application for the Skilled Worker",
       description:
-        "Once approved, we help you with the transition to starting your new life in the UK.",
+        "As a sponsor, you have to track employ-ee records, report any changes in employment status, and monitor visa expiration dates. A2zImmigrations keeps you ready for Home Office audits and helps with essential compliance management to",
     },
     {
       id: 5,
-      image: "/images/steps/step-5.png",
-      title: "Post-Visa Support",
+      image: "/images/steps/step-5.svg",
+      title: "Maintain HR & Compliance",
       description:
         "Our support doesn't end with your visa approval. We're here to help you settle in and succeed.",
     },
@@ -531,19 +532,16 @@ const StepByStep = () => {
             />
 
             <motion.h1
-              className="relative mb-6 text-5xl font-black tracking-tight text-gray-900 md:text-6xl lg:text-7xl"
+              className="relative mb-6 text-3xl font-black tracking-tight text-gray-900 md:text-4xl lg:text-6xl"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <span className="relative inline-block">
-                <span className="relative z-10">Your Path to the UK</span>
-                <motion.span
-                  className="absolute -bottom-3 left-1/2 h-1 w-16 -translate-x-1/2 transform rounded-full bg-sky-500"
-                  initial={{ width: 0 }}
-                  animate={{ width: 80 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                ></motion.span>
+                <span className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl">
+                  Step-by-Step Guide to UK Skilled Worker Visa Sponsorship
+                </span>
+                <UnderlineAnimation />
               </span>
             </motion.h1>
 
@@ -553,8 +551,8 @@ const StepByStep = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Discover our innovative approach to securing your UK Skilled
-              Worker Visa with our expert guidance and support at every step.
+              Navigate the UK visa sponsorship process with confidence through
+              our comprehensive guide and expert support at every stage.
             </motion.p>
           </div>
 

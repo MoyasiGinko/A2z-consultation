@@ -200,7 +200,19 @@ const WhoLovesUs: React.FC = () => {
           <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
             What Our Clients Say
           </h2>
-          <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-white/40"></div>
+          <motion.div
+            className="mx-auto mb-2 h-1 w-16 rounded-full bg-white/70"
+            animate={{
+              width: ["0%", "30%"],
+              opacity: [0.4, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 2.5,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
           <p className="mx-auto max-w-2xl text-lg text-white/90">
             Discover why our clients love working with us. Real stories from
             real people who have experienced the difference our services make.
