@@ -1,4 +1,4 @@
-import Docs from "@/components/Docs";
+import AboutUs from "@/components/AboutUs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <Docs />;
+  return <AboutUs />;
 }
