@@ -36,9 +36,9 @@ const tabsData: TabContent[] = [
     imageSrc: "/images/features/tab-container-02.png",
     imageAlt: "Submitting application documents",
     modalContent: {
-      detailedTitle: "Initial Compliance Check",
+      detailedTitle: "Submit Application",
       detailedDescription:
-        "The Home Office expects businesses to have robust HR and compliance systems in place before granting a Sponsor Licence. This step involves ensuring you have proper right-to-work checks, record-keeping procedures, and reporting mechanisms. We assist by conducting a mock compliance audit to help you meet Home Office standards and avoid potential refusals.",
+        "Once your business is fully prepared, the next step is submitting the Sponsor Licence application online. Our experts provide a thorough review of your supporting documents and letters, ensuring they are well-structured, persuasive, and compliant with Home Office standards to strengthen your case and maximize the chance of approval. We also handle all follow-ups and communications with the Home Office, addressing any additional requests or clarifications to ensure a smooth approval process.",
       detailedCTA:
         "📩 Need expert guidance? Contact us today to begin your Sponsor Licence application with confidence!",
     },
@@ -51,9 +51,9 @@ const tabsData: TabContent[] = [
     imageSrc: "/images/features/tab-container-03.png",
     imageAlt: "Customer support representative",
     modalContent: {
-      detailedTitle: "Submit Application",
+      detailedTitle: "Initial Compliance Check",
       detailedDescription:
-        "Once your business is fully prepared, the next step is submitting the Sponsor Licence application online. Our experts provide a thorough review of your supporting documents and letters, ensuring they are well-structured, persuasive, and compliant with Home Office standards to strengthen your case and maximize the chance of approval. We also handle all follow-ups and communications with the Home Office, addressing any additional requests or clarifications to ensure a smooth approval process.",
+        "The Home Office expects businesses to have robust HR and compliance systems in place before granting a Sponsor Licence. This step involves ensuring you have proper right-to-work checks, record-keeping procedures, and reporting mechanisms. We assist by conducting a mock compliance audit to help you meet Home Office standards and avoid potential refusals.",
       detailedCTA:
         "📩 Need expert guidance? Contact us today to begin your Sponsor Licence application with confidence!",
     },

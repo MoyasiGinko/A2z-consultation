@@ -108,7 +108,7 @@ const TabModal: React.FC<TabModalProps> = ({ isOpen, onClose, content }) => {
                 </button>
 
                 {/* Header Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
                   <div className="mb-1 sm:mb-2">
                     <span className="inline-block rounded-full bg-blue-600 px-2 py-0.5 text-xs font-medium text-white sm:px-3 sm:py-1 sm:text-sm">
                       {content.key.split(" ")[0] === "EXPERT"
@@ -127,10 +127,10 @@ const TabModal: React.FC<TabModalProps> = ({ isOpen, onClose, content }) => {
               </div>
 
               {/* Modal Body */}
-              <div className="p-4 sm:p-6 md:p-8">
+              <div className="p-2 sm:p-4">
                 {/* Detailed Title Section */}
                 {content.modalContent?.detailedTitle && (
-                  <div className="mb-4 sm:mb-6">
+                  <div className="mb-1 sm:mb-2">
                     <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">
                       {content.modalContent.detailedTitle}
                     </h3>
@@ -162,7 +162,7 @@ const TabModal: React.FC<TabModalProps> = ({ isOpen, onClose, content }) => {
                 )}
 
                 {/* Call to Action */}
-                <div className="mt-6 flex justify-end border-t border-gray-100 pt-4 sm:pt-6">
+                <div className="mt-2 flex justify-end border-t border-gray-100 pt-2">
                   <button
                     onClick={onClose}
                     className="mr-3 rounded-lg border border-gray-300 px-4 py-1.5 text-sm text-gray-600 transition-all hover:bg-gray-50 sm:mr-4 sm:px-6 sm:py-2 sm:text-base"
