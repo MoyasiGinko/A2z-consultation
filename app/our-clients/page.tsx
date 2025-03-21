@@ -1,17 +1,19 @@
 import React from "react";
 import { Metadata } from "next";
-import Game from "@/components/Games";
+import ClientsPage from "@/components/OurClients";
+import ClientsHero from "@/components/OurClients/ClientsHero";
 
 export const metadata: Metadata = {
-  title: "Game Page - Cars World  | Play for Free Donation",
-  description: "This is built by bahadur",
+  title: "Our Clients - A2Z",
+  description: "A2Z Immigrants",
   // other metadata
 };
 
 const OurClientsPage = () => {
   return (
-    <div className="pb-20 pt-40">
-      <Game />
+    <div>
+      <ClientsHero />
+      <ClientsPage />
     </div>
   );
 };

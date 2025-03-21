@@ -1,0 +1,608 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+
+const AboutUs: React.FC = () => {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  return (
+    <>
+      <Head>
+        <title>About Us | A2Z Immigrants</title>
+        <meta
+          name="description"
+          content="Learn about A2Z Immigrants - your trusted partner for immigration services and support since 2015. Discover our mission, team, and approach to helping immigrants worldwide."
+        />
+      </Head>
+
+      {/* Hero Section */}
+      <motion.section
+        className="relative h-96 w-full bg-blue-900"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700 opacity-90" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
+          <motion.h1
+            className="mb-4 text-4xl font-bold md:text-5xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            About A2Z Immigrants
+          </motion.h1>
+          <motion.p
+            className="max-w-3xl text-xl md:text-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Your Trusted Immigration Partner Since 2015
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Our Story Section */}
+      <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
+        <motion.div
+          className="grid grid-cols-1 items-center gap-12 md:grid-cols-2"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.div variants={fadeIn}>
+            <h2 className="mb-6 text-3xl font-bold text-blue-800">
+              Our Journey
+            </h2>
+            <p className="mb-4 text-gray-700">
+              Founded in 2015 by Sarah Johnson, a former immigration attorney
+              with firsthand experience as an immigrant, A2Z Immigrants was born
+              from a vision to transform immigration services from an impersonal
+              bureaucratic process into a compassionate human experience.
+            </p>
+            <p className="mb-4 text-gray-700">
+              After witnessing countless families struggle through complex
+              immigration procedures without proper guidance, Sarah assembled a
+              team of dedicated specialists who shared her passion for immigrant
+              advocacy. What began as a small four-person consultancy in a
+              modest office has grown into a respected organization with over 35
+              team members serving clients in 27 countries.
+            </p>
+            <p className="text-gray-700">
+              Through economic fluctuations, policy changes, and even a global
+              pandemic, our commitment has remained unwavering: to provide
+              transparent, ethical guidance to every person seeking to build a
+              new life abroad. Today, our success stories include over 8,000
+              families and individuals who have achieved their immigration
+              dreams with our support.
+            </p>
+          </motion.div>
+          <motion.div
+            className="relative h-80 overflow-hidden rounded-lg shadow-xl"
+            variants={fadeIn}
+          >
+            <Image
+              src="/images/our-story.jpg"
+              alt="A2Z Immigrants team members"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
+              priority
+            />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Our Vision and Mission Section */}
+      <section className="bg-gray-50 px-4 py-16 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="mb-4 text-3xl font-bold text-blue-800">
+              Vision & Mission
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 gap-10 md:grid-cols-2"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.div
+              className="rounded-lg bg-white p-8 shadow-md"
+              variants={fadeIn}
+            >
+              <h3 className="mb-4 text-center text-2xl font-bold text-blue-800">
+                Our Vision
+              </h3>
+              <p className="text-gray-700">
+                We envision a world where geographical borders are not barriers
+                to human potential; where immigrants are welcomed with dignity
+                and respect; and where the cultural, economic, and social
+                contributions of immigrants are celebrated in their new
+                communities. We strive for a future where the immigration
+                process is accessible, understandable, and empowering for every
+                individual, regardless of background or circumstance.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="rounded-lg bg-white p-8 shadow-md"
+              variants={fadeIn}
+            >
+              <h3 className="mb-4 text-center text-2xl font-bold text-blue-800">
+                Our Mission
+              </h3>
+              <p className="text-gray-700">
+                A2Z Immigrants exists to demystify and humanize the immigration
+                process by providing expert guidance, personalized support, and
+                clear information at every step. We commit to ethical practices
+                that prioritize client wellbeing, maintain complete
+                transparency, and advocate for fair treatment of all immigrants.
+                Through our comprehensive services, community education
+                initiatives, and policy advocacy, we empower individuals to
+                navigate their immigration journeys with confidence and dignity.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Approach Section */}
+      <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
+        <motion.div
+          className="mb-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="mb-4 text-3xl font-bold text-blue-800">
+            Our Approach
+          </h2>
+          <p className="mx-auto max-w-3xl text-gray-700">
+            At A2Z Immigrants, we've developed a distinctive methodology that
+            combines legal expertise with human-centered care, ensuring your
+            immigration journey is both successful and supportive.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 gap-8 md:grid-cols-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          {[
+            {
+              title: "Personalized Strategy",
+              description:
+                "We analyze your unique circumstances, goals, and timeline to create a tailored immigration plan optimized for your specific situation.",
+              icon: "🔍",
+            },
+            {
+              title: "Transparent Communication",
+              description:
+                "We believe in complete clarity—explaining complex procedures in understandable terms, providing realistic timelines, and being honest about potential challenges.",
+              icon: "💬",
+            },
+            {
+              title: "Continuous Support",
+              description:
+                "Our commitment extends beyond paperwork. We provide cultural integration resources, community connections, and ongoing support throughout your adjustment period.",
+              icon: "🤝",
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="rounded-lg bg-white p-8 text-center shadow-md"
+              variants={fadeIn}
+            >
+              <div className="mb-4 text-4xl">{item.icon}</div>
+              <h3 className="mb-3 text-xl font-bold text-blue-800">
+                {item.title}
+              </h3>
+              <p className="text-gray-700">{item.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Our Services Section */}
+      <section className="bg-gray-50 px-4 py-16 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="mb-4 text-3xl font-bold text-blue-800">
+              Comprehensive Services
+            </h2>
+            <p className="mx-auto max-w-3xl text-gray-700">
+              Our expertise spans the entire immigration spectrum, allowing us
+              to support you at every stage.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 gap-8 md:grid-cols-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {[
+              {
+                title: "Visa & Immigration Applications",
+                description:
+                  "Expert processing of family, employment, student, visitor, humanitarian, and specialized visa categories with meticulous documentation preparation.",
+                icon: "📄",
+              },
+              {
+                title: "Legal Advisory Services",
+                description:
+                  "Strategic consultations with immigration specialists, case evaluations, compliance reviews, and representation during administrative proceedings.",
+                icon: "⚖️",
+              },
+              {
+                title: "Settlement & Integration",
+                description:
+                  "Comprehensive support for housing, employment, education, healthcare access, language resources, and cultural orientation in your new country.",
+                icon: "🏠",
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                className="h-full rounded-lg bg-white p-8 text-center shadow-md"
+                variants={fadeIn}
+              >
+                <div className="mb-4 text-4xl">{service.icon}</div>
+                <h3 className="mb-3 text-xl font-bold text-blue-800">
+                  {service.title}
+                </h3>
+                <p className="text-gray-700">{service.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Success Stories Section */}
+      <section className="bg-gradient-to-b from-white to-blue-50 py-20">
+        <div className="mx-auto max-w-6xl px-4 md:px-8">
+          <motion.div
+            className="mb-16 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="mb-2 inline-block rounded-full bg-blue-100 px-4 py-1 text-sm font-semibold text-blue-800">
+              Making A Difference
+            </span>
+            <h2 className="mb-4 text-4xl font-bold text-blue-900">
+              Our Global Impact
+            </h2>
+            <div className="mx-auto h-1 w-24 bg-blue-600"></div>
+          </motion.div>
+
+          {/* Stats Counters */}
+          <motion.div
+            className="mb-16 grid grid-cols-2 gap-6 md:grid-cols-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {[
+              { number: "8,000+", label: "Success Stories" },
+              { number: "27", label: "Countries Served" },
+              { number: "94%", label: "Success Rate" },
+              { number: "1,200+", label: "Families Reunited" },
+              { number: "3,500+", label: "Employment Visas" },
+              { number: "500+", label: "Humanitarian Cases" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center rounded-xl bg-white p-8 text-center shadow-lg transition-transform hover:scale-105"
+                variants={fadeIn}
+              >
+                <span className="mb-2 text-4xl font-bold text-blue-700">
+                  {stat.number}
+                </span>
+                <span className="text-gray-600">{stat.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Recognition Carousel */}
+          <motion.div
+            className="mb-12 overflow-hidden rounded-xl bg-white p-8 shadow-xl"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="mb-6 text-center text-2xl font-bold text-blue-900">
+              Awards & Accreditations
+            </h3>
+
+            <div className="flex flex-wrap justify-center gap-8">
+              {[
+                {
+                  icon: "🏆",
+                  title: "Excellence in Immigration",
+                  year: "2022",
+                },
+                { icon: "🌟", title: "Community Impact Award", year: "2021" },
+                { icon: "🥇", title: "Best Client Experience", year: "2019" },
+                { icon: "📜", title: "IAIC Certified", year: "2018" },
+              ].map((award, index) => (
+                <motion.div
+                  key={index}
+                  className="flex w-64 flex-col items-center rounded-lg border border-gray-100 bg-gray-50 p-5 text-center transition-all hover:border-blue-200 hover:bg-blue-50"
+                  initial={{ opacity: 0, rotateY: 30 }}
+                  whileInView={{ opacity: 1, rotateY: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2, duration: 0.5 }}
+                >
+                  <span className="mb-3 text-4xl">{award.icon}</span>
+                  <h4 className="font-bold text-blue-800">{award.title}</h4>
+                  <span className="text-sm text-gray-600">{award.year}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Testimonial Preview */}
+          <motion.div
+            className="rounded-2xl bg-blue-900 p-10 text-center text-white"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="mb-6 text-5xl">❝</div>
+            <p className="mb-6 text-xl font-light italic">
+              A2Z Immigrants didn't just help with my paperwork—they transformed
+              my entire journey. Their team gave me confidence when I was
+              uncertain and clarity when I was confused. Today, I'm building my
+              dream career in a new country thanks to their expertise.
+            </p>
+            <div className="mx-auto mb-4 h-px w-24 bg-blue-300"></div>
+            <p className="font-medium">Elena Petrov, Software Engineer</p>
+            <p className="text-sm text-blue-300">Bulgaria → Canada, 2021</p>
+
+            <Link
+              href="/our-clients"
+              className="mt-8 inline-block rounded-full border border-white bg-transparent px-8 py-3 font-medium transition-colors hover:bg-white hover:text-blue-900"
+            >
+              Read More Success Stories
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Meet the Team Section */}
+      <section className="bg-gray-50 px-4 py-16 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="mb-4 text-3xl font-bold text-blue-800">
+              Leadership Team
+            </h2>
+            <p className="mx-auto max-w-3xl text-gray-700">
+              Meet the dedicated professionals guiding our organization's
+              mission and vision.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 gap-8 md:grid-cols-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "Founder & Chief Executive Officer",
+                bio: "A former immigration attorney with 20+ years of experience, Sarah founded A2Z Immigrants after immigrating from Ireland herself. Her personal journey through the immigration system inspired her to create a more compassionate approach to immigration services. She holds a J.D. from Harvard Law School and has been recognized as one of the '50 Most Influential Immigrants' by Global Leadership Magazine.",
+                image: "/images/team-1.jpg",
+              },
+              {
+                name: "Miguel Rodriguez",
+                role: "Chief Operations Officer",
+                bio: "Miguel joined A2Z in 2016 after a successful career in international development. Born in Mexico and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Miguel specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
+                image: "/images/team-2.jpg",
+              },
+              {
+                name: "Aisha Patel",
+                role: "Director of Client Services",
+                bio: "With a background in social work and immigration policy, Aisha leads our client experience team with empathy and precision. After experiencing the challenges of the immigration system with her own family, she dedicated her career to improving this journey for others. Aisha has developed our renowned client-centered methodology and training program that ensures consistent, compassionate service across all our locations.",
+                image: "/images/team-3.jpg",
+              },
+            ].map((member, index) => (
+              <motion.div
+                key={index}
+                className="overflow-hidden rounded-lg bg-white shadow-md"
+                variants={fadeIn}
+              >
+                <div className="relative h-64 w-full">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-blue-800">
+                    {member.name}
+                  </h3>
+                  <p className="mb-3 text-blue-600">{member.role}</p>
+                  <p className="text-gray-700">{member.bio}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="mt-12 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <Link
+              href="/about/team"
+              className="inline-block rounded-md bg-blue-800 px-6 py-3 font-medium text-white transition duration-300 hover:bg-blue-700"
+            >
+              Meet Our Full Team
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Core Values Section */}
+      <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
+        <motion.div
+          className="mb-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="mb-4 text-3xl font-bold text-blue-800">Core Values</h2>
+          <p className="mx-auto max-w-3xl text-gray-700">
+            These principles guide every decision we make and every service we
+            provide.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          {[
+            {
+              value: "Integrity",
+              description:
+                "We maintain the highest ethical standards, providing honest assessments and transparent guidance even when it's challenging.",
+              icon: "⚖️",
+            },
+            {
+              value: "Empathy",
+              description:
+                "We recognize the human stories behind every case and approach our work with compassion and cultural sensitivity.",
+              icon: "❤️",
+            },
+            {
+              value: "Excellence",
+              description:
+                "We commit to continuous learning, meticulous attention to detail, and outstanding results in everything we do.",
+              icon: "🌟",
+            },
+            {
+              value: "Advocacy",
+              description:
+                "We champion the rights and dignity of immigrants through our services, community involvement, and policy engagement.",
+              icon: "🔊",
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="rounded-lg bg-white p-6 text-center shadow-md"
+              variants={fadeIn}
+            >
+              <div className="mb-4 text-3xl">{item.icon}</div>
+              <h3 className="mb-3 text-lg font-bold text-blue-800">
+                {item.value}
+              </h3>
+              <p className="text-gray-700">{item.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="bg-blue-800 px-4 py-16 text-white md:px-8">
+        <motion.div
+          className="mx-auto max-w-4xl text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="mb-6 text-3xl font-bold">
+            Begin Your Immigration Journey With Confidence
+          </h2>
+          <p className="mb-8 text-xl">
+            Join thousands of successful clients who have trusted A2Z Immigrants
+            to guide them through the complexities of immigration. Our team is
+            ready to create a customized plan for your specific needs.
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href="/services"
+              className="rounded-md bg-white px-6 py-3 font-medium text-blue-800 transition duration-300 hover:bg-gray-100"
+            >
+              Explore Our Services
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-md border-2 border-white bg-transparent px-6 py-3 font-medium transition duration-300 hover:bg-blue-700"
+            >
+              Schedule a Consultation
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+    </>
+  );
+};
+
+export default AboutUs;

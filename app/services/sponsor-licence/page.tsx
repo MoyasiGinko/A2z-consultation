@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import BoosterCard from "@/components/Boosters";
+import BoosterCard from "@/components/FreeStuff";
 import SponsorBanner from "@/components/Services/SponsorPage/SponsorBanner";
 import Brands from "@/components/Brands";
 import StatsSection from "@/components/Stats";
