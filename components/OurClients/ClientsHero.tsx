@@ -66,7 +66,7 @@ const ClientsHero: FC = () => {
       </motion.div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-sky-600/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-sky-600/50 to-sky-700/90" />
 
       {/* Animated Particles Background */}
       <div className="absolute inset-0">
@@ -106,7 +106,7 @@ const ClientsHero: FC = () => {
           </motion.span>
 
           <motion.h1
-            className="mb-6 bg-gradient-to-b from-blue-600 to-sky-500/80 bg-clip-text text-5xl font-bold leading-tight text-transparent  md:text-7xl"
+            className="mb-6 bg-gradient-to-b from-white to-white/80 bg-clip-text text-5xl font-bold leading-tight text-transparent  md:text-7xl"
             custom={1}
             initial="hidden"
             animate="visible"
