@@ -43,7 +43,7 @@ const OtherSupport = () => {
                     <div
                       className={`flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full shadow-sm dark:bg-slate-700 ${
                         selectedTab === index
-                          ? "bg-gradient-to-r from-green-500 to-green-400"
+                          ? "bg-gradient-to-r from-blue-400 to-blue-500"
                           : "bg-gradient-to-r from-sky-500 to-sky-400"
                       }`}
                     >
@@ -84,8 +84,15 @@ const OtherSupport = () => {
                           </h3>
                         </div>
                         <div className="relative h-full w-full">
-                          {/* Use a placeholder image if the actual image is not available */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-sky-400"></div>
+                          <Image
+                            src={
+                              tab.content.image || "/placeholder-support.jpg"
+                            }
+                            alt={tab.content.heading}
+                            fill
+                            className="object-cover"
+                            priority
+                          />
                           <div className="absolute inset-0 opacity-60 mix-blend-overlay">
                             <svg
                               className="h-full w-full"

@@ -31,7 +31,7 @@ export const supportTabs: SupportTab[] = [
       heading: "Visit Visa Support",
       description:
         "The Visit Visa is designed for individuals who wish to visit the UK for tourism, leisure, business, or to meet family and friends. It allows you to stay in the UK for a limited period, typically up to six months, depending on the purpose of your visit.",
-      image: "/images/services/visit-visa.jpg",
+      image: "/images/features/blogs-banner.png",
       mainContent: [
         {
           title: "Types of Visit Visas",
@@ -89,7 +89,7 @@ export const supportTabs: SupportTab[] = [
       heading: "Adult Dependent Relative (ADR) Visa",
       description:
         "The Adult Dependent Relative Visa is intended for non-EEA (European Economic Area) adult individuals who are dependent on a close family member settled in the UK. This visa allows eligible dependents to join their family members in the UK and receive the care and support they need.",
-      image: "/images/services/adr-visa.jpg",
+      image: "/images/features/blogs-banner.png",
       mainContent: [
         {
           title: "Key Eligibility Criteria",
@@ -143,7 +143,7 @@ export const supportTabs: SupportTab[] = [
       heading: "Student Visa Services",
       description:
         "The Student visa (previously Tier 4) allows you to study in the UK at an approved educational institution. This visa category is essential for international students planning to pursue their education at UK universities or colleges.",
-      image: "/images/services/student-visa.jpg",
+      image: "/images/features/blogs-banner.png",
       mainContent: [
         {
           title: "Key Requirements",
@@ -201,7 +201,7 @@ export const supportTabs: SupportTab[] = [
       heading: "Spouse Visa Support",
       description:
         "The UK Spouse Visa allows married partners of British citizens or those with settled status to live in the UK. This visa is crucial for families wanting to live together in the UK.",
-      image: "/images/services/spouse-visa.jpg",
+      image: "/images/features/blogs-banner.png",
       mainContent: [
         {
           title: "Eligibility Requirements",
@@ -259,7 +259,7 @@ export const supportTabs: SupportTab[] = [
       heading: "Indefinite Leave to Remain (ILR) Information",
       description:
         "Indefinite Leave to Remain (ILR) is a form of permanent residence in the UK. It allows you to live and work in the UK without any immigration restrictions.",
-      image: "/images/services/ilr.jpg",
+      image: "/images/features/blogs-banner.png",
       mainContent: [
         {
           title: "Eligibility Requirements",
@@ -315,7 +315,7 @@ export const supportTabs: SupportTab[] = [
       heading: "General Immigration Advice",
       description:
         "Our comprehensive immigration advice service covers all aspects of UK immigration law, helping you navigate complex visa requirements and procedures.",
-      image: "/images/services/immigration-advice.jpg",
+      image: "/images/features/blogs-banner.png",
       mainContent: [
         {
           title: "Services Offered",
