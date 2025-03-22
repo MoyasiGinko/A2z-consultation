@@ -273,7 +273,7 @@ const HeroMobile: React.FC = () => {
               variants={itemVariants}
               className=" mb-3 text-2xl font-medium text-sky-900 sm:text-3xl md:text-4xl lg:text-5xl"
             >
-              & Work Permit Visas
+              & Work Permit
             </motion.h2>
 
             <motion.div
