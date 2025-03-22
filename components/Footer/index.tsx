@@ -13,7 +13,9 @@ import {
   Twitter,
   Linkedin,
   Instagram,
+  ChevronDown,
 } from "lucide-react";
+import { useState } from "react";
 
 interface ServiceLink {
   id: number;
@@ -80,6 +82,7 @@ const Footer: React.FC = () => {
   const footerRef = useRef<HTMLElement>(null);
   const isInView = useInView(footerRef, { once: true, margin: "-100px 0px" });
   const controls = useAnimation();
+  const [openSection, setOpenSection] = useState<string | null>(null);
 
   useEffect(() => {
     if (isInView) {
@@ -107,6 +110,14 @@ const Footer: React.FC = () => {
     },
   };
 
+  const toggleSection = (section: string) => {
+    if (openSection === section) {
+      setOpenSection(null);
+    } else {
+      setOpenSection(section);
+    }
+  };
+
   return (
     <motion.footer
       ref={footerRef}
@@ -115,12 +126,189 @@ const Footer: React.FC = () => {
       animate={controls}
       variants={containerVariants}
     >
-      <div className="bg-blue-950 py-10 text-white">
+      <div className="bg-blue-950 py-6 text-white md:py-10">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap">
+          {/* Mobile View */}
+          <div className="flex flex-col md:hidden">
+            {/* Logo and Description - Always visible on mobile */}
+            <motion.div
+              className="mb-6 flex flex-col items-center px-2"
+              variants={itemVariants}
+            >
+              <Link href="/" className="mb-4 block">
+                <div className="relative h-10 w-40">
+                  <Image
+                    src="/images/logo/logo-white.png"
+                    alt="IMMIGRATION"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </div>
+              </Link>
+
+              <p className="mb-6 text-center text-sm">
+                Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
+                stet eos sit.
+              </p>
+
+              {/* Social Media Icons - Centered on mobile */}
+              <div className="mb-6 flex justify-center space-x-6">
+                {socialLinks.map((socialLink) => (
+                  <motion.a
+                    key={socialLink.id}
+                    href={socialLink.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white transition-colors hover:text-blue-400"
+                    whileHover={{ scale: 1.2 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {socialLink.icon}
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Accordion Sections for Mobile */}
+            <div className="mb-6 w-full space-y-2 px-2">
+              {/* Get in Touch Accordion */}
+              <motion.div
+                className="rounded border border-blue-800"
+                variants={itemVariants}
+              >
+                <button
+                  onClick={() => toggleSection("contact")}
+                  className="flex w-full items-center justify-between border-b border-blue-800 bg-blue-900 p-3"
+                >
+                  <h2 className="text-base font-bold">Get in touch</h2>
+                  <ChevronDown
+                    size={18}
+                    className={`transform transition-transform ${
+                      openSection === "contact" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSection === "contact" && (
+                  <div className="p-3">
+                    <ul className="space-y-3">
+                      {contactInfo.map((item) => (
+                        <li key={item.id}>
+                          <Link
+                            href={item.href}
+                            className="flex items-center gap-2 text-sm transition-colors hover:text-blue-300"
+                          >
+                            {item.icon}
+                            <span>{item.text}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </motion.div>
+
+              {/* Services Accordion */}
+              <motion.div
+                className="rounded border border-blue-800"
+                variants={itemVariants}
+              >
+                <button
+                  onClick={() => toggleSection("services")}
+                  className="flex w-full items-center justify-between border-b border-blue-800 bg-blue-900 p-3"
+                >
+                  <h2 className="text-base font-bold">Services</h2>
+                  <ChevronDown
+                    size={18}
+                    className={`transform transition-transform ${
+                      openSection === "services" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSection === "services" && (
+                  <div className="p-3">
+                    <ul className="space-y-3">
+                      {serviceLinks.map((service) => (
+                        <li key={service.id}>
+                          <Link
+                            href={service.href}
+                            className="flex items-center gap-2 text-sm transition-colors hover:text-blue-300"
+                          >
+                            <ArrowRight size={16} className="text-blue-500" />
+                            <span>{service.name}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </motion.div>
+
+              {/* OISC Information Accordion */}
+              <motion.div
+                className="rounded border border-blue-800"
+                variants={itemVariants}
+              >
+                <button
+                  onClick={() => toggleSection("oisc")}
+                  className="flex w-full items-center justify-between border-b border-blue-800 bg-blue-900 p-3"
+                >
+                  <h2 className="text-base font-bold">Credentials</h2>
+                  <ChevronDown
+                    size={18}
+                    className={`transform transition-transform ${
+                      openSection === "oisc" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSection === "oisc" && (
+                  <div className="flex flex-col items-center p-3">
+                    <div className="relative mb-2 h-20 w-20">
+                      <Image
+                        src="/images/logo/oisc.png"
+                        alt="OISC icon"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
+                    <p className="mb-1 text-center text-sm">OISC Member</p>
+                    <p className="mb-4 text-center text-sm">F202100303</p>
+                    <p className="text-center text-sm">
+                      Registered Company in the UK
+                      <br />
+                      Company Number SC659958
+                    </p>
+                  </div>
+                )}
+              </motion.div>
+            </div>
+
+            {/* Email Signup and Download Button - Always visible on mobile */}
+            <motion.div className="mb-4 w-full px-2" variants={itemVariants}>
+              <div className="mb-4 flex h-10 w-full">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-0 flex-1 px-3 text-gray-800 focus:outline-none"
+                />
+                <button className="bg-blue-600 px-3 text-white transition-colors hover:bg-blue-700">
+                  Sign up
+                </button>
+              </div>
+              <motion.button
+                className="w-full rounded bg-blue-600 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Download our guide
+              </motion.button>
+            </motion.div>
+          </div>
+
+          {/* Desktop View */}
+          <div className="hidden flex-wrap justify-between md:flex">
             {/* 1. Logo and Description Column */}
             <motion.div
-              className="mb-8 w-full pr-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              className="mb-8 max-w-[200px] px-2"
               variants={itemVariants}
             >
               <Link href="/" className="mb-4 block">
@@ -137,17 +325,16 @@ const Footer: React.FC = () => {
 
               <p className="mb-6 text-sm">
                 Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
-                stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam
-                amet erat lorem stet eos. Diam amet et kasd eos duo.
+                stet eos sit. Elitr dolor duo lorem.
               </p>
 
-              <div className="flex h-10">
+              <div className="flex h-10 max-w-full">
                 <input
                   type="email"
-                  placeholder="Your Email"
-                  className="w-0 flex-1 px-4 text-gray-800 focus:outline-none"
+                  placeholder="Email"
+                  className="w-0 flex-1 px-2 text-sm text-gray-800 focus:outline-none"
                 />
-                <button className="bg-blue-600 px-4 text-white transition-colors hover:bg-blue-700">
+                <button className="bg-blue-600 px-2 text-white transition-colors hover:bg-blue-700">
                   Sign up
                 </button>
               </div>
@@ -155,7 +342,7 @@ const Footer: React.FC = () => {
 
             {/* 2. Get in Touch Column */}
             <motion.div
-              className="mb-8 w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              className="mb-8 max-w-[200px] px-2"
               variants={itemVariants}
             >
               <h2 className="mb-4 text-xl font-bold">Get in touch</h2>
@@ -172,7 +359,7 @@ const Footer: React.FC = () => {
                       className="flex items-center gap-2 transition-colors hover:text-blue-300"
                     >
                       {item.icon}
-                      <span className="text-sm">{item.text}</span>
+                      <span className="truncate text-sm">{item.text}</span>
                     </Link>
                   </motion.li>
                 ))}
@@ -181,7 +368,7 @@ const Footer: React.FC = () => {
 
             {/* 3. Services Column */}
             <motion.div
-              className="mb-8 w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              className="mb-8 max-w-[200px] px-2"
               variants={itemVariants}
             >
               <h2 className="mb-4 text-xl font-bold">Services</h2>
@@ -207,11 +394,11 @@ const Footer: React.FC = () => {
 
             {/* 4. OISC Column */}
             <motion.div
-              className="mb-8 w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              className="mb-8 max-w-[200px] px-2"
               variants={itemVariants}
             >
               <div className="mb-2 flex items-center">
-                <div className="relative mb-2 h-24 w-24">
+                <div className="relative mb-2 h-20 w-20">
                   <Image
                     src="/images/logo/oisc.png"
                     alt="OISC icon"
@@ -226,10 +413,7 @@ const Footer: React.FC = () => {
             </motion.div>
 
             {/* 5. Social Media Column */}
-            <motion.div
-              className="w-full px-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
-              variants={itemVariants}
-            >
+            <motion.div className="max-w-[200px] px-2" variants={itemVariants}>
               <div>
                 <div className="mb-3 flex space-x-4">
                   {socialLinks.map((socialLink) => (
@@ -254,7 +438,7 @@ const Footer: React.FC = () => {
                 </div>
 
                 <motion.button
-                  className="w-full rounded bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+                  className="w-full rounded bg-blue-600 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-700"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
                 >
