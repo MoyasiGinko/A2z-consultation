@@ -83,7 +83,7 @@ export const supportTabs: SupportTab[] = [
   },
   {
     id: 2,
-    title: "Adult Dependent Relative Visa",
+    title: "Adult Dependent Relative (ADR) Visa",
     icon: "/icons/adr-visa.svg",
     content: {
       heading: "Adult Dependent Relative (ADR) Visa",
@@ -142,221 +142,225 @@ export const supportTabs: SupportTab[] = [
     content: {
       heading: "Student Visa Services",
       description:
-        "We offer comprehensive services to help aspiring students achieve their academic dreams by providing expert assistance in securing offers from reputable UK universities. We provide full support in securing CAS letters from universities and obtaining student visas from the UKBA.",
+        "The Student visa (previously Tier 4) allows you to study in the UK at an approved educational institution. This visa category is essential for international students planning to pursue their education at UK universities or colleges.",
       image: "/images/services/student-visa.jpg",
       mainContent: [
         {
-          title: "Our University Offer Services",
+          title: "Key Requirements",
           paragraphs: [
-            "Personalised Course Recommendations: Our experienced team will understand your academic interests, career goals, and preferences to provide personalized course recommendations that align with your aspirations.",
-            "Guidance on University Selection: With a vast network of partner universities, we can guide you in choosing the best institutions that match your academic profile and desired course of study.",
-            "Essay and Personal Statement Assistance: Crafting a compelling personal statement is essential to stand out in university applications. Our experts will help you create a powerful statement that reflects your unique qualities and motivation.",
-            "Confirmation of Acceptance for Studies (CAS): Once you receive an offer, we will guide you through the process of obtaining the Confirmation of Acceptance for Studies (CAS) required for your Student Visa application.",
+            "Confirmed Place: You must have an unconditional offer from a licensed UK education provider",
+            "English Language Skills: You need to demonstrate English language proficiency",
+            "Financial Requirements: Proof of sufficient funds to cover tuition and living costs",
+            "Academic Qualifications: Previous academic achievements must meet course requirements",
+            "Genuine Student: You must prove you are a genuine student intending to study",
           ],
         },
         {
-          title: "Key Eligibility Criteria",
+          title: "Visa Benefits",
           paragraphs: [
-            "Course Offer: You must have an unconditional offer of a place on a full-time course at a recognized UK educational institution that holds a valid sponsor license.",
-            "Confirmation of Acceptance for Studies (CAS): Once you've received an offer, your institution will provide you with a unique CAS reference number for your visa application.",
-            "English Language Proficiency: You may need to demonstrate your English language proficiency, depending on the course and institution's requirements.",
-            "Financial Capability: You must prove that you can financially support yourself during your studies, covering both tuition fees and living expenses.",
+            "Study at recognized UK institutions",
+            "Possibility to work part-time during term time",
+            "Full-time work allowed during holidays",
+            "Bring dependents in certain circumstances",
+            "Potential pathway to post-study work opportunities",
           ],
         },
       ],
       features: [
         {
-          title: "CAS Guidance",
-          description:
-            "Expert assistance with obtaining your Confirmation of Acceptance for Studies from your chosen institution",
-          icon: "/icons/cas.svg",
-        },
-        {
-          title: "Financial Requirements",
-          description:
-            "Complete guidance on preparing and presenting financial evidence to meet visa requirements",
-          icon: "/icons/financial.svg",
-        },
-        {
           title: "Application Support",
           description:
-            "End-to-end assistance with the visa application process, biometrics, and document submissions",
-          icon: "/icons/application-support.svg",
+            "Complete guidance through the Student visa application process",
+          icon: "/icons/application.svg",
+        },
+        {
+          title: "Document Preparation",
+          description:
+            "Assistance with preparing and organizing all required documentation",
+          icon: "/icons/document.svg",
+        },
+        {
+          title: "CAS Guidance",
+          description:
+            "Support with obtaining and understanding your CAS from the institution",
+          icon: "/icons/cas.svg",
         },
       ],
       callToAction: {
         title: "Start Your UK Education Journey",
         description:
-          "If you have any questions or need assistance with your Student Visa application or university offer process, our dedicated team is here to help!",
+          "Contact us today to begin your journey towards studying in the UK!",
       },
     },
   },
   {
     id: 4,
-    title: "Graduate Visa",
-    icon: "/icons/graduate-visa.svg",
+    title: "Spouse Visa",
+    icon: "/icons/spouse-visa.svg",
     content: {
-      heading: "Graduate Visa Support",
+      heading: "Spouse Visa Support",
       description:
-        "The UK Graduate visa allows international students to remain in the UK for a limited period after completing their studies. This post-study work visa is designed for international students who have successfully finished a course of study at the UK bachelor's degree-level or above with a Home Office-approved higher education provider.",
-      image: "/images/services/graduate-visa.jpg",
+        "The UK Spouse Visa allows married partners of British citizens or those with settled status to live in the UK. This visa is crucial for families wanting to live together in the UK.",
+      image: "/images/services/spouse-visa.jpg",
       mainContent: [
-        {
-          title: "Key Benefits",
-          paragraphs: [
-            "No Certificate of Sponsorship (CoS) Required: Unlike other work visas, you don't need a job offer or sponsorship from an employer.",
-            "Work Flexibility: This visa may be used to work in any capacity or to stay in the UK while looking for employment.",
-            "Earning Potential: The holder of a Graduate Visa will be permitted to work and earn money if the visa is granted.",
-            "Pathway to Settlement: This visa provides valuable time to secure sponsored employment that could lead to settlement in the UK.",
-          ],
-        },
         {
           title: "Eligibility Requirements",
           paragraphs: [
-            "Successfully completed a bachelor's degree, postgraduate degree, or other eligible qualification from an approved UK institution.",
-            "Current Student visa holder at the time of application.",
-            "Studied with a Home Office licensed student sponsor.",
-            "Have not previously been granted a Graduate visa.",
-            "Can demonstrate that you completed your course during your current period of leave.",
+            "Valid Marriage: Must be legally married to a British citizen or person with settled status",
+            "Financial Requirement: Combined income of at least £18,600 per year",
+            "English Language: Must meet minimum English language requirements",
+            "Accommodation: Proof of adequate housing in the UK",
+            "Genuine Relationship: Evidence of a genuine and subsisting marriage",
+          ],
+        },
+        {
+          title: "Visa Duration and Settlement",
+          paragraphs: [
+            "Initial visa granted for 2.5 years",
+            "Can be extended for another 2.5 years",
+            "Eligible for settlement after 5 years continuous residence",
+            "Right to work and study in the UK",
+            "Access to NHS healthcare",
           ],
         },
       ],
       features: [
         {
-          title: "Eligibility Verification",
+          title: "Financial Assessment",
           description:
-            "Thorough assessment of your eligibility criteria for the Graduate route visa application",
-          icon: "/icons/eligibility.svg",
+            "Detailed review of financial requirements and documentation",
+          icon: "/icons/financial.svg",
         },
         {
-          title: "Timeline Planning",
+          title: "Document Preparation",
           description:
-            "Strategic guidance on when to apply to maximize your post-study work period in the UK",
-          icon: "/icons/timeline.svg",
+            "Comprehensive assistance with gathering supporting evidence",
+          icon: "/icons/document.svg",
         },
         {
           title: "Application Support",
           description:
-            "Comprehensive assistance with preparing and submitting your Graduate visa application",
+            "Full guidance through the application process and requirements",
           icon: "/icons/application.svg",
         },
       ],
       callToAction: {
-        title: "Extend Your UK Experience",
+        title: "Unite Your Family in the UK",
         description:
-          "Contact us today to discuss how we can help you transition from study to work in the UK with our specialized Graduate visa services!",
+          "Let us help you bring your spouse to the UK. Contact our expert team today!",
       },
     },
   },
   {
     id: 5,
-    title: "Entrepreneur Extension",
-    icon: "/icons/entrepreneur.svg",
+    title: "Indefinite Leave to Remain (ILR)",
+    icon: "/icons/ilr.svg",
     content: {
-      heading: "Entrepreneur Extension Information",
+      heading: "Indefinite Leave to Remain (ILR) Information",
       description:
-        "Extensions for Entrepreneur Visas have ended. On April 5, 2023, the deadline for Entrepreneur visa extensions passed. Holders of Entrepreneur visas now have until April 5, 2025, to submit an application for UK settlement through this method.",
-      image: "/images/services/entrepreneur.jpg",
+        "Indefinite Leave to Remain (ILR) is a form of permanent residence in the UK. It allows you to live and work in the UK without any immigration restrictions.",
+      image: "/images/services/ilr.jpg",
       mainContent: [
         {
-          title: "Important Updates",
+          title: "Eligibility Requirements",
           paragraphs: [
-            "The Entrepreneur visa route is now closed to new applications.",
-            "The Innovator Founder route has replaced the Entrepreneur visa.",
-            "Existing Entrepreneur visa holders have until April 5, 2025, to apply for settlement.",
-            "Alternative visa options may be available depending on your circumstances.",
+            "Continuous Residence: Usually 5 years of continuous residence in the UK",
+            "No Excessive Absences: Not been outside the UK for more than 180 days in any 12 months",
+            "English Language: Pass an approved English language test",
+            "Life in the UK Test: Successfully complete the Life in the UK test",
+            "Good Character: No serious criminal convictions or immigration violations",
           ],
         },
         {
-          title: "Next Steps for Entrepreneur Visa Holders",
+          title: "Benefits of ILR",
           paragraphs: [
-            "If you currently hold an Entrepreneur visa, you should plan your settlement application well ahead of the 2025 deadline.",
-            "Consider if you qualify for other business or work visa categories such as the Innovator Founder visa.",
-            "Ensure you meet all the settlement requirements including the investment and job creation criteria.",
-            "Gather comprehensive evidence of your business activities during your time on the Entrepreneur visa.",
+            "Permanent right to live and work in the UK",
+            "No more visa extensions needed",
+            "Access to all public funds and benefits",
+            "Freedom to study without restrictions",
+            "Pathway to British citizenship",
           ],
         },
       ],
       features: [
         {
-          title: "Settlement Guidance",
-          description:
-            "Expert advice on preparing a successful settlement application before the 2025 deadline",
-          icon: "/icons/settlement.svg",
-        },
-        {
-          title: "Alternative Routes",
-          description:
-            "Assistance with exploring alternative visa options such as the Innovator Founder route",
-          icon: "/icons/routes.svg",
+          title: "Eligibility Assessment",
+          description: "Comprehensive review of your qualification for ILR",
+          icon: "/icons/assessment.svg",
         },
         {
           title: "Documentation Support",
           description:
-            "Comprehensive help with gathering and presenting evidence of your business activities",
+            "Assistance with gathering and organizing required evidence",
           icon: "/icons/document.svg",
+        },
+        {
+          title: "Application Guidance",
+          description: "Expert support throughout the ILR application process",
+          icon: "/icons/guidance.svg",
         },
       ],
       callToAction: {
-        title: "Secure Your Future in the UK",
+        title: "Secure Your Permanent UK Status",
         description:
-          "Don't wait until the deadline approaches. Contact us now to discuss your settlement options and ensure a smooth transition!",
+          "Ready to apply for ILR? Contact us to start your journey to permanent residence!",
       },
     },
   },
   {
     id: 6,
-    title: "Ukraine Sponsorship Scheme",
-    icon: "/icons/ukraine.svg",
+    title: "General Immigration Advice",
+    icon: "/icons/advice.svg",
     content: {
-      heading: "Ukraine Sponsorship Support",
+      heading: "General Immigration Advice",
       description:
-        "We provide dedicated assistance for Ukrainian nationals and sponsors under the Ukraine Sponsorship Scheme, delivering comprehensive guidance throughout the application process and settlement journey.",
-      image: "/images/services/ukraine-scheme.jpg",
+        "Our comprehensive immigration advice service covers all aspects of UK immigration law, helping you navigate complex visa requirements and procedures.",
+      image: "/images/services/immigration-advice.jpg",
       mainContent: [
         {
-          title: "Eligibility Criteria",
+          title: "Services Offered",
           paragraphs: [
-            "Ukrainian Nationality: Applicants must be Ukrainian nationals or immediate family members of Ukrainian nationals.",
-            "Sponsor Requirement: You must have a sponsor in the UK who can provide accommodation for a minimum of 6 months.",
-            "Safety Checks: Both applicants and sponsors will undergo security checks as part of the application process.",
-            "Accommodation Standards: The accommodation offered by sponsors must meet safety and habitability standards.",
+            "Initial consultation and case assessment",
+            "Visa category recommendation",
+            "Application strategy planning",
+            "Document checklist and preparation",
+            "Appeal and administrative review guidance",
           ],
         },
         {
-          title: "Benefits of the Scheme",
+          title: "Areas of Expertise",
           paragraphs: [
-            "Right to Live and Work: Successful applicants can live, work, and study in the UK for up to three years.",
-            "Access to Services: You'll be able to access healthcare, education, benefits, and employment support.",
-            "Community Support: Various community integration programs are available to help you settle in the UK.",
-            "Family Reunification: Options to bring eligible family members to join you in the UK.",
+            "All types of visa applications",
+            "Immigration rule interpretations",
+            "Complex case resolution",
+            "Emergency and time-sensitive applications",
+            "Appeals and judicial reviews",
           ],
         },
       ],
       features: [
         {
-          title: "Sponsor Matching",
+          title: "Expert Consultation",
           description:
-            "Assistance with finding suitable sponsors through our verified sponsor network",
-          icon: "/icons/matching.svg",
+            "Professional advice from experienced immigration specialists",
+          icon: "/icons/consultation.svg",
         },
         {
-          title: "Application Processing",
+          title: "Case Assessment",
           description:
-            "Step-by-step guidance through the entire application and visa process",
-          icon: "/icons/processing.svg",
+            "Thorough evaluation of your immigration situation and options",
+          icon: "/icons/assessment.svg",
         },
         {
-          title: "Settlement Assistance",
-          description:
-            "Comprehensive support with integration, accommodation, and accessing essential services",
-          icon: "/icons/settlement.svg",
+          title: "Strategic Planning",
+          description: "Development of personalized immigration strategy",
+          icon: "/icons/planning.svg",
         },
       ],
       callToAction: {
-        title: "Find Safety and Support in the UK",
+        title: "Get Expert Immigration Advice",
         description:
-          "Contact our dedicated Ukraine Support Team today to discuss how we can assist you with the sponsorship process and settlement in the UK.",
+          "Contact us today for professional guidance on your UK immigration matters!",
       },
     },
   },

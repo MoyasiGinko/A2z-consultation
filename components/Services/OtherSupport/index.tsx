@@ -40,10 +40,16 @@ const OtherSupport = () => {
                     }`}
                     onClick={() => setSelectedTab(index)}
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-sky-400 shadow-sm dark:bg-slate-700">
-                      <div className="h-6 w-6 text-center font-bold opacity-80">
+                    <div
+                      className={`flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full shadow-sm dark:bg-slate-700 ${
+                        selectedTab === index
+                          ? "bg-gradient-to-r from-green-500 to-green-400"
+                          : "bg-gradient-to-r from-sky-500 to-sky-400"
+                      }`}
+                    >
+                      <div className="h-6 min-h-[1.5rem] w-6 min-w-[1.5rem] text-center font-bold opacity-80">
                         {/* Placeholder for icon - replace with actual icon component */}
-                        <span className="text-sm">{tab.id}</span>
+                        <span className="text-sm text-white">{tab.id}</span>
                       </div>
                     </div>
                     <span className="font-medium">{tab.title}</span>
