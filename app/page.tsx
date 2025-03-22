@@ -8,6 +8,7 @@ import StepByStep from "@/components/StepByStep";
 import StatsSection from "@/components/Stats";
 import BlogSection from "@/components/Blog/BlogSection";
 import WhoLovesUs from "@/components/WhoLoveUs";
+import GoogleReviews from "@/components/Testimonial/GoogleReview";
 
 export const metadata: Metadata = {
   title: "A2Z Immigration",
@@ -38,6 +39,10 @@ export default function Home() {
       {/* <Contact /> */}
       {/* <Blog /> */}
       <WhoLovesUs />
+      <GoogleReviews
+        appId="7b481c44-e91d-41e4-934c-2da27681f802"
+        className="my-8 rounded-lg p-4 shadow-lg"
+      />
       <BlogSection />
     </main>
   );

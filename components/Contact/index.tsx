@@ -1,9 +1,27 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
+import React, { useRef, useState, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
-const Contact = () => {
+interface ContactProps {
+  serviceId: string;
+  templateId: string;
+  publicKey: string;
+}
+
+const Contact: React.FC<ContactProps> = ({
+  serviceId,
+  templateId,
+  publicKey,
+}) => {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
+
   /**
    * Source: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
    * Reason: To fix rehydration error
@@ -15,6 +33,40 @@ const Contact = () => {
   if (!hasMounted) {
     return null;
   }
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    emailjs
+      .sendForm(serviceId, templateId, form.current, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          setSubmitStatus({
+            success: true,
+            message: "Your message has been sent successfully!",
+          });
+          if (form.current) form.current.reset();
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setSubmitStatus({
+            success: false,
+            message: `Failed to send message: ${error.text}`,
+          });
+        },
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
 
   return (
     <>
@@ -56,24 +108,37 @@ const Contact = () => {
               viewport={{ once: true }}
               className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
             >
-              <h2 className="mb-15 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
+              <h2 className="mb-15 bg-gradient-to-l from-sky-800 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent dark:text-white xl:text-sectiontitle2">
                 Send a message
               </h2>
 
-              <form
-                action="https://formbold.com/s/unique_form_id"
-                method="POST"
-              >
+              {submitStatus && (
+                <div
+                  className={`mb-7.5 rounded-md p-3 ${
+                    submitStatus.success
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
+              <form ref={form} onSubmit={sendEmail}>
                 <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
                   <input
                     type="text"
+                    name="user_name"
                     placeholder="Full name"
+                    required
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
 
                   <input
                     type="email"
+                    name="user_email"
                     placeholder="Email address"
+                    required
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
                 </div>
@@ -81,21 +146,29 @@ const Contact = () => {
                 <div className="mb-12.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
                   <input
                     type="text"
+                    name="subject"
                     placeholder="Subject"
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
 
                   <input
-                    type="text"
-                    placeholder="Phone number"
+                    type="tel"
+                    name="phone_number"
+                    placeholder="+44"
+                    pattern="^(\+44|0)[0-9]{10}$"
+                    minLength={11}
+                    maxLength={13}
+                    title="Please enter a valid UK phone number starting with +44 or 0"
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
                 </div>
 
                 <div className="mb-11.5 flex">
                   <textarea
+                    name="message"
                     placeholder="Message"
                     rows={4}
+                    required
                     className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
                   ></textarea>
                 </div>
@@ -106,8 +179,9 @@ const Contact = () => {
                       id="default-checkbox"
                       type="checkbox"
                       className="peer sr-only"
+                      required
                     />
-                    <span className="border-gray-300 bg-gray-100 text-blue-600 dark:border-gray-600 dark:bg-gray-700 group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded peer-checked:bg-primary">
+                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary dark:border-gray-600 dark:bg-gray-700">
                       <svg
                         className="opacity-0 peer-checked:group-[]:opacity-100"
                         width="10"
@@ -128,18 +202,20 @@ const Contact = () => {
                       htmlFor="default-checkbox"
                       className="flex max-w-[425px] cursor-pointer select-none pl-5"
                     >
-                      By clicking Checkbox, you agree to use our “Form” terms
+                      By clicking Checkbox, you agree to use our "Form" terms
                       And consent cookie usage in browser.
                     </label>
                   </div>
 
                   <button
+                    type="submit"
+                    disabled={isSubmitting}
                     aria-label="send message"
-                    className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark"
+                    className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out hover:from-sky-800 hover:via-sky-600 hover:to-sky-500 hover:shadow-lg disabled:opacity-70 dark:bg-btndark"
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                     <svg
-                      className="fill-white"
+                      className="fill-white transition-transform duration-300 ease-in-out group-hover:translate-x-1"
                       width="14"
                       height="14"
                       viewBox="0 0 14 14"
@@ -174,22 +250,24 @@ const Contact = () => {
               viewport={{ once: true }}
               className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
             >
-              <h2 className="mb-12.5 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
+              <h2 className="mb-12.5 bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent dark:text-white xl:text-sectiontitle2">
                 Find us
               </h2>
 
-              <div className="5 mb-7">
+              {/* <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
                   Our Loaction
                 </h3>
                 <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
-              </div>
+              </div> */}
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
                   Email Address
                 </h3>
                 <p>
-                  <a href="#">yourmail@domainname.com</a>
+                  <a href="mailto:info@a2zimmigrations.co.uk">
+                    info@a2zimmigrations.co.uk
+                  </a>
                 </p>
               </div>
               <div>

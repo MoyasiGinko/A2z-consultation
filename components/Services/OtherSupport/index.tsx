@@ -40,10 +40,16 @@ const OtherSupport = () => {
                     }`}
                     onClick={() => setSelectedTab(index)}
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-sky-400 shadow-sm dark:bg-slate-700">
-                      <div className="h-6 w-6 text-center font-bold opacity-80">
+                    <div
+                      className={`flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full shadow-sm dark:bg-slate-700 ${
+                        selectedTab === index
+                          ? "bg-gradient-to-r from-blue-400 to-blue-500"
+                          : "bg-gradient-to-r from-sky-400 to-sky-500"
+                      }`}
+                    >
+                      <div className="h-6 min-h-[1.5rem] w-6 min-w-[1.5rem] text-center font-bold opacity-80">
                         {/* Placeholder for icon - replace with actual icon component */}
-                        <span className="text-sm">{tab.id}</span>
+                        <span className="text-sm text-white">{tab.id}</span>
                       </div>
                     </div>
                     <span className="font-medium">{tab.title}</span>
@@ -78,8 +84,15 @@ const OtherSupport = () => {
                           </h3>
                         </div>
                         <div className="relative h-full w-full">
-                          {/* Use a placeholder image if the actual image is not available */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-sky-400"></div>
+                          <Image
+                            src={
+                              tab.content.image || "/placeholder-support.jpg"
+                            }
+                            alt={tab.content.heading}
+                            fill
+                            className="object-cover"
+                            priority
+                          />
                           <div className="absolute inset-0 opacity-60 mix-blend-overlay">
                             <svg
                               className="h-full w-full"

@@ -51,8 +51,8 @@ const DesktopVisaSteps: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm">
-                      Create a business plan that includes the following
-                      elements.
+                      <strong>Verify Job Eligibility:</strong> Ensure the role
+                      qualifies for a Skilled Worker Visa under UK rules.
                     </p>
                   </div>
                 </div>
@@ -65,7 +65,8 @@ const DesktopVisaSteps: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm">
-                      Develop and implement a marketing/sales action plan
+                      <strong>Follow Recruitment Compliance:</strong> Adhere to
+                      proper hiring procedures for visa approval.
                     </p>
                   </div>
                 </div>
@@ -78,7 +79,8 @@ const DesktopVisaSteps: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm">
-                      Make it simple for a customer to do business with you
+                      <strong>Manage CoS & Renewals:</strong> Assign and renew
+                      Certificates of Sponsorship on time.
                     </p>
                   </div>
                 </div>
@@ -91,7 +93,8 @@ const DesktopVisaSteps: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm">
-                      Look for a score mentor to help you.
+                      <strong>Submit & Support Application:</strong> Complete
+                      the visa process and prepare candidates for interviews.
                     </p>
                   </div>
                 </div>

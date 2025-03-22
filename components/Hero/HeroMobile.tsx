@@ -242,7 +242,7 @@ const HeroMobile: React.FC = () => {
             {/* Animated "Expert in" text with individual letter animations */}
             <motion.div
               variants={itemVariants}
-              className="mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl"
+              className=" text-xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
             >
               {expertInText.map((letter, index) => (
                 <span
@@ -254,15 +254,8 @@ const HeroMobile: React.FC = () => {
               ))}
             </motion.div>
 
-            <motion.h2
-              variants={itemVariants}
-              className="mb-1 text-lg font-medium text-sky-900 sm:text-xl md:text-2xl lg:text-3xl"
-            >
-              Sponsor Licence
-            </motion.h2>
-
-            <motion.div variants={itemVariants} className="relative mb-3">
-              <h1 className="text-xl font-bold text-sky-900 sm:text-2xl md:text-3xl lg:text-4xl">
+            <motion.div variants={itemVariants} className="relative">
+              <h1 className="text-2xl font-bold text-sky-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -272,10 +265,16 @@ const HeroMobile: React.FC = () => {
                     textShadow: "0 2px 10px rgba(29, 161, 201, 0.3)",
                   }}
                 >
-                  & Work Permit Visas
+                  Sponsor Licence
                 </motion.span>
               </h1>
             </motion.div>
+            <motion.h2
+              variants={itemVariants}
+              className=" mb-3 text-2xl font-medium text-sky-900 sm:text-3xl md:text-4xl lg:text-5xl"
+            >
+              & Work Permit
+            </motion.h2>
 
             <motion.div
               variants={itemVariants}

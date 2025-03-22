@@ -27,9 +27,9 @@ const HowWeCanHelpYou = () => {
       icon: <FiSend className="h-5 w-5" />,
       image: "/images/icon/upload.png",
       content: {
-        heading: "Transfer money to anyone, instantly! No fees, no BS.",
+        heading: "Secure Your Sponsor Licence with Ease",
         description:
-          "We guide businesses through the sponsor licence application process, ensuring Home Office compliance. Our experts prepare documents, conduct mock audits, and train your key personnel to maximize approval chances and minimize delays.",
+          "We help businesses obtain and manage their Sponsor Licence, ensuring a smooth application process and full compliance with UK Home Office requirements.",
       },
     },
     {
@@ -39,9 +39,9 @@ const HowWeCanHelpYou = () => {
       icon: <FiArrowRight className="h-5 w-5" />,
       image: "/images/icon/upload.png",
       content: {
-        heading: "Stay compliant with all immigration regulations",
+        heading: "Stay Compliant & Audit-Ready",
         description:
-          "Our services help you navigate complex immigration laws confidently. We implement systems for record maintenance, conduct compliance audits, provide right-to-work check training, and offer ongoing support to ensure your business remains compliant.",
+          "We provide ongoing support in HR compliance and SMS portal management, ensuring your business meets all regulatory requirements and avoids penalties.",
       },
     },
     {
@@ -51,9 +51,9 @@ const HowWeCanHelpYou = () => {
       icon: <FiArrowRight className="h-5 w-5" />,
       image: "/images/icon/upload.png",
       content: {
-        heading: "Streamlined visa process for skilled workers",
+        heading: "Hire International Talent Hassle-Free",
         description:
-          "Our end-to-end service simplifies international talent recruitment. We handle Sponsorship Certificates, advise on salary requirements, prepare visa applications, and support both employers and employees throughout the process.",
+          "Our expert guidance simplifies the Skilled Worker Visa process, allowing employers to sponsor and retain skilled workers efficiently and legally.",
       },
     },
   ];

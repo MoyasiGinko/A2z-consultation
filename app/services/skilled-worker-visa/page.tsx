@@ -24,8 +24,8 @@ const SkilledVisaPage = () => {
       <StatsSection />
       <VisaSteps />
       <PricingPackages />
-      <VisaCTA />
       <WhoLovesUs />
+      <VisaCTA />
       <VisaServices />
       <FAQSection />
     </div>

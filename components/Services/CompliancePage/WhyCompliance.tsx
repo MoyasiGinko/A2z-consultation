@@ -180,12 +180,12 @@ const WhyCompliance: React.FC = () => {
   );
 
   const listItems = [
-    "Recruit Skilled Workers from Outside UK to fill talent gaps.",
-    "Hire Right Talent to drive Innovation and Business Growth.",
-    "Support your Business Expansion Plan",
-    "Stay Competitive in your Industry with Highly Skilled Workers",
-    "Allow you to legally employ non-UK workers",
-    "Long term Staff Retention & Peace of Mind",
+    "Stay compliant to prevent suspension or revocation of your sponsor licence.",
+    "Compliance ensures lawful recruitment, preventing discrimination.",
+    "Non-compliance can lead to costly financial penalties.",
+    "A strong compliance record helps with renewals and new applications.",
+    "Maintain trust and attract top talent with proper compliance.",
+    "Regular compliance ensures smooth Home Office audits.",
   ];
 
   return (

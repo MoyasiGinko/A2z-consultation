@@ -237,7 +237,7 @@ const FreeStuff: React.FC = () => {
 
       {/* Call to Action Section */}
       <motion.div
-        className="mt-24 text-center"
+        className="mb-20 mt-24 text-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
