@@ -37,11 +37,10 @@ interface SocialLink {
 }
 
 const serviceLinks: ServiceLink[] = [
-  { id: 1, name: "Visit Visa", href: "/services/visit-visa" },
-  { id: 2, name: "Skilled Worker Visa", href: "/services/skilled-worker-visa" },
-  { id: 3, name: "Graduate Visa", href: "/services/graduate-visa" },
-  { id: 4, name: "Student Visa", href: "/services/student-visa" },
-  { id: 5, name: "Spouse Visa", href: "/services/spouse-visa" },
+  { id: 1, name: "Sponsor Licence", href: "/services/sponsor-licence" },
+  { id: 2, name: "Compliance", href: "/services/compliance" },
+  { id: 3, name: "Skilled Worker Visa", href: "/services/skilled-worker-visa" },
+  { id: 4, name: "Other Support", href: "/services/other-support" },
 ];
 
 const contactInfo: ContactInfo[] = [
@@ -159,7 +158,7 @@ const Footer: React.FC = () => {
                     href={socialLink.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white transition-colors hover:text-blue-400"
+                    className="rounded-full bg-blue-900 p-2 text-white transition-all hover:bg-blue-600 hover:text-white"
                     whileHover={{ scale: 1.2 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -169,99 +168,101 @@ const Footer: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Accordion Sections for Mobile */}
-            <div className="mb-6 w-full space-y-2 px-2">
+            {/* Accordion Sections for Mobile - All expanded by default */}
+            <div className="mb-6 w-full space-y-3 px-2">
               {/* Get in Touch Accordion */}
               <motion.div
-                className="rounded border border-blue-800"
+                className="overflow-hidden rounded-lg border border-blue-700 shadow-md"
                 variants={itemVariants}
               >
                 <button
                   onClick={() => toggleSection("contact")}
-                  className="flex w-full items-center justify-between border-b border-blue-800 bg-blue-900 p-3"
+                  className="flex w-full items-center justify-between bg-blue-800 p-3 text-left"
                 >
                   <h2 className="text-base font-bold">Get in touch</h2>
                   <ChevronDown
                     size={18}
                     className={`transform transition-transform ${
-                      openSection === "contact" ? "rotate-180" : ""
+                      openSection !== "contact" ? "" : "rotate-180"
                     }`}
                   />
                 </button>
-                {openSection === "contact" && (
-                  <div className="p-3">
-                    <ul className="space-y-3">
-                      {contactInfo.map((item) => (
-                        <li key={item.id}>
-                          <Link
-                            href={item.href}
-                            className="flex items-center gap-2 text-sm transition-colors hover:text-blue-300"
-                          >
-                            {item.icon}
-                            <span>{item.text}</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div
+                  className={`${openSection !== "contact" ? "hidden" : "block"} p-3`}
+                >
+                  <ul className="space-y-3">
+                    {contactInfo.map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          href={item.href}
+                          className="flex items-center gap-2 text-sm transition-colors hover:text-blue-300"
+                        >
+                          {item.icon}
+                          <span>{item.text}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
 
               {/* Services Accordion */}
               <motion.div
-                className="rounded border border-blue-800"
+                className="overflow-hidden rounded-lg border border-blue-700 shadow-md"
                 variants={itemVariants}
               >
                 <button
                   onClick={() => toggleSection("services")}
-                  className="flex w-full items-center justify-between border-b border-blue-800 bg-blue-900 p-3"
+                  className="flex w-full items-center justify-between bg-blue-800 p-3 text-left"
                 >
                   <h2 className="text-base font-bold">Services</h2>
                   <ChevronDown
                     size={18}
                     className={`transform transition-transform ${
-                      openSection === "services" ? "rotate-180" : ""
+                      openSection !== "services" ? "" : "rotate-180"
                     }`}
                   />
                 </button>
-                {openSection === "services" && (
-                  <div className="p-3">
-                    <ul className="space-y-3">
-                      {serviceLinks.map((service) => (
-                        <li key={service.id}>
-                          <Link
-                            href={service.href}
-                            className="flex items-center gap-2 text-sm transition-colors hover:text-blue-300"
-                          >
-                            <ArrowRight size={16} className="text-blue-500" />
-                            <span>{service.name}</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div
+                  className={`${openSection !== "services" ? "hidden" : "block"} p-3`}
+                >
+                  <ul className="space-y-3">
+                    {serviceLinks.map((service) => (
+                      <li key={service.id}>
+                        <Link
+                          href={service.href}
+                          className="flex items-center gap-2 text-sm transition-colors hover:text-blue-300"
+                        >
+                          <ArrowRight size={16} className="text-blue-500" />
+                          <span>{service.name}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
 
               {/* OISC Information Accordion */}
               <motion.div
-                className="rounded border border-blue-800"
+                className="overflow-hidden rounded-lg border border-blue-700 shadow-md"
                 variants={itemVariants}
               >
                 <button
                   onClick={() => toggleSection("oisc")}
-                  className="flex w-full items-center justify-between border-b border-blue-800 bg-blue-900 p-3"
+                  className="flex w-full items-center justify-between bg-blue-800 p-3 text-left"
                 >
                   <h2 className="text-base font-bold">Credentials</h2>
                   <ChevronDown
                     size={18}
                     className={`transform transition-transform ${
-                      openSection === "oisc" ? "rotate-180" : ""
+                      openSection !== "oisc" ? "" : "rotate-180"
                     }`}
                   />
                 </button>
-                {openSection === "oisc" && (
-                  <div className="flex flex-col items-center p-3">
+                <div
+                  className={`${openSection !== "oisc" ? "hidden" : "block"} p-3`}
+                >
+                  <div className="flex flex-col items-center">
                     <div className="relative mb-2 h-20 w-20">
                       <Image
                         src="/images/logo/oisc.png"
@@ -278,13 +279,13 @@ const Footer: React.FC = () => {
                       Company Number SC659958
                     </p>
                   </div>
-                )}
+                </div>
               </motion.div>
             </div>
 
             {/* Email Signup and Download Button - Always visible on mobile */}
             <motion.div className="mb-4 w-full px-2" variants={itemVariants}>
-              <div className="mb-4 flex h-10 w-full">
+              <div className="mb-4 flex h-10 w-full overflow-hidden rounded-md shadow-md">
                 <input
                   type="email"
                   placeholder="Your Email"
@@ -294,13 +295,15 @@ const Footer: React.FC = () => {
                   Sign up
                 </button>
               </div>
-              <motion.button
-                className="w-full rounded bg-blue-600 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Download our guide
-              </motion.button>
+              <a href="/get-in-touch">
+                <motion.button
+                  className="w-full rounded-md bg-blue-600 px-4 py-3 text-sm font-medium text-white shadow-md transition-colors hover:bg-blue-700"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Download our guide
+                </motion.button>
+              </a>
             </motion.div>
           </div>
 
@@ -436,14 +439,15 @@ const Footer: React.FC = () => {
                   <br />
                   Company Number SC659958
                 </div>
-
-                <motion.button
-                  className="w-full rounded bg-blue-600 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-700"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Download our guide
-                </motion.button>
+                <a href="/get-in-touch">
+                  <motion.button
+                    className="w-full rounded bg-blue-600 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-700"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Download our guide
+                  </motion.button>
+                </a>
               </div>
             </motion.div>
           </div>
