@@ -11,7 +11,11 @@ export const metadata: Metadata = {
 const GetInTouchPage = () => {
   return (
     <div className="pb-20 pt-40">
-      <Contact />
+      <Contact
+        serviceId="service_vvede9g"
+        templateId="template_b1obkqe"
+        publicKey="8seFmYH7EcPOmhmGg"
+      />
     </div>
   );
 };
