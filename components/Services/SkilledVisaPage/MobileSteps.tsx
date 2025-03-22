@@ -57,7 +57,8 @@ const MobileVisaSteps: React.FC = () => {
                 </div>
               </div>
               <p className="text-xs">
-                Create a business plan that includes the following elements
+                <strong>Verify Job Eligibility:</strong> Ensure the role
+                qualifies for a Skilled Worker Visa under UK rules.
               </p>
             </div>
           </div>
@@ -84,7 +85,8 @@ const MobileVisaSteps: React.FC = () => {
                 </div>
               </div>
               <p className="text-xs">
-                Create a business plan that includes the following elements
+                <strong>Follow Recruitment Compliance:</strong> Adhere to proper
+                hiring procedures for visa approval.
               </p>
             </div>
           </div>
@@ -111,7 +113,8 @@ const MobileVisaSteps: React.FC = () => {
                 </div>
               </div>
               <p className="text-xs">
-                Create a business plan that includes the following elements
+                <strong>Manage CoS & Renewals:</strong> Assign and renew
+                Certificates of Sponsorship on time.
               </p>
             </div>
           </div>
@@ -138,7 +141,8 @@ const MobileVisaSteps: React.FC = () => {
                 </div>
               </div>
               <p className="text-xs">
-                Create a business plan that includes the following elements
+                <strong>Submit & Support Application:</strong> Complete the visa
+                process and prepare candidates for interviews.
               </p>
             </div>
           </div>
