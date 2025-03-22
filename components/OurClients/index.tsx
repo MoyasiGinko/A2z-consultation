@@ -49,6 +49,7 @@ const clientData: ClientInfo[] = [
         "For years, my accounts were an absolute mess! Capture sorted out my accounts, and helped me relocate and set up my business in Dubai!",
       source: "Mike Thurston, YouTuber with 1.4M+ subs",
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoThumbnail: "/images/games/extra1.png",
       // No thumbnail - will use the iframe itself
     },
     imageSrc: "/images/user/user-01.png",
@@ -77,7 +78,7 @@ const clientData: ClientInfo[] = [
         "For years, my accounts were an absolute mess! Capture sorted out my accounts, and helped me relocate and set up my business in Dubai!",
       source: "Mike Thurston, YouTuber with 1.4M+ subs",
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      // videoThumbnail: "/images/testimonials/nike-thumbnail.jpg",
+      videoThumbnail: "/images/games/extra2.png",
     },
     imageSrc: "/images/user/user-01.png",
   },
@@ -105,7 +106,7 @@ const clientData: ClientInfo[] = [
         "For years, my accounts were an absolute mess! Capture sorted out my accounts, and helped me relocate and set up my business in Dubai!",
       source: "Mike Thurston, YouTuber with 1.4M+ subs",
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      // videoThumbnail: "/images/testimonials/nike-thumbnail.jpg",
+      videoThumbnail: "/images/games/extra3.png",
     },
     imageSrc: "/images/user/user-01.png",
   },
@@ -304,16 +305,21 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
 
         {/* Testimonial Section with Video */}
         <motion.div
-          className="mt-8 overflow-hidden rounded-2xl shadow-lg"
+          className="mt-8 overflow-hidden rounded-3xl bg-gradient-to-b from-sky-100/50 via-sky-400/50 to-sky-500/50 p-8 shadow-xl backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 + index * 0.2 }}
         >
           <div
-            className={`grid grid-cols-1 ${client.testimonial.videoUrl ? "lg:grid-cols-2" : ""}`}
+            className={`grid ${
+              client.testimonial.videoUrl ? "lg:grid-cols-2" : "grid-cols-1"
+            } gap-6`}
           >
             {/* Quote Section */}
-            <div className="bg-gradient-to-br from-sky-600 to-indigo-700 p-8 text-white">
+            <motion.div
+              className="rounded-2xl bg-gradient-to-br from-sky-600/50 to-indigo-700/50 p-8 text-white shadow-lg transition-shadow hover:shadow-xl"
+              whileHover={{ translateY: -5 }}
+            >
               <svg
                 className="mb-4 h-12 w-12 text-sky-300/50"
                 fill="currentColor"
@@ -330,25 +336,16 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
                 <p className="font-medium text-sky-100">
                   — {client.testimonial.source}
                 </p>
-                {/* {client.testimonial.videoUrl && (
-                  <motion.button
-                    className="hidden rounded-full bg-white px-5 py-2 text-sm font-medium text-indigo-700 shadow-md lg:flex lg:items-center lg:gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setVideoModalOpen(true)}
-                  >
-                    <span>Watch Full Story</span>
-                    <FaChevronRight size={12} />
-                  </motion.button>
-                )} */}
               </div>
-            </div>
+            </motion.div>
 
             {/* Video Section */}
             {client.testimonial.videoUrl && (
-              <div className="relative h-full bg-gray-900">
-                {/* Video Thumbnail - Use image if provided, otherwise use iframe */}
-                <div className="relative h-full min-h-[250px] w-full">
+              <motion.div
+                className="relative overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition-shadow hover:shadow-xl"
+                whileHover={{ translateY: -5 }}
+              >
+                <div className="relative h-full min-h-[300px] w-full">
                   {client.testimonial.videoThumbnail ? (
                     <>
                       <Image
@@ -361,7 +358,6 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
                     </>
                   ) : (
                     <>
-                      {/* YouTube iframe as thumbnail with overlay to prevent auto-play */}
                       <div className="relative h-full w-full">
                         <iframe
                           src={`${client.testimonial.videoUrl}?controls=0&showinfo=0&rel=0&modestbranding=1`}
@@ -377,22 +373,20 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
                     </>
                   )}
 
-                  {/* Centered Play Button with hover effect */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <motion.button
-                      className="flex h-18 w-18 items-center justify-center rounded-full bg-white/90 text-indigo-600 shadow-lg"
+                      className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 text-sky-600 shadow-lg"
                       whileHover={{ scale: 1.1 }}
                       onClick={() => setVideoModalOpen(true)}
                       aria-label="Play video"
                     >
-                      <FaPlay size={24} className="ml-1" />
+                      <FaPlay size={30} className="ml-1" />
                     </motion.button>
                   </div>
 
-                  {/* Mobile Play Text - Centered at bottom */}
                   <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-center p-6 lg:hidden">
                     <motion.button
-                      className="inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2 text-sm font-medium text-indigo-700 shadow-md"
+                      className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 text-sm font-medium text-sky-700 shadow-md"
                       whileHover={{ scale: 1.05 }}
                       onClick={() => setVideoModalOpen(true)}
                     >
@@ -401,7 +395,7 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
                     </motion.button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
         </motion.div>
