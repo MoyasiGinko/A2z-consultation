@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Modal from "./DetailsModal";
+import services from "./DetailsData";
 
 interface ServiceCardProps {
   number: number;
@@ -8,7 +9,7 @@ interface ServiceCardProps {
   description: string;
   bgColor: string;
   fullDetails: string;
-  onOpenModal: (title: string, details: string, color: string) => void;
+  onOpenModal: (serviceNumber: number) => void;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -83,7 +84,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               "background-color 0.3s, transform 0.3s, box-shadow 0.3s, padding 0.3s",
             background: `linear-gradient(45deg, #1e90ff, #00bfff)`,
           }}
-          onClick={() => onOpenModal(title, fullDetails, bgColor)}
+          onClick={() => onOpenModal(number)}
         >
           More details
         </button>
@@ -96,18 +97,32 @@ const ComplianceDetails: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [modalProps, setModalProps] = useState({
     isOpen: false,
-    title: "",
-    content: "",
-    bgColor: "",
+    service: {
+      title: "",
+      whyItMatters: "",
+      howWeHelp: {
+        intro: "",
+        points: [""],
+      },
+      conclusion: "",
+      bgColor: "",
+    },
   });
 
-  const openModal = (title: string, content: string, bgColor: string) => {
-    setModalProps({
-      isOpen: true,
-      title,
-      content,
-      bgColor,
-    });
+  const openModal = (serviceNumber: number) => {
+    const service = services.find((s) => s.number === serviceNumber);
+    if (service) {
+      setModalProps({
+        isOpen: true,
+        service: {
+          title: service.title,
+          whyItMatters: service.whyItMatters,
+          howWeHelp: service.howWeHelp,
+          conclusion: service.conclusion,
+          bgColor: service.bgColor,
+        },
+      });
+    }
   };
 
   const closeModal = () => {
@@ -138,54 +153,6 @@ const ComplianceDetails: React.FC = () => {
     };
   }, []);
 
-  const services = [
-    {
-      number: 1,
-      title: "Digital HR Services",
-      description:
-        "Time management is very good for your business because the human recourses in your company will be well structured so that the performance of each person will be maximized and directed.",
-      bgColor: "bg-blue-200",
-      fullDetails:
-        "Our Digital HR Services offer comprehensive solutions for modern businesses:\n\n" +
-        "• Automated time tracking and attendance management\n" +
-        "• Employee performance analytics and reporting\n" +
-        "• Digital onboarding and documentation processes\n" +
-        "• Centralized employee data management\n" +
-        "• Self-service portals for leave requests and benefits\n\n" +
-        "Streamline operations, reduce administrative overhead, and create a more efficient workplace environment.",
-    },
-    {
-      number: 2,
-      title: "SMS Portal Management",
-      description:
-        "Being disciplined is a good way to organize your company ecosystem. Systems with tips, all business activities that occur will be well organized.",
-      bgColor: "bg-blue-100",
-      fullDetails:
-        "Our SMS Portal Management system provides powerful communication tools:\n\n" +
-        "• Bulk SMS campaign creation and scheduling\n" +
-        "• Targeted messaging based on customer segments\n" +
-        "• Automated response handling and workflows\n" +
-        "• Comprehensive analytics on message delivery and engagement\n" +
-        "• Two-way communication capabilities\n\n" +
-        "Maintain consistent communication with your customers, employees, and stakeholders with reliable delivery and valuable insights.",
-    },
-    {
-      number: 3,
-      title: "Intensive Interview & Mock session for Audits",
-      description:
-        "Learning from mistakes is very good because it means the mistakes we make today become lessons for us tomorrow.",
-      bgColor: "bg-green-100",
-      fullDetails:
-        "Prepare for audits with confidence through our specialized sessions:\n\n" +
-        "• Simulated audit environments tailored to your industry requirements\n" +
-        "• Comprehensive interview preparation for key personnel\n" +
-        "• Document review and organization strategies\n" +
-        "• Crisis response training for unexpected audit challenges\n" +
-        "• Post-session feedback and improvement recommendations\n\n" +
-        "Identify potential vulnerabilities before actual audits and address issues proactively.",
-    },
-  ];
-
   return (
     <>
       <div className="w-full bg-gradient-to-b from-slate-50 via-sky-100 to-sky-200 py-12 shadow-[0_1px_2px_rgba(0,0,0,0.05),0_-1px_2px_rgba(0,0,0,0.05),1px_0_2px_rgba(0,0,0,0.05),-1px_0_2px_rgba(0,0,0,0.05)] md:bg-gradient-to-r md:from-slate-50 md:via-sky-100 md:to-sky-200">
@@ -211,7 +178,7 @@ const ComplianceDetails: React.FC = () => {
             {/* Right side - Cards */}
             <div className="md:w-3/4">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                {services.map((service, index) => (
+                {services.map((service) => (
                   <ServiceCard
                     key={service.number}
                     number={service.number}
@@ -232,9 +199,7 @@ const ComplianceDetails: React.FC = () => {
       <Modal
         isOpen={modalProps.isOpen}
         onClose={closeModal}
-        title={modalProps.title}
-        content={modalProps.content}
-        bgColor={modalProps.bgColor}
+        service={modalProps.service}
       />
     </>
   );
