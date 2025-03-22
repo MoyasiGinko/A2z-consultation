@@ -137,7 +137,7 @@ const Footer: React.FC = () => {
               <Link href="/" className="mb-4 block">
                 <div className="relative h-10 w-40">
                   <Image
-                    src="/images/logo/logo-white.png"
+                    src="/images/logo/logo-white.svg"
                     alt="IMMIGRATION"
                     layout="fill"
                     objectFit="contain"
@@ -317,7 +317,7 @@ const Footer: React.FC = () => {
               <Link href="/" className="mb-4 block">
                 <div className="relative h-10 w-40">
                   <Image
-                    src="/images/logo/logo-white.png"
+                    src="/images/logo/logo-white.svg"
                     alt="IMMIGRATION"
                     layout="fill"
                     objectFit="contain"
@@ -439,7 +439,7 @@ const Footer: React.FC = () => {
                   <br />
                   Company Number SC659958
                 </div>
-                <a href="/get-in-touch">
+                <a href="/free-stuff">
                   <motion.button
                     className="w-full rounded bg-blue-600 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-700"
                     whileHover={{ scale: 1.03 }}

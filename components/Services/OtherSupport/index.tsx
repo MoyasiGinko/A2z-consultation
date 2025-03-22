@@ -44,7 +44,7 @@ const OtherSupport = () => {
                       className={`flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full shadow-sm dark:bg-slate-700 ${
                         selectedTab === index
                           ? "bg-gradient-to-r from-blue-400 to-blue-500"
-                          : "bg-gradient-to-r from-sky-500 to-sky-400"
+                          : "bg-gradient-to-r from-sky-400 to-sky-500"
                       }`}
                     >
                       <div className="h-6 min-h-[1.5rem] w-6 min-w-[1.5rem] text-center font-bold opacity-80">

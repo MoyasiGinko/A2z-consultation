@@ -158,11 +158,11 @@ const Header = () => {
         boxShadow: stickyMenu ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
       }}
     >
-      <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
+      <div className="relative mx-auto max-w-[1280px] items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
         <div className="flex w-full items-center justify-between xl:w-1/4">
           <Link href="/" className="block">
             <Image
-              src="/images/logo/logo-dark.png"
+              src="/images/logo/logo-dark.svg"
               alt="logo"
               width={200}
               height={50}
@@ -170,7 +170,7 @@ const Header = () => {
               priority
             />
             <Image
-              src="/images/logo/logo-dark.png"
+              src="/images/logo/logo-dark.svg"
               alt="logo"
               width={200}
               height={50}
@@ -217,7 +217,7 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation Menu with both hover and click functionality */}
-        <div className="hidden xl:flex xl:w-4/6 xl:items-center xl:justify-between">
+        <div className="hidden xl:flex xl:w-[700px] xl:items-center xl:justify-between">
           <nav className="w-full">
             <ul className="flex flex-row items-center gap-10 font-semibold text-black">
               {menuData.map((menuItem) => (
