@@ -175,20 +175,18 @@ const Footer: React.FC = () => {
                 className="overflow-hidden rounded-lg border border-blue-700 shadow-md"
                 variants={itemVariants}
               >
-                <a href="/get-in-touch">
-                  <button
-                    onClick={() => toggleSection("contact")}
-                    className="flex w-full items-center justify-between bg-blue-800 p-3 text-left"
-                  >
-                    <h2 className="text-base font-bold">Get in touch</h2>
-                    <ChevronDown
-                      size={18}
-                      className={`transform transition-transform ${
-                        openSection !== "contact" ? "" : "rotate-180"
-                      }`}
-                    />
-                  </button>
-                </a>
+                <button
+                  onClick={() => toggleSection("contact")}
+                  className="flex w-full items-center justify-between bg-blue-800 p-3 text-left"
+                >
+                  <h2 className="text-base font-bold">Get in touch</h2>
+                  <ChevronDown
+                    size={18}
+                    className={`transform transition-transform ${
+                      openSection !== "contact" ? "" : "rotate-180"
+                    }`}
+                  />
+                </button>
                 <div
                   className={`${openSection !== "contact" ? "hidden" : "block"} p-3`}
                 >
