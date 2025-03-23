@@ -329,42 +329,44 @@ const PricingPackages: React.FC = () => {
                   </motion.button>
 
                   {/* CTA Button - Using inline style */}
-                  <motion.button
-                    className="mb-4 mt-8 w-full rounded-xl border-2 px-4 py-2"
-                    style={{
-                      borderColor: pkg.ring,
-                      color: pkg.color,
-                    }}
-                    whileHover={{
-                      scale: 1.03,
-                      backgroundColor: pkg.color,
-                      color: pkg.text,
-                      borderColor: pkg.color,
-                      transition: {
-                        duration: 0.2,
-                        ease: "easeOut",
-                      },
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      transition: {
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 10,
-                      },
-                    }}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      transition: {
-                        delay: 0.5 + index * 0.2,
-                        duration: 0.3,
-                      },
-                    }}
-                  >
-                    Get in touch
-                  </motion.button>
+                  <a href="/get-in-touch">
+                    <motion.button
+                      className="mb-4 mt-8 w-full rounded-xl border-2 px-4 py-2"
+                      style={{
+                        borderColor: pkg.ring,
+                        color: pkg.color,
+                      }}
+                      whileHover={{
+                        scale: 1.03,
+                        backgroundColor: pkg.color,
+                        color: pkg.text,
+                        borderColor: pkg.color,
+                        transition: {
+                          duration: 0.2,
+                          ease: "easeOut",
+                        },
+                      }}
+                      whileTap={{
+                        scale: 0.98,
+                        transition: {
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        },
+                      }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          delay: 0.5 + index * 0.2,
+                          duration: 0.3,
+                        },
+                      }}
+                    >
+                      Get in touch
+                    </motion.button>
+                  </a>
                 </div>
               </div>
             </motion.div>

@@ -294,7 +294,7 @@ const HeroMobile: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="transform-gpu"
             >
-              <Link href="/consultation" className="group inline-block w-full">
+              <Link href="/get-in-touch" className="group inline-block w-full">
                 <motion.button
                   className="relative w-48 overflow-hidden rounded-lg bg-gradient-to-r from-sky-500 to-sky-800 px-4 py-3 text-center text-sm font-medium text-white shadow-lg transition duration-300 hover:shadow-xl sm:w-56 sm:text-base md:w-64 md:text-lg lg:w-72"
                   style={{

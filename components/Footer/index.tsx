@@ -175,18 +175,20 @@ const Footer: React.FC = () => {
                 className="overflow-hidden rounded-lg border border-blue-700 shadow-md"
                 variants={itemVariants}
               >
-                <button
-                  onClick={() => toggleSection("contact")}
-                  className="flex w-full items-center justify-between bg-blue-800 p-3 text-left"
-                >
-                  <h2 className="text-base font-bold">Get in touch</h2>
-                  <ChevronDown
-                    size={18}
-                    className={`transform transition-transform ${
-                      openSection !== "contact" ? "" : "rotate-180"
-                    }`}
-                  />
-                </button>
+                <a href="/get-in-touch">
+                  <button
+                    onClick={() => toggleSection("contact")}
+                    className="flex w-full items-center justify-between bg-blue-800 p-3 text-left"
+                  >
+                    <h2 className="text-base font-bold">Get in touch</h2>
+                    <ChevronDown
+                      size={18}
+                      className={`transform transition-transform ${
+                        openSection !== "contact" ? "" : "rotate-180"
+                      }`}
+                    />
+                  </button>
+                </a>
                 <div
                   className={`${openSection !== "contact" ? "hidden" : "block"} p-3`}
                 >
@@ -348,8 +350,9 @@ const Footer: React.FC = () => {
               className="mb-8 max-w-[200px] px-2"
               variants={itemVariants}
             >
-              <h2 className="mb-4 text-xl font-bold">Get in touch</h2>
-
+              <a href="/get-in-touch">
+                <h2 className="mb-4 text-xl font-bold">Get in touch</h2>
+              </a>
               <ul className="space-y-3">
                 {contactInfo.map((item) => (
                   <motion.li
