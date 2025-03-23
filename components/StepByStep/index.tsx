@@ -601,14 +601,16 @@ const StepByStep = () => {
               Schedule a consultation with our immigration experts today and
               take the first step toward your new life in the United Kingdom.
             </p>
-            <motion.button
-              className="group relative inline-flex items-center overflow-hidden rounded-full bg-white px-8 py-3 font-medium text-sky-600 shadow-md"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="absolute left-0 h-full w-0 bg-sky-50 opacity-20 transition-all duration-300 group-hover:w-full" />
-              <span className="relative">Book Your Consultation</span>
-            </motion.button>
+            <a href="/get-in-touch">
+              <motion.button
+                className="group relative inline-flex items-center overflow-hidden rounded-full bg-white px-8 py-3 font-medium text-sky-600 shadow-md"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="absolute left-0 h-full w-0 bg-sky-50 opacity-20 transition-all duration-300 group-hover:w-full" />
+                <span className="relative">Book Your Consultation</span>
+              </motion.button>
+            </a>
           </motion.div>
         </motion.div>
 

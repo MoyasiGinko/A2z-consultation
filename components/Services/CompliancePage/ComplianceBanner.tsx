@@ -24,9 +24,11 @@ const ComplianceBanner: React.FC = () => {
           Unburden your team, avoid expensive penalties and gain peace of mind
           with automated, real-time compliance monitoring.
         </p>
-        <button className="rounded bg-[#0096c7] px-6 py-3 font-semibold text-white transition-colors duration-300 hover:bg-[#0077b6]">
-          Get in touch
-        </button>
+        <a href="/get-in-touch">
+          <button className="rounded bg-[#0096c7] px-6 py-3 font-semibold text-white transition-colors duration-300 hover:bg-[#0077b6]">
+            Get in touch
+          </button>
+        </a>
       </div>
 
       <div className="relative flex w-full items-center justify-center md:w-1/2">

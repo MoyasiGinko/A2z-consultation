@@ -12,6 +12,7 @@ import StoreProvider from "./utils/provider/StoreProvider";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/configs/redux/hooks";
 import { fetchLoggedInUser } from "@/configs/redux/auth/authSlice";
+import TawkToChat from "./utils/context/TawkToChat";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,6 @@ const ReduxInitializer = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
-
 export default function RootLayout({
   children,
 }: {
@@ -32,6 +32,7 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en" suppressHydrationWarning>
+        <TawkToChat />
         <body className={` ${inter.className}`}>
           <ThemeProvider
             enableSystem={false}
@@ -39,12 +40,12 @@ export default function RootLayout({
             defaultTheme="light"
           >
             <ReduxInitializer>
-            <Lines />
-            <Header />
-            <ToasterContext />
-            {children}
-            <Footer />
-            <ScrollToTop />
+              <Lines />
+              <Header />
+              <ToasterContext />
+              {children}
+              <Footer />
+              <ScrollToTop />
             </ReduxInitializer>
           </ThemeProvider>
         </body>
