@@ -27,10 +27,6 @@ const Header = () => {
   const [hoverDropdown, setHoverDropdown] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   const pathUrl = usePathname();
 
   // Handle dropdown toggle with specific menu ID (for clicks)
@@ -47,6 +43,14 @@ const Header = () => {
   const handleMouseLeave = () => {
     setHoverDropdown(null);
   };
+
+  // Initialize header state based on scroll position immediately on mount
+  useEffect(() => {
+    const initialScrollY = window.scrollY;
+    setStickyMenu(initialScrollY >= 80);
+    setLastScrollY(initialScrollY);
+    setIsMounted(true);
+  }, []);
 
   // Close mobile menu and dropdowns when clicking outside
   useEffect(() => {
@@ -143,16 +147,17 @@ const Header = () => {
   const isDropdownVisible = (menuId: number) =>
     hoverDropdown === menuId || activeDropdown === menuId;
 
+  // Determine the initial styles based on current scroll position
+  const initialStyles = {
+    backgroundColor: stickyMenu ? "rgba(255,255,255,0.98)" : "transparent",
+    boxShadow: stickyMenu ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
+  };
+
   return (
     <motion.header
       ref={headerRef}
-      // className="fixed left-0 top-0 z-50 w-full py-4"
-      className={`fixed left-0 top-0 z-50 w-full py-4 ${!isMounted ? "opacity-0" : ""}`}
-      initial={{
-        y: 0,
-        backgroundColor: "transparent",
-        boxShadow: "none",
-      }}
+      className={`fixed left-0 top-0 z-50 w-full py-4 ${!isMounted ? "invisible" : "visible"}`}
+      initial={initialStyles}
       animate={{
         backgroundColor: stickyMenu ? "rgba(255,255,255,0.98)" : "transparent",
         boxShadow: stickyMenu ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
