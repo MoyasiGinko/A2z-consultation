@@ -45,7 +45,7 @@ export default function RootLayout({
               <ToasterContext />
               {children}
               <Footer />
-              <ScrollToTop />
+              {/* <ScrollToTop /> */}
             </ReduxInitializer>
           </ThemeProvider>
         </body>
