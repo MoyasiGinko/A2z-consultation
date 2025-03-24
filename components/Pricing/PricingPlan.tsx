@@ -18,7 +18,10 @@ interface PricingPackage {
   alwaysExpanded?: boolean;
 }
 
-const PricingPackages: React.FC = () => {
+interface PricingPackagesProps {
+  packages: PricingPackage[];
+}
+const PricingPackages: React.FC<PricingPackagesProps> = ({ packages }) => {
   // Expanded states for description sections
   const [expandedStates, setExpandedStates] = useState<{
     [key: string]: boolean;
@@ -34,57 +37,6 @@ const PricingPackages: React.FC = () => {
     Platinum: useRef<HTMLDivElement>(null),
     VIP: useRef<HTMLDivElement>(null),
   };
-
-  const packages: PricingPackage[] = [
-    {
-      name: "Gold",
-      tagline: "Esse magna sunt pariatur culpa quis",
-      color: "#3d6582",
-      ring: "#3d6582",
-      text: "#ffb900",
-      shadowColor: "rgba(135, 206, 235, 0.1)", // Sky color with alpha
-      features: [
-        { text: "Anim magna proident" },
-        { text: "Voluptate labore fugiat amet" },
-        { text: "Cillum dolore sit cillum" },
-        { text: "Veniam aute mollit veniam" },
-      ],
-      description:
-        "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
-    },
-    {
-      name: "Platinum",
-      tagline: "Esse magna sunt pariatur culpa quis",
-      color: "#7986cb",
-      ring: "#7986cb",
-      text: "#fff",
-      shadowColor: "rgba(121, 134, 203, 0.1)", // RGB version of #7986cb with alpha
-      features: [
-        { text: "Anim magna proident" },
-        { text: "Voluptate labore fugiat amet" },
-        { text: "Cillum dolore sit cillum" },
-        { text: "Veniam aute mollit veniam" },
-      ],
-      description:
-        "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
-    },
-    {
-      name: "VIP",
-      tagline: "Esse magna sunt pariatur culpa quis",
-      color: "#ffb900",
-      ring: "#ffb900",
-      text: "#000",
-      shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
-      features: [
-        { text: "Anim magna proident" },
-        { text: "Voluptate labore fugiat amet" },
-        { text: "Cillum dolore sit cillum" },
-        { text: "Veniam aute mollit veniam" },
-      ],
-      description:
-        "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
-    },
-  ];
 
   const toggleReadMore = (packageName: string) => {
     setExpandedStates((prevState) => ({
