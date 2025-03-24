@@ -17,51 +17,78 @@ interface PricingPackage {
 const packages: PricingPackage[] = [
   {
     name: "Gold",
-    tagline: "Esse magna sunt pariatur culpa quis",
+    tagline: "Essential compliance support",
     color: "#3d6582",
     ring: "#3d6582",
     text: "#ffb900",
     shadowColor: "rgba(135, 206, 235, 0.1)", // Sky color with alpha
     features: [
-      { text: "Anim magna proident" },
-      { text: "Voluptate labore fugiat amet" },
-      { text: "Cillum dolore sit cillum" },
-      { text: "Veniam aute mollit veniam" },
+      { text: "Initial Compliance Consultation & Risk Assessment" },
+      { text: "Appoint one of our Technical Consultants as Level 1 User" },
+      {
+        text: "SMS Portal Management which includes: Reporting Changes, Key Personnel Updates, Licence Renewal",
+      },
+      {
+        text: "Up to 2 CoS Application Annually & Basic Support for Compliance Guidance",
+      },
+      { text: "General email support for compliance queries from Home Office" },
+      { text: "General Advice & Support" },
     ],
     description:
-      "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
+      "Our Gold compliance package provides essential support to help you maintain basic sponsor license compliance, including initial assessment, SMS portal management, and limited CoS application support.",
   },
   {
     name: "Platinum",
-    tagline: "Esse magna sunt pariatur culpa quis",
+    tagline: "Enhanced compliance management",
     color: "#7986cb",
     ring: "#7986cb",
     text: "#fff",
     shadowColor: "rgba(121, 134, 203, 0.1)", // RGB version of #7986cb with alpha
     features: [
-      { text: "Anim magna proident" },
-      { text: "Voluptate labore fugiat amet" },
-      { text: "Cillum dolore sit cillum" },
-      { text: "Veniam aute mollit veniam" },
+      { text: "All Services with Gold" },
+      {
+        text: "Fully Digital HR Service with Real-time visa expiry and compliance reminders",
+      },
+      {
+        text: "Maintain & Update HR Documentation of all Employees including online & physical RTW checks",
+      },
+      {
+        text: "Home Office audit preparation, including mock audits and document reviews",
+      },
+      {
+        text: "Continuous Maintenance of Compliance with Home Office to avoid penalties.",
+      },
+      {
+        text: "Unlimited CoS Application & Comprehensive Support with HR Compliance",
+      },
+      { text: "Provide Monthly Update on Remaning CoS" },
+      { text: "Provide Monthly Update on Compliance Health Check" },
     ],
     description:
-      "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
+      "Our Platinum compliance package offers comprehensive compliance management with digital HR services, unlimited CoS applications, regular updates, and proactive audit preparation to ensure ongoing compliance.",
   },
   {
     name: "VIP",
-    tagline: "Esse magna sunt pariatur culpa quis",
+    tagline: "Premium compliance and recruitment support",
     color: "#ffb900",
     ring: "#ffb900",
     text: "#000",
     shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
     features: [
-      { text: "Anim magna proident" },
-      { text: "Voluptate labore fugiat amet" },
-      { text: "Cillum dolore sit cillum" },
-      { text: "Veniam aute mollit veniam" },
+      { text: "All With Diamond" }, // Note: There seems to be a typo in the original data; "Diamond" should likely be "Platinum"
+      { text: "Priority handling of the CoS Application" },
+      { text: "Fast-tracked assistance with the CoS assignments" },
+      {
+        text: "Assist with Recruitment Process for New Candidates as per Compliance",
+      },
+      { text: "Unlimited CoS Assign & Cancellation Support" },
+      {
+        text: "Comprehensive support on Documentation from Finding Candidates up to Assigning CoS.",
+      },
+      { text: "Direct Home Office liaison support for any queries." },
     ],
     description:
-      "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
+      "Our VIP compliance package delivers the highest level of support including priority CoS handling, recruitment assistance, unlimited CoS support, and direct Home Office liaison to ensure complete compliance and streamlined processes.",
   },
 ];
 

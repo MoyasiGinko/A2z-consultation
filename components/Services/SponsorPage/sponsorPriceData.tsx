@@ -17,51 +17,68 @@ interface PricingPackage {
 const packages: PricingPackage[] = [
   {
     name: "Gold",
-    tagline: "Esse magna sunt pariatur culpa quis",
+    tagline: "Essential sponsorship application support",
     color: "#3d6582",
     ring: "#3d6582",
     text: "#ffb900",
     shadowColor: "rgba(135, 206, 235, 0.1)", // Sky color with alpha
     features: [
-      { text: "Anim magna proident" },
-      { text: "Voluptate labore fugiat amet" },
-      { text: "Cillum dolore sit cillum" },
-      { text: "Veniam aute mollit veniam" },
+      { text: "Initial consultation and eligibility assessment" },
+      { text: "Guidance on required documents" },
+      {
+        text: "Comprehensive Application Support – We handle the entire application process, review & drafting required supporting documents, minimising errors and delays.",
+      },
+      { text: "General email support for queries" },
     ],
     description:
-      "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
+      "Our Gold package provides essential support for your sponsor license application process, ensuring your application is complete and compliant with Home Office requirements.",
   },
   {
     name: "Platinum",
-    tagline: "Esse magna sunt pariatur culpa quis",
+    tagline: "Enhanced support with priority handling",
     color: "#7986cb",
     ring: "#7986cb",
     text: "#fff",
     shadowColor: "rgba(121, 134, 203, 0.1)", // RGB version of #7986cb with alpha
     features: [
-      { text: "Anim magna proident" },
-      { text: "Voluptate labore fugiat amet" },
-      { text: "Cillum dolore sit cillum" },
-      { text: "Veniam aute mollit veniam" },
+      { text: "Everything in the Gold Package, plus:" },
+      {
+        text: "Assistance in appointing Key Personnel (Authorising Officer, Key Contact, Level 1 User)",
+      },
+      { text: "Priority handling of the application" },
+      {
+        text: "Initial HR compliance check before application submission inlcuding RTW checks.",
+      },
+      { text: "Dedicated immigration consultant for 3 months post-approval" },
+      {
+        text: "Assistance with assigning the first Certificate of Sponsorship (CoS)",
+      },
+      {
+        text: "Support with Appeals & Reapplications – If your application is refused, we provide strategic assistance to rectify issues and eventually your Licence will be granted.",
+      },
     ],
     description:
-      "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
+      "Our Platinum package offers priority handling and additional support both during the application process and after your license is approved, including dedicated consultant support.",
   },
   {
     name: "VIP",
-    tagline: "Esse magna sunt pariatur culpa quis",
+    tagline: "Comprehensive solution with ongoing compliance support",
     color: "#ffb900",
     ring: "#ffb900",
     text: "#000",
     shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
     features: [
-      { text: "Anim magna proident" },
-      { text: "Voluptate labore fugiat amet" },
-      { text: "Cillum dolore sit cillum" },
-      { text: "Veniam aute mollit veniam" },
+      { text: "Everything in the Platinum Package, plus:" },
+      {
+        text: "Conduct & Assist Recruitment Process as part of Compliance Process",
+      },
+      {
+        text: "Direct Home Office liaison support for complex queries for up to 3 months post-approval",
+      },
+      { text: "Fast-tracked assistance with the first 3 CoS assignments ✅" },
     ],
     description:
-      "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
+      "Our VIP package provides the highest level of support throughout the entire sponsorship process, including recruitment assistance, direct Home Office liaison, and fast-tracked CoS assignments.",
   },
 ];
 
