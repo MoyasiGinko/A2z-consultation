@@ -6,10 +6,19 @@ import { supportTabs } from "./SupportData";
 
 const OtherSupport = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [expandedSection, setExpandedSection] = useState(null);
+  const [expandedSections, setExpandedSections] = useState<number[]>([]);
 
-  const toggleSection = (sectionIndex) => {
-    setExpandedSection(expandedSection === sectionIndex ? null : sectionIndex);
+  const toggleSection = (sectionIndex: number) => {
+    setExpandedSections((prevExpandedSections) => {
+      // Check if this section is already expanded
+      if (prevExpandedSections.includes(sectionIndex)) {
+        // If it is, remove it from the array (collapse it)
+        return prevExpandedSections.filter((index) => index !== sectionIndex);
+      } else {
+        // If it's not, add it to the array (expand it)
+        return [...prevExpandedSections, sectionIndex];
+      }
+    });
   };
 
   return (
@@ -138,7 +147,7 @@ const OtherSupport = () => {
                                   key={sectionIndex}
                                   className="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700"
                                 >
-                                  {/* Section Header - Clickable to expand/collapse */}
+                                  {/* Section Header - Updated for independent toggling */}
                                   <button
                                     className="flex w-full items-center justify-between bg-slate-50 px-6 py-4 text-left transition-colors hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700"
                                     onClick={() => toggleSection(sectionIndex)}
@@ -148,7 +157,7 @@ const OtherSupport = () => {
                                     </h4>
                                     <svg
                                       className={`h-5 w-5 transform text-slate-500 transition-transform dark:text-slate-300 ${
-                                        expandedSection === sectionIndex
+                                        expandedSections.includes(sectionIndex)
                                           ? "rotate-180"
                                           : ""
                                       }`}
@@ -165,20 +174,14 @@ const OtherSupport = () => {
                                     </svg>
                                   </button>
 
-                                  {/* Expandable Content */}
+                                  {/* Expandable Content - Updated for independent toggling */}
                                   <AnimatePresence>
-                                    {(expandedSection === sectionIndex ||
-                                      expandedSection === null) && (
+                                    {expandedSections.includes(
+                                      sectionIndex,
+                                    ) && (
                                       <motion.div
-                                        initial={
-                                          expandedSection !== null
-                                            ? { height: 0, opacity: 0 }
-                                            : { opacity: 1 }
-                                        }
-                                        animate={{
-                                          height: "auto",
-                                          opacity: 1,
-                                        }}
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.3 }}
                                         className="px-6 py-4"
