@@ -12,26 +12,28 @@ const RelatedPost = async () => {
         </h4>
 
         <div>
-          {BlogData.slice(0, 3).map((post, key) => (
-            <div
-              className="mb-7.5 flex flex-wrap gap-4 xl:flex-nowrap 2xl:gap-6"
-              key={key}
-            >
-              <div className="relative h-18 w-45 max-w-45">
-                {post.thumbnail ? (
-                  <Image fill src={post.thumbnail} alt="Blog" />
-                ) : (
-                  "No image"
-                )}
+          {BlogData()
+            .slice(0, 3)
+            .map((post, key) => (
+              <div
+                className="mb-7.5 flex flex-wrap gap-4 xl:flex-nowrap 2xl:gap-6"
+                key={key}
+              >
+                <div className="relative h-18 w-45 max-w-45">
+                  {post.thumbnail ? (
+                    <Image fill src={post.thumbnail} alt="Blog" />
+                  ) : (
+                    "No image"
+                  )}
+                </div>
+                <h5 className="text-md font-medium text-black transition-all duration-300 hover:text-primary dark:text-white dark:hover:text-primary">
+                  <Link href={`/blog/${post?.slug.current}`}>
+                    {" "}
+                    {post.title.slice(0, 40)}...
+                  </Link>
+                </h5>
               </div>
-              <h5 className="text-md font-medium text-black transition-all duration-300 hover:text-primary dark:text-white dark:hover:text-primary">
-                <Link href={`/blog/blog-details`}>
-                  {" "}
-                  {post.title.slice(0, 40)}...
-                </Link>
-              </h5>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </>

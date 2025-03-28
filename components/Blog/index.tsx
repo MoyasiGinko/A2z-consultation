@@ -13,7 +13,7 @@ const Blog = () => {
   const postsPerPage = 9;
 
   // This would come from your actual data source
-  const blogPosts: BlogType[] = BlogData || [];
+  const blogPosts: BlogType[] = BlogData() || [];
 
   // Calculate pagination
   const indexOfLastPost = currentPage * postsPerPage;
