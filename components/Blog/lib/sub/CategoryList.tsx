@@ -1,17 +1,25 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { fetchCategories } from "@/app/utils/api/SanityAPI";
+import Link from "next/link";
+
+// Define the Category type
+interface Category {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  description?: string;
+  postCount: number;
+}
 
 const CategoryList = () => {
-  const categories = [
-    "Updates/News",
-    "Web Development",
-    "Helpful Tips & Tricks",
-    "Keyword Research",
-    "Email Marketing",
-  ];
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  // Animation variants (kept from original)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,6 +44,30 @@ const CategoryList = () => {
     },
   };
 
+  // Fetch categories on component mount
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        setLoading(true);
+        const fetchedCategories = await fetchCategories();
+
+        // Sort categories by post count (most posts first)
+        const sortedCategories = fetchedCategories.sort(
+          (a: Category, b: Category) => b.postCount - a.postCount,
+        );
+
+        setCategories(sortedCategories);
+      } catch (err) {
+        console.error("Error fetching categories:", err);
+        setError("Failed to load categories");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getCategories();
+  }, []);
+
   return (
     <div className="mb-8">
       <motion.h3
@@ -47,47 +79,77 @@ const CategoryList = () => {
         Categories
       </motion.h3>
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
-        <motion.ul variants={containerVariants}>
-          {categories.map((category, index) => (
-            <motion.a
-              key={index}
-              variants={itemVariants}
-              whileHover={{
-                scale: 1.03,
-                background:
-                  "linear-gradient(to right, #0ea5e9, #0284c7, #0369a1)",
-                color: "white",
-                transition: { duration: 0.2, ease: "easeInOut" },
-              }}
-              whileTap={{ scale: 0.98 }}
-              className={`${
-                index !== categories.length - 1 ? "mb-2" : ""
-              } flex cursor-pointer items-center rounded-md p-2 text-black shadow-md`}
-            >
-              <motion.svg
-                className="mr-2 h-3 w-3 font-extrabold"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-                whileHover={{ rotate: 10 }}
-                transition={{ type: "spring", stiffness: 300 }}
+      {loading ? (
+        // Loading state
+        <div className="flex h-40 items-center justify-center">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"></div>
+        </div>
+      ) : error ? (
+        // Error state
+        <div className="rounded-md bg-red-50 p-4 text-sm text-red-500">
+          {error}
+        </div>
+      ) : categories.length === 0 ? (
+        // Empty state
+        <div className="rounded-md bg-gray-50 p-4 text-sm text-gray-500">
+          No categories found
+        </div>
+      ) : (
+        // Categories list (preserved original animation)
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.ul variants={containerVariants}>
+            {categories.map((category, index) => (
+              <Link
+                href={`/blog/category/${category.slug.current}`}
+                key={category._id}
+                passHref
               >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </motion.svg>
-              <span>{category}</span>
-            </motion.a>
-          ))}
-        </motion.ul>
-      </motion.div>
+                <motion.a
+                  variants={itemVariants}
+                  whileHover={{
+                    scale: 1.03,
+                    background:
+                      "linear-gradient(to right, #0ea5e9, #0284c7, #0369a1)",
+                    color: "white",
+                    transition: { duration: 0.2, ease: "easeInOut" },
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`${
+                    index !== categories.length - 1 ? "mb-2" : ""
+                  } flex cursor-pointer items-center justify-between rounded-md p-2 text-black shadow-md`}
+                >
+                  <div className="flex items-center">
+                    <motion.svg
+                      className="mr-2 h-3 w-3 font-extrabold"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      whileHover={{ rotate: 10 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </motion.svg>
+                    <span>{category.title}</span>
+                  </div>
+
+                  {/* Post count badge */}
+                  <span className="ml-2 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium">
+                    {category.postCount}
+                  </span>
+                </motion.a>
+              </Link>
+            ))}
+          </motion.ul>
+        </motion.div>
+      )}
     </div>
   );
 };
