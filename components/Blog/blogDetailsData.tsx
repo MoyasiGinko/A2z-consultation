@@ -64,6 +64,9 @@ export async function getSingleBlogPost(
       estimatedReadingTime: post.estimatedReadingTime
         ? `${post.estimatedReadingTime} min read`
         : undefined,
+      additionalImages: post.additionalImages?.map(
+        (image: any) => image.asset.url,
+      ),
       // Format related posts if available
       relatedPosts: post.relatedPosts?.map((relatedPost) => ({
         id: relatedPost._id,
