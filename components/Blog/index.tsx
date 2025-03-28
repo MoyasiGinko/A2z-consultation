@@ -115,23 +115,29 @@ const Blog = ({ categorySlug }: BlogProps) => {
       <section className="bg-gray-50 py-10">
         <div className="mx-auto max-w-c-1280 px-4 md:px-8 xl:px-0">
           <div className="flex flex-col gap-10 lg:flex-row">
-            <div className="flex-1">
+            <>
               {error ? (
-                <div className="rounded-md bg-red-50 p-4 text-center text-red-600">
-                  {error}
+                <div className="flex-1">
+                  <div className="rounded-md bg-red-50 p-4 text-center text-red-600">
+                    {error}
+                  </div>
                 </div>
               ) : loading ? (
-                <div className="flex h-96 items-center justify-center">
-                  <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+                <div className="flex-1">
+                  <div className="flex h-96 items-center justify-center">
+                    <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+                  </div>
                 </div>
               ) : blogPosts.length === 0 ? (
-                <div className="rounded-md bg-gray-100 p-8 text-center">
-                  <h2 className="mb-2 text-2xl font-bold">No posts found</h2>
-                  <p className="text-gray-600">
-                    {categorySlug
-                      ? `There are no posts in the "${categoryTitle}" category yet.`
-                      : `There are no blog posts available.`}
-                  </p>
+                <div className="flex-1">
+                  <div className="rounded-md bg-gray-100 p-8 text-center">
+                    <h2 className="mb-2 text-2xl font-bold">No posts found</h2>
+                    <p className="text-gray-600">
+                      {categorySlug
+                        ? `There are no posts in the "${categoryTitle}" category yet.`
+                        : `There are no blog posts available.`}
+                    </p>
+                  </div>
                 </div>
               ) : (
                 <BlogGrid
@@ -141,7 +147,7 @@ const Blog = ({ categorySlug }: BlogProps) => {
                   totalPages={totalPages}
                 />
               )}
-            </div>
+            </>
 
             {/* Sidebar is outside the loading/error/empty states */}
             <Sidebar currentCategory={categorySlug} />

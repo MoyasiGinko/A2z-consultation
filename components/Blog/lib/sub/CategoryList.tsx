@@ -89,7 +89,7 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
   }, []);
 
   return (
-    <div className="mb-8 rounded-lg bg-white p-6 shadow-md">
+    <div className="mb-8">
       <div className="mb-4 flex items-center justify-between">
         <motion.h3
           className="text-2xl font-bold text-black"
@@ -168,20 +168,25 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
             {categories.map((category) => (
               <motion.li key={category._id} variants={itemVariants}>
                 <Link href={`/blog/category/${category.slug.current}`} passHref>
-                  <motion.a
-                    className={`flex items-center justify-between rounded-md p-2 shadow-sm transition-colors
-                      ${
-                        currentCategory === category.slug.current
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white"
-                          : "bg-white text-black hover:bg-gray-50"
-                      }`}
+                  <motion.div
+                    className={`flex items-center justify-between rounded-md p-2 shadow-sm transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-sky-500 hover:via-sky-600 hover:to-sky-700
+                    ${
+                      currentCategory === category.slug.current
+                        ? "bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white"
+                        : "bg-white text-black hover:bg-gray-50"
+                    }`}
                     whileHover={
                       currentCategory === category.slug.current
-                        ? {}
+                        ? { scale: 1.02 }
                         : {
-                            scale: 1.03,
+                            scale: 1.02,
                             background:
-                              "linear-gradient(to right, #f5f5f5, #f0f0f0)",
+                              "linear-gradient(to right, #0ea5e9, #0284c7, #0369a1)",
+                            color: "white",
+                            transition: {
+                              duration: 0.3,
+                              ease: [0.4, 0, 0.2, 1],
+                            },
                           }
                     }
                     whileTap={{ scale: 0.98 }}
@@ -192,7 +197,7 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
-                        whileHover={{ rotate: 10 }}
+                        whileHover={{ rotate: 10, scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         <path
@@ -207,15 +212,15 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
                     {/* Post count badge */}
                     <span
                       className={`ml-2 rounded-full px-2 py-0.5 text-xs font-medium
-                      ${
-                        currentCategory === category.slug.current
-                          ? "bg-blue-500 bg-opacity-40 text-white"
-                          : "bg-gray-100 text-gray-700"
-                      }`}
+                    ${
+                      currentCategory === category.slug.current
+                        ? "bg-sky-500 bg-opacity-40 text-white"
+                        : "bg-gray-100 text-gray-700"
+                    }`}
                     >
                       {category.postCount}
                     </span>
-                  </motion.a>
+                  </motion.div>
                 </Link>
               </motion.li>
             ))}
