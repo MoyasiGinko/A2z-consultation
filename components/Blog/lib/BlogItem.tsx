@@ -46,7 +46,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ post }) => {
         <h3 className="mb-2 text-lg font-semibold">{post.title}</h3>
         <p className="mb-4 text-sm text-gray-600">{post.excerpt}</p>
         <Link
-          href={`/blog/${post?.slug.current}`}
+          href={`/blog/${post?.slug}`}
           className="text-xs font-semibold uppercase tracking-wider text-blue-500 hover:text-blue-700"
         >
           READ MORE
