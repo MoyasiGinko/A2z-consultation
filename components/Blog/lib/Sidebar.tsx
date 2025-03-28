@@ -1,18 +1,20 @@
-"use client";
 import React from "react";
-import Link from "next/link";
 import CategoryList from "./sub/CategoryList";
 import TrendingPosts from "./sub/TrendingPosts";
-import DownloadCTA from "./sub/DownloadCTA";
-import HelpCTA from "./sub/HelpCTA";
+import BookCall from "./sub/BookCall";
 
-const Sidebar = () => {
+interface SidebarProps {
+  currentCategory?: string; // Add this prop
+}
+
+const Sidebar = ({ currentCategory }: SidebarProps) => {
   return (
     <div className="lg:w-1/3">
-      <CategoryList />
-      <TrendingPosts />
-      <DownloadCTA />
-      <HelpCTA />
+      <div className="space-y-8">
+        <CategoryList currentCategory={currentCategory} />
+        <TrendingPosts />
+        <BookCall />
+      </div>
     </div>
   );
 };

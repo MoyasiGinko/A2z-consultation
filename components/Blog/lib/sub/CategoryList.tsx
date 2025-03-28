@@ -14,12 +14,16 @@ interface Category {
   postCount: number;
 }
 
-const CategoryList = () => {
+interface CategoryListProps {
+  currentCategory?: string;
+}
+
+const CategoryList = ({ currentCategory }: CategoryListProps) => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Animation variants (kept from original)
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -69,7 +73,7 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div className="mb-8">
+    <div className="mb-8 rounded-lg bg-white p-6 shadow-md">
       <motion.h3
         className="mb-4 text-2xl font-bold text-black"
         initial={{ opacity: 0, y: -10 }}
@@ -95,32 +99,33 @@ const CategoryList = () => {
           No categories found
         </div>
       ) : (
-        // Categories list (preserved original animation)
+        // Categories list with animations
         <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
-          <motion.ul variants={containerVariants}>
-            {categories.map((category, index) => (
-              <Link
-                href={`/blog/category/${category.slug.current}`}
-                key={category._id}
-                passHref
-              >
+          <motion.ul className="space-y-2" variants={containerVariants}>
+            {/* All Posts category first */}
+            <motion.li variants={itemVariants}>
+              <Link href="/blog/category/show-all" passHref>
                 <motion.a
-                  variants={itemVariants}
-                  whileHover={{
-                    scale: 1.03,
-                    background:
-                      "linear-gradient(to right, #0ea5e9, #0284c7, #0369a1)",
-                    color: "white",
-                    transition: { duration: 0.2, ease: "easeInOut" },
-                  }}
+                  className={`flex items-center justify-between rounded-md p-2 shadow-sm transition-colors
+                    ${
+                      !currentCategory
+                        ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white"
+                        : "bg-white text-black hover:bg-gray-50"
+                    }`}
+                  whileHover={
+                    !currentCategory
+                      ? {}
+                      : {
+                          scale: 1.03,
+                          background:
+                            "linear-gradient(to right, #f5f5f5, #f0f0f0)",
+                        }
+                  }
                   whileTap={{ scale: 0.98 }}
-                  className={`${
-                    index !== categories.length - 1 ? "mb-2" : ""
-                  } flex cursor-pointer items-center justify-between rounded-md p-2 text-black shadow-md`}
                 >
                   <div className="flex items-center">
                     <motion.svg
@@ -137,15 +142,66 @@ const CategoryList = () => {
                         clipRule="evenodd"
                       />
                     </motion.svg>
-                    <span>{category.title}</span>
+                    <span>All Posts</span>
                   </div>
-
-                  {/* Post count badge */}
-                  <span className="ml-2 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium">
-                    {category.postCount}
-                  </span>
                 </motion.a>
               </Link>
+            </motion.li>
+
+            {/* Regular categories */}
+            {categories.map((category) => (
+              <motion.li key={category._id} variants={itemVariants}>
+                <Link href={`/blog/category/${category.slug.current}`} passHref>
+                  <motion.a
+                    className={`flex items-center justify-between rounded-md p-2 shadow-sm transition-colors
+                      ${
+                        currentCategory === category.slug.current
+                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white"
+                          : "bg-white text-black hover:bg-gray-50"
+                      }`}
+                    whileHover={
+                      currentCategory === category.slug.current
+                        ? {}
+                        : {
+                            scale: 1.03,
+                            background:
+                              "linear-gradient(to right, #f5f5f5, #f0f0f0)",
+                          }
+                    }
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex items-center">
+                      <motion.svg
+                        className="mr-2 h-3 w-3 font-extrabold"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                        whileHover={{ rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </motion.svg>
+                      <span>{category.title}</span>
+                    </div>
+
+                    {/* Post count badge */}
+                    <span
+                      className={`ml-2 rounded-full px-2 py-0.5 text-xs font-medium
+                      ${
+                        currentCategory === category.slug.current
+                          ? "bg-blue-500 bg-opacity-40 text-white"
+                          : "bg-gray-100 text-gray-700"
+                      }`}
+                    >
+                      {category.postCount}
+                    </span>
+                  </motion.a>
+                </Link>
+              </motion.li>
             ))}
           </motion.ul>
         </motion.div>
