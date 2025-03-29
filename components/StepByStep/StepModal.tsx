@@ -173,7 +173,7 @@ const StepModal = ({ isOpen, onClose, step, additionalInfo }) => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="absolute left-0 h-full w-0 bg-white opacity-20 transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute left-0 h-full w-0 bg-sky-500 opacity-80 transition-all duration-300 group-hover:w-full" />
                     <span className="relative">Schedule a Consultation</span>
                   </motion.button>
                 </motion.div>

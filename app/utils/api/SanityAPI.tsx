@@ -207,3 +207,28 @@ export async function fetchPaginatedPosts(
     },
   };
 }
+/**
+ * Fetch trending posts based on recent publication date
+ * @param limit Optional number of trending posts to return
+ * @returns Array of trending blog posts
+ */
+export async function fetchTrendingPosts(limit: number = 5) {
+  const query = `*[_type == "post"] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
+    mainImage {
+      asset -> { url }
+    },
+    categories[]-> { title, slug },
+    author -> {
+      name,
+      image { asset -> { url } }
+    },
+    publishedAt
+  } | order(publishedAt desc)[0...${limit}]`;
+
+  return await client.fetch(query);
+}

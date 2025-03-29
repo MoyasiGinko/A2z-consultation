@@ -288,12 +288,11 @@ const AdvancedStepCard = ({ step, isActive, onLearnMore }) => {
 
             <motion.div className="flex items-center" variants={itemVariants}>
               <motion.button
-                className="group relative inline-flex items-center overflow-hidden rounded-full bg-sky-600 px-6 py-2 font-medium text-white"
+                className="group relative inline-flex items-center overflow-hidden rounded-full bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 px-6 py-2 font-medium text-white hover:bg-gradient-to-t hover:from-sky-400 hover:via-sky-600 hover:to-sky-700"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleLearnMoreClick}
               >
-                <span className="absolute left-0 h-full w-0 bg-white opacity-20 transition-all duration-300 group-hover:w-full" />
                 <span className="relative">Learn More</span>
               </motion.button>
             </motion.div>

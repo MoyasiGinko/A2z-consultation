@@ -238,6 +238,14 @@ const WhyCompliance: React.FC = () => {
                 <ListItem key={index} content={item} index={index} />
               ))}
             </motion.ul>
+            <motion.div className="mt-6 flex items-center justify-start md:mt-8 lg:mt-10">
+              <a
+                href="/get-in-touch"
+                className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Get Started
+              </a>
+            </motion.div>
           </div>
 
           {/* Video Section (replacing Image Section) */}
