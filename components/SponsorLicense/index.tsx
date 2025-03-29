@@ -45,7 +45,7 @@ const SponsorLicenceSection: React.FC = () => {
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 1, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -57,7 +57,7 @@ const SponsorLicenceSection: React.FC = () => {
   };
 
   const titleVariants = {
-    hidden: { opacity: 0, x: -30 },
+    hidden: { opacity: 1, x: -30 },
     visible: {
       opacity: 1,
       x: 0,
@@ -79,7 +79,7 @@ const SponsorLicenceSection: React.FC = () => {
   };
 
   const listItemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 1, x: -20 },
     visible: {
       opacity: 1,
       x: 0,
@@ -203,7 +203,7 @@ const SponsorLicenceSection: React.FC = () => {
       <motion.div
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
-        // initial="hidden"
+        initial="hidden"
         animate={controls}
       >
         <div className="grid gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
