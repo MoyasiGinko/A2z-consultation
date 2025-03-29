@@ -203,7 +203,7 @@ const SponsorLicenceSection: React.FC = () => {
       <motion.div
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
-        initial="hidden"
+        // initial="hidden"
         animate={controls}
       >
         <div className="grid gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
