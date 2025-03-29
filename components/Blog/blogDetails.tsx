@@ -154,7 +154,7 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
   }
 
   return (
-    <section className="pb-20 pt-35 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
+    <section className="pb-20 pt-20 lg:pb-25 lg:pt-25 xl:pb-30 xl:pt-30">
       <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
         <div className="flex flex-col gap-7.5 lg:flex-row xl:gap-12.5">
           <div className="lg:w-2/3">

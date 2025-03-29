@@ -7,7 +7,7 @@ interface BlogHeaderProps {
 
 const BlogHeader = ({ categoryTitle }: BlogHeaderProps) => {
   return (
-    <div className="relative z-10 overflow-hidden bg-gradient-to-b from-blue-900 to-indigo-900 px-4 pb-16 pt-24 text-white md:px-8 lg:pb-20 lg:pt-28">
+    <div className="relative z-10 overflow-hidden bg-gradient-to-b from-white via-sky-500 to-sky-600 px-4 pb-16 pt-24 text-white md:px-8 lg:pb-20 lg:pt-28">
       <div className="mx-auto max-w-c-1280">
         <div className="text-center">
           <h1 className="mb-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">

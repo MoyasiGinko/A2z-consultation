@@ -27,7 +27,7 @@ const CategoryPage = () => {
   return (
     <>
       {/* <!-- ===== Blog Grid Start ===== --> */}
-      <section className="py-20 lg:py-25 xl:py-30">
+      <section className="">
         <Blog />
       </section>
       {/* <!-- ===== Blog Grid End ===== --> */}
