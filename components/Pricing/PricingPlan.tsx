@@ -167,91 +167,91 @@ const PricingPackages: React.FC<PricingPackagesProps> = ({ packages }) => {
                   {pkg.name}
                 </motion.h2>
               </motion.div>
-              <div className="z-999 bg-white py-2">
+              <div className="z-999 bg-white">
                 {/* Package Content */}
                 <div className="p-6">
-                  <p className="mb-4 italic text-gray-700">{pkg.tagline}</p>
+                  <p className="mb-2 h-14 italic text-gray-700">
+                    {pkg.tagline}
+                  </p>
 
-                  <div className="mb-4">
-                    <h3 className="mb-3 font-medium">Features</h3>
-                    <ul className="space-y-2">
-                      {pkg.features.map((feature, idx) => (
-                        <motion.li
-                          key={idx}
-                          className="flex items-start"
-                          variants={featureVariants}
-                          initial="hidden"
-                          animate="visible"
-                          transition={{ delay: index * 0.1 + idx * 0.1 }}
-                          whileHover={{ x: 5, transition: { duration: 0.2 } }}
-                        >
-                          <motion.svg
-                            className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-teal-500"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{
-                              scale: 1,
-                              opacity: 1,
-                              rotate: [0, 10, 0],
-                            }}
-                            transition={{
-                              delay: index * 0.1 + idx * 0.1 + 0.2,
-                              duration: 0.5,
-                              rotate: {
-                                duration: 0.3,
-                                delay: index * 0.1 + idx * 0.1 + 0.2,
-                              },
-                            }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </motion.svg>
-                          <span>{feature.text}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
+                  {/* Content container with fixed height */}
+                  <motion.div
+                    className="relative"
+                    animate={{
+                      height: expandedStates[pkg.name] ? "auto" : "220px",
+                    }}
+                    transition={{
+                      height: {
+                        duration: 0.5,
+                        ease: [0.04, 0.62, 0.23, 0.98],
+                      },
+                    }}
+                  >
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ${
+                        expandedStates[pkg.name] ? "" : "max-h-[220px]"
+                      }`}
+                    >
+                      <div className="mb-4">
+                        <h3 className="mb-3 font-medium">Features</h3>
+                        <ul className="space-y-1">
+                          {pkg.features.map((feature, idx) => (
+                            <motion.li
+                              key={idx}
+                              className="flex items-start"
+                              variants={featureVariants}
+                              initial="hidden"
+                              animate="visible"
+                              transition={{ delay: index * 0.1 + idx * 0.1 }}
+                              whileHover={{
+                                x: 5,
+                                transition: { duration: 0.2 },
+                              }}
+                            >
+                              <motion.svg
+                                className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-teal-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{
+                                  scale: 1,
+                                  opacity: 1,
+                                  rotate: [0, 10, 0],
+                                }}
+                                transition={{
+                                  delay: index * 0.1 + idx * 0.1 + 0.2,
+                                  duration: 0.5,
+                                  rotate: {
+                                    duration: 0.3,
+                                    delay: index * 0.1 + idx * 0.1 + 0.2,
+                                  },
+                                }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M5 13l4 4L19 7"
+                                />
+                              </motion.svg>
+                              <span>{feature.text}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
 
-                  {/* Description - with improved animation */}
-                  <AnimatePresence mode="sync">
-                    {(pkg.alwaysExpanded || expandedStates[pkg.name]) && (
-                      <motion.div
-                        className="mt-4 text-sm text-gray-600"
-                        initial={{ height: 0, opacity: 0, y: -10 }}
-                        animate={{
-                          height: "auto",
-                          opacity: 1,
-                          y: 0,
-                          transition: {
-                            height: {
-                              duration: 0.4,
-                              ease: [0.04, 0.62, 0.23, 0.98],
-                            },
-                            opacity: { duration: 0.4, delay: 0.1 },
-                            y: { duration: 0.3, delay: 0.1 },
-                          },
-                        }}
-                        exit={{
-                          height: 0,
-                          opacity: 0,
-                          y: -10,
-                          transition: {
-                            height: { duration: 0.3 },
-                            opacity: { duration: 0.2 },
-                            y: { duration: 0.2 },
-                          },
-                        }}
-                      >
-                        <p className="mb-4">{pkg.description}</p>
-                      </motion.div>
+                      {/* Description */}
+                      <div className="mt-4 text-sm text-gray-600">
+                        <p>{pkg.description}</p>
+                      </div>
+                    </div>
+
+                    {/* Gradient overlay for non-expanded state */}
+                    {!expandedStates[pkg.name] && (
+                      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
                     )}
-                  </AnimatePresence>
+                  </motion.div>
 
                   {/* Read More Button */}
                   <motion.button

@@ -35,7 +35,7 @@ const packages: PricingPackage[] = [
   },
   {
     name: "Platinum",
-    tagline: "Enhanced support with priority handling",
+    tagline: "Enhanced customer support with priority handling",
     color: "#7986cb",
     ring: "#7986cb",
     text: "#fff",

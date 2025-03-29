@@ -15,7 +15,6 @@ const OurClientsPage = () => {
     <div>
       <ClientsHero />
       <ClientsPage />
-      <BlogsList />
     </div>
   );
 };
