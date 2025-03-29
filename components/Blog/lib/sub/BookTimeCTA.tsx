@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const BookTimeCTA = () => {
   return (
-    <>
+    <div className="pb-10">
       <div className=" mt-8 p-6 text-center">
         <h1 className="mb-2 bg-gradient-to-r from-sky-500 via-sky-700 to-sky-800  bg-clip-text text-4xl font-bold text-transparent">
           Let's book a time to chat
@@ -36,7 +36,7 @@ const BookTimeCTA = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
