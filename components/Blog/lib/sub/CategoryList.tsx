@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { fetchCategories, fetchPosts } from "@/app/utils/api/SanityAPI";
+import { fetchCategories } from "@/app/utils/api/SanityAPI";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // Define the Category type
 interface Category {
@@ -55,20 +56,22 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
     router.push("/blog/category/show-all");
   };
 
-  // Fetch categories and total post count on component mount
+  // Fetch categories on component mount
   useEffect(() => {
     const getCategories = async () => {
       try {
         setLoading(true);
 
-        // Parallel fetch for better performance
-        const [fetchedCategories, allPosts] = await Promise.all([
-          fetchCategories(),
-          fetchPosts(),
-        ]);
+        // Only fetch categories - we'll calculate total posts from category counts
+        const fetchedCategories = await fetchCategories();
 
-        // Set total post count
-        setTotalPosts(allPosts.length);
+        // Calculate total posts by summing post counts from all categories
+        const total = fetchedCategories.reduce(
+          (sum: number, category: Category) => sum + (category.postCount || 0),
+          0,
+        );
+
+        setTotalPosts(total);
 
         // Sort categories by post count (most posts first)
         const sortedCategories = fetchedCategories.sort(
@@ -163,7 +166,7 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
           variants={containerVariants}
         >
           <motion.ul className="space-y-2" variants={containerVariants}>
-            {/* Regular categories - removed All Posts button */}
+            {/* Using Next.js Link for client-side navigation */}
             {categories.map((category) => (
               <motion.li
                 key={category._id}
@@ -171,14 +174,14 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <a href={`/blog/category/${category.slug.current}`}>
+                <Link href={`/blog/category/${category.slug.current}`} passHref>
                   <motion.div
                     className={`flex items-center justify-between rounded-md p-2 shadow-md transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gradient-to-r hover:from-sky-500 hover:via-sky-600 hover:to-sky-700 hover:text-white
-              ${
-                currentCategory === category.slug.current
-                  ? "bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white"
-                  : "bg-white text-black"
-              }`}
+                      ${
+                        currentCategory === category.slug.current
+                          ? "bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white"
+                          : "bg-white text-black"
+                      }`}
                     whileHover={
                       currentCategory === category.slug.current
                         ? { scale: 1.02 }
@@ -216,16 +219,16 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
                     {/* Post count badge */}
                     <span
                       className={`ml-2 rounded-full px-2 py-0.5 text-xs font-medium
-              ${
-                currentCategory === category.slug.current
-                  ? "bg-sky-500 bg-opacity-40 text-white"
-                  : "bg-gray-100 text-gray-700"
-              }`}
+                      ${
+                        currentCategory === category.slug.current
+                          ? "bg-sky-500 bg-opacity-40 text-white"
+                          : "bg-gray-100 text-gray-700"
+                      }`}
                     >
                       {category.postCount}
                     </span>
                   </motion.div>
-                </a>
+                </Link>
               </motion.li>
             ))}
           </motion.ul>
