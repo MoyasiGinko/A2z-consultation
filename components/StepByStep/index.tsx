@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import StepModal from "./StepModal";
 import UnderlineAnimation from "../Common/UnderlineAnimate";
+import { steps, additionalInfo } from "./stepsData"; // Importing step data
 
 // Animated path component for journey visualization
 // Enhanced animated path component with optimized performance and advanced animations
@@ -363,113 +364,6 @@ const StepByStep = () => {
     offset: ["start start", "end end"],
   });
 
-  const steps = [
-    {
-      id: 1,
-      image: "/images/steps/step-1.svg",
-      title: "Get your Free Eligibility Assessment",
-      description:
-        "Apply for a sponsor licence to hire international talent. We guide you through preparing and submitting the application, ensuring all documentation meets Home Office requirements.",
-    },
-    {
-      id: 2,
-      image: "/images/steps/step-2.svg",
-      title: "Get your Sponsor Licence",
-      description:
-        "Assign a CoS to candidates who meet job and skill requirements. We help secure and allocate the correct type of CoS, ensuring your candidate satisfies salary and skill criteria to avoid delays in the visa process.",
-    },
-    {
-      id: 3,
-      image: "/images/steps/step-3.svg",
-      title: "ASSIGN CERTIFICATE of SPONSORSHIP (CoS) to Your Skilled Worker",
-      description:
-        "With the CoS assigned, your candidate can then apply for their Skilled Worker Visa. A2zImmigrations takes care of the entire process, keeping you updated along the way. We also provide a free candidate eligibility check to avoid visa rejections.",
-    },
-    {
-      id: 4,
-      image: "/images/steps/step-4.svg",
-      title: "Submit Application for the Skilled Worker",
-      description:
-        "As a sponsor, you have to track employ-ee records, report any changes in employment status, and monitor visa expiration dates. A2zImmigrations keeps you ready for Home Office audits and helps with essential compliance management to",
-    },
-    {
-      id: 5,
-      image: "/images/steps/step-5.svg",
-      title: "Maintain HR & Compliance",
-      description:
-        "Our support doesn't end with your visa approval. We're here to help you settle in and succeed.",
-    },
-  ];
-
-  // Additional information for each step to display in the modal
-  const additionalInfo = {
-    1: {
-      expectation:
-        "During the initial assessment, our immigration experts will conduct a comprehensive review of your qualifications, work experience, and personal circumstances to determine your eligibility for the UK Skilled Worker Visa. We'll identify the most suitable visa category and pathway for your specific situation.",
-      documents: [
-        "Updated CV/resume highlighting relevant experience",
-        "Educational qualifications and certificates",
-        "Professional certifications and licenses",
-        "Passport and identification documents",
-        "Current or previous visas (if applicable)",
-      ],
-      timeline:
-        "The initial assessment typically takes 3-5 business days to complete, after which we'll schedule a detailed consultation to discuss your eligibility and options.",
-    },
-    2: {
-      expectation:
-        "Our documentation specialists will guide you through preparing and organizing all required documents for your visa application. We'll provide detailed checklists, document templates, and personalized guidance to ensure your application package is complete and compelling.",
-      documents: [
-        "Certificate of Sponsorship (CoS) from your UK employer",
-        "Proof of English language proficiency",
-        "Bank statements showing required maintenance funds",
-        "Tuberculosis (TB) test results (if applicable)",
-        "Proof of accommodation in the UK",
-      ],
-      timeline:
-        "The documentation preparation phase typically takes 2-3 weeks, depending on the complexity of your case and how quickly you can gather the required documents.",
-    },
-    3: {
-      expectation:
-        "Our team will handle the submission of your visa application, ensuring all forms are correctly completed and all supporting documents are properly organized. We'll monitor the progress of your application and respond to any queries from UK Visas and Immigration (UKVI).",
-      documents: [
-        "Completed visa application form",
-        "Biometric information",
-        "Application fee payment receipt",
-        "Immigration Health Surcharge payment receipt",
-        "Supporting documents as required by UKVI",
-      ],
-      timeline:
-        "Processing times for Skilled Worker Visa applications typically range from 3 to 8 weeks from the date of biometric submission, though priority services are available for faster processing.",
-    },
-    4: {
-      expectation:
-        "Once your visa is approved, we'll help you prepare for your move to the UK. This includes guidance on entry procedures, initial accommodation, setting up bank accounts, registering with healthcare services, and understanding your rights and responsibilities as a visa holder.",
-      documents: [
-        "Visa vignette in your passport",
-        "Decision letter from UKVI",
-        "Biometric Residence Permit (BRP) collection details",
-        "UK entry checklist",
-        "Relocation resources and guides",
-      ],
-      timeline:
-        "Our relocation support begins immediately after visa approval and continues through your first 90 days in the UK to ensure a smooth transition to your new life.",
-    },
-    5: {
-      expectation:
-        "Our relationship doesn't end when you arrive in the UK. We provide ongoing support to help you settle in, understand your visa conditions, and plan for potential extensions or settlement applications in the future. We're here to answer questions and provide guidance throughout your time in the UK.",
-      documents: [
-        "Biometric Residence Permit (BRP)",
-        "National Insurance Number",
-        "NHS registration documents",
-        "Council tax registration",
-        "Visa compliance checklist",
-      ],
-      timeline:
-        "Our post-visa support is available for the duration of your initial visa period, with regular check-ins and updates regarding any changes to immigration rules that may affect you.",
-    },
-  };
-
   // Function to handle opening the modal with the selected step
   const handleLearnMore = (step) => {
     setSelectedStep(step);
@@ -538,7 +432,7 @@ const StepByStep = () => {
             >
               <span className="relative inline-block">
                 <span className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl">
-                  Step-by-Step Guide to UK Skilled Worker Visa Sponsorship
+                  Guide to UK Skilled Worker Visa Sponsorship
                 </span>
                 <UnderlineAnimation />
               </span>
@@ -550,8 +444,8 @@ const StepByStep = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Navigate the UK visa sponsorship process with confidence through
-              our comprehensive guide and expert support at every stage.
+              Your Path In Securing SPONSOR LICENCE & Skilled Worker Visa
+              <span className="block">All in One Platform</span>
             </motion.p>
           </div>
 
