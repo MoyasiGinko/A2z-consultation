@@ -1,7 +1,5 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import BlogDetails from "@/components/Blog/blogDetails";
-import { fetchPostBySlug } from "@/app/utils/api/SanityAPI";
 import BlogsBanner from "@/components/Blog/lib/sub/BlogsBanner";
 import BookTimeCTA from "@/components/Blog/lib/sub/BookTimeCTA";
 
