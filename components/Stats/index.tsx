@@ -12,17 +12,17 @@ interface StatItem {
 const stats: StatItem[] = [
   {
     id: 1,
-    value: "520+",
+    value: "121+",
     description: "Companies trust us",
   },
   {
     id: 2,
-    value: "420+",
+    value: "75+",
     description: "Sponsor Licenses granted",
   },
   {
     id: 3,
-    value: "2600+",
+    value: "200+",
     description: "Visas granted",
   },
   {
