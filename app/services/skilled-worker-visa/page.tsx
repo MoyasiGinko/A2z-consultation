@@ -10,6 +10,7 @@ import VisaServices from "@/components/Services/SkilledVisaPage/VIsa-Services";
 import PricingPackages from "@/components/Pricing/PricingPlan";
 import FAQSection from "@/components/FAQ/FAQ-Section";
 import packages from "@/components/Services/SkilledVisaPage/visaPriceData";
+import faqItems from "@/components/Services/SkilledVisaPage/visafaqData";
 
 export const metadata: Metadata = {
   title: "Skilled Worker Visa Page - A2Z",
@@ -28,7 +29,7 @@ const SkilledVisaPage = () => {
       <WhoLovesUs />
       <VisaCTA />
       <VisaServices />
-      <FAQSection />
+      <FAQSection faqItems={faqItems} />
     </div>
   );
 };
