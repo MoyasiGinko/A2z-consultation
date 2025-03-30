@@ -182,20 +182,6 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
                           ? "bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white"
                           : "bg-white text-black"
                       }`}
-                    whileHover={
-                      currentCategory === category.slug.current
-                        ? { scale: 1.02 }
-                        : {
-                            scale: 1.02,
-                            background:
-                              "linear-gradient(to right, #0ea5e9, #0284c7, #0369a1)",
-                            color: "white",
-                            transition: {
-                              duration: 0.3,
-                              ease: [0.4, 0, 0.2, 1],
-                            },
-                          }
-                    }
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-center">
