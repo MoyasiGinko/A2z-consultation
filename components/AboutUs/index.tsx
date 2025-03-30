@@ -27,7 +27,7 @@ const AboutUs: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="mb-20">
       {/* Hero Section */}
       <motion.section
         className="relative h-96 w-full bg-sky-900"
@@ -440,19 +440,19 @@ const AboutUs: React.FC = () => {
                 name: "Sarah Johnson",
                 role: "Founder & Chief Executive Officer",
                 bio: "A former immigration attorney with 20+ years of experience, Sarah founded A2Z Immigrants after immigrating from Ireland herself. Her personal journey through the immigration system inspired her to create a more compassionate approach to immigration services. She holds a J.D. from Harvard Law School and has been recognized as one of the '50 Most Influential Immigrants' by Global Leadership Magazine.",
-                image: "/images/team-1.jpg",
+                image: "/images/user/team-01.png",
               },
               {
                 name: "Miguel Rodriguez",
                 role: "Chief Operations Officer",
                 bio: "Miguel joined A2Z in 2016 after a successful career in international development. Born in Mexico and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Miguel specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
-                image: "/images/team-2.jpg",
+                image: "/images/user/team-02.png",
               },
               {
                 name: "Aisha Patel",
                 role: "Director of Client Services",
                 bio: "With a background in social work and immigration policy, Aisha leads our client experience team with empathy and precision. After experiencing the challenges of the immigration system with her own family, she dedicated her career to improving this journey for others. Aisha has developed our renowned client-centered methodology and training program that ensures consistent, compassionate service across all our locations.",
-                image: "/images/team-3.jpg",
+                image: "/images/user/team-03.png",
               },
             ].map((member, index) => (
               <motion.div
@@ -529,7 +529,7 @@ const AboutUs: React.FC = () => {
           </div>
         </motion.div>
       </section>
-    </>
+    </div>
   );
 };
 
