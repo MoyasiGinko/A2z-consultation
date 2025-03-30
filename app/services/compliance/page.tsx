@@ -11,6 +11,7 @@ import ComplianceServices from "@/components/Services/CompliancePage/Compliance-
 import ComplianceDetails from "@/components/Services/CompliancePage/Compliance-Details";
 import ComplianceCTA from "@/components/Services/CompliancePage/Compliance-CTA";
 import packages from "@/components/Services/CompliancePage/compliancePriceData";
+import faqItems from "@/components/Services/CompliancePage/compliancefaqData";
 
 export const metadata: Metadata = {
   title: "Compliance Page - A2Z",
@@ -30,7 +31,7 @@ const CompliancePage = () => {
       <ComplianceCTA />
       <ComplianceServices />
       <WhoLovesUs />
-      <FAQSection />
+      <FAQSection faqItems={faqItems} />
     </div>
   );
 };

@@ -10,6 +10,7 @@ import WhoLovesUs from "@/components/WhoLoveUs";
 import FAQSection from "@/components/FAQ/FAQ-Section";
 import SponsorServices from "@/components/Services/SponsorPage/Sponsor-Services";
 import packages from "@/components/Services/SponsorPage/sponsorPriceData";
+import faqItems from "@/components/Services/SponsorPage/sponsorfaqData";
 
 export const metadata: Metadata = {
   title: "Sponsor Licence Page - A2Z",
@@ -28,7 +29,7 @@ const SponsorPage = () => {
       <PricingPackages packages={packages} />
       <SponsorServices />
       <WhoLovesUs />
-      <FAQSection />
+      <FAQSection faqItems={faqItems} />
     </div>
   );
 };

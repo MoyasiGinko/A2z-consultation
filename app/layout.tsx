@@ -33,7 +33,7 @@ export default function RootLayout({
     <StoreProvider>
       <html lang="en" suppressHydrationWarning>
         <TawkToChat />
-        <body className={` ${inter.className}`}>
+        <body className={`flex min-h-screen flex-col ${inter.className}`}>
           <ThemeProvider
             enableSystem={false}
             attribute="class"
@@ -43,7 +43,7 @@ export default function RootLayout({
               <Lines />
               <Header />
               <ToasterContext />
-              {children}
+              <main className="flex-grow">{children}</main>
               <Footer />
               <ScrollToTop />
             </ReduxInitializer>

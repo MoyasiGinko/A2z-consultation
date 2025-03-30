@@ -202,7 +202,7 @@ const WhyCompliance: React.FC = () => {
       <motion.div
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
-        initial="hidden"
+        // initial="hidden"
         animate={controls}
       >
         <div className="grid gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
@@ -238,6 +238,14 @@ const WhyCompliance: React.FC = () => {
                 <ListItem key={index} content={item} index={index} />
               ))}
             </motion.ul>
+            <motion.div className="mt-6 flex items-center justify-start md:mt-8 lg:mt-10">
+              <a
+                href="/get-in-touch"
+                className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Get Started
+              </a>
+            </motion.div>
           </div>
 
           {/* Video Section (replacing Image Section) */}
@@ -248,7 +256,7 @@ const WhyCompliance: React.FC = () => {
             <div className="relative h-[180px] w-[280px] rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:h-[240px] sm:w-[360px] sm:max-w-lg md:h-[320px] md:w-[502px] md:p-2 lg:max-w-xl xl:max-w-2xl">
               <div className="relative h-full w-full overflow-hidden rounded-2xl">
                 <motion.div
-                  initial={{ opacity: 0 }}
+                  // initial={{ opacity: 0 }}
                   animate={{ opacity: isLoaded ? 1 : 0 }}
                   transition={{ duration: 0.5 }}
                   className="h-full w-full"

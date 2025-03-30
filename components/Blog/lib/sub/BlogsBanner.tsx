@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const BlogsBanner = () => {
   return (
-    <div className="relative -z-0 mt-20 h-64 w-full overflow-hidden md:h-80 lg:h-[400px]">
+    <div className="relative -z-0 h-64 w-full overflow-hidden md:h-72 lg:h-[340px]">
       {/* Background Image - Tower Bridge */}
       <div className="absolute inset-0 h-full w-full">
         <Image
@@ -20,7 +20,7 @@ const BlogsBanner = () => {
 
       {/* Blue gradient overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-slate-950/80 to-slate-900/90"
+        className="absolute inset-0 bg-gradient-to-b from-white/80 via-sky-500/70 to-sky-600/60"
         aria-hidden="true"
       />
 

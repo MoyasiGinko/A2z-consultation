@@ -1,138 +1,119 @@
+"use client";
 import { BlogType } from "@/types/blog";
+import { useEffect, useState } from "react";
+import {
+  fetchPosts,
+  fetchPostsByCategory,
+  fetchCategories,
+} from "@/app/utils/api/SanityAPI";
 
-const BlogData: BlogType[] = [
-  {
-    id: 1,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 20, 2024",
-    readTime: "5 min read",
-    thumbnail: "/images/blog/blog-01.png",
-    slug: "how-to-build-a-website-1",
-  },
-  {
-    id: 2,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 21, 2024",
-    readTime: "5 min read",
-    thumbnail: "/images/blog/blog-02.png",
-    slug: "how-to-build-a-website-2",
-  },
-  {
-    id: 3,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 22, 2024",
-    readTime: "6 min read",
-    thumbnail: "/images/blog/blog-03.png",
-    slug: "how-to-build-a-website-3",
-  },
-  {
-    id: 4,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 23, 2024",
-    readTime: "4 min read",
-    thumbnail: "/images/blog/blog-04.png",
-    slug: "how-to-build-a-website-4",
-  },
-  {
-    id: 5,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 24, 2024",
-    readTime: "5 min read",
-    thumbnail: "/images/blog/blog-05.png",
-    slug: "how-to-build-a-website-5",
-  },
-  {
-    id: 6,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 25, 2024",
-    readTime: "7 min read",
-    thumbnail: "/images/blog/blog-01.png",
-    slug: "how-to-build-a-website-6",
-  },
-  {
-    id: 7,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 26, 2024",
-    readTime: "5 min read",
-    thumbnail: "/images/blog/blog-02.png",
-    slug: "how-to-build-a-website-7",
-  },
-  {
-    id: 8,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 27, 2024",
-    readTime: "6 min read",
-    thumbnail: "/images/blog/blog-03.png",
-    slug: "how-to-build-a-website-8",
-  },
-  {
-    id: 9,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 28, 2024",
-    readTime: "5 min read",
-    thumbnail: "/images/blog/blog-04.png",
-    slug: "how-to-build-a-website-9",
-  },
-  {
-    id: 10,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 29, 2024",
-    readTime: "4 min read",
-    thumbnail: "/images/blog/blog-05.png",
-    slug: "how-to-build-a-website-10",
-  },
-  {
-    id: 11,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jun 30, 2024",
-    readTime: "5 min read",
-    thumbnail: "/images/blog/blog-01.png",
-    slug: "how-to-build-a-website-11",
-  },
-  {
-    id: 12,
-    title: "How to build a website",
-    excerpt:
-      "Learn all the basics and get started with web development and everything else you need to know.",
-    category: "Web Design",
-    date: "Jul 1, 2024",
-    readTime: "6 min read",
-    thumbnail: "/images/blog/blog-02.png",
-    slug: "how-to-build-a-website-12",
-  },
-];
+interface BlogDataProps {
+  categorySlug?: string;
+}
 
-export default BlogData;
+interface BlogDataResult {
+  posts: BlogType[];
+  loading: boolean;
+  error: string | null;
+  categoryTitle: string;
+  totalPosts: number;
+}
+
+// Refactored to handle both all posts and category-specific posts
+const useBlogData = ({ categorySlug }: BlogDataProps): BlogDataResult => {
+  const [posts, setPosts] = useState<BlogType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [categoryTitle, setCategoryTitle] = useState<string>("");
+  const [totalPosts, setTotalPosts] = useState(0);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        setLoading(true);
+        let fetchedPosts;
+
+        // Special case for "show-all"
+        if (categorySlug === "show-all") {
+          console.log("Showing all posts");
+          fetchedPosts = await fetchPosts();
+          setCategoryTitle("");
+        }
+        // Category-specific fetching
+        else if (categorySlug) {
+          console.log(`Fetching posts for category: ${categorySlug}`);
+
+          // First check if this is a valid category
+          const categories = await fetchCategories();
+          const category = categories.find(
+            (cat: any) => cat.slug.current === categorySlug,
+          );
+
+          if (category) {
+            // Valid category, fetch posts for it
+            fetchedPosts = await fetchPostsByCategory(categorySlug);
+            setCategoryTitle(category.title);
+          } else {
+            // Invalid category
+            console.log(`Category ${categorySlug} not found`);
+            fetchedPosts = [];
+            setCategoryTitle("");
+            setError(
+              `Category "${categorySlug}" not found. Please select a valid category.`,
+            );
+          }
+        }
+        // Default case - all posts
+        else {
+          console.log("Fetching all posts");
+          fetchedPosts = await fetchPosts();
+          setCategoryTitle("");
+        }
+
+        if (fetchedPosts && Array.isArray(fetchedPosts)) {
+          setTotalPosts(fetchedPosts.length);
+
+          // Format posts to match BlogType
+          const formattedPosts = fetchedPosts.map(
+            (post: any, index: number) => ({
+              id: index + 1,
+              title: post.title,
+              excerpt: post.excerpt || "Read more about this topic...",
+              category:
+                post.categories && post.categories.length > 0
+                  ? post.categories[0].title
+                  : "Uncategorized",
+              date: new Date(post.publishedAt).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              }),
+              readTime: post.estimatedReadingTime
+                ? `${post.estimatedReadingTime} min read`
+                : "5 min read",
+              thumbnail:
+                post.mainImage?.asset?.url || "/images/blog/default.jpg",
+              slug: post.slug.current,
+            }),
+          );
+
+          setPosts(formattedPosts);
+        } else {
+          setPosts([]);
+        }
+      } catch (err) {
+        console.error("Error loading blog posts:", err);
+        setError("Failed to load blog posts. Please try again later.");
+        setPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPosts();
+  }, [categorySlug]); // Re-fetch when category changes
+
+  return { posts, loading, error, categoryTitle, totalPosts };
+};
+
+export default useBlogData;

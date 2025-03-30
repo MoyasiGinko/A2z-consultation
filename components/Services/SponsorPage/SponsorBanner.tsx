@@ -42,7 +42,7 @@ const SponsorBanner: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Image
-            src="/images/features/sponsor-banner.svg"
+            src="/images/features/sponsor-banner-1.svg"
             alt="Sponsor Licence"
             width={500}
             height={500}

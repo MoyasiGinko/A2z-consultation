@@ -27,15 +27,7 @@ const AboutUs: React.FC = () => {
   };
 
   return (
-    <>
-      <Head>
-        <title>About Us | A2Z Immigrants</title>
-        <meta
-          name="description"
-          content="Learn about A2Z Immigrants - your trusted partner for immigration services and support since 2015. Discover our mission, team, and approach to helping immigrants worldwide."
-        />
-      </Head>
-
+    <div className="mb-20">
       {/* Hero Section */}
       <motion.section
         className="relative h-96 w-full bg-sky-900"
@@ -51,7 +43,7 @@ const AboutUs: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            About A2Z Immigrants
+            A2Z Immigration Solutions Limited
           </motion.h1>
           <motion.p
             className="max-w-3xl text-xl md:text-2xl"
@@ -59,7 +51,7 @@ const AboutUs: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Your Trusted Immigration Partner Since 2015
+            Growing Talent, Simplifying Journeys
           </motion.p>
         </div>
       </motion.section>
@@ -78,26 +70,36 @@ const AboutUs: React.FC = () => {
               Our Journey
             </h2>
             <p className="mb-4 text-gray-700">
-              Founded in 2015 by Sarah Johnson, a former immigration attorney
-              with firsthand experience as an immigrant, A2Z Immigrants was born
-              from a vision to transform immigration services from an impersonal
-              bureaucratic process into a compassionate human experience.
+              Our journey began in Aberdeen, Scotland, in April 2020, with the
+              goal of becoming trusted specialists in Sponsor Licences and
+              Skilled Worker visas. Starting in Aberdeen, our presence has grown
+              steadily to Glasgow, Edinburgh, Inverness, Dundee, Lossiemouth,
+              across various Shires in Scotland, and reaching as far north as
+              Wick. Today, we proudly serve businesses across the UK.
             </p>
             <p className="mb-4 text-gray-700">
-              After witnessing countless families struggle through complex
-              immigration procedures without proper guidance, Sarah assembled a
-              team of dedicated specialists who shared her passion for immigrant
-              advocacy. What began as a small four-person consultancy in a
-              modest office has grown into a respected organization with over 35
-              team members serving clients in 27 countries.
+              From the start, we specialised in simplifying Sponsor Licence
+              applications. Over 100 businesses from sectors including
+              healthcare, engineering, IT services, hospitality, property
+              management, travel agencies, and religious institutions have
+              relied on our support to secure sponsorship approvals. With
+              careful attention to detail and tailored support, we enable each
+              client to achieve compliance and attract essential global talent.
             </p>
             <p className="text-gray-700">
-              Through economic fluctuations, policy changes, and even a global
-              pandemic, our commitment has remained unwavering: to provide
-              transparent, ethical guidance to every person seeking to build a
-              new life abroad. Today, our success stories include over 8,000
-              families and individuals who have achieved their immigration
-              dreams with our support.
+              Alongside our Sponsor Licence expertise, we have extensive
+              experience managing Skilled Worker visas, including complex
+              self-sponsorship scenarios. Our clients also benefit from guidance
+              on Indefinite Leave to Remain (ILR), British Citizenship,
+              Discretionary Leave to Remain, Private Life applications, Spouse
+              Visas, Adult Dependent Relatives, and the Ukraine Scheme.
+              Additionally, we provide digitised HR management solutions,
+              ensuring businesses maintain compliance effortlessly.
+            </p>
+            <p className="mt-6 text-gray-700">
+              As recognised Experts in Sponsor Licence and Work Permit
+              processes, we are committed to simplifying your immigration
+              experience—Growing Talent, Simplifying Journeys.
             </p>
           </motion.div>
           <motion.div
@@ -105,7 +107,7 @@ const AboutUs: React.FC = () => {
             variants={fadeIn}
           >
             <Image
-              src="/images/our-story.jpg"
+              src="/images/features/blogs-banner.png"
               alt="A2Z Immigrants team members"
               layout="fill"
               objectFit="cover"
@@ -139,39 +141,33 @@ const AboutUs: React.FC = () => {
             variants={staggerContainer}
           >
             <motion.div
-              className="rounded-lg bg-white p-8 shadow-md"
+              className="rounded-lg bg-gradient-to-b from-sky-200/20 via-sky-300/25 to-sky-400/30  p-8 shadow-md"
               variants={fadeIn}
             >
               <h3 className="mb-4 text-center text-2xl font-bold text-sky-500">
                 Our Vision
               </h3>
               <p className="text-gray-700">
-                We envision a world where geographical borders are not barriers
-                to human potential; where immigrants are welcomed with dignity
-                and respect; and where the cultural, economic, and social
-                contributions of immigrants are celebrated in their new
-                communities. We strive for a future where the immigration
-                process is accessible, understandable, and empowering for every
-                individual, regardless of background or circumstance.
+                Our vision is to become a trusted authority in Sponsor Licences
+                and Skilled Worker Visas in the UK, delivering professional
+                guidance combined with innovative digital HR solutions,
+                supporting sustainable growth and creating opportunities for
+                businesses nationwide. "Growing Talent, Simplifying Journeys."
               </p>
             </motion.div>
 
             <motion.div
-              className="rounded-lg bg-white p-8 shadow-md"
+              className="rounded-lg bg-gradient-to-b from-sky-200/20 via-sky-300/25 to-sky-400/30 p-8 shadow-md"
               variants={fadeIn}
             >
               <h3 className="mb-4 text-center text-2xl font-bold text-sky-500">
                 Our Mission
               </h3>
               <p className="text-gray-700">
-                A2Z Immigrants exists to demystify and humanize the immigration
-                process by providing expert guidance, personalized support, and
-                clear information at every step. We commit to ethical practices
-                that prioritize client wellbeing, maintain complete
-                transparency, and advocate for fair treatment of all immigrants.
-                Through our comprehensive services, community education
-                initiatives, and policy advocacy, we empower individuals to
-                navigate their immigration journeys with confidence and dignity.
+                Our mission is to simplify Sponsor Licence and Skilled Worker
+                visa processes, providing reliable immigration guidance that
+                enables UK businesses to attract and retain global talent
+                efficiently and compliantly.
               </p>
             </motion.div>
           </motion.div>
@@ -444,19 +440,19 @@ const AboutUs: React.FC = () => {
                 name: "Sarah Johnson",
                 role: "Founder & Chief Executive Officer",
                 bio: "A former immigration attorney with 20+ years of experience, Sarah founded A2Z Immigrants after immigrating from Ireland herself. Her personal journey through the immigration system inspired her to create a more compassionate approach to immigration services. She holds a J.D. from Harvard Law School and has been recognized as one of the '50 Most Influential Immigrants' by Global Leadership Magazine.",
-                image: "/images/team-1.jpg",
+                image: "/images/user/team-01.png",
               },
               {
                 name: "Miguel Rodriguez",
                 role: "Chief Operations Officer",
                 bio: "Miguel joined A2Z in 2016 after a successful career in international development. Born in Mexico and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Miguel specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
-                image: "/images/team-2.jpg",
+                image: "/images/user/team-02.png",
               },
               {
                 name: "Aisha Patel",
                 role: "Director of Client Services",
                 bio: "With a background in social work and immigration policy, Aisha leads our client experience team with empathy and precision. After experiencing the challenges of the immigration system with her own family, she dedicated her career to improving this journey for others. Aisha has developed our renowned client-centered methodology and training program that ensures consistent, compassionate service across all our locations.",
-                image: "/images/team-3.jpg",
+                image: "/images/user/team-03.png",
               },
             ].map((member, index) => (
               <motion.div
@@ -533,7 +529,7 @@ const AboutUs: React.FC = () => {
           </div>
         </motion.div>
       </section>
-    </>
+    </div>
   );
 };
 
