@@ -176,13 +176,20 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
               >
                 <Link href={`/blog/category/${category.slug.current}`} passHref>
                   <motion.div
-                    className={`flex items-center justify-between rounded-md p-2 shadow-md transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gradient-to-r hover:from-sky-500 hover:via-sky-600 hover:to-sky-700 hover:text-white
+                    className={`flex items-center justify-between rounded-md p-2 shadow-md transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-sky-500 hover:via-sky-600 hover:to-sky-700 hover:text-white
                       ${
                         currentCategory === category.slug.current
                           ? "bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white"
                           : "bg-white text-black"
                       }`}
                     whileTap={{ scale: 0.98 }}
+                    whileHover={{
+                      scale: 1.02,
+                      transition: {
+                        duration: 0.3,
+                        ease: [0.4, 0, 0.2, 1],
+                      },
+                    }}
                   >
                     <div className="flex items-center">
                       <motion.svg
