@@ -1,7 +1,6 @@
 import Blog from "@/components/Blog";
 import { Metadata } from "next";
 import { fetchCategories } from "@/app/utils/api/SanityAPI";
-import { notFound } from "next/navigation";
 
 // Generate dynamic metadata for the category page
 export async function generateMetadata(): Promise<Metadata> {
