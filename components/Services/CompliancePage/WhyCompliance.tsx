@@ -202,7 +202,7 @@ const WhyCompliance: React.FC = () => {
       <motion.div
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
-        initial="hidden"
+        // initial="hidden"
         animate={controls}
       >
         <div className="grid gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
@@ -256,7 +256,7 @@ const WhyCompliance: React.FC = () => {
             <div className="relative h-[180px] w-[280px] rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:h-[240px] sm:w-[360px] sm:max-w-lg md:h-[320px] md:w-[502px] md:p-2 lg:max-w-xl xl:max-w-2xl">
               <div className="relative h-full w-full overflow-hidden rounded-2xl">
                 <motion.div
-                  initial={{ opacity: 0 }}
+                  // initial={{ opacity: 0 }}
                   animate={{ opacity: isLoaded ? 1 : 0 }}
                   transition={{ duration: 0.5 }}
                   className="h-full w-full"

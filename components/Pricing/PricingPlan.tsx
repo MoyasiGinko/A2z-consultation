@@ -170,7 +170,7 @@ const PricingPackages: React.FC<PricingPackagesProps> = ({ packages }) => {
               <div className="z-999 bg-white">
                 {/* Package Content */}
                 <div className="p-6">
-                  <p className="mb-2 h-14 italic text-gray-700">
+                  <p className="mb-2 min-h-14 italic text-gray-700">
                     {pkg.tagline}
                   </p>
 
