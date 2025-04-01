@@ -175,7 +175,9 @@ const BookCallSidebar: React.FC = () => {
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full rounded-xl  px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-sky-500 focus:outline-none"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Please enter a valid email address"
+            className="w-full rounded-xl px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-sky-500 focus:outline-none"
             required
           />
         </motion.div>
@@ -196,7 +198,11 @@ const BookCallSidebar: React.FC = () => {
             placeholder="+44"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full rounded-xl  px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-sky-500 focus:outline-none"
+            pattern="^\+?[1-9][0-9]{10,12}$"
+            title="Please enter a valid phone number (11-13 digits)"
+            minLength={11}
+            maxLength={13}
+            className="w-full rounded-xl px-3 py-2 text-gray-700 placeholder-gray-400 transition-all duration-200 focus:border-sky-500 focus:outline-none"
             required
           />
         </motion.div>
