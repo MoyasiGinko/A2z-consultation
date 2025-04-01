@@ -2,6 +2,7 @@
 
 import React, { useId, useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import Image from "next/image";
 
 interface ListItemProps {
   content: string;
@@ -56,10 +57,10 @@ const WhyCompliance: React.FC = () => {
   };
 
   const titleVariants = {
-    hidden: { opacity: 0, x: -30 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
         duration: 0.6,
         ease: "easeOut",
@@ -78,10 +79,10 @@ const WhyCompliance: React.FC = () => {
   };
 
   const listItemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
         duration: 0.5,
         ease: "easeOut",
@@ -112,12 +113,15 @@ const WhyCompliance: React.FC = () => {
         stiffness: 200,
         damping: 10,
       }}
-      className="h-6 w-6 shrink-0"
+      className="flex shrink-0 items-center justify-center text-[#00a2fb]"
+      style={{ width: "24px", height: "24px" }} // Fixed dimensions using style
     >
-      <img
+      <Image
         src="/images/icon/bulletin.svg"
-        alt="Bullet point"
-        className="h-full w-full text-[#00a2fb]"
+        alt="Check mark"
+        width={24}
+        height={24}
+        className="h-[24px] w-[24px] object-contain text-[#00a2fb]" // Fixed size with CSS
       />
     </motion.div>
   );
@@ -125,9 +129,11 @@ const WhyCompliance: React.FC = () => {
   const ListItem: React.FC<ListItemProps> = ({ content, index }) => (
     <motion.li
       variants={listItemVariants}
-      className="text-muted-foreground group mb-5 flex items-start gap-3 md:mb-4 lg:items-center"
+      className="group mb-5 flex items-center gap-3 md:mb-4" // Fixed alignment to center for all screens
     >
-      <div className="mt-0.5 md:mt-0">
+      <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center">
+        {" "}
+        {/* Fixed container size */}
         <CheckIcon />
       </div>
       <motion.p
