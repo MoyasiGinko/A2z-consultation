@@ -17,58 +17,161 @@ interface Brand {
 const Brands: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [dimensions, setDimensions] = useState({
-    width: 0,
-    height: 0,
+    width: typeof window !== "undefined" ? window.innerWidth : 1200,
+    height: typeof window !== "undefined" ? window.innerHeight : 800,
   });
+  const [isInitialized, setIsInitialized] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const leftTrackRef = useRef<HTMLDivElement>(null);
+  const rightTrackRef = useRef<HTMLDivElement>(null);
   const { ref: sectionRef, inView } = useInView({
     threshold: 0.2,
     triggerOnce: false,
   });
 
-  // Update dimensions on window resize
-  useEffect(() => {
-    // Set initial dimensions
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+  // Find the calculateSize function and modify the scale factors
 
-    // Handle resize
+  const calculateSize = (brand: Brand) => {
+    // Scale factors will be determined in updateResponsiveStyles
+    let scaleFactor = 1.2; // Reduced from 1.5 for large desktop
+
+    if (dimensions.width < 480) {
+      scaleFactor = 0.8;
+    } else if (dimensions.width < 768) {
+      scaleFactor = 0.95;
+    } else if (dimensions.width < 1024) {
+      scaleFactor = 1.1;
+    } else if (dimensions.width < 1280) {
+      scaleFactor = 1.15; // Slightly reduced from 1.3
+    }
+
+    // Calculate height based on base height and scale factor
+    const height = Math.round(brand.baseHeight * scaleFactor);
+
+    // Calculate width based on aspect ratio (natural width)
+    const aspectRatio = brand.baseWidth / brand.baseHeight;
+    const width = Math.round(height * aspectRatio);
+
+    return { width, height };
+  };
+
+  // Update dimensions on window resize and apply style changes
+  useEffect(() => {
+    // Safeguard for SSR
+    if (typeof window === "undefined") return;
+
+    // Handle resize with debounce for performance
+    let resizeTimer: NodeJS.Timeout;
     const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }, 150); // Debounce resize events
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    // Initial setup - delay slightly to ensure DOM is ready
+    const initTimer = setTimeout(() => {
+      updateResponsiveStyles();
+      setIsInitialized(true);
+    }, 50);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimer);
+      clearTimeout(initTimer);
+    };
   }, []);
 
-  // Calculate responsive sizes based on screen width
-  const getResponsiveDimensions = (base: { width: number; height: number }) => {
-    // Different scale factors based on breakpoints
-    let scaleFactor = 1;
-
-    if (dimensions.width < 480) {
-      // Mobile
-      scaleFactor = 0.6;
-    } else if (dimensions.width < 768) {
-      // Small tablets
-      scaleFactor = 0.7;
-    } else if (dimensions.width < 1024) {
-      // Large tablets
-      scaleFactor = 0.8;
-    } else if (dimensions.width < 1280) {
-      // Small desktops
-      scaleFactor = 0.9;
+  // Update all responsive styles when dimensions change
+  useEffect(() => {
+    if (isInitialized) {
+      updateResponsiveStyles();
     }
+  }, [dimensions, isInitialized]);
 
-    return {
-      width: Math.round(base.width * scaleFactor),
-      height: Math.round(base.height * scaleFactor),
-    };
+  // Function to update all responsive styles based on screen width
+  const updateResponsiveStyles = () => {
+    try {
+      // Check refs exist
+      if (!leftTrackRef.current || !rightTrackRef.current) {
+        console.warn("Brand slider tracks not found in DOM");
+        return;
+      }
+
+      // Safeguard for SSR
+      if (typeof document === "undefined") return;
+
+      let duration, floatDistance, gapSize, brandMargin;
+
+      // Set values based on screen size
+      if (dimensions.width < 480) {
+        // Mobile
+        duration = "35s";
+        floatDistance = "1px";
+        gapSize = "1rem";
+        brandMargin = "2px";
+      } else if (dimensions.width < 768) {
+        // Small tablets
+        duration = "30s";
+        floatDistance = "1.5px";
+        gapSize = "1.5rem";
+        brandMargin = "4px";
+      } else if (dimensions.width < 1024) {
+        // Large tablets
+        duration = "25s";
+        floatDistance = "2px";
+        gapSize = "2.5rem";
+        brandMargin = "8px";
+      } else if (dimensions.width < 1280) {
+        // Small desktops
+        duration = "22s";
+        floatDistance = "2.5px";
+        gapSize = "2.8rem";
+        brandMargin = "10px";
+      } else {
+        // Large desktops
+        duration = "20s";
+        floatDistance = "3px";
+        gapSize = "3rem";
+        brandMargin = "12px";
+      }
+
+      // Apply animation duration to both slider tracks
+      leftTrackRef.current.style.animationDuration = duration;
+      rightTrackRef.current.style.animationDuration = duration;
+
+      // Apply gap size to slider tracks
+      leftTrackRef.current.style.gap = gapSize;
+      rightTrackRef.current.style.gap = gapSize;
+
+      // Apply CSS variables for other styles
+      document.documentElement.style.setProperty(
+        "--float-distance",
+        floatDistance,
+      );
+      document.documentElement.style.setProperty("--brand-margin", brandMargin);
+
+      // Also update all brand containers directly for consistent margins
+      const brandContainers = document.querySelectorAll(".brand-container");
+      brandContainers.forEach((container) => {
+        (container as HTMLElement).style.margin = `0 ${brandMargin}`;
+      });
+    } catch (error) {
+      console.error("Error updating responsive styles:", error);
+      // Continue execution - fall back to CSS defaults
+    }
+  };
+
+  // If image fails to load, handle with fallback
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = event.target as HTMLImageElement;
+    target.src = "/images/brands/fallback-logo.png";
+    target.onerror = null; // Prevent infinite error loop
   };
 
   // Define brands with individual base sizes
@@ -77,9 +180,9 @@ const Brands: React.FC = () => {
       id: "brand1",
       src: "/images/brands/logo-1.png",
       alt: "Premium Brand Partner",
-      baseWidth: 180,
+      baseWidth: 140,
       baseHeight: 50,
-      objectFit: "fill",
+      objectFit: "contain",
       animationDelay: 0.1,
     },
     {
@@ -87,7 +190,7 @@ const Brands: React.FC = () => {
       src: "/images/brands/logo-2.png",
       alt: "Enterprise Solution Partner",
       baseWidth: 100,
-      baseHeight: 60,
+      baseHeight: 50,
       objectFit: "contain",
       animationDelay: 0.2,
     },
@@ -96,7 +199,7 @@ const Brands: React.FC = () => {
       src: "/images/brands/logo-3.png",
       alt: "Technology Innovator",
       baseWidth: 100,
-      baseHeight: 60,
+      baseHeight: 40,
       objectFit: "contain",
       animationDelay: 0.3,
     },
@@ -106,15 +209,15 @@ const Brands: React.FC = () => {
       alt: "Industry Leader",
       baseWidth: 128,
       baseHeight: 50,
-      objectFit: "fill",
+      objectFit: "contain",
       animationDelay: 0.4,
     },
     {
       id: "brand5",
       src: "/images/brands/logo-5.png",
       alt: "Global Partner",
-      baseWidth: 100,
-      baseHeight: 70,
+      baseWidth: 64,
+      baseHeight: 64,
       objectFit: "contain",
       animationDelay: 0.5,
     },
@@ -122,8 +225,8 @@ const Brands: React.FC = () => {
       id: "brand6",
       src: "/images/brands/logo-6.png",
       alt: "Strategic Alliance",
-      baseWidth: 120,
-      baseHeight: 60,
+      baseWidth: 100,
+      baseHeight: 50,
       objectFit: "contain",
       animationDelay: 0.6,
     },
@@ -131,8 +234,8 @@ const Brands: React.FC = () => {
       id: "brand7",
       src: "/images/brands/logo-7.png",
       alt: "Innovative Solutions",
-      baseWidth: 120,
-      baseHeight: 60,
+      baseWidth: 80,
+      baseHeight: 50,
       objectFit: "contain",
       animationDelay: 0.7,
     },
@@ -140,8 +243,8 @@ const Brands: React.FC = () => {
       id: "brand8",
       src: "/images/brands/logo-8.png",
       alt: "Trusted Partner",
-      baseWidth: 160,
-      baseHeight: 60,
+      baseWidth: 100,
+      baseHeight: 50,
       objectFit: "contain",
       animationDelay: 0.8,
     },
@@ -153,16 +256,13 @@ const Brands: React.FC = () => {
       // Create a unique ID combining row and brand IDs
       const uniqueId = `${rowId}-${brand.id}`;
 
-      // Calculate responsive dimensions
-      const { width, height } = getResponsiveDimensions({
-        width: brand.baseWidth,
-        height: brand.baseHeight,
-      });
+      // Calculate size based on device
+      const { width, height } = calculateSize(brand);
 
       return (
         <div
           key={uniqueId}
-          className="brand-container relative mx-3 flex items-center justify-center sm:mx-4 md:mx-6 lg:mx-8"
+          className="brand-container relative flex items-center justify-center"
           onMouseEnter={() => setHoveredItem(uniqueId)}
           onMouseLeave={() => setHoveredItem(null)}
         >
@@ -176,26 +276,31 @@ const Brands: React.FC = () => {
               position: "relative",
             }}
           >
-            <Image
-              src={brand.src}
-              alt={brand.alt}
-              fill
-              className={`object-${brand.objectFit || "contain"}`}
-            />
+            <div
+              style={{ position: "relative", width: "100%", height: "100%" }}
+            >
+              <Image
+                src={brand.src}
+                alt={brand.alt}
+                fill
+                sizes={`(max-width: 480px) 80px, (max-width: 768px) 120px, (max-width: 1024px) 160px, 200px`}
+                className={`object-${brand.objectFit || "contain"}`}
+                priority={uniqueId.includes("row1-set1")}
+                onError={handleImageError}
+              />
+            </div>
           </div>
         </div>
       );
     });
   };
 
-  // Define each set with a specific ID for each row and copy
+  // Define each set with a specific ID for each row
   const renderMultipleSets = (rowId: string) => {
     return (
       <>
         {renderBrandSet(`${rowId}-set1`)}
         {renderBrandSet(`${rowId}-set2`)}
-        {renderBrandSet(`${rowId}-set3`)}
-        {renderBrandSet(`${rowId}-set4`)}
       </>
     );
   };
@@ -233,15 +338,23 @@ const Brands: React.FC = () => {
           className="brand-slider-container mx-auto w-[95%] overflow-hidden md:w-[80%]"
         >
           {/* First row - moving left to right */}
-          <div className="slider-row relative flex h-12 sm:h-14 md:h-16 lg:h-20">
-            <div className="slider-track flex" data-direction="left">
+          <div className="slider-row relative flex h-10 sm:h-12 md:h-14 lg:h-20">
+            <div
+              ref={leftTrackRef}
+              className="slider-track flex"
+              data-direction="left"
+            >
               {renderMultipleSets("row1")}
             </div>
           </div>
 
           {/* Second row - moving right to left */}
-          <div className="slider-row relative mt-4 flex h-12 sm:mt-5 sm:h-14 md:mt-6 md:h-16 lg:h-20">
-            <div className="slider-track flex" data-direction="right">
+          <div className="slider-row relative mt-3 flex h-10 sm:mt-4 sm:h-12 md:mt-5 md:h-14 lg:h-20">
+            <div
+              ref={rightTrackRef}
+              className="slider-track flex"
+              data-direction="right"
+            >
               {renderMultipleSets("row2")}
             </div>
           </div>
@@ -249,6 +362,12 @@ const Brands: React.FC = () => {
       </div>
 
       <style jsx>{`
+        /* Fallback values in case JS fails */
+        :root {
+          --float-distance: 2px;
+          --brand-margin: 20px;
+        }
+
         .brand-showcase {
           background: linear-gradient(
             180deg,
@@ -260,19 +379,28 @@ const Brands: React.FC = () => {
         .logo-container {
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
           border-radius: 6px;
-          padding: 4px;
+          padding: 8px 12px;
           background-color: white;
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: visible;
+        }
+
+        /* Base styles that will be overridden by JS, with fallbacks */
+        .brand-container {
+          margin: 0 var(--brand-margin, 20px);
         }
 
         .slider-track {
           width: max-content;
-          animation-duration: 30s;
           animation-iteration-count: infinite;
           animation-timing-function: linear;
           will-change: transform;
+          /* Fallback animation duration if JS fails */
+          animation-duration: 25s;
+          /* Fallback gap if JS fails */
+          gap: 2rem;
         }
 
         .slider-track[data-direction="left"] {
@@ -313,30 +441,30 @@ const Brands: React.FC = () => {
         }
 
         .slider-row {
-          --fade-width: 40px;
+          --fade-width: 30px;
         }
 
         @media (min-width: 640px) {
           .slider-row {
-            --fade-width: 60px;
+            --fade-width: 40px;
           }
         }
 
         @media (min-width: 768px) {
           .slider-row {
-            --fade-width: 80px;
+            --fade-width: 60px;
           }
         }
 
         @media (min-width: 1024px) {
           .slider-row {
-            --fade-width: 100px;
+            --fade-width: 80px;
           }
         }
 
         @media (min-width: 1280px) {
           .slider-row {
-            --fade-width: 120px;
+            --fade-width: 100px;
           }
         }
 
@@ -358,7 +486,7 @@ const Brands: React.FC = () => {
           }
         }
 
-        /* More subtle floating animation for brands */
+        /* Float animation with dynamic distance set by JS */
         .brand-container {
           animation: float 6s ease-in-out infinite;
         }
@@ -374,10 +502,10 @@ const Brands: React.FC = () => {
         /* Prevent hover effects during animation */
         @media (prefers-reduced-motion: reduce) {
           .slider-track {
-            animation: none;
+            animation: none !important;
           }
           .brand-container {
-            animation: none;
+            animation: none !important;
           }
         }
 
@@ -386,10 +514,23 @@ const Brands: React.FC = () => {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-3px);
+            transform: translateY(calc(-1 * var(--float-distance)));
           }
           100% {
             transform: translateY(0px);
+          }
+        }
+
+        /* Optimizations for smaller screens */
+        @media (max-width: 640px) {
+          /* Smaller brands on mobile need less margin between items */
+          .brand-container {
+            transition: transform 0.2s ease-out;
+          }
+
+          /* Quicker hover transition on mobile */
+          .logo-container {
+            transition-duration: 0.2s;
           }
         }
       `}</style>
