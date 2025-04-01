@@ -29,10 +29,11 @@ const Brands: React.FC = () => {
     triggerOnce: false,
   });
 
-  // Calculate responsive size with fixed aspect ratio
+  // Find the calculateSize function and modify the scale factors
+
   const calculateSize = (brand: Brand) => {
     // Scale factors will be determined in updateResponsiveStyles
-    let scaleFactor = 1.5; // Default for large desktop
+    let scaleFactor = 1.2; // Reduced from 1.5 for large desktop
 
     if (dimensions.width < 480) {
       scaleFactor = 0.8;
@@ -41,7 +42,7 @@ const Brands: React.FC = () => {
     } else if (dimensions.width < 1024) {
       scaleFactor = 1.1;
     } else if (dimensions.width < 1280) {
-      scaleFactor = 1.3;
+      scaleFactor = 1.15; // Slightly reduced from 1.3
     }
 
     // Calculate height based on base height and scale factor
@@ -119,25 +120,25 @@ const Brands: React.FC = () => {
         duration = "30s";
         floatDistance = "1.5px";
         gapSize = "1.5rem";
-        brandMargin = "6px";
+        brandMargin = "4px";
       } else if (dimensions.width < 1024) {
         // Large tablets
         duration = "25s";
         floatDistance = "2px";
         gapSize = "2.5rem";
-        brandMargin = "10px";
+        brandMargin = "8px";
       } else if (dimensions.width < 1280) {
         // Small desktops
         duration = "22s";
         floatDistance = "2.5px";
-        gapSize = "3rem";
-        brandMargin = "14px";
+        gapSize = "2.8rem";
+        brandMargin = "10px";
       } else {
         // Large desktops
         duration = "20s";
         floatDistance = "3px";
-        gapSize = "3.5rem";
-        brandMargin = "18px";
+        gapSize = "3rem";
+        brandMargin = "12px";
       }
 
       // Apply animation duration to both slider tracks
