@@ -25,7 +25,8 @@ const BookTimeCTA = () => {
           Find out if we’re the right match for you
         </h1>
         <h3 className="mb-2 bg-gradient-to-r from-sky-600/80 via-sky-700/80 to-sky-800/80  bg-clip-text text-lg font-bold text-transparent">
-          Call us today: 023 8061 0573, contact us or book a consultation below.
+          Call us today: +44 7441398273, contact us or book a consultation
+          below.
         </h3>
         <div className="flex justify-center">
           <Link

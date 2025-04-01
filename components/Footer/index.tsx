@@ -59,21 +59,29 @@ const contactInfo: ContactInfo[] = [
   {
     id: 3,
     icon: <Mail size={16} className="text-blue-500" />,
-    text: "info@example.com",
-    href: "mailto:info@example.com",
+    text: "info@a2zimmigrations.co.uk",
+    href: "mailto:info@a2zimmigrations.co.uk",
   },
   {
     id: 4,
     icon: <MapPin size={16} className="text-blue-500" />,
-    text: "123 Street, New York, NY 10012",
-    href: "https://maps.google.com",
+    text: "49 Shaw Crescent, Aberdeen AB25 3BT, UK",
+    href: "https://maps.app.goo.gl/bVge24oauf4TPLr7A",
   },
 ];
 
 const socialLinks: SocialLink[] = [
-  { id: 1, icon: <Facebook size={24} />, href: "https://facebook.com" },
+  {
+    id: 1,
+    icon: <Facebook size={24} />,
+    href: "https://www.facebook.com/profile.php?id=61550724784012",
+  },
   { id: 2, icon: <Twitter size={24} />, href: "https://twitter.com" },
-  { id: 3, icon: <Linkedin size={24} />, href: "https://linkedin.com" },
+  {
+    id: 3,
+    icon: <Linkedin size={24} />,
+    href: "https://www.linkedin.com/in/a2z-immigration-solutions/",
+  },
   { id: 4, icon: <Instagram size={24} />, href: "https://instagram.com" },
 ];
 
@@ -146,8 +154,8 @@ const Footer: React.FC = () => {
               </Link>
 
               <p className="mb-6 text-center text-sm">
-                Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
-                stet eos sit.
+                A2Z Immigration offers expert UK immigration services with
+                OISC-registered consultants.
               </p>
 
               {/* Social Media Icons - Centered on mobile */}
@@ -263,7 +271,7 @@ const Footer: React.FC = () => {
                   className={`${openSection !== "oisc" ? "hidden" : "block"} p-3`}
                 >
                   <div className="flex flex-col items-center">
-                    <div className="relative mb-2 h-20 w-20">
+                    <div className="relative mb-2 h-28 w-28">
                       <Image
                         src="/images/logo/oisc.png"
                         alt="OISC icon"
@@ -327,8 +335,8 @@ const Footer: React.FC = () => {
               </Link>
 
               <p className="mb-6 text-sm">
-                Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
-                stet eos sit. Elitr dolor duo lorem.
+                A2Z Immigration offers expert UK immigration services with
+                OISC-registered consultants.
               </p>
 
               <div className="flex h-10 max-w-full">
@@ -402,7 +410,7 @@ const Footer: React.FC = () => {
               variants={itemVariants}
             >
               <div className="mb-2 flex items-center">
-                <div className="relative mb-2 h-20 w-20">
+                <div className="relative mb-2 h-28 w-28">
                   <Image
                     src="/images/logo/oisc.png"
                     alt="OISC icon"
