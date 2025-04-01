@@ -45,8 +45,8 @@ const ComplianceServices: React.FC = () => {
       ],
     },
     // {
-    //   id: "other-support",
-    //   title: "Other Support",
+    //   id: "other-services",
+    //   title: "Other Services",
     //   description:
     //     "Cillum qui nulla qui eu ullamco est. Ipsum esse occaecat proident nulla nostrud laborum enim cillum reprehenderit sunt voluptate consequat. Ad cillum cupidatat laborum laborum.",
     //   icon: "user",
