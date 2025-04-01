@@ -13,22 +13,22 @@ const stats: StatItem[] = [
   {
     id: 1,
     value: "121+",
-    description: "Companies trust us",
+    description: "Companies Trust Us",
   },
   {
     id: 2,
     value: "75+",
-    description: "Sponsor Licenses granted",
+    description: "Sponsor Licences Granted",
   },
   {
     id: 3,
     value: "200+",
-    description: "Visas granted",
+    description: "Visas Granted",
   },
   {
     id: 4,
     value: "99%",
-    description: "Home office approval rate",
+    description: "Home Office Approval Rate",
   },
 ];
 

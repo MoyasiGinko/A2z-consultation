@@ -321,12 +321,12 @@ const AboutUs: React.FC = () => {
             variants={staggerContainer}
           >
             {[
-              { number: "8,000+", label: "Success Stories" },
-              { number: "27", label: "Countries Served" },
-              { number: "94%", label: "Success Rate" },
-              { number: "1,200+", label: "Families Reunited" },
-              { number: "3,500+", label: "Employment Visas" },
-              { number: "500+", label: "Humanitarian Cases" },
+              { number: "300+", label: "Success Stories" },
+              { number: "UK", label: "Countries Served" },
+              { number: "121+", label: "Companies Trust Us" },
+              { number: "75+", label: "Sponsor Licences Granted" },
+              { number: "200+", label: "Visas Granted" },
+              { number: "99%", label: "Home Office Approval Rate" },
             ].map((stat, index) => (
               <motion.div
                 key={index}
