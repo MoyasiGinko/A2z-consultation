@@ -1,236 +1,160 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useAnimation, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import UnderlineAnimation from "../Common/UnderlineAnimate";
+import { fetchTrendingPosts } from "@/app/utils/api/SanityAPI";
+import { format } from "date-fns";
 
 interface BlogPost {
-  id: number;
-  date: string;
-  image: string;
+  _id: string;
   title: string;
-  description: string;
-  slug: string;
+  slug: { current: string };
+  excerpt?: string;
+  mainImage?: {
+    asset: {
+      url: string;
+    };
+  };
+  publishedAt: string;
 }
 
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    date: "DECEMBER 19, 2024",
-    image: "/images/blog/blog-01.png",
-    title: "Unlock Your Future in the UK: All About the New Entrant Skill Visa",
-    description:
-      "Start your UK career with the New Entrant Skill Visa—low barriers, great opportunities, tailored support.",
-    slug: "new-entrant-skill-visa",
-  },
-  {
-    id: 2,
-    date: "NOVEMBER 29, 2024",
-    image: "/images/blog/blog-02.png",
-    title:
-      "Everything You Need to Know About the UK's New Travel Authorization (ETA) for 2025",
-    description:
-      "Starting January 2025, non-European travelers must apply for the UK ETA, a digital travel authorization streamlining UK entry processes.",
-    slug: "uk-travel-authorization-eta",
-  },
-  {
-    id: 3,
-    date: "NOVEMBER 22, 2024",
-    image: "/images/blog/blog-03.png",
-    title: "Unlock Your Dream UK Trip: The Ultimate Tourist Visa Guide",
-    description: "Your guide to a smooth UK visa!",
-    slug: "uk-tourist-visa-guide",
-  },
-];
+const BlogCard: React.FC<{
+  post: BlogPost;
+  index: number;
+}> = ({ post, index }) => {
+  // Format the date
+  const formattedDate = format(
+    new Date(post.publishedAt),
+    "MMMM dd, yyyy",
+  ).toUpperCase();
 
-const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({
-  post,
-  index,
-}) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { once: true, margin: "-50px 0px" });
-  const controls = useAnimation();
+  // Get image URL from Sanity
+  const imageUrl = post.mainImage?.asset?.url || "/images/blog/blog-01.png";
 
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [isInView, controls]);
+  // Get description from excerpt
+  const description =
+    post.excerpt || "Read more about this insightful article on our blog.";
 
   return (
-    <motion.div
-      ref={cardRef}
-      className="relative z-10 flex h-full flex-col rounded-xl border border-slate-200 bg-white"
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 1 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.6,
-            delay: index * 0.2,
-            ease: "easeOut",
-          },
-        },
-      }}
-      whileHover={{
-        y: -1,
-        transition: { duration: 0.3 },
-      }}
-    >
+    <div className="relative z-10 flex h-full flex-col rounded-xl border border-slate-200 bg-white transition-transform duration-300 hover:-translate-y-1">
       <div className="relative aspect-square max-h-[350px] w-full overflow-hidden rounded-xl">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.5 }}
-          className="h-full w-full"
-        >
+        <div className="h-full w-full transition-transform duration-500 hover:scale-110">
           <Image
-            src={post.image}
+            src={imageUrl}
             alt={post.title}
             layout="fill"
             objectFit="cover"
             className="h-full w-full"
           />
-        </motion.div>
+        </div>
       </div>
 
       <div className="flex flex-1 flex-col p-4 lg:p-6">
-        <motion.span
-          className="mb-1 text-xs font-bold uppercase text-blue-600"
-          initial={{ opacity: 0 }}
-          animate={controls}
-          variants={{
-            visible: {
-              opacity: 1,
-              transition: {
-                duration: 0.5,
-                delay: 0.1 + index * 0.2,
-              },
-            },
-          }}
-        >
-          {post.date}
-        </motion.span>
+        <span className="mb-1 text-xs font-bold uppercase text-blue-600">
+          {formattedDate}
+        </span>
 
-        <motion.h3
-          className="mb-4 text-lg font-bold text-slate-700"
-          initial={{ opacity: 0 }}
-          animate={controls}
-          variants={{
-            visible: {
-              opacity: 1,
-              transition: {
-                duration: 0.5,
-                delay: 0.2 + index * 0.2,
-              },
-            },
-          }}
-        >
-          {post.title}
-        </motion.h3>
+        <h3 className="mb-4 text-lg font-bold text-slate-700">{post.title}</h3>
 
-        <motion.p
-          className="mb-4 font-medium text-slate-600"
-          initial={{ opacity: 0 }}
-          animate={controls}
-          variants={{
-            visible: {
-              opacity: 1,
-              transition: {
-                duration: 0.5,
-                delay: 0.3 + index * 0.2,
-              },
-            },
-          }}
-        >
-          {post.description}
-        </motion.p>
+        <p className="mb-4 font-medium text-slate-600">{description}</p>
 
-        <motion.div
-          className="mt-auto"
-          initial={{ opacity: 0 }}
-          animate={controls}
-          variants={{
-            visible: {
-              opacity: 1,
-              transition: {
-                duration: 0.5,
-                delay: 0.4 + index * 0.2,
-              },
-            },
-          }}
-        >
+        <div className="mt-auto">
           <Link
-            href={`/blog/${post.slug}`}
+            href={`/blog/${post.slug.current}`}
             className="group flex items-center gap-2 py-2 text-sm font-bold uppercase text-slate-600 transition-colors duration-300 hover:text-blue-600"
           >
             Read more
-            <motion.div
-              initial={{ x: 0 }}
-              whileHover={{ x: 5 }}
-              transition={{ duration: 0.3 }}
-            >
+            <span className="transform transition-transform duration-300 group-hover:translate-x-1">
               <ArrowRight
                 size={18}
                 className="transition-colors duration-300 group-hover:text-blue-600"
               />
-            </motion.div>
+            </span>
           </Link>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 const BlogSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
-  const controls = useAnimation();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  // Fetch trending posts from Sanity
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [isInView, controls]);
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        const trendingPosts = await fetchTrendingPosts(3); // Limit to 3 posts
+
+        if (trendingPosts && trendingPosts.length > 0) {
+          setPosts(trendingPosts);
+        } else {
+          // If no posts found, set empty array but don't use fallback
+          console.log("No posts found in Sanity");
+          setPosts([]);
+        }
+      } catch (err) {
+        console.error("Error fetching trending posts:", err);
+        setError("Failed to load blog posts");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-16">
+    <section className="bg-white py-16">
       <div className="container mx-auto px-4">
-        <motion.div
-          className="relative mb-20"
-          initial="hidden"
-          animate={controls}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1 },
-          }}
-        >
-          <motion.h2
-            className="bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl font-bold text-transparent "
-            initial={{ opacity: 0, y: -20 }}
-            animate={controls}
-            variants={{
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.7 },
-              },
-            }}
-          >
+        <div className="relative mb-20">
+          <h2 className="bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl font-bold text-transparent">
             Blog & News
-          </motion.h2>
+          </h2>
           <UnderlineAnimation />
-        </motion.div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-          {blogPosts.map((post, index) => (
-            <BlogCard key={post.id} post={post} index={index} />
-          ))}
         </div>
+
+        {loading ? (
+          // Loading state
+          <div className="mx-auto flex h-64 w-full max-w-lg items-center justify-center">
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+          </div>
+        ) : error ? (
+          // Error state
+          <div className="mx-auto max-w-lg rounded-lg bg-red-50 p-8 text-center">
+            <p className="text-red-600">{error}</p>
+            <p className="mt-4 text-sm text-gray-600">
+              Please check back later for our latest blog posts.
+            </p>
+          </div>
+        ) : posts.length === 0 ? (
+          // No posts available state
+          <div className="mx-auto max-w-lg rounded-lg bg-blue-50 p-8 text-center">
+            <p className="text-blue-600">
+              No blog posts available at the moment.
+            </p>
+            <p className="mt-4 text-sm text-gray-600">
+              Please check back soon for our latest articles.
+            </p>
+          </div>
+        ) : (
+          // Blog posts using flexbox instead of grid
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10">
+            {posts.map((post, index) => (
+              <div
+                key={post._id}
+                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.75rem)]"
+              >
+                <BlogCard post={post} index={index} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
