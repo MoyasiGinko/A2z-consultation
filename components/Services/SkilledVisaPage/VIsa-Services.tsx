@@ -21,7 +21,7 @@ const VisaServices: React.FC = () => {
       title: "Sponsor License",
       description:
         "We assist businesses in obtaining and maintaining their sponsor license, ensuring compliance with UKVI regulations and smooth processing.",
-      icon: "document",
+      icon: "/images/icon/sponsor.svg",
       color: "#1565c0",
       benefits: [
         "Expert guidance through the application process",
@@ -35,7 +35,7 @@ const VisaServices: React.FC = () => {
       title: "Compliance",
       description:
         "We help maintain your compliance standards to reduce the risk of losing your sponsor licence through regular audits, documentation management, and policy reviews.",
-      icon: "document",
+      icon: "/images/icon/compliance.svg",
       color: "#1565c0",
       benefits: [
         "Personalized expert support throughout the process",
@@ -49,7 +49,7 @@ const VisaServices: React.FC = () => {
       title: "Other Services",
       description:
         "We offer a range of additional services including visa applications, compliance audits, and training for HR teams to ensure smooth operations.",
-      icon: "user",
+      icon: "/images/icon/otherservices.svg",
       color: "#1565c0",
       benefits: [
         "Support for various visa categories and extensions",
@@ -251,11 +251,8 @@ const VisaServices: React.FC = () => {
               layout
             >
               <div className="mb-4 flex items-center">
-                <div
-                  className="mr-3 rounded-md p-2 transition-colors duration-300"
-                  style={{ backgroundColor: service.color }}
-                >
-                  {renderIcon(service.icon)}
+                <div className="mr-3 rounded-md transition-colors duration-300">
+                  <img src={service.icon} alt={service.title} />
                 </div>
                 <h2 className="text-xl font-semibold text-gray-800">
                   {service.title}
@@ -329,11 +326,11 @@ const VisaServices: React.FC = () => {
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center">
-                      <div
-                        className="mr-3 rounded-md p-2"
-                        style={{ backgroundColor: selectedService.color }}
-                      >
-                        {renderIcon(selectedService.icon)}
+                      <div className="mr-3 rounded-md">
+                        <img
+                          src={selectedService.icon}
+                          alt={selectedService.title}
+                        />
                       </div>
                       <h2 className="text-2xl font-bold text-gray-800">
                         {selectedService.title}
