@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 interface FormData {
   name: string;
@@ -11,6 +12,11 @@ interface FormData {
 }
 
 const BookCallSidebar: React.FC = () => {
+  // config variables
+  const serviceId = "service_vvede9g";
+  const templateId = "template_b1obkqe";
+  const publicKey = "8seFmYH7EcPOmhmGg";
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -19,6 +25,12 @@ const BookCallSidebar: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Initialize EmailJS once on component mount
+  useEffect(() => {
+    emailjs.init(publicKey);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -30,22 +42,46 @@ const BookCallSidebar: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate API call
-    setTimeout(() => {
-      // Handle form submission logic here
-      console.log("Form submitted:", formData);
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      });
+
+      console.log("Email sent successfully:", result.text);
       setIsSubmitting(false);
       setIsSuccess(true);
+
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
 
       // Reset success state after 3 seconds
       setTimeout(() => {
         setIsSuccess(false);
       }, 3000);
-    }, 1000);
+    } catch (err) {
+      console.error("Failed to send email:", err);
+      setIsSubmitting(false);
+      setError("Failed to send message. Please try again later.");
+
+      // Hide error after 5 seconds
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
+    }
   };
 
   // Animation variants
@@ -185,6 +221,17 @@ const BookCallSidebar: React.FC = () => {
             required
           />
         </motion.div>
+
+        {error && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="mb-4 rounded-lg bg-red-500/20 py-2 text-center text-sm font-medium text-red-200"
+          >
+            {error}
+          </motion.div>
+        )}
 
         <motion.div className="flex justify-center">
           <motion.button
