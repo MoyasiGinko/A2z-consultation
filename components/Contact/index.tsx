@@ -275,7 +275,7 @@ const Contact: React.FC<ContactProps> = ({
                   Phone Number
                 </h4>
                 <p>
-                  <a href="#">+009 42334 6343 843</a>
+                  <a href="tel:+447441398273">+44 7441398273</a>
                 </p>
               </div>
             </motion.div>
