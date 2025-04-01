@@ -16,9 +16,10 @@ interface Brand {
 
 const Brands: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  // Initialize with null dimensions to indicate they haven't been measured yet
   const [dimensions, setDimensions] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 1200,
-    height: typeof window !== "undefined" ? window.innerHeight : 800,
+    width: null as number | null,
+    height: null as number | null,
   });
   const [isInitialized, setIsInitialized] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -29,11 +30,20 @@ const Brands: React.FC = () => {
     triggerOnce: false,
   });
 
-  // Find the calculateSize function and modify the scale factors
-
+  // Calculate size based on current dimensions or screen width breakpoints
   const calculateSize = (brand: Brand) => {
-    // Scale factors will be determined in updateResponsiveStyles
-    let scaleFactor = 1.2; // Reduced from 1.5 for large desktop
+    // Default to a safe size if dimensions haven't been measured yet
+    if (!dimensions.width) {
+      // Use a mobile-first approach for initial rendering
+      const safeFactor = 0.8;
+      const height = Math.round(brand.baseHeight * safeFactor);
+      const aspectRatio = brand.baseWidth / brand.baseHeight;
+      const width = Math.round(height * aspectRatio);
+      return { width, height };
+    }
+
+    // Apply scale factors based on actual measured screen width
+    let scaleFactor = 1.2; // For large desktop
 
     if (dimensions.width < 480) {
       scaleFactor = 0.8;
@@ -42,57 +52,58 @@ const Brands: React.FC = () => {
     } else if (dimensions.width < 1024) {
       scaleFactor = 1.1;
     } else if (dimensions.width < 1280) {
-      scaleFactor = 1.15; // Slightly reduced from 1.3
+      scaleFactor = 1.15;
     }
 
     // Calculate height based on base height and scale factor
     const height = Math.round(brand.baseHeight * scaleFactor);
 
-    // Calculate width based on aspect ratio (natural width)
+    // Calculate width based on aspect ratio
     const aspectRatio = brand.baseWidth / brand.baseHeight;
     const width = Math.round(height * aspectRatio);
 
     return { width, height };
   };
 
-  // Update dimensions on window resize and apply style changes
+  // Measure window dimensions immediately on client-side
   useEffect(() => {
-    // Safeguard for SSR
+    // Skip in SSR
     if (typeof window === "undefined") return;
 
-    // Handle resize with debounce for performance
+    // Immediately measure window dimensions
+    const measureDimensions = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Measure immediately
+    measureDimensions();
+
+    // Set up resize listener with debounce
     let resizeTimer: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        setDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      }, 150); // Debounce resize events
+      resizeTimer = setTimeout(measureDimensions, 150);
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Initial setup - delay slightly to ensure DOM is ready
-    const initTimer = setTimeout(() => {
-      updateResponsiveStyles();
-      setIsInitialized(true);
-    }, 50);
-
     return () => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(resizeTimer);
-      clearTimeout(initTimer);
     };
   }, []);
 
-  // Update all responsive styles when dimensions change
+  // Update responsive styles when dimensions change
   useEffect(() => {
-    if (isInitialized) {
+    // Only proceed if we have measured dimensions
+    if (dimensions.width !== null) {
       updateResponsiveStyles();
+      setIsInitialized(true);
     }
-  }, [dimensions, isInitialized]);
+  }, [dimensions]);
 
   // Function to update all responsive styles based on screen width
   const updateResponsiveStyles = () => {
@@ -104,7 +115,7 @@ const Brands: React.FC = () => {
       }
 
       // Safeguard for SSR
-      if (typeof document === "undefined") return;
+      if (typeof document === "undefined" || !dimensions.width) return;
 
       let duration, floatDistance, gapSize, brandMargin;
 
@@ -305,10 +316,15 @@ const Brands: React.FC = () => {
     );
   };
 
+  // Don't render content until dimensions are measured to prevent flickering
+  const shouldRenderContent = dimensions.width !== null;
+
   return (
     <section
       ref={sectionRef}
-      className={`brand-showcase py-10 transition-opacity duration-1000 sm:py-14 md:py-20 ${inView ? "opacity-100" : "opacity-0"}`}
+      className={`brand-showcase py-10 transition-opacity duration-1000 sm:py-14 md:py-20 ${
+        inView ? "opacity-100" : "opacity-0"
+      }`}
     >
       <div className="mx-auto max-w-6xl md:max-w-full">
         <div className="mb-8 text-center md:mb-12">
@@ -333,32 +349,34 @@ const Brands: React.FC = () => {
           </p>
         </div>
 
-        <div
-          ref={sliderRef}
-          className="brand-slider-container mx-auto w-[95%] overflow-hidden md:w-[80%]"
-        >
-          {/* First row - moving left to right */}
-          <div className="slider-row relative flex h-10 sm:h-12 md:h-14 lg:h-20">
-            <div
-              ref={leftTrackRef}
-              className="slider-track flex"
-              data-direction="left"
-            >
-              {renderMultipleSets("row1")}
+        {shouldRenderContent && (
+          <div
+            ref={sliderRef}
+            className="brand-slider-container mx-auto w-[95%] overflow-hidden md:w-[80%]"
+          >
+            {/* First row - moving left to right */}
+            <div className="slider-row relative flex h-10 sm:h-12 md:h-14 lg:h-20">
+              <div
+                ref={leftTrackRef}
+                className="slider-track flex"
+                data-direction="left"
+              >
+                {renderMultipleSets("row1")}
+              </div>
             </div>
-          </div>
 
-          {/* Second row - moving right to left */}
-          <div className="slider-row relative mt-3 flex h-10 sm:mt-4 sm:h-12 md:mt-5 md:h-14 lg:h-20">
-            <div
-              ref={rightTrackRef}
-              className="slider-track flex"
-              data-direction="right"
-            >
-              {renderMultipleSets("row2")}
+            {/* Second row - moving right to left */}
+            <div className="slider-row relative mt-3 flex h-10 sm:mt-4 sm:h-12 md:mt-5 md:h-14 lg:h-20">
+              <div
+                ref={rightTrackRef}
+                className="slider-track flex"
+                data-direction="right"
+              >
+                {renderMultipleSets("row2")}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
       <style jsx>{`
