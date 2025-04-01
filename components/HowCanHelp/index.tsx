@@ -25,7 +25,7 @@ const HowWeCanHelpYou = () => {
       title: "Sponsor Licence",
       color: "#0ea5e9",
       icon: <FiSend className="h-5 w-5" />,
-      image: "/images/icon/upload.png",
+      image: "/images/icon/sponsor.svg",
       content: {
         heading: "Secure Your Sponsor Licence with Ease",
         description:
@@ -37,7 +37,7 @@ const HowWeCanHelpYou = () => {
       title: "Compliance",
       color: "#0ea5e9",
       icon: <FiArrowRight className="h-5 w-5" />,
-      image: "/images/icon/upload.png",
+      image: "/images/icon/compliance.svg",
       content: {
         heading: "Stay Compliant & Audit-Ready",
         description:
@@ -49,7 +49,7 @@ const HowWeCanHelpYou = () => {
       title: "Skilled Worker Visa",
       color: "#0ea5e9",
       icon: <FiArrowRight className="h-5 w-5" />,
-      image: "/images/icon/upload.png",
+      image: "/images/icon/skilledvisa.svg",
       content: {
         heading: "Hire International Talent Hassle-Free",
         description:
