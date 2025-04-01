@@ -77,7 +77,7 @@ const Brands: React.FC = () => {
       id: "brand1",
       src: "/images/brands/logo-1.png",
       alt: "Premium Brand Partner",
-      baseWidth: 140,
+      baseWidth: 180,
       baseHeight: 50,
       objectFit: "fill",
       animationDelay: 0.1,
@@ -87,7 +87,7 @@ const Brands: React.FC = () => {
       src: "/images/brands/logo-2.png",
       alt: "Enterprise Solution Partner",
       baseWidth: 100,
-      baseHeight: 50,
+      baseHeight: 60,
       objectFit: "contain",
       animationDelay: 0.2,
     },
@@ -96,7 +96,7 @@ const Brands: React.FC = () => {
       src: "/images/brands/logo-3.png",
       alt: "Technology Innovator",
       baseWidth: 100,
-      baseHeight: 50,
+      baseHeight: 60,
       objectFit: "contain",
       animationDelay: 0.3,
     },
@@ -122,8 +122,8 @@ const Brands: React.FC = () => {
       id: "brand6",
       src: "/images/brands/logo-6.png",
       alt: "Strategic Alliance",
-      baseWidth: 100,
-      baseHeight: 50,
+      baseWidth: 120,
+      baseHeight: 60,
       objectFit: "contain",
       animationDelay: 0.6,
     },
@@ -131,8 +131,8 @@ const Brands: React.FC = () => {
       id: "brand7",
       src: "/images/brands/logo-7.png",
       alt: "Innovative Solutions",
-      baseWidth: 100,
-      baseHeight: 50,
+      baseWidth: 120,
+      baseHeight: 60,
       objectFit: "contain",
       animationDelay: 0.7,
     },
@@ -140,8 +140,8 @@ const Brands: React.FC = () => {
       id: "brand8",
       src: "/images/brands/logo-8.png",
       alt: "Trusted Partner",
-      baseWidth: 100,
-      baseHeight: 50,
+      baseWidth: 160,
+      baseHeight: 60,
       objectFit: "contain",
       animationDelay: 0.8,
     },
@@ -162,7 +162,7 @@ const Brands: React.FC = () => {
       return (
         <div
           key={uniqueId}
-          className="brand-container relative mx-3 flex items-center justify-center sm:mx-4 md:mx-6"
+          className="brand-container relative mx-3 flex items-center justify-center sm:mx-4 md:mx-6 lg:mx-8"
           onMouseEnter={() => setHoveredItem(uniqueId)}
           onMouseLeave={() => setHoveredItem(null)}
         >
