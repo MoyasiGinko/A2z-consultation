@@ -322,7 +322,7 @@ const Brands: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className={`brand-showcase py-10 transition-opacity duration-1000 sm:py-14 md:py-20 ${
+      className={`brand-showcase bg-transparent py-10 transition-opacity duration-1000 sm:py-14 md:py-20 ${
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -384,14 +384,6 @@ const Brands: React.FC = () => {
         :root {
           --float-distance: 2px;
           --brand-margin: 20px;
-        }
-
-        .brand-showcase {
-          background: linear-gradient(
-            180deg,
-            rgba(249, 250, 251, 0) 0%,
-            rgba(249, 250, 251, 1) 100%
-          );
         }
 
         .logo-container {

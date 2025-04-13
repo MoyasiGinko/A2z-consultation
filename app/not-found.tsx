@@ -19,7 +19,7 @@ const NotFound = () => {
           height={400}
         />
 
-        <h2 className="mb-5 text-2xl font-semibold text-black dark:text-white md:text-4xl">
+        <h2 className="mb-5 text-2xl font-semibold text-black  md:text-4xl">
           This Page Does Not Exist
         </h2>
         <p className="mb-7.5">
@@ -29,7 +29,7 @@ const NotFound = () => {
 
         <a
           href="/"
-          className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
+          className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho "
         >
           Return to Home
           <svg

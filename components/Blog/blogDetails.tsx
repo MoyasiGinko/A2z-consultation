@@ -158,7 +158,7 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
       <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
         <div className="flex flex-col gap-7.5 lg:flex-row xl:gap-12.5">
           <div className="lg:w-2/3">
-            <div className="animate_top rounded-md border border-stroke bg-white p-7.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection md:p-10">
+            <div className="animate_top rounded-md border border-stroke bg-white p-7.5 shadow-solid-13  md:p-10">
               {/* Main Blog Image */}
               <div className="mb-10 w-full overflow-hidden">
                 <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
@@ -173,28 +173,22 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
               </div>
 
               {/* Blog Title */}
-              <h1 className="mb-5 mt-11 text-3xl font-semibold text-black dark:text-white 2xl:text-sectiontitle2">
+              <h1 className="mb-5 mt-11 text-3xl font-semibold text-black  2xl:text-sectiontitle2">
                 {blogPost.title}
               </h1>
 
               {/* Blog Metadata */}
               <ul className="mb-9 flex flex-wrap gap-5 2xl:gap-7.5">
                 <li className="flex items-center">
-                  <span className="mr-1 text-black dark:text-white">
-                    Author:{" "}
-                  </span>
+                  <span className="mr-1 text-black ">Author: </span>
                   {blogPost.author}
                 </li>
                 <li className="flex items-center">
-                  <span className="mr-1 text-black dark:text-white">
-                    Published On:
-                  </span>
+                  <span className="mr-1 text-black ">Published On:</span>
                   {blogPost.publishDate}
                 </li>
                 <li className="flex items-center">
-                  <span className="mr-1 text-black dark:text-white">
-                    Category:
-                  </span>
+                  <span className="mr-1 text-black ">Category:</span>
                   {blogPost.category}
                 </li>
                 {blogPost.estimatedReadingTime && (
@@ -218,7 +212,7 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
               </ul>
 
               {/* Blog Content */}
-              <div className="blog-details text-body-color dark:text-body-color-dark space-y-6 text-base leading-relaxed">
+              <div className="blog-details text-body-color  space-y-6 text-base leading-relaxed">
                 {blogPost.content.map((paragraph, index) => (
                   <p key={index} className="mb-6">
                     {paragraph}
@@ -248,8 +242,8 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
 
               {/* Related Posts Section */}
               {blogPost.relatedPosts && blogPost.relatedPosts.length > 0 && (
-                <div className="mt-16 border-t border-gray-200 pt-12 dark:border-gray-700">
-                  <h3 className="mb-8 text-2xl font-semibold text-black dark:text-white">
+                <div className="mt-16 border-t border-gray-200 pt-12 ">
+                  <h3 className="mb-8 text-2xl font-semibold text-black ">
                     Related Articles
                   </h3>
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -258,7 +252,7 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
                         key={relatedPost.id}
                         href={`/blog/${relatedPost.slug}`}
                       >
-                        <div className="group overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg dark:bg-blacksection">
+                        <div className="group overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg ">
                           <div className="relative h-48 w-full overflow-hidden">
                             <Image
                               src={relatedPost.mainImage}
@@ -268,10 +262,10 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
                             />
                           </div>
                           <div className="p-4">
-                            <h4 className="line-clamp-2 font-medium text-black dark:text-white">
+                            <h4 className="line-clamp-2 font-medium text-black ">
                               {relatedPost.title}
                             </h4>
-                            <p className="text-body-color dark:text-body-color-dark mt-2 text-sm">
+                            <p className="text-body-color  mt-2 text-sm">
                               {relatedPost.publishDate}
                             </p>
                           </div>
