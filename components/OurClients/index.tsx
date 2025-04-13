@@ -54,63 +54,6 @@ const clientData: ClientInfo[] = [
     },
     imageSrc: "/images/user/user-01.png",
   },
-  {
-    id: "nike-thurston",
-    name: "Nike Thurston",
-    title: "Founder of THRST",
-    socialLinks: {
-      instagram: "https://instagram.com/mikethurston",
-      youtube: "https://youtube.com/mikethurston",
-    },
-    description: [
-      "Mike Thurston is a British fitness guru who co-founded the health and fitness company Aurora Athletic. He runs a self-titled YouTube channel where he uploads vlogs and fitness training videos for over 1.3 million subscribers.",
-      "Mike approached us as he had outgrown his accountant and was looking for a specialist that could manage the A-Z of his finances and taxes so he could concentrate on building his brand and content creation.",
-      "We took over the headache of managing Mike's accounts, bookkeeping and taxes and provided him with just the information he needed to know how his business was performing, what cash he could take from the business and what his tax liabilities were. We also assisted Mike with moving to Dubai, setting up a company there and becoming non-resident for tax purposes in the UK so he could keep more of what he earns.",
-    ],
-    services: [
-      "Financial Management",
-      "Tax Planning",
-      "Business Relocation",
-      "Company Formation",
-    ],
-    testimonial: {
-      quote:
-        "For years, my accounts were an absolute mess! Capture sorted out my accounts, and helped me relocate and set up my business in Dubai!",
-      source: "Mike Thurston, YouTuber with 1.4M+ subs",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      videoThumbnail: "/images/games/extra2.png",
-    },
-    imageSrc: "/images/user/user-01.png",
-  },
-  {
-    id: "spike-thurston",
-    name: "Spike Thurston",
-    title: "Founder of THRST",
-    socialLinks: {
-      instagram: "https://instagram.com/mikethurston",
-      youtube: "https://youtube.com/mikethurston",
-    },
-    description: [
-      "Mike Thurston is a British fitness guru who co-founded the health and fitness company Aurora Athletic. He runs a self-titled YouTube channel where he uploads vlogs and fitness training videos for over 1.3 million subscribers.",
-      "Mike approached us as he had outgrown his accountant and was looking for a specialist that could manage the A-Z of his finances and taxes so he could concentrate on building his brand and content creation.",
-      "We took over the headache of managing Mike's accounts, bookkeeping and taxes and provided him with just the information he needed to know how his business was performing, what cash he could take from the business and what his tax liabilities were. We also assisted Mike with moving to Dubai, setting up a company there and becoming non-resident for tax purposes in the UK so he could keep more of what he earns.",
-    ],
-    services: [
-      "Financial Management",
-      "Tax Planning",
-      "Business Relocation",
-      "Company Formation",
-    ],
-    testimonial: {
-      quote:
-        "For years, my accounts were an absolute mess! Capture sorted out my accounts, and helped me relocate and set up my business in Dubai!",
-      source: "Mike Thurston, YouTuber with 1.4M+ subs",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      videoThumbnail: "/images/games/extra3.png",
-    },
-    imageSrc: "/images/user/user-01.png",
-  },
-  // ... other clients
 ];
 
 // Updated VideoModal component
