@@ -417,7 +417,7 @@ const WhoLovesUs: React.FC = () => {
             onClick={() => setShowAll(!showAll)}
             whileHover="hover"
             variants={buttonVariants}
-            className="z-30 flex items-center gap-2 rounded-full bg-sky-600 px-8 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:bg-sky-500"
+            className="z-30 flex items-center gap-2 rounded-full bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 px-6 py-2 font-medium text-white shadow-lg transition-all duration-300 hover:brightness-110"
           >
             {showAll ? (
               <>

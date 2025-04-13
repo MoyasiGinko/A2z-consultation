@@ -186,7 +186,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, service }) => {
                   </button>
                   <a
                     href="/get-in-touch"
-                    className="rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-2 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md hover:brightness-110"
+                    className="rounded-lg bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-2 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md hover:brightness-110"
                   >
                     Get Started
                   </a>

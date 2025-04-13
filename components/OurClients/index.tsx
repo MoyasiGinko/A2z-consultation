@@ -102,7 +102,7 @@ const VideoModal: FC<{
         {/* Loading indicator */}
         {isLoading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-sky-500 border-t-transparent"></div>
           </div>
         )}
 
@@ -224,7 +224,7 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
                 {client.services.map((service, i) => (
                   <span
                     key={i}
-                    className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700"
+                    className="rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700"
                   >
                     {service}
                   </span>
@@ -366,7 +366,7 @@ const ClientsPage: FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="inline-block rounded-full bg-blue-100 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-blue-700">
+        <span className="inline-block rounded-full bg-sky-100 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-sky-700">
           Success Stories
         </span>
         <h1 className="mb-6 mt-3 text-4xl font-extrabold text-gray-900 md:text-5xl">
@@ -385,7 +385,7 @@ const ClientsPage: FC = () => {
       </div>
 
       <motion.div
-        className="mx-auto mt-32 max-w-4xl rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 p-12 text-center shadow-xl"
+        className="mx-auto mt-32 max-w-4xl rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-700 p-12 text-center shadow-xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -394,13 +394,13 @@ const ClientsPage: FC = () => {
         <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">
           Ready to Write Your Success Story?
         </h2>
-        <p className="mx-auto mb-8 max-w-2xl text-lg text-blue-100">
+        <p className="mx-auto mb-8 max-w-2xl text-lg text-sky-100">
           Join our growing list of satisfied clients and take your business to
           the next level with our expert consultation services.
         </p>
         <a href="/get-in-touch">
           <motion.button
-            className="rounded-full bg-white px-10 py-4 text-lg font-bold text-blue-700 shadow-lg transition-all hover:shadow-xl"
+            className="rounded-full bg-white px-10 py-4 text-lg font-bold text-sky-700 shadow-lg transition-all hover:shadow-xl"
             whileHover={{
               scale: 1.05,
               boxShadow: "0px 10px 25px rgba(0,0,0,0.2)",

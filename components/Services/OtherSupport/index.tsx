@@ -25,7 +25,7 @@ const OtherSupport = () => {
     <section className="bg-gradient-to-b from-slate-50 to-slate-100 py-20 ">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-3xl font-bold text-transparent md:text-5xl">
+          <h2 className="mb-4 bg-gradient-to-r from-sky-500 to-sky-800 bg-clip-text text-3xl font-bold text-transparent  md:text-5xl">
             Support Services
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600 ">
@@ -44,7 +44,7 @@ const OtherSupport = () => {
                     key={tab.id}
                     className={`flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-all duration-200 ease-in-out ${
                       selectedTab === index
-                        ? "bg-gradient-to-l from-blue-500 to-sky-400 text-white shadow-md"
+                        ? "bg-gradient-to-r from-sky-500 to-sky-800 text-white shadow-md hover:brightness-110"
                         : "text-slate-700 hover:bg-slate-100 "
                     }`}
                     onClick={() => setSelectedTab(index)}
@@ -52,8 +52,8 @@ const OtherSupport = () => {
                     <div
                       className={`flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full shadow-sm  ${
                         selectedTab === index
-                          ? "bg-gradient-to-r from-blue-400 to-blue-500"
-                          : "bg-gradient-to-r from-sky-400 to-sky-500"
+                          ? "bg-gradient-to-r from-sky-500 to-sky-800 brightness-110"
+                          : "bg-gradient-to-r from-sky-400 to-sky-700 brightness-110"
                       }`}
                     >
                       <div className="h-6 min-h-[1.5rem] w-6 min-w-[1.5rem] text-center font-bold opacity-80">
@@ -194,7 +194,7 @@ const OtherSupport = () => {
                                                 className="flex items-start"
                                               >
                                                 <svg
-                                                  className="s mr-2 mt-1 h-4 w-4 flex-shrink-0 text-blue-500"
+                                                  className="s mr-2 mt-1 h-4 w-4 flex-shrink-0 text-sky-500"
                                                   fill="none"
                                                   viewBox="0 0 24 24"
                                                   stroke="currentColor"
@@ -233,8 +233,8 @@ const OtherSupport = () => {
                               }}
                               className="rounded-lg bg-slate-50 p-6 transition-all hover:scale-105 hover:transform hover:shadow-md "
                             >
-                              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 ">
-                                <div className="h-6 w-6 text-blue-500 ">
+                              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 ">
+                                <div className="h-6 w-6 text-sky-500 ">
                                   {/* Placeholder for icon */}
                                   <svg
                                     className="h-full w-full"
@@ -263,10 +263,10 @@ const OtherSupport = () => {
 
                         {/* Call to Action Section */}
                         <div className="mt-10 border-t border-slate-200 pt-6 ">
-                          <div className="rounded-xl bg-gradient-to-br from-blue-50 to-sky-50 p-6 ">
+                          <div className="rounded-xl bg-gradient-to-br from-sky-50 to-sky-50 p-6 ">
                             {tab.content.callToAction && (
                               <>
-                                <h4 className="mb-3 text-xl font-bold text-blue-800 ">
+                                <h4 className="mb-3 text-xl font-bold text-sky-800 ">
                                   {tab.content.callToAction.title}
                                 </h4>
                                 <p className="mb-4 text-slate-600 ">
@@ -274,7 +274,7 @@ const OtherSupport = () => {
                                 </p>
                               </>
                             )}
-                            <button className="mt-2 rounded-full bg-gradient-to-l from-blue-500 to-sky-400 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl">
+                            <button className="mt-2 rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl hover:brightness-110">
                               Schedule Consultation
                             </button>
                           </div>

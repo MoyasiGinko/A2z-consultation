@@ -170,7 +170,7 @@ const TabModal: React.FC<TabModalProps> = ({ isOpen, onClose, content }) => {
                     Close
                   </button>
                   <a href="/get-in-touch">
-                    <button className="rounded-lg bg-gradient-to-r from-sky-600 to-sky-700 px-4 py-1.5 text-sm text-white transition-all hover:brightness-110 sm:px-6 sm:py-2 sm:text-base">
+                    <button className="rounded-lg bg-gradient-to-r from-sky-500 to-sky-800 px-4 py-1.5 text-sm text-white transition-all  hover:brightness-110 sm:px-6 sm:py-2 sm:text-base">
                       Get in touch
                     </button>
                   </a>

@@ -299,12 +299,12 @@ const Header = () => {
           </nav>
 
           <div>
-            <a
+            <motion.a
               href="/get-in-touch"
-              className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
+              className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-sky-800 px-6 text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
             >
               Get in Touch
-            </a>
+            </motion.a>
           </div>
         </div>
 
@@ -401,7 +401,7 @@ const Header = () => {
               <div className="mt-6">
                 <a
                   href="/get-in-touch"
-                  className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
+                  className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-sky-800 text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
                 >
                   Get in Touch
                 </a>

@@ -25,7 +25,7 @@ const ComplianceBanner: React.FC = () => {
           with automated, real-time compliance monitoring.
         </p>
         <a href="/get-in-touch">
-          <button className="rounded bg-[#0096c7] px-6 py-3 font-semibold text-white transition-colors duration-300 hover:bg-[#0077b6]">
+          <button className="rounded bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-semibold text-white transition-colors duration-300  hover:brightness-110">
             Get in touch
           </button>
         </a>
