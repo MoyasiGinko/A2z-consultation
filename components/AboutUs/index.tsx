@@ -175,7 +175,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
+      {/* <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
         <motion.div
           className="mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -231,7 +231,7 @@ const AboutUs: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Our Services Section */}
       <section className="bg-gray-50 px-4 py-16 md:px-8">
@@ -261,22 +261,22 @@ const AboutUs: React.FC = () => {
           >
             {[
               {
-                title: "Visa & Immigration Applications",
+                title: "Sponsor Licence",
                 description:
-                  "Expert processing of family, employment, student, visitor, humanitarian, and specialized visa categories with meticulous documentation preparation.",
+                  "We assist businesses in obtaining and maintaining their sponsor licence, ensuring compliance with UKVI regulations and smooth processing.",
                 icon: "📄",
               },
               {
-                title: "Legal Advisory Services",
+                title: "Compliance",
                 description:
-                  "Strategic consultations with immigration specialists, case evaluations, compliance reviews, and representation during administrative proceedings.",
+                  "We help maintain your compliance standards to reduce the risk of losing your sponsor licence through regular audits, documentation management, and policy reviews.",
                 icon: "⚖️",
               },
               {
-                title: "Settlement & Integration",
+                title: "Skilled Worker Visa",
                 description:
-                  "Comprehensive support for housing, employment, education, healthcare access, language resources, and cultural orientation in your new country.",
-                icon: "🏠",
+                  "Our end-to-end visa application process for skilled workers ensures a smooth experience with guaranteed results and full support throughout the journey.",
+                icon: "🛂",
               },
             ].map((service, index) => (
               <motion.div
@@ -342,7 +342,7 @@ const AboutUs: React.FC = () => {
           </motion.div>
 
           {/* Recognition Carousel */}
-          <motion.div
+          {/* <motion.div
             className="mb-12 overflow-hidden rounded-xl bg-white p-8 shadow-xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -378,7 +378,7 @@ const AboutUs: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Testimonial Preview */}
           <motion.div
