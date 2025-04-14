@@ -22,13 +22,13 @@ const OtherSupport = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-slate-100 py-20 dark:from-slate-900 dark:to-slate-950">
+    <section className="bg-gradient-to-b from-slate-50 to-slate-100 py-20 ">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-3xl font-bold text-transparent md:text-5xl">
+          <h2 className="mb-4 bg-gradient-to-r from-sky-500 to-sky-800 bg-clip-text text-3xl font-bold text-transparent  md:text-5xl">
             Support Services
           </h2>
-          <p className="mx-auto max-w-3xl text-lg text-slate-600 dark:text-slate-300">
+          <p className="mx-auto max-w-3xl text-lg text-slate-600 ">
             Comprehensive assistance tailored to your unique needs. Explore our
             range of specialized support options.
           </p>
@@ -37,23 +37,23 @@ const OtherSupport = () => {
         <div className="flex flex-col gap-10 lg:flex-row">
           {/* Tab Navigation */}
           <div className="lg:w-1/4">
-            <div className="sticky top-24 rounded-xl bg-white p-1 shadow-lg dark:bg-slate-800">
+            <div className="sticky top-24 rounded-xl bg-white p-1 shadow-lg ">
               <div className="flex flex-col space-y-1">
                 {supportTabs.map((tab, index) => (
                   <button
                     key={tab.id}
                     className={`flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-all duration-200 ease-in-out ${
                       selectedTab === index
-                        ? "bg-gradient-to-l from-blue-500 to-sky-400 text-white shadow-md"
-                        : "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700"
+                        ? "bg-gradient-to-r from-sky-500 to-sky-800 text-white shadow-md hover:brightness-110"
+                        : "text-slate-700 hover:bg-slate-100 "
                     }`}
                     onClick={() => setSelectedTab(index)}
                   >
                     <div
-                      className={`flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full shadow-sm dark:bg-slate-700 ${
+                      className={`flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-full shadow-sm  ${
                         selectedTab === index
-                          ? "bg-gradient-to-r from-blue-400 to-blue-500"
-                          : "bg-gradient-to-r from-sky-400 to-sky-500"
+                          ? "bg-gradient-to-r from-sky-500 to-sky-800 brightness-110"
+                          : "bg-gradient-to-r from-sky-400 to-sky-700 brightness-110"
                       }`}
                     >
                       <div className="h-6 min-h-[1.5rem] w-6 min-w-[1.5rem] text-center font-bold opacity-80">
@@ -82,7 +82,7 @@ const OtherSupport = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.5 }}
-                      className="overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-slate-800"
+                      className="overflow-hidden rounded-2xl bg-white shadow-xl "
                     >
                       {/* Hero Section with Image */}
                       <div className="relative h-72 w-full">
@@ -134,7 +134,7 @@ const OtherSupport = () => {
 
                       <div className="p-8">
                         {/* Main Description */}
-                        <p className="mb-8 text-lg text-slate-700 dark:text-slate-200">
+                        <p className="mb-8 text-lg text-slate-700 ">
                           {tab.content.description}
                         </p>
 
@@ -145,18 +145,18 @@ const OtherSupport = () => {
                               (section, sectionIndex) => (
                                 <motion.div
                                   key={sectionIndex}
-                                  className="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700"
+                                  className="overflow-hidden rounded-lg border border-slate-200 "
                                 >
                                   {/* Section Header - Updated for independent toggling */}
                                   <button
-                                    className="flex w-full items-center justify-between bg-slate-50 px-6 py-4 text-left transition-colors hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700"
+                                    className="flex w-full items-center justify-between bg-slate-50 px-6 py-4 text-left transition-colors hover:bg-slate-100 "
                                     onClick={() => toggleSection(sectionIndex)}
                                   >
-                                    <h4 className="text-lg font-semibold text-slate-800 dark:text-white">
+                                    <h4 className="text-lg font-semibold text-slate-800 ">
                                       {section.title}
                                     </h4>
                                     <svg
-                                      className={`h-5 w-5 transform text-slate-500 transition-transform dark:text-slate-300 ${
+                                      className={`h-5 w-5 transform text-slate-500 transition-transform  ${
                                         expandedSections.includes(sectionIndex)
                                           ? "rotate-180"
                                           : ""
@@ -186,7 +186,7 @@ const OtherSupport = () => {
                                         transition={{ duration: 0.3 }}
                                         className="px-6 py-4"
                                       >
-                                        <ul className="space-y-3 text-slate-600 dark:text-slate-300">
+                                        <ul className="space-y-3 text-slate-600 ">
                                           {section.paragraphs.map(
                                             (paragraph, pIndex) => (
                                               <li
@@ -194,7 +194,7 @@ const OtherSupport = () => {
                                                 className="flex items-start"
                                               >
                                                 <svg
-                                                  className="mr-2 mt-1 h-4 w-4 flex-shrink-0 text-blue-500 dark:text-blue-400"
+                                                  className="s mr-2 mt-1 h-4 w-4 flex-shrink-0 text-sky-500"
                                                   fill="none"
                                                   viewBox="0 0 24 24"
                                                   stroke="currentColor"
@@ -231,10 +231,10 @@ const OtherSupport = () => {
                                 duration: 0.5,
                                 delay: index * 0.1,
                               }}
-                              className="rounded-lg bg-slate-50 p-6 transition-all hover:scale-105 hover:transform hover:shadow-md dark:bg-slate-700/50"
+                              className="rounded-lg bg-slate-50 p-6 transition-all hover:scale-105 hover:transform hover:shadow-md "
                             >
-                              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30">
-                                <div className="h-6 w-6 text-blue-500 dark:text-blue-300">
+                              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 ">
+                                <div className="h-6 w-6 text-sky-500 ">
                                   {/* Placeholder for icon */}
                                   <svg
                                     className="h-full w-full"
@@ -251,10 +251,10 @@ const OtherSupport = () => {
                                   </svg>
                                 </div>
                               </div>
-                              <h4 className="mb-2 text-xl font-semibold text-slate-800 dark:text-white">
+                              <h4 className="mb-2 text-xl font-semibold text-slate-800 ">
                                 {feature.title}
                               </h4>
-                              <p className="text-slate-600 dark:text-slate-300">
+                              <p className="text-slate-600 ">
                                 {feature.description}
                               </p>
                             </motion.div>
@@ -262,19 +262,19 @@ const OtherSupport = () => {
                         </div>
 
                         {/* Call to Action Section */}
-                        <div className="mt-10 border-t border-slate-200 pt-6 dark:border-slate-700">
-                          <div className="rounded-xl bg-gradient-to-br from-blue-50 to-sky-50 p-6 dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-sky-900/20">
+                        <div className="mt-10 border-t border-slate-200 pt-6 ">
+                          <div className="rounded-xl bg-gradient-to-br from-sky-50 to-sky-50 p-6 ">
                             {tab.content.callToAction && (
                               <>
-                                <h4 className="mb-3 text-xl font-bold text-blue-800 dark:text-blue-300">
+                                <h4 className="mb-3 text-xl font-bold text-sky-800 ">
                                   {tab.content.callToAction.title}
                                 </h4>
-                                <p className="mb-4 text-slate-600 dark:text-slate-300">
+                                <p className="mb-4 text-slate-600 ">
                                   {tab.content.callToAction.description}
                                 </p>
                               </>
                             )}
-                            <button className="mt-2 rounded-full bg-gradient-to-l from-blue-500 to-sky-400 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl">
+                            <button className="mt-2 rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl hover:brightness-110">
                               Schedule Consultation
                             </button>
                           </div>

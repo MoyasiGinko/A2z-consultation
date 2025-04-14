@@ -16,7 +16,7 @@ const FindCTA = () => {
       <div className="flex justify-center">
         <Link
           href="/get-in-touch"
-          className="mt-3 block w-44 rounded-lg bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 px-4 py-2 text-center text-white transition-colors duration-200 hover:bg-sky-900 hover:from-sky-700 hover:via-sky-800 hover:to-sky-900"
+          className="mt-3 block w-44 rounded-lg bg-gradient-to-r from-sky-500 to-sky-800 px-4 py-2 text-center text-white transition-colors duration-200  hover:brightness-110"
         >
           Get in touch
         </Link>

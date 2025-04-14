@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Lines from "@/components/Lines";
 import ScrollToTop from "@/components/ScrollToTop";
-import { ThemeProvider } from "next-themes";
+// import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ToasterContext from "./utils/context/ToastContext";
@@ -34,20 +34,20 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <TawkToChat />
         <body className={`flex min-h-screen flex-col ${inter.className}`}>
-          <ThemeProvider
+          {/* <ThemeProvider
             enableSystem={false}
             attribute="class"
             defaultTheme="light"
-          >
-            <ReduxInitializer>
-              <Lines />
-              <Header />
-              <ToasterContext />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-              <ScrollToTop />
-            </ReduxInitializer>
-          </ThemeProvider>
+          > */}
+          <ReduxInitializer>
+            <Lines />
+            <Header />
+            <ToasterContext />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+            <ScrollToTop />
+          </ReduxInitializer>
+          {/* </ThemeProvider> */}
         </body>
       </html>
     </StoreProvider>

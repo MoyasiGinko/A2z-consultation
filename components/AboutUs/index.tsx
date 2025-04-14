@@ -86,21 +86,6 @@ const AboutUs: React.FC = () => {
               careful attention to detail and tailored support, we enable each
               client to achieve compliance and attract essential global talent.
             </p>
-            <p className="text-gray-700">
-              Alongside our Sponsor Licence expertise, we have extensive
-              experience managing Skilled Worker visas, including complex
-              self-sponsorship scenarios. Our clients also benefit from guidance
-              on Indefinite Leave to Remain (ILR), British Citizenship,
-              Discretionary Leave to Remain, Private Life applications, Spouse
-              Visas, Adult Dependent Relatives, and the Ukraine Scheme.
-              Additionally, we provide digitised HR management solutions,
-              ensuring businesses maintain compliance effortlessly.
-            </p>
-            <p className="mt-6 text-gray-700">
-              As recognised Experts in Sponsor Licence and Work Permit
-              processes, we are committed to simplifying your immigration
-              experience—Growing Talent, Simplifying Journeys.
-            </p>
           </motion.div>
           <motion.div
             className="relative h-80 overflow-hidden rounded-lg shadow-xl"
@@ -114,7 +99,35 @@ const AboutUs: React.FC = () => {
               className="rounded-lg"
               priority
             />
+            <div className="absolute bottom-0 w-full bg-black bg-opacity-50 p-2 text-center">
+              <p className="text-sm italic text-white">
+                Our dedicated team serving clients across the UK
+              </p>
+            </div>
           </motion.div>
+        </motion.div>
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <p className="text-gray-700">
+            Alongside our Sponsor Licence expertise, we have extensive
+            experience managing Skilled Worker visas, including complex
+            self-sponsorship scenarios. Our clients also benefit from guidance
+            on Indefinite Leave to Remain (ILR), British Citizenship,
+            Discretionary Leave to Remain, Private Life applications, Spouse
+            Visas, Adult Dependent Relatives, and the Ukraine Scheme.
+            Additionally, we provide digitised HR management solutions, ensuring
+            businesses maintain compliance effortlessly.
+          </p>
+          <p className="mt-6 text-gray-700">
+            As recognised Experts in Sponsor Licence and Work Permit processes,
+            we are committed to simplifying your immigration experience—Growing
+            Talent, Simplifying Journeys.
+          </p>
         </motion.div>
       </section>
 
@@ -175,7 +188,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
+      {/* <section className="mx-auto max-w-6xl px-4 py-16 md:px-8">
         <motion.div
           className="mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -231,7 +244,7 @@ const AboutUs: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Our Services Section */}
       <section className="bg-gray-50 px-4 py-16 md:px-8">
@@ -261,22 +274,22 @@ const AboutUs: React.FC = () => {
           >
             {[
               {
-                title: "Visa & Immigration Applications",
+                title: "Sponsor Licence",
                 description:
-                  "Expert processing of family, employment, student, visitor, humanitarian, and specialized visa categories with meticulous documentation preparation.",
+                  "We assist businesses in obtaining and maintaining their sponsor licence, ensuring compliance with UKVI regulations and smooth processing.",
                 icon: "📄",
               },
               {
-                title: "Legal Advisory Services",
+                title: "Compliance",
                 description:
-                  "Strategic consultations with immigration specialists, case evaluations, compliance reviews, and representation during administrative proceedings.",
+                  "We help maintain your compliance standards to reduce the risk of losing your sponsor licence through regular audits, documentation management, and policy reviews.",
                 icon: "⚖️",
               },
               {
-                title: "Settlement & Integration",
+                title: "Skilled Worker Visa",
                 description:
-                  "Comprehensive support for housing, employment, education, healthcare access, language resources, and cultural orientation in your new country.",
-                icon: "🏠",
+                  "Our end-to-end visa application process for skilled workers ensures a smooth experience with guaranteed results and full support throughout the journey.",
+                icon: "🛂",
               },
             ].map((service, index) => (
               <motion.div
@@ -342,7 +355,7 @@ const AboutUs: React.FC = () => {
           </motion.div>
 
           {/* Recognition Carousel */}
-          <motion.div
+          {/* <motion.div
             className="mb-12 overflow-hidden rounded-xl bg-white p-8 shadow-xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -378,7 +391,7 @@ const AboutUs: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Testimonial Preview */}
           <motion.div
@@ -429,7 +442,7 @@ const AboutUs: React.FC = () => {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 gap-8 md:grid-cols-3"
+            className="flex flex-wrap justify-center gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -437,27 +450,21 @@ const AboutUs: React.FC = () => {
           >
             {[
               {
-                name: "Sarah Johnson",
+                name: "Fiyadh Hosne Mowla",
                 role: "Founder & Chief Executive Officer",
-                bio: "A former immigration attorney with 20+ years of experience, Sarah founded A2Z Immigrants after immigrating from Ireland herself. Her personal journey through the immigration system inspired her to create a more compassionate approach to immigration services. She holds a J.D. from Harvard Law School and has been recognized as one of the '50 Most Influential Immigrants' by Global Leadership Magazine.",
-                image: "/images/user/team-01.png",
-              },
-              {
-                name: "Miguel Rodriguez",
-                role: "Chief Operations Officer",
-                bio: "Miguel joined A2Z in 2016 after a successful career in international development. Born in Mexico and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Miguel specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
+                bio: "Fiyadh joined A2Z in 2016 after a successful career in international development. Born in Bangladesh and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Fiyadh specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
                 image: "/images/user/team-02.png",
               },
               {
-                name: "Aisha Patel",
-                role: "Director of Client Services",
-                bio: "With a background in social work and immigration policy, Aisha leads our client experience team with empathy and precision. After experiencing the challenges of the immigration system with her own family, she dedicated her career to improving this journey for others. Aisha has developed our renowned client-centered methodology and training program that ensures consistent, compassionate service across all our locations.",
-                image: "/images/user/team-03.png",
+                name: "Shovon Mostofa",
+                role: "Chief Operations Officer",
+                bio: "With a background in social work and immigration policy, Shovon leads our client experience team with empathy and precision. After experiencing the challenges of the immigration system with his own family, he dedicated his career to improving this journey for others. Shoovon has developed our renowned client-centered methodology and training program that ensures consistent, compassionate service across all our locations.",
+                image: "/images/user/team-04.png",
               },
             ].map((member, index) => (
               <motion.div
                 key={index}
-                className="overflow-hidden rounded-lg bg-white shadow-md"
+                className="max-w-sm overflow-hidden rounded-lg bg-white shadow-md"
                 variants={fadeIn}
               >
                 <div className="relative h-64 w-full">
@@ -479,20 +486,20 @@ const AboutUs: React.FC = () => {
             ))}
           </motion.div>
 
-          <motion.div
-            className="mt-12 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+          {/* <motion.div
+        className="mt-12 text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <Link
-              href="/about/team"
-              className="inline-block rounded-md bg-sky-500 px-6 py-3 font-medium text-white transition duration-300 hover:bg-sky-700"
-            >
-              Meet Our Full Team
-            </Link>
-          </motion.div>
+        <Link
+          href="/about/team"
+          className="inline-block rounded-md bg-sky-500 px-6 py-3 font-medium text-white transition duration-300 hover:bg-sky-700"
+        >
+          Meet Our Full Team
+        </Link>
+          </motion.div> */}
         </div>
       </section>
 
@@ -515,13 +522,13 @@ const AboutUs: React.FC = () => {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/services"
+              href="/services/sponsor-licence"
               className="rounded-md bg-white px-6 py-3 font-medium text-sky-500 transition duration-300 hover:bg-gray-100"
             >
               Explore Our Services
             </Link>
             <Link
-              href="/contact"
+              href="/get-in-touch"
               className="rounded-md border-2 border-white bg-transparent px-6 py-3 font-medium transition duration-300 hover:bg-sky-700"
             >
               Schedule a Consultation

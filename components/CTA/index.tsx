@@ -8,7 +8,7 @@ const CTA = () => {
     <>
       {/* <!-- ===== CTA Start ===== --> */}
       <section className="overflow-hidden px-4 py-20 md:px-8 lg:py-25 xl:py-30 2xl:px-0">
-        <div className="mx-auto max-w-c-1390 rounded-lg bg-gradient-to-t from-[#F8F9FF] to-[#DEE7FF] px-7.5 py-12.5 dark:bg-blacksection dark:bg-gradient-to-t dark:from-transparent dark:to-transparent dark:stroke-strokedark md:px-12.5 xl:px-17.5 xl:py-0">
+        <div className="mx-auto max-w-c-1390 rounded-lg bg-gradient-to-t from-[#F8F9FF] to-[#DEE7FF] px-7.5 py-12.5  md:px-12.5 xl:px-17.5 xl:py-0">
           <div className="flex flex-wrap gap-8 md:flex-nowrap md:items-center md:justify-between md:gap-0">
             <motion.div
               variants={{
@@ -28,11 +28,11 @@ const CTA = () => {
               viewport={{ once: true }}
               className="animate_left md:w-[70%] lg:w-1/2"
             >
-              <h2 className="mb-4 w-11/12 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle4">
+              <h2 className="mb-4 w-11/12 text-3xl font-bold text-black  xl:text-sectiontitle4">
                 Join With Us Today & Help People
               </h2>
               <p>
-              Cars World is a free gaming platform that allows you to play
+                Cars World is a free gaming platform that allows you to play
                 games for free and donate to charity. Play games and help people
                 in need.
               </p>
@@ -65,7 +65,7 @@ const CTA = () => {
                 />
                 <a
                   href="/auth/signup"
-                  className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90 dark:bg-white dark:text-black"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90 "
                 >
                   Sign up free
                   <Image
@@ -73,14 +73,7 @@ const CTA = () => {
                     height={20}
                     src="/images/icon/icon-arrow-dark.svg"
                     alt="Arrow"
-                    className="dark:hidden"
-                  />
-                  <Image
-                    width={20}
-                    height={20}
-                    src="/images/icon/icon-arrow-light.svg"
-                    alt="Arrow"
-                    className="hidden dark:block"
+                    className="block"
                   />
                 </a>
               </div>

@@ -22,8 +22,8 @@ const SidebarLink = ({ activeSection, setActiveSection }: SidebarLinkProps) => {
             onClick={() => setActiveSection(link.section)}
             className={`flex w-full rounded-sm px-3 py-2 text-base ${
               activeSection === link.section
-                ? "bg-stroke text-black dark:bg-blackho dark:text-white"
-                : "text-black dark:text-white"
+                ? "bg-stroke text-black "
+                : "text-black "
             }`}
           >
             {link.label}

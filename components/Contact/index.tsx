@@ -73,18 +73,12 @@ const Contact: React.FC<ContactProps> = ({
       {/* <!-- ===== Contact Start ===== --> */}
       <section id="support" className="px-4 md:px-8 2xl:px-0">
         <div className="relative mx-auto max-w-c-1390 px-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20">
-          <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] dark:bg-gradient-to-t dark:to-[#252A42]"></div>
+          <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] "></div>
           <div className="absolute bottom-[-255px] left-0 -z-1 h-full w-full">
             <Image
               src="./images/shape/shape-dotted-light.svg"
               alt="Dotted"
-              className="dark:hidden"
-              fill
-            />
-            <Image
-              src="./images/shape/shape-dotted-dark.svg"
-              alt="Dotted"
-              className="hidden dark:block"
+              className="block "
               fill
             />
           </div>
@@ -106,9 +100,9 @@ const Contact: React.FC<ContactProps> = ({
               whileInView="visible"
               transition={{ duration: 1, delay: 0.1 }}
               viewport={{ once: true }}
-              className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
+              className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8  md:w-3/5 lg:w-3/4 xl:p-15"
             >
-              <h2 className="mb-15 bg-gradient-to-l from-sky-800 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent dark:text-white xl:text-sectiontitle2">
+              <h2 className="mb-15 bg-gradient-to-l from-sky-800 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent  xl:text-sectiontitle2">
                 Send a message
               </h2>
 
@@ -131,7 +125,7 @@ const Contact: React.FC<ContactProps> = ({
                     name="user_name"
                     placeholder="Full name"
                     required
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
                   />
 
                   <input
@@ -139,7 +133,7 @@ const Contact: React.FC<ContactProps> = ({
                     name="user_email"
                     placeholder="Email address"
                     required
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
                   />
                 </div>
 
@@ -148,7 +142,7 @@ const Contact: React.FC<ContactProps> = ({
                     type="text"
                     name="subject"
                     placeholder="Subject"
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
                   />
 
                   <input
@@ -159,7 +153,7 @@ const Contact: React.FC<ContactProps> = ({
                     minLength={11}
                     maxLength={13}
                     title="Please enter a valid UK phone number starting with +44 or 0"
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
                   />
                 </div>
 
@@ -169,7 +163,7 @@ const Contact: React.FC<ContactProps> = ({
                     placeholder="Message"
                     rows={4}
                     required
-                    className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                    className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none "
                   ></textarea>
                 </div>
 
@@ -181,7 +175,7 @@ const Contact: React.FC<ContactProps> = ({
                       className="peer sr-only"
                       required
                     />
-                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary dark:border-gray-600 dark:bg-gray-700">
+                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary ">
                       <svg
                         className="opacity-0 peer-checked:group-[]:opacity-100"
                         width="10"
@@ -211,7 +205,7 @@ const Contact: React.FC<ContactProps> = ({
                     type="submit"
                     disabled={isSubmitting}
                     aria-label="send message"
-                    className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out hover:from-sky-800 hover:via-sky-600 hover:to-sky-500 hover:shadow-lg disabled:opacity-70 dark:bg-btndark"
+                    className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out hover:from-sky-800 hover:via-sky-600 hover:to-sky-500 hover:shadow-lg disabled:opacity-70 "
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                     <svg
@@ -250,18 +244,18 @@ const Contact: React.FC<ContactProps> = ({
               viewport={{ once: true }}
               className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
             >
-              <h2 className="mb-12.5 bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent dark:text-white xl:text-sectiontitle2">
+              <h2 className="mb-12.5 bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent  xl:text-sectiontitle2">
                 Find us
               </h2>
 
               {/* <div className="5 mb-7">
-                <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
+                <h3 className="mb-4 text-metatitle3 font-medium text-black ">
                   Our Loaction
                 </h3>
                 <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
               </div> */}
               <div className="5 mb-7">
-                <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
+                <h3 className="mb-4 text-metatitle3 font-medium text-black ">
                   Email Address
                 </h3>
                 <p>
@@ -271,7 +265,7 @@ const Contact: React.FC<ContactProps> = ({
                 </p>
               </div>
               <div>
-                <h4 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
+                <h4 className="mb-4 text-metatitle3 font-medium text-black">
                   Phone Number
                 </h4>
                 <p>

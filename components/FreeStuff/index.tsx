@@ -10,6 +10,7 @@ type Resource = {
   description: string;
   imageUrl: string;
   fileUrl: string;
+  fileSize?: string;
 };
 
 const FreeStuff: React.FC = () => {
@@ -47,32 +48,8 @@ const FreeStuff: React.FC = () => {
       title: "Complete Visa Application Guide",
       description:
         "Step-by-step instructions to complete your visa application successfully with expert tips and common pitfalls to avoid.",
-      imageUrl: "/images/resources/visa-guide.jpg",
+      imageUrl: "/images/stuff/book-stack1.png",
       fileUrl: "/downloads/visa-application-guide.pdf",
-    },
-    {
-      id: "document-checklist",
-      title: "Essential Immigration Document Checklist",
-      description:
-        "A comprehensive checklist of all documents needed for various immigration processes, organized by visa type.",
-      imageUrl: "/images/resources/document-checklist.jpg",
-      fileUrl: "/downloads/immigration-document-checklist.pdf",
-    },
-    {
-      id: "settlement-guide",
-      title: "New Arrival Settlement Guide",
-      description:
-        "Everything you need to know about settling in your new country - from housing to healthcare, education and employment.",
-      imageUrl: "/images/resources/settlement-guide.jpg",
-      fileUrl: "/downloads/settlement-guide.pdf",
-    },
-    {
-      id: "interview-prep",
-      title: "Immigration Interview Preparation Guide",
-      description:
-        "Prepare confidently for your immigration interview with sample questions, recommended responses, and helpful tips.",
-      imageUrl: "/images/resources/interview-guide.jpg",
-      fileUrl: "/downloads/interview-preparation-guide.pdf",
     },
   ];
 
@@ -136,107 +113,269 @@ const FreeStuff: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Free Immigration Resources | A2Z Immigrants</title>
-        <meta
-          name="description"
-          content="Access free immigration guides, checklists, and templates to help with your immigration journey."
-        />
-      </Head>
-
-      {/* Hero Section */}
+      {/* Enhanced Hero Section with more attractive gradient and particles */}
       <motion.section
-        className="relative h-96 w-full bg-sky-900"
+        className="relative h-screen max-h-96 w-full overflow-hidden bg-gradient-to-b from-white via-sky-500 to-sky-600"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-500 to-sky-500 opacity-90" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
-          <motion.h1
-            className="mb-4 text-4xl font-bold md:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+        {/* Abstract wave shapes for visual interest */}
+        {/* <div className="absolute inset-0 opacity-20">
+          <svg
+            className="h-full w-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
           >
-            Free Immigration Resources
-          </motion.h1>
-          <motion.p
-            className="max-w-3xl text-xl md:text-2xl"
-            initial={{ opacity: 0, y: 20 }}
+            <path
+              fill="#ffffff"
+              fillOpacity="1"
+              d="M0,192L48,176C96,160,192,128,288,122.7C384,117,480,139,576,165.3C672,192,768,224,864,224C960,224,1056,192,1152,165.3C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
+        </div> */}
+
+        {/* Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+          <motion.div
+            className="max-w-3xl"
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Download our expert guides to help navigate your immigration journey
-          </motion.p>
+            <motion.h1
+              className="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+            >
+              Free Immigration Resources
+            </motion.h1>
+            <motion.p
+              className="mx-auto mb-8 max-w-2xl text-xl text-white opacity-90 md:text-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
+            >
+              Download our expert guides to help navigate your immigration
+              journey with confidence
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+            >
+              <a
+                href="#resources"
+                className="rounded-full bg-white px-8 py-3 font-semibold text-sky-700 shadow-lg transition-all duration-300 hover:bg-sky-100 hover:shadow-xl"
+              >
+                Explore Resources
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* Introduction Section */}
-      <section className="mx-auto max-w-6xl px-4 py-12 md:px-8">
+      {/* Introduction Section with improved typography and spacing */}
+      <section className="bg-gray-50 py-16">
         <motion.div
-          className="mb-12 text-center"
+          className="mx-auto max-w-4xl px-4 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="mb-4 text-3xl font-bold text-sky-500">
-            Essential Resources for Immigrants
+          <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
+            <span className="inline-block text-sky-600">
+              Essential Resources
+            </span>{" "}
+            for Immigrants
           </h2>
-          <p className="mx-auto max-w-3xl text-gray-700">
+          <p className="mx-auto mb-10 text-lg leading-relaxed text-gray-700">
             We've created these comprehensive guides to help you navigate the
             complex immigration process with confidence. Each resource is
             created by our expert team with years of experience helping
             thousands of immigrants achieve their goals.
           </p>
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex items-center space-x-2">
+              <div className="rounded-full bg-sky-100 p-2">
+                <svg
+                  className="h-6 w-6 text-sky-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <span className="text-gray-700">Expert-Verified Content</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="rounded-full bg-sky-100 p-2">
+                <svg
+                  className="h-6 w-6 text-sky-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <span className="text-gray-700">Regularly Updated</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="rounded-full bg-sky-100 p-2">
+                <svg
+                  className="h-6 w-6 text-sky-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 15a4 4 0 004 4h9a5 5 0 10.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                  />
+                </svg>
+              </div>
+              <span className="text-gray-700">100% Free Downloads</span>
+            </div>
+          </div>
         </motion.div>
       </section>
 
-      {/* Resources Grid */}
-      <section className="mx-auto max-w-6xl px-4 py-12 md:px-8">
+      {/* Resources Grid - Centered with improved card design */}
+      <section id="resources" className="mx-auto max-w-6xl px-4 py-16">
+        <motion.h2
+          className="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Browse Our <span className="text-sky-600">Free Resources</span>
+        </motion.h2>
+
         <motion.div
-          className="grid grid-cols-1 gap-8 md:grid-cols-2"
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
           {resources.map((resource) => (
             <motion.div
               key={resource.id}
-              className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md"
+              className="mx-auto flex h-full w-full max-w-sm flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
               variants={fadeIn}
             >
-              <div className="relative h-52 w-full">
+              <div className="relative h-56 w-full overflow-hidden bg-sky-100">
                 <Image
                   src={resource.imageUrl}
                   alt={resource.title}
                   layout="fill"
-                  objectFit="cover"
+                  objectFit="contain"
+                  className="p-2"
                 />
               </div>
-              <div className="flex-grow p-6">
-                <h3 className="mb-2 text-xl font-bold text-sky-500">
+              <div className="flex flex-grow flex-col p-6">
+                <h3 className="mb-3 text-xl font-bold text-gray-900">
                   {resource.title}
                 </h3>
-                <p className="mb-4 text-gray-700">{resource.description}</p>
+                <div className="mb-4 flex items-center">
+                  <div className="h-1 w-12 rounded bg-sky-500"></div>
+                </div>
+                <p className="flex-grow text-gray-600">
+                  {resource.description}
+                </p>
+                <div className="mt-6 flex items-center text-sm text-gray-500">
+                  <svg
+                    className="mr-2 h-5 w-5 text-sky-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+                    />
+                  </svg>
+                  <span>PDF • {resource.fileSize || "2.4 MB"}</span>
+                </div>
               </div>
               <div className="px-6 pb-6">
                 <button
                   onClick={() => handleDownloadClick(resource)}
-                  className="inline-block w-full rounded-md bg-sky-500 px-4 py-2 text-center font-medium text-white transition duration-300 hover:bg-sky-700"
+                  className="group relative w-full overflow-hidden rounded-lg bg-sky-600 px-6 py-3 text-white shadow-md transition-all duration-300 hover:bg-sky-700 hover:shadow-lg"
                 >
-                  Download Free Guide
+                  <span className="relative z-10 flex items-center justify-center font-medium">
+                    <svg
+                      className="mr-2 h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                    Download Free Guide
+                  </span>
+                  <div className="absolute bottom-0 left-0 h-1 w-full transform bg-white opacity-20 transition-all duration-500 group-hover:h-full"></div>
                 </button>
               </div>
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Extra call to action */}
+        <motion.div
+          className="mt-16 rounded-xl bg-gradient-to-r from-sky-700 to-sky-500 p-8 text-center shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="mb-4 text-2xl font-bold text-white">
+            Need Additional Help?
+          </h3>
+          <p className="mb-6 text-white opacity-90">
+            Our immigration experts are available to answer your questions and
+            provide personalized guidance.
+          </p>
+          <a
+            href="/get-in-touch"
+            className="rounded-lg bg-white px-6 py-3 font-medium text-sky-700 transition-all duration-300 hover:bg-sky-50"
+          >
+            Contact Our Team
+          </a>
+        </motion.div>
       </section>
 
       {/* Call to Action Section */}
-      <motion.div
+      {/* <motion.div
         className="mb-20 mt-24 text-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -258,7 +397,7 @@ const FreeStuff: React.FC = () => {
             Book a Consultation
           </motion.button>
         </a>
-      </motion.div>
+      </motion.div> */}
 
       {/* Email Collection Modal */}
       <AnimatePresence>

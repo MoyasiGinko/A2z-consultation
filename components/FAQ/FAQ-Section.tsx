@@ -121,7 +121,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqItems }) => {
           >
             <button
               onClick={() => setShowAllItems(!showAllItems)}
-              className="rounded-full bg-gradient-to-t from-sky-400 via-sky-500 to-sky-600 px-4 py-2 text-white transition-colors hover:bg-gradient-to-t hover:from-sky-500 hover:via-sky-600 hover:to-sky-700"
+              className="rounded-full bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 px-4 py-2 text-white transition-colors hover:brightness-110"
             >
               {showAllItems
                 ? "See Less"

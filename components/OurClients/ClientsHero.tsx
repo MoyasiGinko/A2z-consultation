@@ -17,10 +17,9 @@ const ClientsHero: FC = () => {
   // Featured clients that will rotate through
   const [currentClientIndex, setCurrentClientIndex] = useState(0);
   const featuredClients: Client[] = [
-    { name: "Tesla", industry: "Automotive" },
-    { name: "Microsoft", industry: "Technology" },
-    { name: "Adidas", industry: "Sportswear" },
-    { name: "Airbnb", industry: "Hospitality" },
+    { name: "GA R&D", industry: "Company" },
+    { name: "GA R&D", industry: "Company" },
+    { name: "GA R&D", industry: "Company" },
   ];
 
   // Auto rotate through clients

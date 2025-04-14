@@ -172,21 +172,21 @@ const StepModal = ({ isOpen, onClose, step, additionalInfo }) => {
                   variants={itemVariants}
                 >
                   <motion.button
-                    className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full bg-sky-600 px-6 py-3 font-medium text-white transition-all hover:bg-sky-700 sm:w-auto"
+                    className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-sky-500 to-sky-800  px-6 py-3 font-medium text-white transition-all hover:shadow-lg hover:brightness-110 sm:w-auto"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="absolute left-0 h-full w-0 bg-sky-500 opacity-80 transition-all duration-300 group-hover:w-full" />
+                    {/* <span className="absolute left-0 h-full w-0 bg-sky-500 opacity-80 transition-all duration-300 group-hover:w-full" /> */}
                     <a href={additionalInfo.button1.link} className="relative">
                       {additionalInfo.button1.title}
                     </a>
                   </motion.button>
                   <motion.button
-                    className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full bg-sky-600 px-6 py-3 font-medium text-white transition-all hover:bg-sky-700 sm:w-auto"
+                    className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white transition-all hover:shadow-lg hover:brightness-110 sm:w-auto"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="absolute left-0 h-full w-0 bg-sky-500 opacity-80 transition-all duration-300 group-hover:w-full" />
+                    {/* <span className="absolute left-0 h-full w-0 bg-sky-500 opacity-80 transition-all duration-300 group-hover:w-full" /> */}
                     <a href={additionalInfo.button2.link} className="relative">
                       {additionalInfo.button2.title}
                     </a>

@@ -171,15 +171,7 @@ const Header = () => {
               alt="logo"
               width={200}
               height={50}
-              className="hidden h-9 w-56 transition-opacity duration-300 hover:opacity-90 dark:block"
-              priority
-            />
-            <Image
-              src="/images/logo/logo-dark.svg"
-              alt="logo"
-              width={200}
-              height={50}
-              className="h-9 w-56 transition-opacity duration-300 hover:opacity-90 dark:hidden"
+              className="block h-9 w-56 transition-opacity duration-300 hover:opacity-90"
               priority
             />
           </Link>
@@ -192,7 +184,7 @@ const Header = () => {
           >
             <div className="relative h-5 w-6">
               <motion.span
-                className="absolute h-0.5 w-6 rounded-full bg-black dark:bg-white"
+                className="absolute h-0.5 w-6 rounded-full bg-black "
                 animate={{
                   top: navigationOpen ? "50%" : "0%",
                   transform: navigationOpen ? "rotate(45deg)" : "rotate(0deg)",
@@ -201,7 +193,7 @@ const Header = () => {
                 transition={{ duration: 0.2 }}
               />
               <motion.span
-                className="absolute top-1/2 h-0.5 w-6 rounded-full bg-black dark:bg-white"
+                className="absolute top-1/2 h-0.5 w-6 rounded-full bg-black "
                 animate={{
                   opacity: navigationOpen ? 0 : 1,
                   x: navigationOpen ? 20 : 0,
@@ -209,7 +201,7 @@ const Header = () => {
                 transition={{ duration: 0.2 }}
               />
               <motion.span
-                className="absolute h-0.5 w-6 rounded-full bg-black dark:bg-white"
+                className="absolute h-0.5 w-6 rounded-full bg-black "
                 animate={{
                   top: navigationOpen ? "50%" : "100%",
                   transform: navigationOpen ? "rotate(-45deg)" : "rotate(0deg)",
@@ -265,7 +257,7 @@ const Header = () => {
                       <AnimatePresence>
                         {isDropdownVisible(menuItem.id) && (
                           <motion.ul
-                            className="absolute left-0 top-full z-50 min-w-[200px] rounded-md bg-white p-4 shadow-lg dark:bg-blacksection"
+                            className="absolute left-0 top-full z-50 min-w-[200px] rounded-md bg-white p-4 shadow-lg "
                             initial="hidden"
                             animate="visible"
                             exit="hidden"
@@ -307,12 +299,12 @@ const Header = () => {
           </nav>
 
           <div>
-            <a
+            <motion.a
               href="/get-in-touch"
-              className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
+              className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-sky-800 px-6 text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
             >
               Get in Touch
-            </a>
+            </motion.a>
           </div>
         </div>
 
@@ -320,7 +312,7 @@ const Header = () => {
         <AnimatePresence>
           {navigationOpen && (
             <motion.div
-              className="absolute left-0 right-0 top-full mx-4 mt-4 rounded-lg bg-white p-5 shadow-lg dark:bg-blacksection xl:hidden"
+              className="absolute left-0 right-0 top-full mx-4 mt-4 rounded-lg bg-white p-5 shadow-lg  xl:hidden"
               initial="hidden"
               animate="visible"
               exit="hidden"
@@ -409,7 +401,7 @@ const Header = () => {
               <div className="mt-6">
                 <a
                   href="/get-in-touch"
-                  className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-[#06A2D9] via-[#07A2D9] to-[#08A2D9] text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
+                  className="flex h-10 w-36 items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-sky-800 text-sm text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:brightness-110"
                 >
                   Get in Touch
                 </a>
