@@ -437,7 +437,7 @@ const HeroDesktop: React.FC = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="transform-gpu">
-              <Link href="/consultation" className="group inline-block">
+              <Link href="/get-in-touch" className="group inline-block">
                 <motion.button
                   className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-2xl  hover:shadow-2xl"
                   style={{
