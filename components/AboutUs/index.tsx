@@ -451,13 +451,13 @@ const AboutUs: React.FC = () => {
             {[
               {
                 name: "Fiyadh Hosne Mowla",
-                role: "Founder & Chief Executive Officer",
+                role: "Chief Technical Officer",
                 bio: "Fiyadh joined A2Z in 2016 after a successful career in international development. Born in Bangladesh and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Fiyadh specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
                 image: "/images/user/team-02.png",
               },
               {
                 name: "Shovon Mostofa",
-                role: "Chief Operations Officer",
+                role: "Managing Director",
                 bio: "With a background in social work and immigration policy, Shovon leads our client experience team with empathy and precision. After experiencing the challenges of the immigration system with his own family, he dedicated his career to improving this journey for others. Shoovon has developed our renowned client-centered methodology and training program that ensures consistent, compassionate service across all our locations.",
                 image: "/images/user/team-04.png",
               },

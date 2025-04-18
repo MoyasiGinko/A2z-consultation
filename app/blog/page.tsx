@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import BlogRedirectLoading from "@/utils/BlogRedirectLoading";
 
 export default function BlogPage() {
-  redirect("/blog/category/show-all");
+  return <BlogRedirectLoading />;
 }

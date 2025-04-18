@@ -9,7 +9,7 @@ interface BlogPost {
   publishDate: string;
   category: string;
   mainImage: string;
-  content: string[];
+  content: string[] | any;
   estimatedReadingTime?: string;
   additionalImages?: string[];
   relatedPosts?: Array<{
@@ -25,31 +25,27 @@ export async function getSingleBlogPost(
   slug: string,
 ): Promise<BlogPost | null> {
   try {
-    const post = await fetchPostBySlug(slug);
-
-    if (!post) {
-      console.error(`Post with slug "${slug}" not found`);
+    // Validate slug input
+    if (!slug || typeof slug !== "string" || slug.trim() === "") {
+      console.warn("Invalid slug provided:", slug);
       return null;
     }
 
-    // Extract text content from Portable Text blocks
-    const extractTextContent = (blocks: any[]): string[] => {
-      if (!blocks || !Array.isArray(blocks)) return ["No content available"];
+    // Only trim whitespace but preserve case
+    const trimmedSlug = slug.trim();
 
-      return blocks
-        .filter((block) => block._type === "block" && block.children)
-        .map((block) => {
-          return block.children
-            .filter((child: any) => child._type === "span" && child.text)
-            .map((child: any) => child.text)
-            .join("");
-        })
-        .filter((text) => text.trim().length > 0);
-    };
+    // Attempt to fetch the post
+    const post = await fetchPostBySlug(trimmedSlug);
+
+    // Handle post not found
+    if (!post) {
+      console.warn(`Post with slug "${trimmedSlug}" not found`);
+      return null;
+    }
 
     // Format the post data to match BlogPost interface
     const formattedPost: BlogPost = {
-      id: post._id,
+      id: post._id || `temp-id-${Date.now()}`,
       title: post.title || "Untitled Post",
       author: post.author?.name || "Anonymous",
       publishDate: post.publishedAt
@@ -60,18 +56,18 @@ export async function getSingleBlogPost(
           ? post.categories[0].title
           : "Uncategorized",
       mainImage: post.mainImage?.asset?.url || "/images/blog/blog-01.png",
-      content: extractTextContent(post.body || []),
+      content: post.body || [],
       estimatedReadingTime: post.estimatedReadingTime
         ? `${post.estimatedReadingTime} min read`
         : undefined,
       additionalImages: post.additionalImages?.map(
-        (image: any) => image.asset.url,
+        (image: any) => image?.asset?.url || "/images/blog/blog-01.png",
       ),
       // Format related posts if available
       relatedPosts: post.relatedPosts?.map((relatedPost) => ({
-        id: relatedPost._id,
-        title: relatedPost.title,
-        slug: relatedPost.slug.current,
+        id: relatedPost._id || `related-${Date.now()}`,
+        title: relatedPost.title || "Related Post",
+        slug: relatedPost.slug?.current || "related-post",
         mainImage:
           relatedPost.mainImage?.asset?.url || "/images/blog/blog-01.png",
         publishDate: relatedPost.publishedAt
@@ -81,14 +77,21 @@ export async function getSingleBlogPost(
     };
 
     return formattedPost;
-  } catch (error) {
-    console.error("Error fetching blog post:", error);
+  } catch (error: any) {
+    // Enhanced error logging and handling
+    if (error.message && error.message.includes("not found")) {
+      console.warn(`Post with slug "${slug}" not found:`, error.message);
+    } else {
+      console.error("Error fetching blog post:", error);
+    }
+
+    // Always return null on error to trigger fallback in the parent component
     return null;
   }
 }
 
 // Fallback data for when the API fails
-const detailsData = [
+const fallbackDetailsData = [
   {
     id: "fallback-post",
     title: "Kobe Steel plant that supplied",
@@ -96,12 +99,59 @@ const detailsData = [
     publishDate: "July 30, 2023",
     category: "Events",
     mainImage: "/images/blog/blog-01.png",
+
+    // Content formatted as PortableText blocks instead of strings
     content: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur leo. Ut venenatis rhoncus quam sed condimentum. Curabitur vel turpis in dolor volutpat imperdiet in ut mi. Integer non volutpat nulla. Nunc elementum elit viverra, tempus quam non, interdum ipsum.",
-      "Aenean augue ex, condimentum vel metus vitae, aliquam porta elit. Quisque non metus ac orci mollis posuere. Mauris vel ipsum a diam interdum ultricies sed vitae neque. Nulla porttitor quam vitae pulvinar placerat. Nulla fringilla elit sit amet justo feugiat sodales.",
+      {
+        _type: "block",
+        _key: "paragraph1",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            _key: "span1",
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur leo. Ut venenatis rhoncus quam sed condimentum. Curabitur vel turpis in dolor volutpat imperdiet in ut mi. Integer non volutpat nulla. Nunc elementum elit viverra, tempus quam non, interdum ipsum.",
+            marks: [],
+          },
+        ],
+        markDefs: [],
+      },
+      {
+        _type: "block",
+        _key: "paragraph2",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            _key: "span2",
+            text: "Aenean augue ex, condimentum vel metus vitae, aliquam porta elit. Quisque non metus ac orci mollis posuere. Mauris vel ipsum a diam interdum ultricies sed vitae neque. Nulla porttitor quam vitae pulvinar placerat. Nulla fringilla elit sit amet justo feugiat sodales.",
+            marks: [],
+          },
+        ],
+        markDefs: [],
+      },
     ],
+
     additionalImages: ["/images/blog/blog-01.png", "/images/blog/blog-02.png"],
+
+    // Add some related posts to the fallback data
+    relatedPosts: [
+      {
+        id: "fallback-related-1",
+        title: "How to Improve Your Marketing Strategy",
+        slug: "marketing-strategy",
+        mainImage: "/images/blog/blog-02.png",
+        publishDate: "August 5, 2023",
+      },
+      {
+        id: "fallback-related-2",
+        title: "The Future of Digital Transformation",
+        slug: "digital-transformation",
+        mainImage: "/images/blog/blog-03.png",
+        publishDate: "August 12, 2023",
+      },
+    ],
   },
 ];
 
-export default detailsData;
+export default fallbackDetailsData;
