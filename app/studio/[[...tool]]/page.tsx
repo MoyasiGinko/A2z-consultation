@@ -1,19 +1,27 @@
-/**
- * This route is responsible for the built-in authoring environment using Sanity Studio.
- * All routes under your studio path is handled by this file using Next.js' catch-all routes:
- * https://nextjs.org/docs/routing/dynamic-routes#catch-all-routes
- *
- * You can learn more about the next-sanity package here:
- * https://github.com/sanity-io/next-sanity
- */
+// app/studio/[[...index]]/page.tsx
+import { NextStudio } from "next-sanity/studio";
+import config from "../../../sanity.config";
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../sanity.config'
+export const dynamic = "force-static";
 
-export const dynamic = 'force-static'
-
-export { metadata, viewport } from 'next-sanity/studio'
+export { metadata, viewport } from "next-sanity/studio";
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return (
+    <div className="fixed inset-0 z-[9999] flex h-full w-full items-center justify-center">
+      {/* Overlay that blocks interaction with elements underneath */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+      {/* Modal content container */}
+      <div className="relative h-full w-full overflow-hidden bg-black md:h-[100%] md:w-[100%] md:shadow-xl">
+        <NextStudio config={config} unstable_noAuthBoundary />
+      </div>
+    </div>
+  );
 }
+
+// Instructions for creating a .env.local file
+/*
+# This sets Sanity Studio to render in a contained way
+NEXT_PUBLIC_SANITY_STUDIO_MODE=contained
+*/
