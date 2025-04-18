@@ -14,7 +14,7 @@ export default function StudioPage() {
 
       {/* Modal content container */}
       <div className="relative h-full w-full overflow-hidden bg-black md:h-[100%] md:w-[100%] md:shadow-xl">
-        <NextStudio config={config} unstable_noAuthBoundary />
+        <NextStudio config={config} />
       </div>
     </div>
   );
