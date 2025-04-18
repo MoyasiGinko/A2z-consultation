@@ -144,7 +144,7 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
           We couldn't find the blog post you're looking for.
         </p>
         <Link
-          href="/blog"
+          href="/blog/category/show-all"
           className="rounded-lg bg-blue-500 px-6 py-3 text-white transition-colors hover:bg-blue-600"
         >
           Browse All Posts
@@ -167,7 +167,7 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
               <p className="font-medium">{error}</p>
               <p className="text-sm">Showing alternative content instead.</p>
               <button
-                onClick={() => router.push("/blog")}
+                onClick={() => router.push("/blog/category/show-all")}
                 className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-800"
               >
                 View all blog posts

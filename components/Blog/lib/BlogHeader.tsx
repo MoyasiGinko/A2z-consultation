@@ -25,7 +25,10 @@ const BlogHeader = ({ categoryTitle }: BlogHeaderProps) => {
               Home
             </Link>
             <span>•</span>
-            <Link href="/blog" className="opacity-70 hover:opacity-100">
+            <Link
+              href="/blog/category/show-all"
+              className="opacity-70 hover:opacity-100"
+            >
               Blog
             </Link>
             {categoryTitle && (
