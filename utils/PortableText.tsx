@@ -106,6 +106,44 @@ const components: Partial<PortableTextReactComponents> = {
   },
 };
 
+/**
+ * Converts various input types to PortableText format
+ */
+function normalizeToPortableText(value: any): any[] {
+  // If already an array, clean it
+  if (Array.isArray(value)) {
+    return value.filter((item) => item !== null && item !== undefined);
+  }
+
+  // Handle string input - convert to a PortableText block
+  if (typeof value === "string") {
+    return [
+      {
+        _type: "block",
+        _key: "string-" + Date.now(),
+        style: "normal",
+        markDefs: [],
+        children: [
+          {
+            _type: "span",
+            _key: "span-" + Date.now(),
+            text: value,
+            marks: [],
+          },
+        ],
+      },
+    ];
+  }
+
+  // Handle objects (single block)
+  if (value && typeof value === "object") {
+    return [value];
+  }
+
+  // Default to empty array for null/undefined/unsupported types
+  return [];
+}
+
 // Create the exported PortableText component
 export function PortableText({ value }: { value: any }) {
   // Handle empty content gracefully
@@ -114,16 +152,16 @@ export function PortableText({ value }: { value: any }) {
   }
 
   try {
-    // If content is not an array (as expected by PortableText), wrap it
-    const normalizedValue = Array.isArray(value) ? value : [value];
+    // Normalize any input type to valid PortableText format
+    const normalizedValue = normalizeToPortableText(value);
 
-    // Filter out any null or undefined items in the array
-    const cleanedValue = normalizedValue.filter(
-      (item) => item !== null && item !== undefined,
-    );
+    // If we end up with an empty array after normalization
+    if (normalizedValue.length === 0) {
+      return null;
+    }
 
     return (
-      <PortableTextComponent value={cleanedValue} components={components} />
+      <PortableTextComponent value={normalizedValue} components={components} />
     );
   } catch (error) {
     // Gracefully handle errors in production
@@ -135,11 +173,18 @@ export function PortableText({ value }: { value: any }) {
         <div className="my-4 rounded border border-red-200 p-4 text-red-500">
           <p className="font-bold">PortableText Error:</p>
           <p>{error instanceof Error ? error.message : "Unknown error"}</p>
+          <p className="mt-2 text-sm">
+            Value type: {typeof value} {Array.isArray(value) ? "(array)" : ""}
+          </p>
         </div>
       );
     }
 
-    // In production, return null or a simple message
+    // In production, render simple message or try to render as text if possible
+    if (typeof value === "string") {
+      return <p className="my-4 text-base">{value}</p>;
+    }
+
     return <p className="my-4 text-base">Content currently unavailable</p>;
   }
 }
