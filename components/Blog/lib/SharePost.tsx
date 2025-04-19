@@ -1,13 +1,169 @@
+"use client";
+import React, { useState, useEffect } from "react";
+
 const SharePost = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [currentPlatform, setCurrentPlatform] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState("");
+  const [postTitle, setPostTitle] = useState("Check out this amazing post!"); // Default title for sharing
+  const [pageDescription, setPageDescription] = useState(
+    "I found this great article that you might enjoy.",
+  ); // Default description
+
+  // Get the current URL and page information when component mounts
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+      // Get the page title for a better sharing experience
+      if (document.title) {
+        setPostTitle(document.title);
+      }
+
+      // Try to get meta description for platforms that support it
+      const metaDescription = document.querySelector(
+        'meta[name="description"]',
+      ) as HTMLMetaElement;
+      if (metaDescription && metaDescription.content) {
+        setPageDescription(metaDescription.content);
+      }
+    }
+  }, []);
+
+  // Function to handle social share clicks
+  const handleShareClick = (platform) => {
+    setCurrentPlatform(platform);
+    setShowModal(true);
+    setCopied(false);
+  };
+
+  // Function to copy link to clipboard
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  // Function to share directly to platform
+  const shareToSocial = () => {
+    let shareUrl = "";
+
+    switch (currentPlatform) {
+      case "facebook":
+        // Facebook has limited direct control - using the Feed Dialog which requires app_id
+        // but FB's reliable sharing method (which will show the URL as a preview card)
+        shareUrl = `https://www.facebook.com/dialog/feed?app_id=966242223397117&link=${encodeURIComponent(currentUrl)}&quote=${encodeURIComponent(postTitle)}&hashtag=${encodeURIComponent(currentUrl)}`;
+        // Fallback to basic sharing if concerned about app_id
+        // shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+        break;
+      case "twitter":
+        // Twitter provides the best direct control over content - text appears in the post body
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(postTitle)}&url=${encodeURIComponent(currentUrl)}`;
+        break;
+      case "linkedin":
+        // Use LinkedIn's shareArticle endpoint instead of share-offsite for better content control
+        shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(postTitle)}&summary=${encodeURIComponent(pageDescription)}`;
+        break;
+      case "behance":
+        // Since Behance doesn't have a direct sharing API with parameters, we'll just open their site
+        // For Behance, users typically need to upload/share work through their dashboard
+        shareUrl = "https://www.behance.net/";
+        break;
+      default:
+        break;
+    }
+
+    if (shareUrl) {
+      // Open in a new tab instead of a new window by removing the window dimensions
+      window.open(shareUrl, "_blank");
+      setShowModal(false);
+    }
+  };
+
+  // Modal component
+  const ShareModal = () => {
+    if (!showModal) return null;
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
+          <button
+            onClick={() => setShowModal(false)}
+            className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 6L6 18M6 6L18 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+
+          <h3 className="mb-4 text-xl font-semibold text-gray-900">
+            Share to{" "}
+            {currentPlatform.charAt(0).toUpperCase() + currentPlatform.slice(1)}
+          </h3>
+
+          <div className="mb-4 flex w-full items-center rounded-md border border-gray-300 p-2">
+            <input
+              type="text"
+              readOnly
+              value={currentUrl}
+              className="flex-grow border-none bg-transparent px-2 py-1 outline-none"
+            />
+            <button
+              onClick={copyToClipboard}
+              className="ml-2 rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300"
+            >
+              {copied ? "Copied!" : "Copy"}
+            </button>
+          </div>
+
+          <div className="flex justify-end space-x-3">
+            <button
+              onClick={() => setShowModal(false)}
+              className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={shareToSocial}
+              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+            >
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <div className="mt-11 flex flex-wrap gap-4 md:items-center md:justify-between md:gap-0">
         <ul className="flex items-center gap-6">
           <li>
-            <p className="text-black ">Share On:</p>
+            <p className="text-black">Share On:</p>
           </li>
           <li>
-            <a href="#" aria-label="social link">
+            <a
+              href="#"
+              aria-label="Share on Facebook"
+              onClick={(e) => {
+                e.preventDefault();
+                handleShareClick("facebook");
+              }}
+            >
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -31,7 +187,14 @@ const SharePost = () => {
             </a>
           </li>
           <li>
-            <a href="#" aria-label="social link">
+            <a
+              href="#"
+              aria-label="Share on Twitter"
+              onClick={(e) => {
+                e.preventDefault();
+                handleShareClick("twitter");
+              }}
+            >
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -55,7 +218,14 @@ const SharePost = () => {
             </a>
           </li>
           <li>
-            <a href="#" aria-label="social link">
+            <a
+              href="#"
+              aria-label="Share on LinkedIn"
+              onClick={(e) => {
+                e.preventDefault();
+                handleShareClick("linkedin");
+              }}
+            >
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -79,7 +249,14 @@ const SharePost = () => {
             </a>
           </li>
           <li>
-            <a href="#" aria-label="social link">
+            <a
+              href="#"
+              aria-label="Share on Behance"
+              onClick={(e) => {
+                e.preventDefault();
+                handleShareClick("behance");
+              }}
+            >
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -102,7 +279,7 @@ const SharePost = () => {
 
         <ul className="flex items-center gap-4">
           <li>
-            <p className="text-black ">Tags:</p>
+            <p className="text-black">Tags:</p>
           </li>
           <li>
             <a
@@ -118,6 +295,9 @@ const SharePost = () => {
           </li>
         </ul>
       </div>
+
+      {/* Share Modal */}
+      <ShareModal />
     </>
   );
 };
