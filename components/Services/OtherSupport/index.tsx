@@ -274,9 +274,11 @@ const OtherSupport = () => {
                                 </p>
                               </>
                             )}
-                            <button className="mt-2 rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl hover:brightness-110">
-                              Schedule Consultation
-                            </button>
+                            <a href="/get-in-touch">
+                              <button className="mt-2 rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl hover:brightness-110">
+                                Schedule Consultation
+                              </button>
+                            </a>
                           </div>
                         </div>
                       </div>
