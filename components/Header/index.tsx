@@ -171,7 +171,7 @@ const Header = () => {
               alt="logo"
               width={200}
               height={50}
-              className="block h-9 w-56 transition-opacity duration-300 hover:opacity-90"
+              className="block h-full  max-h-9 w-full max-w-56 transition-opacity duration-300 hover:opacity-90"
               priority
             />
           </Link>
