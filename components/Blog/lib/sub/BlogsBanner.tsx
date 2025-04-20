@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const BlogsBanner = () => {
   return (
-    <div className="relative -z-0 h-64 w-full overflow-hidden md:h-72 lg:h-[340px]">
+    <div className="relative -z-0  h-96 w-full  overflow-hidden">
       {/* Background Image - Tower Bridge */}
       <div className="absolute inset-0 h-full w-full">
         <Image

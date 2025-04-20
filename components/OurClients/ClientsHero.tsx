@@ -157,22 +157,6 @@ const ClientsHero: FC = () => {
           {/* CTA Button */}
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      {/* <motion.div
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform flex-col items-center"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        <p className="mb-2 text-sm text-white/80">Scroll to explore</p>
-        <div className="flex h-10 w-6 justify-center rounded-full border-2 border-white/30">
-          <motion.div
-            className="mt-2 h-2 w-1 rounded-full bg-white/80"
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </div>
-      </motion.div> */}
     </motion.div>
   );
 };

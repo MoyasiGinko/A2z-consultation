@@ -92,7 +92,7 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
 
   return (
     <div className="mb-8">
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <motion.h3
           className="text-2xl font-bold text-black"
           initial={{ opacity: 0, y: -10 }}

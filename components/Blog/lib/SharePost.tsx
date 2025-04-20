@@ -255,7 +255,7 @@ const SharePost = () => {
   return (
     <>
       <div className="mt-11 flex flex-wrap gap-4 md:items-center md:justify-between md:gap-0">
-        <ul className="flex items-center gap-6">
+        <ul className="flex w-full flex-wrap items-center justify-center gap-3 md:justify-normal md:gap-6">
           <li>
             <p className="font-medium text-gray-700">Share On:</p>
           </li>
