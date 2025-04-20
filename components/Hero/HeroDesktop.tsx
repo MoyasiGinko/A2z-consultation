@@ -290,7 +290,7 @@ const HeroDesktop: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-white">
+    <div className="relative h-screen w-full overflow-hidden bg-white sm:h-[1100px] lg:h-[792px]">
       {/* Enhanced 3D background with gradients */}
       {/* <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute h-full w-full bg-white opacity-70"></div>
