@@ -190,7 +190,7 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
               {client.title}
             </p>
 
-            <div className="mb-6 flex space-x-4">
+            {/* <div className="mb-6 flex space-x-4">
               {client.socialLinks.instagram && (
                 <motion.a
                   className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-3 text-white shadow-md"
@@ -213,7 +213,7 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
                   <FaYoutube size={20} />
                 </motion.a>
               )}
-            </div>
+            </div> */}
 
             {/* Services List */}
             <div className="w-full rounded-lg bg-white p-4 shadow-inner">
