@@ -240,10 +240,8 @@ const SharePost = () => {
             </button>
             <button
               onClick={shareToSocial}
-              className="relative overflow-hidden rounded-xl px-6 py-2.5 text-sm font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="relative overflow-hidden rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:from-sky-400 hover:to-sky-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 transition-opacity duration-300 hover:opacity-100"></div>
               <span className="relative">Share Now</span>
             </button>
           </div>
