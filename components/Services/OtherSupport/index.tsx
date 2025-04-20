@@ -22,7 +22,7 @@ const OtherSupport = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-slate-100 py-20 ">
+    <section className="bg-gradient-to-b from-slate-50 to-slate-100 py-10 ">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
           <h2 className="mb-4 bg-gradient-to-r from-sky-500 to-sky-800 bg-clip-text text-3xl font-bold text-transparent  md:text-5xl">
@@ -34,7 +34,7 @@ const OtherSupport = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-10 lg:flex-row">
+        <div className="mx-auto flex w-full max-w-7xl flex-col justify-center gap-10 lg:flex-row">
           {/* Tab Navigation */}
           <div className="lg:w-1/4">
             <div className="sticky top-24 rounded-xl bg-white p-1 shadow-lg ">
@@ -274,9 +274,11 @@ const OtherSupport = () => {
                                 </p>
                               </>
                             )}
-                            <button className="mt-2 rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl hover:brightness-110">
-                              Schedule Consultation
-                            </button>
+                            <a href="/get-in-touch">
+                              <button className="mt-2 rounded-full bg-gradient-to-r from-sky-500 to-sky-800 px-6 py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl hover:brightness-110">
+                                Schedule Consultation
+                              </button>
+                            </a>
                           </div>
                         </div>
                       </div>

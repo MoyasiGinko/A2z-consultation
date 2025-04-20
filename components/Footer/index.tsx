@@ -54,7 +54,7 @@ const contactInfo: ContactInfo[] = [
     id: 2,
     icon: <Calendar size={16} className="text-blue-500" />,
     text: "Mon-Fri: 9:00 – 17:00",
-    href: "/",
+    href: "/#",
   },
   {
     id: 3,
@@ -368,10 +368,12 @@ const Footer: React.FC = () => {
                   >
                     <Link
                       href={item.href}
-                      className="flex items-center gap-2 transition-colors hover:text-blue-300"
+                      className="flex items-start gap-2 transition-colors hover:text-blue-300"
                     >
-                      {item.icon}
-                      <span className="truncate text-sm">{item.text}</span>
+                      <div className="flex-shrink-0 pt-[2.2px]">
+                        {item.icon}
+                      </div>
+                      <span className=" text-sm">{item.text}</span>
                     </Link>
                   </motion.li>
                 ))}

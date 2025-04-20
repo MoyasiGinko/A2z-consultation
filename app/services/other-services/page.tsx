@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const OtherSupportPage = () => {
   return (
-    <div className="pb-20 pt-40">
+    <div className="py-20">
       <OtherSupport />
       <SupportCTA />
     </div>

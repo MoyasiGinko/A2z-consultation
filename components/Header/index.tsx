@@ -163,7 +163,7 @@ const Header = () => {
         boxShadow: stickyMenu ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
       }}
     >
-      <div className="relative mx-auto max-w-[1280px] items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
+      <div className="relative mx-auto max-w-[1280px] items-center justify-between px-4 md:px-8 xl:flex min-[1380px]:px-0 2xl:px-0">
         <div className="flex w-full items-center justify-between xl:w-1/4">
           <Link href="/" className="block">
             <Image
@@ -171,7 +171,7 @@ const Header = () => {
               alt="logo"
               width={200}
               height={50}
-              className="block h-9 w-56 transition-opacity duration-300 hover:opacity-90"
+              className="block h-full  max-h-9 w-full max-w-56 transition-opacity duration-300 hover:opacity-90"
               priority
             />
           </Link>

@@ -53,7 +53,7 @@ export const additionalInfo = {
     timeline:
       "🚀 Get Started Today! Contact us for a free eligibility check and take the first step toward securing your Sponsor Licence.",
     button1: { title: "Book an Appointment", link: "/get-in-touch" },
-    button2: { title: "Sponsor Licence", link: "/sponsor-licence" },
+    button2: { title: "Sponsor Licence", link: "/services/sponsor-licence" },
   },
   2: {
     expectation:
@@ -67,7 +67,7 @@ export const additionalInfo = {
     timeline:
       "📩 Start your application today! Let us help you get your Sponsor Licence quickly and efficiently.",
     button1: { title: "Call Us Today", link: "/get-in-touch" },
-    button2: { title: "Sponsor Licence", link: "/sponsor-licence" },
+    button2: { title: "Sponsor Licence", link: "/services/sponsor-licence" },
   },
   3: {
     expectation:
@@ -81,7 +81,10 @@ export const additionalInfo = {
     timeline:
       "📩 Need help assigning a CoS? Contact us today for expert guidance and ensure a hassle-free process!",
     button1: { title: "Call Us Today", link: "/get-in-touch" },
-    button2: { title: "Skilled Worked Visa", link: "/get-in-touch" },
+    button2: {
+      title: "Skilled Worked Visa",
+      link: "/services/skilled-worker-visa",
+    },
   },
   4: {
     expectation:
@@ -97,7 +100,10 @@ export const additionalInfo = {
     timeline:
       "📩 Get expert help with your Skilled Worker visa application! Contact us today to ensure a smooth and successful submission.",
     button1: { title: "Call Us Today", link: "/get-in-touch" },
-    button2: { title: "Skilled Worked Visa", link: "/skilled-worker-visa" },
+    button2: {
+      title: "Skilled Worked Visa",
+      link: "/services/skilled-worker-visa",
+    },
   },
   5: {
     expectation:
@@ -113,6 +119,9 @@ export const additionalInfo = {
     timeline:
       "📩 Stay compliant and avoid penalties! Contact us today for expert HR and compliance support to maintain your Sponsor Licence.",
     button1: { title: "Call Us Today", link: "/get-in-touch" },
-    button2: { title: "Compliance", link: "/compliance" },
+    button2: {
+      title: "Compliance",
+      link: "/services/compliance",
+    },
   },
 };

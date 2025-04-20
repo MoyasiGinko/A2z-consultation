@@ -357,7 +357,7 @@ const HeroDesktop: React.FC = () => {
       </div> */}
 
       {/* Main content */}
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-8 py-28 md:flex-row md:px-16 md:py-46 lg:px-12">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-8 py-28 md:flex-row md:px-16 md:py-46 lg:px-12 xl:px-8 min-[1380px]:px-0">
         {/* Left Content with Enhanced 3D Animation */}
         <motion.div
           initial={{ opacity: 0 }}
