@@ -303,7 +303,7 @@ const Footer: React.FC = () => {
                   Sign up
                 </button>
               </div>
-              <a href="/get-in-touch">
+              <a href="/free-stuff">
                 <motion.button
                   className="w-full rounded-md bg-blue-600 px-4 py-3 text-sm font-medium text-white shadow-md transition-colors hover:bg-blue-700"
                   whileHover={{ scale: 1.03 }}

@@ -205,30 +205,32 @@ const CTAsection = () => {
                 </span>
               </motion.h2>
               <motion.div variants={itemVariants}>
-                <motion.button
-                  className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-gray-50 to-sky-50 px-6 py-3 font-bold text-blue-950 shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 transition-transform duration-300 group-hover:text-sky-950">
-                    Download Here
-                  </span>
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-white/90 via-white to-white/90"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.5 }}
-                  />
+                <a href="/free-stuff">
+                  <motion.button
+                    className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-gray-50 to-sky-50 px-6 py-3 font-bold text-blue-950 shadow-lg transition duration-300 hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 sm:px-8"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="relative z-10 transition-transform duration-300 group-hover:text-sky-950">
+                      Download Here
+                    </span>
+                    <motion.span
+                      className="absolute inset-0 bg-gradient-to-r from-white/90 via-white to-white/90"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.5 }}
+                    />
 
-                  {/* Add subtle button glow effect */}
-                  <motion.span
-                    className="absolute -inset-1 rounded-xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-70"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, rgba(56,189,248,0.4) 0%, rgba(14,165,233,0.4) 100%)",
-                    }}
-                  />
-                </motion.button>
+                    {/* Add subtle button glow effect */}
+                    <motion.span
+                      className="absolute -inset-1 rounded-xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-70"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(56,189,248,0.4) 0%, rgba(14,165,233,0.4) 100%)",
+                      }}
+                    />
+                  </motion.button>
+                </a>
               </motion.div>
             </div>
           </motion.div>

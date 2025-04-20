@@ -138,7 +138,7 @@ const FreeStuff: React.FC = () => {
         {/* Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
           <motion.div
-            className="max-w-3xl"
+            className="mt-10 max-w-3xl"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -149,7 +149,7 @@ const FreeStuff: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
             >
-              Free Immigration Resources
+              Free Resources
             </motion.h1>
             <motion.p
               className="mx-auto mb-8 max-w-2xl text-xl text-white opacity-90 md:text-2xl"
@@ -186,10 +186,8 @@ const FreeStuff: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-            <span className="inline-block text-sky-600">
-              Essential Resources
-            </span>{" "}
-            for Immigrants
+            <span className="inline-block text-sky-600">Essential</span> For
+            Immigrants
           </h2>
           <p className="mx-auto mb-10 text-lg leading-relaxed text-gray-700">
             We've created these comprehensive guides to help you navigate the
@@ -268,7 +266,7 @@ const FreeStuff: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Browse Our <span className="text-sky-600">Free Resources</span>
+          Browse <span className="text-sky-600">Here</span>
         </motion.h2>
 
         <motion.div
@@ -324,11 +322,11 @@ const FreeStuff: React.FC = () => {
               <div className="px-6 pb-6">
                 <button
                   onClick={() => handleDownloadClick(resource)}
-                  className="group relative w-full overflow-hidden rounded-lg bg-sky-600 px-6 py-3 text-white shadow-md transition-all duration-300 hover:bg-sky-700 hover:shadow-lg"
+                  className="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-3 text-white shadow-md transition-all duration-300 hover:from-sky-400 hover:to-sky-600 hover:shadow-lg"
                 >
-                  <span className="relative z-10 flex items-center justify-center font-medium">
+                  <span className="relative z-10 flex items-center justify-center font-medium transition-transform duration-300 group-hover:scale-105">
                     <svg
-                      className="mr-2 h-5 w-5"
+                      className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:translate-y-[-2px]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -343,7 +341,6 @@ const FreeStuff: React.FC = () => {
                     </svg>
                     Download Free Guide
                   </span>
-                  <div className="absolute bottom-0 left-0 h-1 w-full transform bg-white opacity-20 transition-all duration-500 group-hover:h-full"></div>
                 </button>
               </div>
             </motion.div>
