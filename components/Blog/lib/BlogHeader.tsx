@@ -11,7 +11,7 @@ const BlogHeader = ({ categoryTitle }: BlogHeaderProps) => {
       <div className="mx-auto max-w-c-1280">
         <div className="text-center">
           <h1 className="mb-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-            {categoryTitle ? `${categoryTitle} Blog Posts` : "Blog & Resources"}
+            {categoryTitle ? `${categoryTitle} Blog Posts` : "Blogs & Articles"}
           </h1>
           <p className="mx-auto max-w-3xl text-lg opacity-90">
             {categoryTitle

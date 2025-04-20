@@ -27,7 +27,7 @@ const BlogsBanner = () => {
       {/* Title */}
       <div className="relative flex h-full items-center justify-center px-4 md:px-8">
         <h1 className="text-center text-3xl font-bold tracking-wide text-white md:text-4xl lg:text-5xl">
-          How to get a Sponsor licence in UK
+          Blogs & Articles
         </h1>
       </div>
     </div>
