@@ -87,11 +87,11 @@ const SharePost = () => {
 
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 backdrop-blur-sm">
-        <div className="relative w-full max-w-md transform overflow-hidden rounded-3xl bg-white p-8 shadow-2xl transition-all duration-300 ease-in-out">
+        <div className="relative w-full max-w-md transform overflow-hidden rounded-3xl bg-white p-5 shadow-2xl transition-all duration-300 ease-in-out sm:p-8">
           {/* Close button with hover animation */}
           <button
             onClick={() => setShowModal(false)}
-            className="absolute right-4 top-4 rounded-full p-2 text-gray-400 transition-all duration-200 hover:rotate-90 hover:bg-gray-100 hover:text-gray-700"
+            className="absolute right-3 top-3 rounded-full p-2 text-gray-400 transition-all duration-200 hover:rotate-90 hover:bg-gray-100 hover:text-gray-700 sm:right-4 sm:top-4"
             aria-label="Close modal"
           >
             <svg
@@ -112,12 +112,12 @@ const SharePost = () => {
           </button>
 
           {/* Social platform icon display */}
-          <div className="mb-8 text-center">
-            <div className="mb-4 flex justify-center">
-              <div className="rounded-full bg-gray-50 p-3">
+          <div className="mb-5 text-center sm:mb-8">
+            <div className="mb-3 flex justify-center sm:mb-4">
+              <div className="rounded-full bg-gray-50 p-2 sm:p-3">
                 {currentPlatform === "facebook" && (
                   <svg
-                    className="h-8 w-8 fill-blue-600"
+                    className="h-6 w-6 fill-blue-600 sm:h-8 sm:w-8"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@ const SharePost = () => {
                 )}
                 {currentPlatform === "twitter" && (
                   <svg
-                    className="h-8 w-8 fill-gray-900"
+                    className="h-6 w-6 fill-gray-900 sm:h-8 sm:w-8"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ const SharePost = () => {
                 )}
                 {currentPlatform === "linkedin" && (
                   <svg
-                    className="h-8 w-8 fill-blue-700"
+                    className="h-6 w-6 fill-blue-700 sm:h-8 sm:w-8"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +147,7 @@ const SharePost = () => {
                 )}
                 {currentPlatform === "behance" && (
                   <svg
-                    className="h-8 w-8 fill-blue-500"
+                    className="h-6 w-6 fill-blue-500 sm:h-8 sm:w-8"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -157,35 +157,35 @@ const SharePost = () => {
                 )}
               </div>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">
               Share to{" "}
               {currentPlatform === "twitter"
                 ? "X"
                 : currentPlatform.charAt(0).toUpperCase() +
                   currentPlatform.slice(1)}
             </h3>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-1 text-xs text-gray-500 sm:mt-2 sm:text-sm">
               Share this amazing content with your network
             </p>
           </div>
 
           {/* URL input with gradient border */}
-          <div className="mb-8">
-            <label className="mb-2 block text-sm font-medium text-gray-700">
+          <div className="mb-5 sm:mb-8">
+            <label className="mb-1 block text-xs font-medium text-gray-700 sm:mb-2 sm:text-sm">
               Link to share
             </label>
-            <div className="group relative flex items-center overflow-hidden rounded-xl border border-gray-200 bg-gray-50 p-3 transition-all duration-300 focus-within:border-transparent">
+            <div className="group relative flex items-center overflow-hidden rounded-xl border border-gray-200 bg-gray-50 p-2 transition-all duration-300 focus-within:border-transparent sm:p-3">
               <div className="absolute inset-0 -z-10 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 transition-opacity duration-300 group-focus-within:opacity-100"></div>
               <div className="absolute inset-[1px] z-0 rounded-[11px] bg-gray-50"></div>
               <input
                 type="text"
                 readOnly
                 value={currentUrl}
-                className="relative z-10 flex-grow border-none bg-transparent px-2 py-1 text-sm outline-none"
+                className="relative z-10 flex-grow truncate border-none bg-transparent px-1 py-1 text-xs outline-none sm:px-2 sm:text-sm"
               />
               <button
                 onClick={copyToClipboard}
-                className={`relative z-10 ml-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                className={`relative z-10 ml-1 rounded-lg px-2 py-1.5 text-xs font-medium transition-all duration-200 sm:ml-2 sm:px-4 sm:py-2 sm:text-sm ${
                   copied
                     ? "bg-green-500 text-white hover:bg-green-600"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -194,7 +194,7 @@ const SharePost = () => {
                 {copied ? (
                   <span className="flex items-center">
                     <svg
-                      className="mr-1.5 h-4 w-4"
+                      className="mr-1 h-3 w-3 sm:h-4 sm:w-4"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -206,12 +206,13 @@ const SharePost = () => {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    Copied!
+                    <span className="hidden sm:inline">Copied!</span>
+                    <span className="sm:hidden">✓</span>
                   </span>
                 ) : (
                   <span className="flex items-center">
                     <svg
-                      className="mr-1.5 h-4 w-4"
+                      className="mr-1 h-3 w-3 sm:h-4 sm:w-4"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -223,7 +224,8 @@ const SharePost = () => {
                         d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
                       />
                     </svg>
-                    Copy
+                    <span className="hidden sm:inline">Copy</span>
+                    <span className="sm:hidden">Copy</span>
                   </span>
                 )}
               </button>
@@ -231,16 +233,16 @@ const SharePost = () => {
           </div>
 
           {/* Action buttons with gradients */}
-          <div className="flex justify-end space-x-3">
+          <div className="flex justify-end space-x-2 sm:space-x-3">
             <button
               onClick={() => setShowModal(false)}
-              className="rounded-xl border border-gray-300 bg-white px-6 py-2.5 text-sm font-medium text-gray-700 transition-all duration-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              className="rounded-xl border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 transition-all duration-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 sm:px-6 sm:py-2.5 sm:text-sm"
             >
               Cancel
             </button>
             <button
               onClick={shareToSocial}
-              className="relative overflow-hidden rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:from-sky-400 hover:to-sky-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="relative overflow-hidden rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 px-3 py-2 text-xs font-medium text-white transition-all duration-300 hover:from-sky-400 hover:to-sky-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:px-6 sm:py-2.5 sm:text-sm"
             >
               <span className="relative">Share Now</span>
             </button>
