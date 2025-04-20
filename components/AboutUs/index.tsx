@@ -30,12 +30,15 @@ const AboutUs: React.FC = () => {
     <div className="mb-20">
       {/* Hero Section */}
       <motion.section
-        className="relative h-96 w-full bg-sky-900"
+        className="relative h-96 w-full bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/features/about-us-page-cover.png')",
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-500/95 to-sky-500 opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-500/80 to-sky-500/90" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
           <motion.h1
             className="mb-4 text-4xl font-bold md:text-5xl"

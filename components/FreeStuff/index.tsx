@@ -115,44 +115,33 @@ const FreeStuff: React.FC = () => {
     <>
       {/* Enhanced Hero Section with more attractive gradient and particles */}
       <motion.section
-        className="relative h-screen max-h-96 w-full overflow-hidden bg-gradient-to-b from-white via-sky-500 to-sky-600"
+        className="relative h-96 w-full bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/features/free-stuff.png')",
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        {/* Abstract wave shapes for visual interest */}
-        {/* <div className="absolute inset-0 opacity-20">
-          <svg
-            className="h-full w-full"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              fill="#ffffff"
-              fillOpacity="1"
-              d="M0,192L48,176C96,160,192,128,288,122.7C384,117,480,139,576,165.3C672,192,768,224,864,224C960,224,1056,192,1152,165.3C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
-        </div> */}
-
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-500/80 to-sky-500/90" />
         {/* Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
           <motion.div
-            className="max-w-3xl"
+            className="mt-4 max-w-3xl px-2 sm:mt-10 sm:px-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <motion.h1
-              className="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl"
+              className="mb-2 text-2xl font-bold leading-tight text-white sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
             >
-              Free Immigration Resources
+              Free Resources
             </motion.h1>
             <motion.p
-              className="mx-auto mb-8 max-w-2xl text-xl text-white opacity-90 md:text-2xl"
+              className="mx-auto mb-4 max-w-2xl text-base text-white opacity-90 sm:mb-8 sm:text-lg md:text-xl lg:text-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.7 }}
@@ -167,7 +156,7 @@ const FreeStuff: React.FC = () => {
             >
               <a
                 href="#resources"
-                className="rounded-full bg-white px-8 py-3 font-semibold text-sky-700 shadow-lg transition-all duration-300 hover:bg-sky-100 hover:shadow-xl"
+                className="inline-block rounded-full bg-white px-5 py-2 text-sm font-semibold text-sky-700 shadow-lg transition-all duration-300 hover:bg-sky-100 hover:shadow-xl sm:px-8 sm:py-3 sm:text-base"
               >
                 Explore Resources
               </a>
@@ -186,10 +175,8 @@ const FreeStuff: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-            <span className="inline-block text-sky-600">
-              Essential Resources
-            </span>{" "}
-            for Immigrants
+            <span className="inline-block text-sky-600">Essential</span> For
+            Immigrants
           </h2>
           <p className="mx-auto mb-10 text-lg leading-relaxed text-gray-700">
             We've created these comprehensive guides to help you navigate the
@@ -268,7 +255,7 @@ const FreeStuff: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Browse Our <span className="text-sky-600">Free Resources</span>
+          Browse <span className="text-sky-600">Here</span>
         </motion.h2>
 
         <motion.div
@@ -324,11 +311,11 @@ const FreeStuff: React.FC = () => {
               <div className="px-6 pb-6">
                 <button
                   onClick={() => handleDownloadClick(resource)}
-                  className="group relative w-full overflow-hidden rounded-lg bg-sky-600 px-6 py-3 text-white shadow-md transition-all duration-300 hover:bg-sky-700 hover:shadow-lg"
+                  className="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-3 text-white shadow-md transition-all duration-300 hover:from-sky-400 hover:to-sky-600 hover:shadow-lg"
                 >
-                  <span className="relative z-10 flex items-center justify-center font-medium">
+                  <span className="relative z-10 flex items-center justify-center font-medium transition-transform duration-300 group-hover:scale-105">
                     <svg
-                      className="mr-2 h-5 w-5"
+                      className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:translate-y-[-2px]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -343,7 +330,6 @@ const FreeStuff: React.FC = () => {
                     </svg>
                     Download Free Guide
                   </span>
-                  <div className="absolute bottom-0 left-0 h-1 w-full transform bg-white opacity-20 transition-all duration-500 group-hover:h-full"></div>
                 </button>
               </div>
             </motion.div>

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const BlogsBanner = () => {
   return (
-    <div className="relative -z-0 h-64 w-full overflow-hidden md:h-72 lg:h-[340px]">
+    <div className="relative -z-0  h-96 w-full  overflow-hidden">
       {/* Background Image - Tower Bridge */}
       <div className="absolute inset-0 h-full w-full">
         <Image
@@ -27,7 +27,7 @@ const BlogsBanner = () => {
       {/* Title */}
       <div className="relative flex h-full items-center justify-center px-4 md:px-8">
         <h1 className="text-center text-3xl font-bold tracking-wide text-white md:text-4xl lg:text-5xl">
-          How to get a Sponsor licence in UK
+          Blogs & Articles
         </h1>
       </div>
     </div>

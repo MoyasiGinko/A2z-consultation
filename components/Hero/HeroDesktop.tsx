@@ -290,7 +290,7 @@ const HeroDesktop: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-white">
+    <div className="relative h-screen w-full overflow-hidden bg-white sm:h-[1100px] lg:h-[792px]">
       {/* Enhanced 3D background with gradients */}
       {/* <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute h-full w-full bg-white opacity-70"></div>
@@ -373,7 +373,7 @@ const HeroDesktop: React.FC = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="mb-2 text-xl font-bold text-sky-800 sm:text-2xl md:text-3xl"
+              className="mb-2 text-xl font-bold text-sky-800 sm:text-2xl md:text-3xl xl:text-4xl"
             >
               <span className="inline-block">E</span>
               <span className="inline-block">x</span>
@@ -387,7 +387,7 @@ const HeroDesktop: React.FC = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="relative mb-3">
-              <h1 className="text-3xl font-bold text-[#1DA1C9] sm:text-4xl md:text-5xl">
+              <h1 className="text-3xl font-bold text-[#1DA1C9] sm:text-4xl md:text-5xl  xl:text-6xl">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -419,7 +419,7 @@ const HeroDesktop: React.FC = () => {
 
             <motion.h2
               variants={itemVariants}
-              className="mb-6 text-xl font-bold text-sky-800  sm:text-2xl md:text-3xl"
+              className="mb-6 text-xl font-bold text-sky-800  sm:text-2xl md:text-3xl xl:text-4xl"
             >
               & Work Permit
             </motion.h2>
