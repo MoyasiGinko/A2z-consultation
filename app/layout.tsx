@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "@/configs/redux/hooks";
 import { fetchLoggedInUser } from "@/configs/redux/auth/authSlice";
 import TawkToChat from "./utils/context/TawkToChat";
+import CookieConsent from "@/utils/CookiesConsent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +47,7 @@ export default function RootLayout({
             <main className="flex-grow">{children}</main>
             <Footer />
             <ScrollToTop />
+            <CookieConsent />
           </ReduxInitializer>
           {/* </ThemeProvider> */}
         </body>
