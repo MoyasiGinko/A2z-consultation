@@ -44,7 +44,7 @@ const DesktopVisaSteps: React.FC = () => {
             </h2>
 
             <div className="space-y-4">
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">01.</span>
@@ -58,7 +58,7 @@ const DesktopVisaSteps: React.FC = () => {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">02.</span>
@@ -72,7 +72,7 @@ const DesktopVisaSteps: React.FC = () => {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">03.</span>
@@ -86,7 +86,7 @@ const DesktopVisaSteps: React.FC = () => {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">04.</span>
