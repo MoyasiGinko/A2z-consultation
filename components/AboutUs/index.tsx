@@ -406,14 +406,20 @@ const AboutUs: React.FC = () => {
           >
             <div className="mb-6 text-5xl">❝</div>
             <p className="mb-6 text-xl font-light italic">
-              A2Z Immigrants didn't just help with my paperwork—they transformed
-              my entire journey. Their team gave me confidence when I was
-              uncertain and clarity when I was confused. Today, I'm building my
-              dream career in a new country thanks to their expertise.
+              A huge thank you to Fiyadh and his team for expertly guiding us
+              through the process of maintaining our Sponsor Licence. Their deep
+              expertise in immigration compliance, especially in SMS portal
+              management and HR compliance, has been invaluable in keeping us
+              fully aligned with all regulations. Their guidance has always been
+              clear, thorough, and highly specialised, ensuring that we remain
+              compliant and audit-ready at all times. We truly appreciate their
+              transparency and dedication, always being available when we needed
+              them. If you're looking for a trustworthy and knowledgeable
+              immigration firm, we highly recommend their immigration firm.
             </p>
             <div className="mx-auto mb-4 h-px w-24 bg-sky-300"></div>
-            <p className="font-medium">Elena Petrov, Software Engineer</p>
-            <p className="text-sm text-sky-300">Bulgaria → Canada, 2021</p>
+            <p className="font-medium">MD Ashiqur rahman</p>
+            {/* <p className="text-sm text-sky-300">Bulgaria → Canada, 2021</p> */}
 
             <Link
               href="/our-clients"
@@ -454,15 +460,21 @@ const AboutUs: React.FC = () => {
             {[
               {
                 name: "Fiyadh Hosne Mowla",
-                role: "Chief Technical Officer",
+                role: "Director",
                 bio: "Fiyadh joined A2Z in 2016 after a successful career in international development. Born in Bangladesh and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Fiyadh specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
                 image: "/images/user/team-02.png",
               },
               {
                 name: "Shovon Mostofa",
-                role: "Managing Director",
+                role: "Director",
                 bio: "With a background in social work and immigration policy, Shovon leads our client experience team with empathy and precision. After experiencing the challenges of the immigration system with his own family, he dedicated his career to improving this journey for others. Shoovon has developed our renowned client-centered methodology and training program that ensures consistent, compassionate service across all our locations.",
                 image: "/images/user/team-04.png",
+              },
+              {
+                name: "Shabbir Rahman",
+                role: "Director",
+                bio: "Shabbir is a seasoned finance professional with over 10 years of experience. ",
+                image: "/images/user/team-03.png",
               },
             ].map((member, index) => (
               <motion.div
@@ -483,7 +495,7 @@ const AboutUs: React.FC = () => {
                     {member.name}
                   </h3>
                   <p className="mb-3 text-sky-600">{member.role}</p>
-                  <p className="text-gray-700">{member.bio}</p>
+                  {/* <p className="text-gray-700">{member.bio}</p> */}
                 </div>
               </motion.div>
             ))}
