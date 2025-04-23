@@ -471,9 +471,9 @@ const AboutUs: React.FC = () => {
                 image: "/images/user/team-04.png",
               },
               {
-                name: "Shamim Ahmed",
+                name: "Shabbir Rahman",
                 role: "Director",
-                bio: "Shamim is a seasoned finance professional with over 10 years of experience. ",
+                bio: "Shabbir is a seasoned finance professional with over 10 years of experience. ",
                 image: "/images/user/team-03.png",
               },
             ].map((member, index) => (
