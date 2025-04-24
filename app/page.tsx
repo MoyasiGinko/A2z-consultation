@@ -41,7 +41,7 @@ export default function Home() {
       <WhoLovesUs />
       <GoogleReviews
         appId="7b481c44-e91d-41e4-934c-2da27681f802"
-        className="my-8 rounded-lg p-4 shadow-lg"
+        className="my-8 rounded-lg p-4 md:p-10 lg:p-16"
       />
       <BlogSection />
     </main>

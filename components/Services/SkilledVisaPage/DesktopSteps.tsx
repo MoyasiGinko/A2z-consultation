@@ -44,57 +44,67 @@ const DesktopVisaSteps: React.FC = () => {
             </h2>
 
             <div className="space-y-4">
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="group rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">01.</span>
                   </div>
                   <div>
                     <p className="text-sm">
-                      <strong>Verify Job Eligibility:</strong> Ensure the role
-                      qualifies for a Skilled Worker Visa under UK rules.
+                      <strong className="text-gray-800 transition-colors duration-300 group-hover:text-sky-600">
+                        Verify Job Eligibility:
+                      </strong>{" "}
+                      Ensure the role qualifies for a Skilled Worker Visa under
+                      UK rules.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="group rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">02.</span>
                   </div>
                   <div>
                     <p className="text-sm">
-                      <strong>Follow Recruitment Compliance:</strong> Adhere to
-                      proper hiring procedures for visa approval.
+                      <strong className="text-gray-800 transition-colors duration-300 group-hover:text-sky-600">
+                        Follow Recruitment Compliance:
+                      </strong>{" "}
+                      Adhere to proper hiring procedures for visa approval.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="group rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">03.</span>
                   </div>
                   <div>
                     <p className="text-sm">
-                      <strong>Manage CoS & Renewals:</strong> Assign and renew
-                      Certificates of Sponsorship on time.
+                      <strong className="text-gray-800 transition-colors duration-300 group-hover:text-sky-600">
+                        Manage CoS & Renewals:
+                      </strong>{" "}
+                      Assign and renew Certificates of Sponsorship on time.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-4 shadow-sm">
+              <div className="group rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:transform hover:bg-sky-50 hover:shadow-md">
                 <div className="flex items-center">
                   <div className="mr-4">
                     <span className="font-bold text-gray-700">04.</span>
                   </div>
                   <div>
                     <p className="text-sm">
-                      <strong>Submit & Support Application:</strong> Complete
-                      the visa process and prepare candidates for interviews.
+                      <strong className="text-gray-800 transition-colors duration-300 group-hover:text-sky-600">
+                        Submit & Support Application:
+                      </strong>{" "}
+                      Complete the visa process and prepare candidates for
+                      interviews.
                     </p>
                   </div>
                 </div>
