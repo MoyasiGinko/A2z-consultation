@@ -4,18 +4,73 @@ import {
   Info,
   Cookie,
   Shield,
-  ChevronRight,
+  Check,
   MessageCircle,
   LineChart,
   BarChart,
+  CheckSquare,
+  Square,
 } from "lucide-react";
+
+const AlternativeToggle = ({
+  isChecked,
+  onChange,
+  label,
+  disabled = false,
+}) => {
+  return (
+    <button
+      onClick={disabled ? undefined : onChange}
+      className={`relative inline-flex h-7 items-center rounded-md px-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
+        disabled
+          ? "cursor-not-allowed bg-blue-500 text-white"
+          : isChecked
+            ? "bg-blue-500 text-white"
+            : "bg-gray-200 text-gray-600"
+      }`}
+      aria-checked={isChecked}
+      role="switch"
+      aria-label={label}
+      disabled={disabled}
+    >
+      <span className="mr-1.5">
+        {isChecked && <Check className="h-3.5 w-3.5" />}
+      </span>
+      <span className="text-xs font-medium">{isChecked ? "ON" : "OFF"}</span>
+    </button>
+  );
+};
+
+// Checkbox component to replace the toggle switches
+const Checkbox = ({ isChecked, onChange, label, disabled = false }) => {
+  return (
+    <button
+      onClick={disabled ? undefined : onChange}
+      className={`flex items-center justify-center rounded-md p-1 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+        disabled
+          ? "cursor-not-allowed text-blue-600"
+          : "text-blue-600 hover:bg-blue-50"
+      }`}
+      aria-checked={isChecked}
+      role="checkbox"
+      aria-label={label}
+      disabled={disabled}
+    >
+      {isChecked ? (
+        <CheckSquare className="h-6 w-6" />
+      ) : (
+        <Square className="h-6 w-6" />
+      )}
+    </button>
+  );
+};
 
 const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
   const [showCustomize, setShowCustomize] = useState(false);
   const [showPolicy, setShowPolicy] = useState(false);
   const [activeTab, setActiveTab] = useState("what");
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [preferences, setPreferences] = useState({
     essential: true, // Always required
     performance: false,
@@ -32,20 +87,64 @@ const CookieConsent = () => {
 
   useEffect(() => {
     // Check if user has already made a choice
-    const consentCookie = localStorage.getItem("cookie-consent");
-    if (consentCookie) {
+    const checkConsent = () => {
       try {
-        const savedPreferences = JSON.parse(consentCookie);
-        setPreferences((prev) => ({
-          ...prev,
-          ...savedPreferences,
-        }));
-      } catch (e) {
-        // If parsing fails, treat as no consent
-        setTimeout(() => setShowBanner(true), 1000);
+        // First try localStorage
+        const consentCookie = localStorage.getItem("cookie-consent");
+        if (consentCookie) {
+          try {
+            const savedPreferences = JSON.parse(consentCookie);
+            setPreferences((prev) => ({
+              ...prev,
+              ...savedPreferences,
+            }));
+            return true;
+          } catch (e) {
+            console.error("Error parsing localStorage consent:", e);
+          }
+        }
+
+        // If localStorage fails or is empty, try cookies as fallback
+        const cookies = document.cookie.split(";");
+        const cookieConsent = cookies.find((cookie) =>
+          cookie.trim().startsWith("cookie-consent="),
+        );
+
+        if (cookieConsent) {
+          try {
+            const cookieValue = cookieConsent.split("=")[1].trim();
+            const savedPreferences = JSON.parse(
+              decodeURIComponent(cookieValue),
+            );
+            setPreferences((prev) => ({
+              ...prev,
+              ...savedPreferences,
+            }));
+            return true;
+          } catch (e) {
+            console.error("Error parsing cookie consent:", e);
+          }
+        }
+
+        // Check if banner was temporarily dismissed
+        const bannerClosed = cookies.find((cookie) =>
+          cookie.trim().startsWith("cookie-banner-closed="),
+        );
+
+        if (bannerClosed) {
+          return true;
+        }
+
+        return false;
+      } catch (error) {
+        console.error("Error checking consent:", error);
+        return false;
       }
-    } else {
-      // If no consent cookie exists, show the banner with a slight delay for better UX
+    };
+
+    const hasConsent = checkConsent();
+    if (!hasConsent) {
+      // If no consent exists, show the banner with a slight delay for better UX
       setTimeout(() => setShowBanner(true), 1000);
     }
 
@@ -68,47 +167,59 @@ const CookieConsent = () => {
   }, []);
 
   const savePreferences = (prefs) => {
-    // Save preferences in cookie consent storage
-    localStorage.setItem("cookie-consent", JSON.stringify(prefs));
+    try {
+      // Save preferences in cookie consent storage
+      localStorage.setItem("cookie-consent", JSON.stringify(prefs));
 
-    // Set cookies based on permissions
-    if (prefs.performance) {
-      localStorage.setItem("cache-control", "public, max-age=86400");
-      localStorage.setItem(
-        "performance-prefs",
-        JSON.stringify({
-          imageQuality: "medium",
-          animations: true,
-          prefetch: true,
-        }),
-      );
-    } else {
-      localStorage.removeItem("cache-control");
-      localStorage.removeItem("performance-prefs");
-    }
+      // Set cookies based on permissions
+      if (prefs.performance) {
+        localStorage.setItem("cache-control", "public, max-age=86400");
+        localStorage.setItem(
+          "performance-prefs",
+          JSON.stringify({
+            imageQuality: "medium",
+            animations: true,
+            prefetch: true,
+          }),
+        );
+      } else {
+        localStorage.removeItem("cache-control");
+        localStorage.removeItem("performance-prefs");
+      }
 
-    if (prefs.analytics) {
-      localStorage.setItem(
-        "analytics-consent",
-        JSON.stringify({
-          allowed: true,
-          anonymizeIp: true,
-        }),
-      );
-    } else {
-      localStorage.removeItem("analytics-consent");
-    }
+      if (prefs.analytics) {
+        localStorage.setItem(
+          "analytics-consent",
+          JSON.stringify({
+            allowed: true,
+            anonymizeIp: true,
+          }),
+        );
+      } else {
+        localStorage.removeItem("analytics-consent");
+      }
 
-    if (prefs.marketing) {
-      localStorage.setItem(
-        "marketing-consent",
-        JSON.stringify({
-          allowed: true,
-          personalization: true,
-        }),
-      );
-    } else {
-      localStorage.removeItem("marketing-consent");
+      if (prefs.marketing) {
+        localStorage.setItem(
+          "marketing-consent",
+          JSON.stringify({
+            allowed: true,
+            personalization: true,
+          }),
+        );
+      } else {
+        localStorage.removeItem("marketing-consent");
+      }
+    } catch (error) {
+      console.error("Error saving cookie preferences:", error);
+      // Fallback to cookies if localStorage fails
+      try {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + 365 * 24 * 60 * 60 * 1000); // 1 year
+        document.cookie = `cookie-consent=${JSON.stringify(prefs)}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+      } catch (cookieError) {
+        console.error("Failed to set fallback cookie:", cookieError);
+      }
     }
   };
 
@@ -145,13 +256,20 @@ const CookieConsent = () => {
   };
 
   const cancelConsent = () => {
-    // Just hide the banner without saving preferences
-    setShowBanner(false);
-    // Set a temporary cookie to prevent the banner from showing again immediately
-    // This will expire after 24 hours
-    const expires = new Date();
-    expires.setTime(expires.getTime() + 24 * 60 * 60 * 1000);
-    document.cookie = `cookie-banner-closed=true; expires=${expires.toUTCString()}; path=/`;
+    try {
+      // Just hide the banner without saving preferences
+      setShowBanner(false);
+
+      // Set a temporary cookie to prevent the banner from showing again immediately
+      // This will expire after 24 hours
+      const expires = new Date();
+      expires.setTime(expires.getTime() + 24 * 60 * 60 * 1000);
+      document.cookie = `cookie-banner-closed=true; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+    } catch (error) {
+      console.error("Error setting temporary cookie:", error);
+      // Still hide the banner even if cookie setting fails
+      setShowBanner(false);
+    }
   };
 
   const handleToggleChange = (key) => {
@@ -323,7 +441,7 @@ const CookieConsent = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-transparent bg-opacity-5 p-2  sm:p-4">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-transparent bg-opacity-5 p-2 sm:p-4">
       <div className="container mx-auto max-w-5xl">
         <div className="flex max-h-[90vh] flex-col overflow-hidden rounded-xl border border-blue-100 bg-white shadow-2xl">
           {/* Header - Always visible */}
@@ -464,13 +582,16 @@ const CookieConsent = () => {
                           Required for the website to function properly
                         </p>
                       </div>
-                      <div className="relative ml-2 flex-shrink-0">
-                        <div className="flex h-6 w-10 items-center rounded-full bg-blue-600 px-1 sm:w-11">
-                          <span className="ml-auto h-4 w-4 translate-x-0 transform rounded-full bg-white shadow-sm transition-transform"></span>
-                        </div>
-                        <span className="ml-2 whitespace-nowrap text-xs text-blue-800">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-blue-800">
                           Always on
                         </span>
+                        <Checkbox
+                          isChecked={true}
+                          disabled={true}
+                          label="Essential cookies"
+                          onChange={() => {}}
+                        />
                       </div>
                     </div>
                   </div>
@@ -491,23 +612,15 @@ const CookieConsent = () => {
                           Help us improve site speed and user experience
                         </p>
                       </div>
-                      <div className="relative ml-2 flex-shrink-0">
-                        <button
-                          onClick={() => handleToggleChange("performance")}
-                          className={`relative inline-flex h-6 w-10 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 sm:w-11 ${
-                            preferences.performance
-                              ? "bg-blue-600"
-                              : "bg-gray-200"
-                          }`}
-                        >
-                          <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform ${
-                              preferences.performance
-                                ? "translate-x-5 sm:translate-x-6"
-                                : "translate-x-1"
-                            }`}
-                          />
-                        </button>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-gray-600">
+                          {preferences.performance ? "Enabled" : "Disabled"}
+                        </span>
+                        <Checkbox
+                          isChecked={preferences.performance}
+                          label="Performance cookies"
+                          onChange={() => handleToggleChange("performance")}
+                        />
                       </div>
                     </div>
                   </div>
@@ -528,23 +641,15 @@ const CookieConsent = () => {
                           Help us understand how visitors interact with our site
                         </p>
                       </div>
-                      <div className="relative ml-2 flex-shrink-0">
-                        <button
-                          onClick={() => handleToggleChange("analytics")}
-                          className={`relative inline-flex h-6 w-10 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 sm:w-11 ${
-                            preferences.analytics
-                              ? "bg-blue-600"
-                              : "bg-gray-200"
-                          }`}
-                        >
-                          <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform ${
-                              preferences.analytics
-                                ? "translate-x-5 sm:translate-x-6"
-                                : "translate-x-1"
-                            }`}
-                          />
-                        </button>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-gray-600">
+                          {preferences.analytics ? "Enabled" : "Disabled"}
+                        </span>
+                        <Checkbox
+                          isChecked={preferences.analytics}
+                          label="Analytics cookies"
+                          onChange={() => handleToggleChange("analytics")}
+                        />
                       </div>
                     </div>
                   </div>
@@ -565,23 +670,15 @@ const CookieConsent = () => {
                           Used to display personalized ads and content
                         </p>
                       </div>
-                      <div className="relative ml-2 flex-shrink-0">
-                        <button
-                          onClick={() => handleToggleChange("marketing")}
-                          className={`relative inline-flex h-6 w-10 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 sm:w-11 ${
-                            preferences.marketing
-                              ? "bg-blue-600"
-                              : "bg-gray-200"
-                          }`}
-                        >
-                          <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform ${
-                              preferences.marketing
-                                ? "translate-x-5 sm:translate-x-6"
-                                : "translate-x-1"
-                            }`}
-                          />
-                        </button>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-gray-600">
+                          {preferences.marketing ? "Enabled" : "Disabled"}
+                        </span>
+                        <Checkbox
+                          isChecked={preferences.marketing}
+                          label="Marketing cookies"
+                          onChange={() => handleToggleChange("marketing")}
+                        />
                       </div>
                     </div>
                   </div>
@@ -620,12 +717,12 @@ const CookieConsent = () => {
                 </button>
               </div>
             ) : (
-              <p className="text-xs text-blue-800">
+              <p className="text-xs text-sky-900">
                 By continuing to browse this site, you agree to our use of
                 cookies as described in our{" "}
                 <button
                   onClick={togglePolicy}
-                  className="cursor-pointer font-medium underline transition-colors hover:text-blue-600"
+                  className="cursor-pointer font-medium text-sky-600 underline transition-colors hover:text-sky-500"
                 >
                   Cookie Policy
                 </button>
