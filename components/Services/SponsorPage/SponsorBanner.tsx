@@ -38,7 +38,7 @@ const SponsorBanner: React.FC = () => {
 
       <div className="flex h-full w-full items-center justify-center md:w-1/2">
         <motion.div
-          className="w-full max-w-[600px] rounded-2xl bg-white p-10 shadow-2xl shadow-sky-500/20 md:p-20"
+          className="w-full max-w-[600px] rounded-2xl bg-white p-4 pb-8 shadow-2xl shadow-sky-500/20 md:p-10 lg:p-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
