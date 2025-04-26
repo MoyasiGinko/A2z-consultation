@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useRef, useState, FormEvent } from "react";
+import React, { useRef, useState, FormEvent, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 interface ContactProps {
@@ -22,33 +22,64 @@ const Contact: React.FC<ContactProps> = ({
     message: string;
   } | null>(null);
 
-  /**
-   * Source: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
-   * Reason: To fix rehydration error
-   */
-  const [hasMounted, setHasMounted] = React.useState(false);
-  React.useEffect(() => {
+  // Fix for rehydration error
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
     setHasMounted(true);
   }, []);
-  if (!hasMounted) {
-    return null;
-  }
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!form.current) return;
 
+    // Validate phone number format
+    const nameInput = form.current.querySelector(
+      '[name="name"]',
+    ) as HTMLInputElement;
+    const emailInput = form.current.querySelector(
+      '[name="email"]',
+    ) as HTMLInputElement;
+    const numberInput = form.current.querySelector(
+      '[name="number"]',
+    ) as HTMLInputElement;
+    const subjectInput = form.current.querySelector(
+      '[name="subject"]',
+    ) as HTMLInputElement;
+    const messageInput = form.current.querySelector(
+      '[name="message"]',
+    ) as HTMLTextAreaElement;
+
+    // Log form data to debug
+    console.log("Form data before submission:", {
+      name: nameInput?.value,
+      email: emailInput?.value,
+      number: numberInput?.value,
+      subject: subjectInput?.value,
+      message: messageInput?.value,
+    });
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Create template params object - explicit mapping to ensure data is passed
+    const templateParams = {
+      name: nameInput?.value,
+      email: emailInput?.value,
+      number: numberInput?.value,
+      subject: subjectInput?.value,
+      message: messageInput?.value,
+    };
+
+    // Use sendForm for direct form submission with form element
     emailjs
       .sendForm(serviceId, templateId, form.current, {
         publicKey: publicKey,
       })
       .then(
-        () => {
-          console.log("SUCCESS!");
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          console.log("Sent data:", templateParams);
           setSubmitStatus({
             success: true,
             message: "Your message has been sent successfully!",
@@ -67,6 +98,10 @@ const Contact: React.FC<ContactProps> = ({
         setIsSubmitting(false);
       });
   };
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -118,11 +153,11 @@ const Contact: React.FC<ContactProps> = ({
                 </div>
               )}
 
-              <form ref={form} onSubmit={sendEmail}>
+              <form ref={form} onSubmit={sendEmail} id="contactForm">
                 <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
                   <input
                     type="text"
-                    name="user_name"
+                    name="name"
                     placeholder="Full name"
                     required
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
@@ -130,7 +165,7 @@ const Contact: React.FC<ContactProps> = ({
 
                   <input
                     type="email"
-                    name="user_email"
+                    name="email"
                     placeholder="Email address"
                     required
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
@@ -147,7 +182,7 @@ const Contact: React.FC<ContactProps> = ({
 
                   <input
                     type="tel"
-                    name="phone_number"
+                    name="number"
                     placeholder="+44"
                     pattern="^(\+44|0)[0-9]{10}$"
                     minLength={11}
@@ -172,12 +207,13 @@ const Contact: React.FC<ContactProps> = ({
                     <input
                       id="default-checkbox"
                       type="checkbox"
+                      name="consent"
                       className="peer sr-only"
                       required
                     />
-                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary ">
+                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border border-gray-300 bg-gray-100 text-blue-600 transition-all duration-200 hover:bg-gray-200 peer-checked:border-primary peer-checked:bg-primary">
                       <svg
-                        className="opacity-0 peer-checked:group-[]:opacity-100"
+                        className="opacity-0 transition-opacity duration-200 peer-checked:group-[]:opacity-100"
                         width="10"
                         height="8"
                         viewBox="0 0 10 8"
@@ -194,7 +230,7 @@ const Contact: React.FC<ContactProps> = ({
                     </span>
                     <label
                       htmlFor="default-checkbox"
-                      className="flex max-w-[425px] cursor-pointer select-none pl-5"
+                      className="flex max-w-[425px] cursor-pointer select-none pl-5 text-gray-700 transition-colors duration-200 hover:text-blue-500"
                     >
                       By clicking Checkbox, you agree to use our "Form" terms
                       And consent cookie usage in browser.
@@ -248,12 +284,6 @@ const Contact: React.FC<ContactProps> = ({
                 Find us
               </h2>
 
-              {/* <div className="5 mb-7">
-                <h3 className="mb-4 text-metatitle3 font-medium text-black ">
-                  Our Loaction
-                </h3>
-                <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
-              </div> */}
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black ">
                   Email Address

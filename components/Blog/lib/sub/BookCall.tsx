@@ -7,7 +7,7 @@ import emailjs from "@emailjs/browser";
 interface FormData {
   name: string;
   email: string;
-  phone: string;
+  number: string;
   message: string;
 }
 
@@ -20,7 +20,7 @@ const BookCallSidebar: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    phone: "",
+    number: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,11 +48,14 @@ const BookCallSidebar: React.FC = () => {
     setError(null);
 
     try {
-      // Send email using EmailJS
+      // Log the data being sent for debugging
+      console.log("Sending form data:", formData);
+
+      // Send email using EmailJS with the renamed fields
       const result = await emailjs.send(serviceId, templateId, {
-        from_name: formData.name,
+        name: formData.name,
         email: formData.email,
-        phone: formData.phone,
+        number: formData.number,
         message: formData.message,
       });
 
@@ -64,7 +67,7 @@ const BookCallSidebar: React.FC = () => {
       setFormData({
         name: "",
         email: "",
-        phone: "",
+        number: "",
         message: "",
       });
 
@@ -184,7 +187,7 @@ const BookCallSidebar: React.FC = () => {
 
         <motion.div className="mb-4" variants={itemVariants}>
           <label
-            htmlFor="phone"
+            htmlFor="number"
             className="mb-1 block text-base font-medium"
             style={{ textShadow: "0 0 8px rgba(255, 255, 255, 0.6)" }}
           >
@@ -193,10 +196,10 @@ const BookCallSidebar: React.FC = () => {
           <motion.input
             whileFocus={{ scale: 1.01 }}
             type="tel"
-            id="phone"
-            name="phone"
+            id="number"
+            name="number"
             placeholder="+44"
-            value={formData.phone}
+            value={formData.number}
             onChange={handleChange}
             pattern="^\+?[1-9][0-9]{10,12}$"
             title="Please enter a valid phone number (11-13 digits)"
