@@ -211,9 +211,9 @@ const Contact: React.FC<ContactProps> = ({
                       className="peer sr-only"
                       required
                     />
-                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary ">
+                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border border-gray-300 bg-gray-100 text-blue-600 transition-all duration-200 hover:bg-gray-200 peer-checked:border-primary peer-checked:bg-primary">
                       <svg
-                        className="opacity-0 peer-checked:group-[]:opacity-100"
+                        className="opacity-0 transition-opacity duration-200 peer-checked:group-[]:opacity-100"
                         width="10"
                         height="8"
                         viewBox="0 0 10 8"
@@ -230,7 +230,7 @@ const Contact: React.FC<ContactProps> = ({
                     </span>
                     <label
                       htmlFor="default-checkbox"
-                      className="flex max-w-[425px] cursor-pointer select-none pl-5"
+                      className="flex max-w-[425px] cursor-pointer select-none pl-5 text-gray-700 transition-colors duration-200 hover:text-blue-500"
                     >
                       By clicking Checkbox, you agree to use our "Form" terms
                       And consent cookie usage in browser.
