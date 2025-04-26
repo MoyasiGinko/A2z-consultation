@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useRef, useState, FormEvent } from "react";
+import React, { useRef, useState, FormEvent, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 interface ContactProps {
@@ -22,33 +22,65 @@ const Contact: React.FC<ContactProps> = ({
     message: string;
   } | null>(null);
 
-  /**
-   * Source: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
-   * Reason: To fix rehydration error
-   */
-  const [hasMounted, setHasMounted] = React.useState(false);
-  React.useEffect(() => {
+  // Fix for rehydration error
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
     setHasMounted(true);
   }, []);
-  if (!hasMounted) {
-    return null;
-  }
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!form.current) return;
 
+    // Validate phone number format
+    const phoneInput = form.current.querySelector(
+      '[name="phone"]',
+    ) as HTMLInputElement;
+    const emailInput = form.current.querySelector(
+      '[name="email"]',
+    ) as HTMLInputElement;
+
+    // Log form data to debug
+    console.log("Form data before submission:", {
+      name: (form.current.querySelector('[name="name"]') as HTMLInputElement)
+        ?.value,
+      email: emailInput?.value,
+      phone: phoneInput?.value,
+      subject: (
+        form.current.querySelector('[name="subject"]') as HTMLInputElement
+      )?.value,
+      message: (
+        form.current.querySelector('[name="message"]') as HTMLTextAreaElement
+      )?.value,
+    });
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Create template params object - explicit mapping to ensure data is passed
+    const templateParams = {
+      name: (form.current.querySelector('[name="name"]') as HTMLInputElement)
+        ?.value,
+      email: emailInput?.value,
+      phone: phoneInput?.value,
+      subject: (
+        form.current.querySelector('[name="subject"]') as HTMLInputElement
+      )?.value,
+      message: (
+        form.current.querySelector('[name="message"]') as HTMLTextAreaElement
+      )?.value,
+    };
+
+    // Use sendForm for direct form submission with form element
     emailjs
       .sendForm(serviceId, templateId, form.current, {
         publicKey: publicKey,
       })
       .then(
-        () => {
-          console.log("SUCCESS!");
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          console.log("Sent data:", templateParams);
           setSubmitStatus({
             success: true,
             message: "Your message has been sent successfully!",
@@ -67,6 +99,10 @@ const Contact: React.FC<ContactProps> = ({
         setIsSubmitting(false);
       });
   };
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -118,11 +154,11 @@ const Contact: React.FC<ContactProps> = ({
                 </div>
               )}
 
-              <form ref={form} onSubmit={sendEmail}>
+              <form ref={form} onSubmit={sendEmail} id="contactForm">
                 <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
                   <input
                     type="text"
-                    name="user_name"
+                    name="name"
                     placeholder="Full name"
                     required
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
@@ -130,7 +166,7 @@ const Contact: React.FC<ContactProps> = ({
 
                   <input
                     type="email"
-                    name="user_email"
+                    name="email"
                     placeholder="Email address"
                     required
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none  lg:w-1/2"
@@ -147,7 +183,7 @@ const Contact: React.FC<ContactProps> = ({
 
                   <input
                     type="tel"
-                    name="phone_number"
+                    name="phone"
                     placeholder="+44"
                     pattern="^(\+44|0)[0-9]{10}$"
                     minLength={11}
@@ -172,6 +208,7 @@ const Contact: React.FC<ContactProps> = ({
                     <input
                       id="default-checkbox"
                       type="checkbox"
+                      name="consent"
                       className="peer sr-only"
                       required
                     />
@@ -248,12 +285,6 @@ const Contact: React.FC<ContactProps> = ({
                 Find us
               </h2>
 
-              {/* <div className="5 mb-7">
-                <h3 className="mb-4 text-metatitle3 font-medium text-black ">
-                  Our Loaction
-                </h3>
-                <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
-              </div> */}
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black ">
                   Email Address
