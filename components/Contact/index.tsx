@@ -34,25 +34,29 @@ const Contact: React.FC<ContactProps> = ({
     if (!form.current) return;
 
     // Validate phone number format
-    const phoneInput = form.current.querySelector(
-      '[name="phone"]',
+    const nameInput = form.current.querySelector(
+      '[name="name"]',
     ) as HTMLInputElement;
     const emailInput = form.current.querySelector(
       '[name="email"]',
     ) as HTMLInputElement;
+    const numberInput = form.current.querySelector(
+      '[name="number"]',
+    ) as HTMLInputElement;
+    const subjectInput = form.current.querySelector(
+      '[name="subject"]',
+    ) as HTMLInputElement;
+    const messageInput = form.current.querySelector(
+      '[name="message"]',
+    ) as HTMLTextAreaElement;
 
     // Log form data to debug
     console.log("Form data before submission:", {
-      name: (form.current.querySelector('[name="name"]') as HTMLInputElement)
-        ?.value,
+      name: nameInput?.value,
       email: emailInput?.value,
-      phone: phoneInput?.value,
-      subject: (
-        form.current.querySelector('[name="subject"]') as HTMLInputElement
-      )?.value,
-      message: (
-        form.current.querySelector('[name="message"]') as HTMLTextAreaElement
-      )?.value,
+      number: numberInput?.value,
+      subject: subjectInput?.value,
+      message: messageInput?.value,
     });
 
     setIsSubmitting(true);
@@ -60,16 +64,11 @@ const Contact: React.FC<ContactProps> = ({
 
     // Create template params object - explicit mapping to ensure data is passed
     const templateParams = {
-      name: (form.current.querySelector('[name="name"]') as HTMLInputElement)
-        ?.value,
+      name: nameInput?.value,
       email: emailInput?.value,
-      phone: phoneInput?.value,
-      subject: (
-        form.current.querySelector('[name="subject"]') as HTMLInputElement
-      )?.value,
-      message: (
-        form.current.querySelector('[name="message"]') as HTMLTextAreaElement
-      )?.value,
+      number: numberInput?.value,
+      subject: subjectInput?.value,
+      message: messageInput?.value,
     };
 
     // Use sendForm for direct form submission with form element
@@ -183,7 +182,7 @@ const Contact: React.FC<ContactProps> = ({
 
                   <input
                     type="tel"
-                    name="phone"
+                    name="number"
                     placeholder="+44"
                     pattern="^(\+44|0)[0-9]{10}$"
                     minLength={11}
