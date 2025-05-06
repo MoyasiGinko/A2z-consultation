@@ -11,7 +11,7 @@ const faqItems: FAQItem[] = [
     answer: (
       <div className="space-y-2">
         <p>
-          A Sponsor Licence authorizes UK employers to hire non-UK nationals
+          A Sponsor Licence authorises UK employers to hire non-UK nationals
           requiring a visa, including citizens from the EU, Iceland,
           Liechtenstein, Norway, and Switzerland who arrived after 31 December
           2020. It allows a business to legally sponsor skilled workers under

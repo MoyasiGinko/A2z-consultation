@@ -38,7 +38,7 @@ const VisaServices: React.FC = () => {
       icon: "/images/icon/compliance.svg",
       color: "#1565c0",
       benefits: [
-        "Personalized expert support throughout the process",
+        "Personalised expert support throughout the process",
         "Faster processing with our streamlined systems",
         "Higher success rate than industry average",
         "Comprehensive documentation guidance",

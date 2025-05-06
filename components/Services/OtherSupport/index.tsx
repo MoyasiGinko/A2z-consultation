@@ -30,7 +30,7 @@ const OtherSupport = () => {
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600 ">
             Comprehensive assistance tailored to your unique needs. Explore our
-            range of specialized support options.
+            range of specialised support options.
           </p>
         </div>
 

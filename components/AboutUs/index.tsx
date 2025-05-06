@@ -458,7 +458,7 @@ const AboutUs: React.FC = () => {
               {
                 name: "Fiyadh Hosne Mowla",
                 role: "Director",
-                bio: "Fiyadh joined A2Z in 2016 after a successful career in international development. Born in Bangladesh and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Fiyadh specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
+                bio: "Fiyadh joined A2Z in 2016 after a successful career in international development. Born in Bangladesh and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Fiyadh specialises in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
                 image: "/images/user/team-02.png",
               },
               {
@@ -530,7 +530,7 @@ const AboutUs: React.FC = () => {
           <p className="mb-8 text-xl">
             Join thousands of successful clients who have trusted A2Z Immigrants
             to guide them through the complexities of immigration. Our team is
-            ready to create a customized plan for your specific needs.
+            ready to create a customised plan for your specific needs.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link

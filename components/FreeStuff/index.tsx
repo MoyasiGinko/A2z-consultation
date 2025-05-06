@@ -349,7 +349,7 @@ const FreeStuff: React.FC = () => {
           </h3>
           <p className="mb-6 text-white opacity-90">
             Our immigration experts are available to answer your questions and
-            provide personalized guidance.
+            provide personalised guidance.
           </p>
           <a
             href="/get-in-touch"

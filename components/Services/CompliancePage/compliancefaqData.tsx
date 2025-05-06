@@ -55,7 +55,7 @@ const faqItems: FAQItem[] = [
                 Ensure all records are accurate, up-to-date, and easily
                 accessible
               </li>
-              <li>Organize files systematically by worker</li>
+              <li>Organise files systematically by worker</li>
               <li>Create a document checklist for each sponsored employee</li>
             </ul>
           </div>
@@ -135,7 +135,7 @@ const faqItems: FAQItem[] = [
                   Record-keeping
                 </td>
                 <td className="border border-gray-300 p-2">
-                  Inadequate or disorganized documentation
+                  Inadequate or disorganised documentation
                 </td>
                 <td className="border border-gray-300 p-2">
                   Maintain a comprehensive digital filing system with regular

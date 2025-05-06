@@ -34,7 +34,7 @@ const faqItems: FAQItem[] = [
           <li>
             Initial assessment: We discuss your specific needs and objectives
           </li>
-          <li>Strategy development: We create a customized immigration plan</li>
+          <li>Strategy development: We create a customised immigration plan</li>
           <li>
             Implementation: We guide you through the application process with
             ongoing support

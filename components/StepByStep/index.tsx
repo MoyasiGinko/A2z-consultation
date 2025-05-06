@@ -15,7 +15,7 @@ import UnderlineAnimation from "../Common/UnderlineAnimate";
 import { steps, additionalInfo } from "./stepsData"; // Importing step data
 
 // Animated path component for journey visualization
-// Enhanced animated path component with optimized performance and advanced animations
+// Enhanced animated path component with optimised performance and advanced animations
 const JourneyPath = ({ scrollProgress, totalSteps }) => {
   // Use more responsive spring settings for smoother tracking
   const springPathLength = useSpring(scrollProgress, {

@@ -38,7 +38,7 @@ const ComplianceServices: React.FC = () => {
       icon: "/images/icon/skilledvisa.svg",
       color: "#1565c0",
       benefits: [
-        "Personalized expert support throughout the process",
+        "Personalised expert support throughout the process",
         "Faster processing with our streamlined systems",
         "Higher success rate than industry average",
         "Comprehensive documentation guidance",
@@ -52,7 +52,7 @@ const ComplianceServices: React.FC = () => {
     //   icon: "user",
     //   color: "#1565c0",
     //   benefits: [
-    //     "Personalized expert support throughout the process",
+    //     "Personalised expert support throughout the process",
     //     "Faster processing with our streamlined systems",
     //     "Higher success rate than industry average",
     //     "Comprehensive documentation guidance",
