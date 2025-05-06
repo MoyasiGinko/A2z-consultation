@@ -335,13 +335,13 @@ const ClientsPage: FC = () => {
       </div>
 
       <motion.div
-        className="mx-auto mt-32 max-w-4xl rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-700 p-12 text-center shadow-xl"
+        className="mx-auto mt-32 max-w-6xl rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-700 p-12 text-center shadow-xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h2 className="mb-6  text-3xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
+        <h2 className="mb-6  text-3xl font-bold text-white sm:text-3xl md:text-4xl ">
           Ready to Write Your Success Story?
         </h2>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-sky-100">

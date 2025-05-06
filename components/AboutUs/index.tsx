@@ -526,7 +526,7 @@ const AboutUs: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-3xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
+          <h2 className="mb-6 text-3xl font-bold sm:text-3xl md:text-4xl">
             Begin Your Immigration Journey With Confidence
           </h2>
           <p className="mb-8 text-xl">

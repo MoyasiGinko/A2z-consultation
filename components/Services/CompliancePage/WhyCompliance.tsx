@@ -222,17 +222,16 @@ const WhyCompliance: React.FC = () => {
             <div className="relative h-[180px] w-[280px] rounded-3xl bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200 p-1 sm:h-[240px] sm:w-[360px] sm:max-w-lg md:h-[320px] md:w-[502px] md:p-2 lg:max-w-xl xl:max-w-2xl">
               <div className="relative h-full w-full overflow-hidden rounded-2xl">
                 <motion.div
-                  // initial={{ opacity: 0 }}
                   animate={{ opacity: isLoaded ? 1 : 0 }}
                   transition={{ duration: 0.5 }}
                   className="h-full w-full"
                 >
                   <iframe
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Example YouTube embed URL
+                    src="https://www.youtube.com/embed/0pJWdqBEQhQ?si=Uaen6qMH3fN-UVYh&rel=0&controls=1&modestbranding=1&autoplay=0&mute=0&showinfo=0&fs=1&loop=0&playsinline=1"
                     title="UK Sponsor License video"
                     className="h-full w-full"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     onLoad={() => setIsLoaded(true)}
                   ></iframe>
                 </motion.div>

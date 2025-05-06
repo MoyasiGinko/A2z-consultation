@@ -116,7 +116,7 @@ const BookCallSidebar: React.FC = () => {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-sm rounded-xl bg-gradient-to-b from-[#06A2D9] via-[#0698cd] to-[#148fbc] px-6 py-6 text-white shadow-lg"
+      className="w-full max-w-md rounded-xl bg-gradient-to-b from-[#06A2D9] via-[#0698cd] to-[#148fbc] px-6 py-6 text-white shadow-lg"
     >
       <motion.h2
         initial={{ y: -10, opacity: 0 }}
