@@ -19,10 +19,10 @@ const packages: PricingPackage[] = [
     name: "Gold",
     tagline:
       "For employers who need minimal assistance with the visa application process.",
-    color: "#3d6582",
-    ring: "#3d6582",
-    text: "#ffb900",
-    shadowColor: "rgba(135, 206, 235, 0.1)", // Sky color with alpha
+    color: "#08A1DA", // Modified to moderate dark light teal
+    ring: "#08A1DA", // Matching ring color
+    text: "#fff800",
+    shadowColor: "rgba(8, 161, 218, 0.06)", // Updated shadow to match the #08A1DA color
     features: [
       { text: "Initial consultation to assess candidate eligibility" },
       {

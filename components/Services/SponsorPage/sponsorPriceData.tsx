@@ -18,10 +18,10 @@ const packages: PricingPackage[] = [
   {
     name: "Gold",
     tagline: "Essential sponsorship application support",
-    color: "#4a7a8c", // Modified to moderate dark light teal
-    ring: "#4a7a8c", // Matching ring color
-    text: "#ffc500",
-    shadowColor: "rgba(74, 122, 140, 0.1)", // Updated shadow to match new color
+    color: "#08A1DA", // Modified to moderate dark light teal
+    ring: "#08A1DA", // Matching ring color
+    text: "#fff800",
+    shadowColor: "rgba(8, 161, 218, 0.06)", // Updated shadow to match the #08A1DA color
     features: [
       { text: "Initial consultation and eligibility assessment" },
       { text: "Guidance on required documents" },
