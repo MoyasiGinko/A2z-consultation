@@ -250,10 +250,10 @@ const SponsorServices: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               Looking for candidates & Visa Application - Seamless process and
-              Visa guaranteed
+              Visa guaranteed <strong>FAQ</strong>
             </motion.p>
 
-            <motion.button
+            {/* <motion.button
               className="flex items-center font-medium text-[#0e9dcc] hover:underline focus:outline-none"
               onClick={() => setShowFaq(!showFaq)}
               whileHover={{ scale: 1.05 }}
@@ -274,7 +274,7 @@ const SponsorServices: React.FC = () => {
                   d="M19 9l-7 7-7-7"
                 />
               </svg>
-            </motion.button>
+            </motion.button> */}
           </motion.div>
 
           {/* FAQ Section */}
