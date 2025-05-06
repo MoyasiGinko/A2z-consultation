@@ -9,6 +9,8 @@ import StatsSection from "@/components/Stats";
 import BlogSection from "@/components/Blog/BlogSection";
 import WhoLovesUs from "@/components/WhoLoveUs";
 import GoogleReviews from "@/components/Testimonial/GoogleReview";
+import FAQSection from "@/components/FAQ/FAQ-Section";
+import faqItems from "@/components/FAQ/homefaqData";
 
 export const metadata: Metadata = {
   title: "A2Z Immigration",
@@ -44,6 +46,7 @@ export default function Home() {
         className="my-8 rounded-lg p-4 md:p-10 lg:p-16"
       />
       <BlogSection />
+      <FAQSection faqItems={faqItems} />
     </main>
   );
 }
