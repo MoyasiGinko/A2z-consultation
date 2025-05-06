@@ -273,7 +273,7 @@ const Footer: React.FC = () => {
                   <div className="flex flex-col items-center">
                     <div className="relative mb-2 h-28 w-28">
                       <Image
-                        src="/images/logo/oisc.png"
+                        src="/images/logo/iaa.png"
                         alt="OISC icon"
                         layout="fill"
                         objectFit="contain"
@@ -414,7 +414,7 @@ const Footer: React.FC = () => {
               <div className="mb-2 flex items-center">
                 <div className="relative mb-2 h-28 w-28">
                   <Image
-                    src="/images/logo/oisc.png"
+                    src="/images/logo/iaa.png"
                     alt="OISC icon"
                     layout="fill"
                     objectFit="contain"
