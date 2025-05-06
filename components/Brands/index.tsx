@@ -322,7 +322,7 @@ const Brands: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className={`brand-showcase bg-transparent py-10 transition-opacity duration-1000 sm:py-14 md:py-20 ${
+      className={`brand-showcase bg-transparent py-6 transition-opacity duration-1000 sm:py-10 md:py-14 lg:py-16 xl:py-20 ${
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
