@@ -216,7 +216,7 @@ const AboutUs: React.FC = () => {
         >
           {[
             {
-              title: "Personalized Strategy",
+              title: "Personalised Strategy",
               description:
                 "We analyze your unique circumstances, goals, and timeline to create a tailored immigration plan optimized for your specific situation.",
               icon: "🔍",
