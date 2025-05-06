@@ -274,7 +274,7 @@ const AdvancedStepCard = ({ step, isActive, onLearnMore }) => {
             </motion.span>
 
             <motion.h3
-              className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl"
+              className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
               variants={itemVariants}
             >
               {step.title}
@@ -405,8 +405,8 @@ const StepByStep = () => {
   const textX = useTransform(scrollYProgress, [0, 1], ["-100%", "100%"]);
 
   return (
-    <div className="relative overflow-hidden bg-white">
-      <section ref={containerRef} className="relative min-h-screen py-24">
+    <div className="relative overflow-hidden bg-white py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+      <section ref={containerRef} className="relative min-h-screen">
         <motion.div
           className="container mx-auto max-w-7xl px-4"
           initial={{ opacity: 0 }}
@@ -431,7 +431,7 @@ const StepByStep = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <span className="relative inline-block">
-                <span className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl">
+                <span className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl">
                   Guide to UK Skilled Worker Visa Sponsorship
                 </span>
                 <UnderlineAnimation />
@@ -487,7 +487,7 @@ const StepByStep = () => {
               transition={{ duration: 10, repeat: Infinity }}
             />
 
-            <h2 className="mb-4 text-4xl font-bold leading-tight tracking-tight">
+            <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl ">
               Ready to Start Your UK Journey?
             </h2>
             <p className="mb-8 text-lg opacity-90">

@@ -162,7 +162,7 @@ const ComplianceDetails: React.FC = () => {
             <div className="mb-8 text-center md:mb-0 md:w-1/4 md:pr-8 md:text-left">
               <h2
                 ref={titleRef}
-                className="bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 bg-clip-text text-2xl font-bold text-transparent"
+                className="bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl md:text-4xl lg:text-5xl"
                 style={{
                   opacity: 0,
                   transform: "translateX(-20px)",

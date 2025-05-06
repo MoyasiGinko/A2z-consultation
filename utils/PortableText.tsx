@@ -37,7 +37,7 @@ const components: Partial<PortableTextReactComponents> = {
       // Try to render any text content if available
       if (value?.children) {
         return (
-          <p className="my-4 text-base">
+          <p className="overflow-wrap-anywhere my-4 max-w-full break-words text-base">
             {value.children.map((child, i) => child.text || "").join("")}
           </p>
         );
@@ -47,34 +47,52 @@ const components: Partial<PortableTextReactComponents> = {
     },
   },
   block: {
-    // Handle different block styles
+    // Handle different block styles with improved overflow handling
     h1: ({ children }) => (
-      <h1 className="my-4 text-4xl font-bold">{children}</h1>
+      <h1 className="overflow-wrap-anywhere my-4 max-w-full break-words text-4xl font-bold">
+        {children}
+      </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="my-3 text-3xl font-bold">{children}</h2>
+      <h2 className="overflow-wrap-anywhere my-3 max-w-full break-words text-3xl font-bold">
+        {children}
+      </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="my-3 text-2xl font-bold">{children}</h3>
+      <h3 className="overflow-wrap-anywhere my-3 max-w-full break-words text-2xl font-bold">
+        {children}
+      </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="my-2 text-xl font-bold">{children}</h4>
+      <h4 className="overflow-wrap-anywhere my-2 max-w-full break-words text-xl font-bold">
+        {children}
+      </h4>
     ),
-    normal: ({ children }) => <p className="my-4 text-base">{children}</p>,
+    normal: ({ children }) => (
+      <p className="overflow-wrap-anywhere my-4 max-w-full break-words text-base">
+        {children}
+      </p>
+    ),
     blockquote: ({ children }) => (
-      <blockquote className="my-4 border-l-4 border-gray-500 pl-4 italic">
+      <blockquote className="overflow-wrap-anywhere my-4 max-w-full break-words border-l-4 border-gray-500 pl-4 italic">
         {children}
       </blockquote>
     ),
     // Add a default handler for any unknown block style
-    _unknown: ({ children }) => <p className="my-4 text-base">{children}</p>,
+    _unknown: ({ children }) => (
+      <p className="overflow-wrap-anywhere my-4 max-w-full break-words text-base">
+        {children}
+      </p>
+    ),
   },
   marks: {
     // Handle different text marks (inline styles)
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
     em: ({ children }) => <em className="italic">{children}</em>,
     code: ({ children }) => (
-      <code className="rounded bg-gray-100 p-1">{children}</code>
+      <code className="whitespace-pre-wrap break-words rounded bg-gray-100 p-1">
+        {children}
+      </code>
     ),
     link: ({ value, children }) => {
       const target = (value?.href || "").startsWith("http")
@@ -85,7 +103,7 @@ const components: Partial<PortableTextReactComponents> = {
           href={value?.href}
           target={target}
           rel={target === "_blank" ? "noopener noreferrer" : undefined}
-          className="text-blue-600 hover:underline"
+          className="break-words text-blue-600 hover:underline"
         >
           {children}
         </a>
@@ -94,15 +112,23 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="my-4 list-disc pl-5">{children}</ul>
+      <ul className="my-4 max-w-full list-disc overflow-hidden pl-5">
+        {children}
+      </ul>
     ),
     number: ({ children }) => (
-      <ol className="my-4 list-decimal pl-5">{children}</ol>
+      <ol className="my-4 max-w-full list-decimal overflow-hidden pl-5">
+        {children}
+      </ol>
     ),
   },
   listItem: {
-    bullet: ({ children }) => <li className="my-1">{children}</li>,
-    number: ({ children }) => <li className="my-1">{children}</li>,
+    bullet: ({ children }) => (
+      <li className="overflow-wrap-anywhere my-1 break-words">{children}</li>
+    ),
+    number: ({ children }) => (
+      <li className="overflow-wrap-anywhere my-1 break-words">{children}</li>
+    ),
   },
 };
 
@@ -144,7 +170,7 @@ function normalizeToPortableText(value: any): any[] {
   return [];
 }
 
-// Create the exported PortableText component
+// Create the exported PortableText component with a wrapper for better responsiveness
 export function PortableText({ value }: { value: any }) {
   // Handle empty content gracefully
   if (!value) {
@@ -161,7 +187,12 @@ export function PortableText({ value }: { value: any }) {
     }
 
     return (
-      <PortableTextComponent value={normalizedValue} components={components} />
+      <div className="w-full overflow-hidden">
+        <PortableTextComponent
+          value={normalizedValue}
+          components={components}
+        />
+      </div>
     );
   } catch (error) {
     // Gracefully handle errors in production
@@ -170,7 +201,7 @@ export function PortableText({ value }: { value: any }) {
     // In development, show error details
     if (process.env.NODE_ENV === "development") {
       return (
-        <div className="my-4 rounded border border-red-200 p-4 text-red-500">
+        <div className="my-4 overflow-hidden break-words rounded border border-red-200 p-4 text-red-500">
           <p className="font-bold">PortableText Error:</p>
           <p>{error instanceof Error ? error.message : "Unknown error"}</p>
           <p className="mt-2 text-sm">
@@ -182,9 +213,17 @@ export function PortableText({ value }: { value: any }) {
 
     // In production, render simple message or try to render as text if possible
     if (typeof value === "string") {
-      return <p className="my-4 text-base">{value}</p>;
+      return (
+        <p className="overflow-wrap-anywhere my-4 break-words text-base">
+          {value}
+        </p>
+      );
     }
 
-    return <p className="my-4 text-base">Content currently unavailable</p>;
+    return (
+      <p className="my-4 break-words text-base">
+        Content currently unavailable
+      </p>
+    );
   }
 }

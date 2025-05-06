@@ -115,7 +115,7 @@ const StartYourJourney = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="relative mt-8 overflow-hidden bg-primary py-16 text-white sm:mt-12 md:mt-16 lg:mt-24 xl:mt-40 2xl:py-32"
+      className="relative mt-8 overflow-hidden bg-primary py-10  text-white sm:py-12 md:py-16 lg:py-20 xl:py-24"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -241,7 +241,7 @@ const StartYourJourney = () => {
           >
             <div>
               <motion.h2
-                className="mb-2 text-2xl font-black leading-tight sm:text-3xl md:mb-3 lg:mb-5 lg:text-4xl xl:mb-6 xl:text-5xl"
+                className="mb-2 text-3xl font-black leading-tight sm:text-3xl md:mb-3 lg:mb-5 lg:text-4xl xl:mb-6 xl:text-5xl"
                 variants={itemVariants}
               >
                 <span className="block">Start your journey</span>

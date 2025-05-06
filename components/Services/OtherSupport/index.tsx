@@ -25,7 +25,7 @@ const OtherSupport = () => {
     <section className="bg-gradient-to-b from-slate-50 to-slate-100 py-10 ">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 bg-gradient-to-r from-sky-500 to-sky-800 bg-clip-text text-3xl font-bold text-transparent  md:text-5xl">
+          <h2 className="mb-4 bg-gradient-to-r from-sky-500 to-sky-800 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl md:text-4xl lg:text-5xl">
             Support Services
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-600 ">

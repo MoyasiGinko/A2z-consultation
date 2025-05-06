@@ -47,7 +47,7 @@ const StatsSection: React.FC = () => {
     <section ref={sectionRef} className="bg-white py-16">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="mb-2 text-center text-3xl font-bold text-black lg:mb-4 lg:text-4xl"
+          className="mb-2 text-center text-2xl font-bold text-black sm:text-3xl md:text-4xl lg:mb-4 lg:text-5xl"
           initial={{ opacity: 0, y: -20 }}
           animate={controls}
           variants={{
@@ -58,7 +58,7 @@ const StatsSection: React.FC = () => {
             },
           }}
         >
-          Hundreds of companies trust us
+          Hundreds of Companies Trust Us
         </motion.h2>
 
         <motion.p

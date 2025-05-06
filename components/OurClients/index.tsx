@@ -319,7 +319,7 @@ const ClientsPage: FC = () => {
         <span className="inline-block rounded-full bg-sky-100 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-sky-700">
           Success Stories
         </span>
-        <h1 className="mb-6 mt-3 text-4xl font-extrabold text-gray-900 md:text-5xl">
+        <h1 className="mb-6 mt-3 text-3xl font-extrabold text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
           See How We've Helped Our Clients
         </h1>
         <p className="mx-auto max-w-3xl text-xl text-gray-600">
@@ -335,13 +335,13 @@ const ClientsPage: FC = () => {
       </div>
 
       <motion.div
-        className="mx-auto mt-32 max-w-4xl rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-700 p-12 text-center shadow-xl"
+        className="mx-auto mt-32 max-w-6xl rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-700 p-12 text-center shadow-xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">
+        <h2 className="mb-6  text-3xl font-bold text-white sm:text-3xl md:text-4xl ">
           Ready to Write Your Success Story?
         </h2>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-sky-100">
@@ -350,7 +350,7 @@ const ClientsPage: FC = () => {
         </p>
         <a href="/get-in-touch">
           <motion.button
-            className="rounded-full bg-white px-10 py-4 text-lg font-bold text-sky-700 shadow-lg transition-all hover:shadow-xl"
+            className="text-md min-w-50 rounded-full bg-white px-4 py-4 text-center font-bold leading-tight text-sky-700 shadow-lg transition-all hover:shadow-xl md:px-6 md:text-lg"
             whileHover={{
               scale: 1.05,
               boxShadow: "0px 10px 25px rgba(0,0,0,0.2)",

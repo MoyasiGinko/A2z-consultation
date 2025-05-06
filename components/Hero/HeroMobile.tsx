@@ -156,7 +156,7 @@ const HeroMobile: React.FC = () => {
   const expertInText = "Expert in".split("");
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-blue-50 via-white to-blue-50 pt-14">
+    <div className="relative h-auto w-full overflow-hidden bg-gradient-to-b from-blue-50 via-white to-blue-50 pt-14">
       {/* Enhanced 3D background with gradients */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute h-full w-full bg-white opacity-70"></div>

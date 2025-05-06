@@ -200,7 +200,7 @@ const HowWeCanHelpYou = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-white py-12 sm:py-16 md:py-20 lg:py-24"
+      className="relative overflow-hidden bg-white py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24"
     >
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -249,7 +249,7 @@ const HowWeCanHelpYou = () => {
           variants={titleVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl"
+          className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl"
         >
           How we can help you?
           <UnderlineAnimation />
