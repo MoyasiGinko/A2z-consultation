@@ -39,10 +39,10 @@ const packages: PricingPackage[] = [
     name: "Platinum",
     tagline:
       "For employers who require hands-on support in submitting a successful visa application.",
-    color: "#7986cb",
-    ring: "#7986cb",
-    text: "#fff",
-    shadowColor: "rgba(121, 134, 203, 0.1)", // RGB version of #7986cb with alpha
+    color: "#5c6bc0", // More vibrant blue-purple
+    ring: "#5c6bc0",
+    text: "#ffffff",
+    shadowColor: "rgba(92, 107, 192, 0.15)", // RGB version of #5c6bc0 with increased alpha
     features: [
       { text: "Everything in the Gold Package, plus:" },
       {
