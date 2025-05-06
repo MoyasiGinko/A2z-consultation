@@ -34,7 +34,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqItems }) => {
     <div id="faq" className="w-full bg-white px-4 py-16">
       <div className="mx-auto max-w-3xl">
         <motion.h1
-          className="mb-16 text-center text-4xl font-bold text-black"
+          className="mb-16 text-center text-2xl font-bold  text-black sm:text-3xl md:text-4xl lg:text-5xl"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

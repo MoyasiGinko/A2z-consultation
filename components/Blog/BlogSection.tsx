@@ -113,7 +113,7 @@ const BlogSection: React.FC = () => {
     <section className="bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="relative mb-20">
-          <h2 className="bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl font-bold text-transparent">
+          <h2 className="bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-2xl  font-bold text-transparent sm:text-3xl md:text-4xl lg:text-5xl">
             Blog & News
           </h2>
           <UnderlineAnimation />

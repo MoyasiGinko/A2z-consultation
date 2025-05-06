@@ -115,7 +115,7 @@ const StartYourJourney = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="relative mt-8 overflow-hidden bg-primary py-16 text-white sm:mt-12 md:mt-16 lg:mt-24 xl:mt-40 2xl:py-32"
+      className="relative mt-8 overflow-hidden bg-primary py-10  text-white sm:py-12 md:py-16 lg:py-20 xl:py-24"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

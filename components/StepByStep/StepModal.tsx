@@ -128,7 +128,7 @@ const StepModal = ({ isOpen, onClose, step, additionalInfo }) => {
                 </motion.div>
 
                 <motion.h3
-                  className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl"
+                  className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
                   variants={itemVariants}
                 >
                   {step.title}

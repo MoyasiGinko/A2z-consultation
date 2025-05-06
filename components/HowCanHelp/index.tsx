@@ -200,7 +200,7 @@ const HowWeCanHelpYou = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-white py-12 sm:py-16 md:py-20 lg:py-24"
+      className="relative overflow-hidden bg-white py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24"
     >
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
