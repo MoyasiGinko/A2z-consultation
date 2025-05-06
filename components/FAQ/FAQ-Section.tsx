@@ -31,7 +31,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqItems }) => {
   const showSeeMoreButton = faqItems.length > initialItemsToShow;
 
   return (
-    <div className="w-full bg-white px-4 py-16">
+    <div id="faq" className="w-full bg-white px-4 py-16">
       <div className="mx-auto max-w-3xl">
         <motion.h1
           className="mb-16 text-center text-4xl font-bold text-black"
