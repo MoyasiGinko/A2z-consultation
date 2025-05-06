@@ -410,16 +410,13 @@ const AboutUs: React.FC = () => {
               through the process of maintaining our Sponsor Licence. Their deep
               expertise in immigration compliance, especially in SMS portal
               management and HR compliance, has been invaluable in keeping us
-              fully aligned with all regulations. Their guidance has always been
-              clear, thorough, and highly specialised, ensuring that we remain
-              compliant and audit-ready at all times. We truly appreciate their
-              transparency and dedication, always being available when we needed
-              them. If you're looking for a trustworthy and knowledgeable
-              immigration firm, we highly recommend their immigration firm.
+              fully aligned with all regulations.
             </p>
             <div className="mx-auto mb-4 h-px w-24 bg-sky-300"></div>
-            <p className="font-medium">MD Ashiqur rahman</p>
-            {/* <p className="text-sm text-sky-300">Bulgaria → Canada, 2021</p> */}
+            <p className="font-medium">Yerasimos Angelis</p>
+            <p className="text-sm text-sky-300">
+              Managing Director of GA R&D LTD
+            </p>
 
             <Link
               href="/our-clients"
