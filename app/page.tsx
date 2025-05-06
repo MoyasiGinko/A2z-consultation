@@ -23,23 +23,12 @@ export default function Home() {
     <main>
       <Hero />
       <Brands />
-      {/* <Feature /> */}
       <SponsorLicenceSection />
       <HowWeCanHelpYou />
       <StartYourJourney />
       <StepByStep />
 
       <StatsSection />
-      {/* <About /> */}
-      {/* <FeaturesTab />
-      <FunFact />
-      <Integration />
-      <CTA />
-      <FAQ />
-      <Testimonial /> */}
-      {/* <Pricing /> */}
-      {/* <Contact /> */}
-      {/* <Blog /> */}
       <WhoLovesUs />
       <GoogleReviews
         appId="7b481c44-e91d-41e4-934c-2da27681f802"
