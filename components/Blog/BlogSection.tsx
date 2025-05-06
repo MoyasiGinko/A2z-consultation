@@ -112,11 +112,13 @@ const BlogSection: React.FC = () => {
   return (
     <section className="bg-white py-16">
       <div className="container mx-auto px-4">
-        <div className="relative mb-20">
-          <h2 className="bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl  font-bold text-transparent sm:text-3xl md:text-4xl lg:text-5xl">
+        <div className="relative mb-10 md:mb-16 lg:mb-20">
+          <h2 className="mx-auto max-w-3xl bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-[clamp(1.75rem,5vw,3.5rem)] font-bold leading-[1.2] text-transparent">
             Blog & News
           </h2>
-          <UnderlineAnimation />
+          <div className="mt-2 md:mt-3">
+            <UnderlineAnimation />
+          </div>
         </div>
 
         {loading ? (

@@ -21,7 +21,7 @@ const BlogHeader = ({ categoryTitle }: BlogHeaderProps) => {
       <div className="absolute inset-x-0 bottom-0 top-1/3 px-3 sm:top-1/3 md:px-6 lg:px-8">
         <div className="mx-auto max-w-c-1280">
           <div className="max-w-3xl text-center text-white sm:mx-auto">
-            <h1 className="mb-2 text-2xl font-bold leading-tight sm:mb-3 sm:text-3xl md:mb-4 md:text-4xl lg:mb-5 lg:text-5xl">
+            <h1 className="mb-2 text-3xl font-bold leading-tight sm:mb-3 sm:text-3xl md:mb-4 md:text-4xl lg:mb-5 lg:text-5xl">
               {categoryTitle
                 ? `${categoryTitle} Blog Posts`
                 : "Blogs & Articles"}

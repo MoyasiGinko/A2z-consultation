@@ -331,7 +331,7 @@ const Brands: React.FC = () => {
           <h2
             className={`mb-3 text-2xl
             font-bold text-gray-950 transition-all delay-300 duration-700
-            sm:text-3xl md:mb-4 md:text-4xl
+            sm:text-3xl md:mb-4 md:text-4xl lg:text-5xl
             ${inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
           `}
           >

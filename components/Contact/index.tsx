@@ -137,7 +137,7 @@ const Contact: React.FC<ContactProps> = ({
               viewport={{ once: true }}
               className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8  md:w-3/5 lg:w-3/4 xl:p-15"
             >
-              <h2 className="mb-15 bg-gradient-to-l from-sky-800 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent  xl:text-sectiontitle2">
+              <h2 className="mb-15 bg-gradient-to-l from-sky-800 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl md:text-4xl lg:text-5xl  xl:text-sectiontitle2">
                 Send a message
               </h2>
 
@@ -280,7 +280,7 @@ const Contact: React.FC<ContactProps> = ({
               viewport={{ once: true }}
               className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
             >
-              <h2 className="mb-12.5 bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent  xl:text-sectiontitle2">
+              <h2 className="mb-12.5 bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl  md:text-4xl lg:text-5xl  xl:text-sectiontitle2">
                 Find us
               </h2>
 

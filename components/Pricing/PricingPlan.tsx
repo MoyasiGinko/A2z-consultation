@@ -88,7 +88,7 @@ const PricingPackages: React.FC<PricingPackagesProps> = ({ packages }) => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-24">
+    <div className="w-full bg-gradient-to-r from-blue-50 via-white to-amber-50 px-4 py-16 md:py-20 lg:py-24">
       <motion.div
         className="flex justify-center"
         initial={{ opacity: 0, y: -20 }}

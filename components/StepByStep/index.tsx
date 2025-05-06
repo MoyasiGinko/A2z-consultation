@@ -487,7 +487,7 @@ const StepByStep = () => {
               transition={{ duration: 10, repeat: Infinity }}
             />
 
-            <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl ">
               Ready to Start Your UK Journey?
             </h2>
             <p className="mb-8 text-lg opacity-90">

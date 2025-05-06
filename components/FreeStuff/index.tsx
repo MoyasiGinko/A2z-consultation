@@ -133,7 +133,7 @@ const FreeStuff: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <motion.h1
-              className="mb-2 text-2xl font-bold leading-tight text-white sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl"
+              className="mb-2 text-3xl font-bold leading-tight text-white sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
@@ -344,7 +344,7 @@ const FreeStuff: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="mb-4 text-2xl font-bold text-white">
+          <h3 className="mb-4 text-3xl font-bold text-white sm:text-3xl md:text-4xl ">
             Need Additional Help?
           </h3>
           <p className="mb-6 text-white opacity-90">
