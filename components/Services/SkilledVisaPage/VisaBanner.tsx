@@ -17,7 +17,7 @@ const VisaBanner: React.FC = () => {
   return (
     <div className="font-sans mx-auto flex max-w-6xl flex-col-reverse items-center justify-between p-6 md:flex-row md:p-10">
       <div className="mb-0 mt-10 w-full md:mb-0 md:mt-0 md:w-1/2 md:pr-10">
-        <h1 className="mb-6 text-4xl font-bold leading-tight text-[#0096c7]">
+        <h1 className="mb-6 text-3xl font-bold leading-tight text-[#0096c7] sm:text-3xl md:text-4xl lg:text-5xl">
           Seamless visa processing
         </h1>
         <p className="mb-8 max-w-lg text-base leading-relaxed text-gray-600">

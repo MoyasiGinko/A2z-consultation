@@ -178,7 +178,7 @@ const SponsorLicenceSection: React.FC = () => {
               variants={titleVariants}
               className="mb-8 md:mb-10 lg:mb-12"
             >
-              <h2 className="relative bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-left text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:text-4xl lg:text-5xl">
+              <h2 className="relative bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-left text-3xl font-bold tracking-tight text-transparent sm:text-3xl md:text-4xl lg:text-5xl">
                 Why You Need
                 <div className="mt-1">Sponsor Licence?</div>
                 <div className="relative mt-3 h-1 w-full overflow-hidden rounded-full bg-gray-100 md:mt-4">

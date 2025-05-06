@@ -7,7 +7,7 @@ import Link from "next/link";
 const FindCTA = () => {
   return (
     <div className=" mt-8 p-6 text-center">
-      <h1 className="mb-2 bg-gradient-to-r from-sky-500 via-sky-700 to-sky-800  bg-clip-text text-4xl font-bold text-transparent">
+      <h1 className="mb-2 bg-gradient-to-r from-sky-500 via-sky-700 to-sky-800  bg-clip-text text-3xl font-bold text-transparent sm:text-3xl md:text-4xl lg:text-5xl">
         Find out if we’re the right match for you
       </h1>
       <h3 className="mb-2 bg-gradient-to-r from-sky-600/80 via-sky-700/80 to-sky-800/80  bg-clip-text text-lg font-bold text-transparent">

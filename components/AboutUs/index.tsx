@@ -69,7 +69,7 @@ const AboutUs: React.FC = () => {
           variants={staggerContainer}
         >
           <motion.div variants={fadeIn}>
-            <h2 className="mb-6 text-3xl font-bold text-sky-500">
+            <h2 className="mb-6 text-3xl font-bold text-sky-500 sm:text-3xl md:text-4xl lg:text-5xl">
               Our Journey
             </h2>
             <p className="mb-4 text-gray-700">
@@ -144,7 +144,7 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-3xl font-bold text-sky-500">
+            <h2 className="mb-4 text-3xl font-bold text-sky-500 sm:text-3xl md:text-4xl lg:text-5xl">
               Vision & Mission
             </h2>
           </motion.div>
@@ -259,7 +259,7 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-3xl font-bold text-sky-500">
+            <h2 className="mb-4 text-3xl font-bold text-sky-500 sm:text-3xl md:text-4xl lg:text-5xl">
               Comprehensive Services
             </h2>
             <p className="mx-auto max-w-3xl text-gray-700">
@@ -324,7 +324,9 @@ const AboutUs: React.FC = () => {
             <span className="mb-2 inline-block rounded-full bg-sky-100 px-4 py-1 text-sm font-semibold text-sky-500">
               Making A Difference
             </span>
-            <h2 className="mb-4 text-4xl font-bold text-sky-900">Our Impact</h2>
+            <h2 className="mb-4 text-3xl font-bold text-sky-900 sm:text-3xl md:text-4xl lg:text-5xl">
+              Our Impact
+            </h2>
             <div className="mx-auto h-1 w-24 bg-sky-600"></div>
           </motion.div>
 
@@ -349,7 +351,7 @@ const AboutUs: React.FC = () => {
                 className="flex flex-col items-center rounded-xl bg-white p-8 text-center shadow-lg transition-transform hover:scale-105"
                 variants={fadeIn}
               >
-                <span className="mb-2 text-4xl font-bold text-sky-700">
+                <span className="mb-2 text-2xl font-bold text-sky-700 sm:text-3xl md:text-4xl lg:text-5xl">
                   {stat.number}
                 </span>
                 <span className="text-gray-600">{stat.label}</span>
@@ -438,7 +440,7 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-3xl font-bold text-sky-500">
+            <h2 className="mb-4 text-3xl font-bold text-sky-500 sm:text-3xl md:text-4xl lg:text-5xl">
               Leadership Team
             </h2>
             <p className="mx-auto max-w-3xl text-gray-700">
@@ -524,7 +526,7 @@ const AboutUs: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-3xl font-bold">
+          <h2 className="mb-6 text-3xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
             Begin Your Immigration Journey With Confidence
           </h2>
           <p className="mb-8 text-xl">

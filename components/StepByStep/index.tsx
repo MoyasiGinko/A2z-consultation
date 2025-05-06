@@ -431,7 +431,7 @@ const StepByStep = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <span className="relative inline-block">
-                <span className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl">
+                <span className="relative mb-4 bg-gradient-to-t from-sky-500 via-sky-600 to-sky-700 bg-clip-text text-center text-3xl font-bold tracking-tight text-transparent sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl">
                   Guide to UK Skilled Worker Visa Sponsorship
                 </span>
                 <UnderlineAnimation />
@@ -487,7 +487,7 @@ const StepByStep = () => {
               transition={{ duration: 10, repeat: Infinity }}
             />
 
-            <h2 className="mb-4 text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
               Ready to Start Your UK Journey?
             </h2>
             <p className="mb-8 text-lg opacity-90">

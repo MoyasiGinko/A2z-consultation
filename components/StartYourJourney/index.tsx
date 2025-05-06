@@ -241,7 +241,7 @@ const StartYourJourney = () => {
           >
             <div>
               <motion.h2
-                className="mb-2 text-2xl font-black leading-tight sm:text-3xl md:mb-3 lg:mb-5 lg:text-4xl xl:mb-6 xl:text-5xl"
+                className="mb-2 text-3xl font-black leading-tight sm:text-3xl md:mb-3 lg:mb-5 lg:text-4xl xl:mb-6 xl:text-5xl"
                 variants={itemVariants}
               >
                 <span className="block">Start your journey</span>

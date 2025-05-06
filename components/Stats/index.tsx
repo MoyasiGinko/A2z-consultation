@@ -58,7 +58,7 @@ const StatsSection: React.FC = () => {
             },
           }}
         >
-          Hundreds of companies trust us
+          Hundreds of Companies Trust Us
         </motion.h2>
 
         <motion.p

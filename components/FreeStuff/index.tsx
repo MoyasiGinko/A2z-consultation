@@ -174,7 +174,7 @@ const FreeStuff: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
+          <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-3xl md:text-4xl  ">
             <span className="inline-block text-sky-600">Essential</span> For
             Immigrants
           </h2>
@@ -368,7 +368,7 @@ const FreeStuff: React.FC = () => {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        <h2 className="mb-6 text-3xl font-bold text-gray-800">
+        <h2 className="mb-6 text-3xl sm:text-3xl md:text-4xl  font-bold text-gray-800">
           Ready to join our success stories?
         </h2>
         <a href="/get-in-touch">

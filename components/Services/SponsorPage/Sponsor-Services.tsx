@@ -224,7 +224,7 @@ const SponsorServices: React.FC = () => {
           transition={{ duration: 0.7 }}
         >
           <motion.h1
-            className="mb-6 text-3xl font-bold text-[#0e9dcc] md:text-4xl"
+            className="mb-6 text-3xl font-bold text-[#0e9dcc] sm:text-3xl md:text-4xl lg:text-5xl "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
