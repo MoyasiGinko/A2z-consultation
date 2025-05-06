@@ -24,7 +24,7 @@ const SponsorServices: React.FC = () => {
       icon: "/images/icon/compliance.svg",
       color: "#1565c0",
       benefits: [
-        "Personalized expert support throughout the process",
+        "Personalised expert support throughout the process",
         "Faster processing with our streamlined systems",
         "Higher success rate than industry average",
         "Comprehensive documentation guidance",
@@ -38,7 +38,7 @@ const SponsorServices: React.FC = () => {
       icon: "/images/icon/skilledvisa.svg",
       color: "#1565c0",
       benefits: [
-        "Personalized expert support throughout the process",
+        "Personalised expert support throughout the process",
         "Faster processing with our streamlined systems",
         "Higher success rate than industry average",
         "Comprehensive documentation guidance",
@@ -52,7 +52,7 @@ const SponsorServices: React.FC = () => {
     //   icon: "user",
     //   color: "#1565c0",
     //   benefits: [
-    //     "Personalized expert support throughout the process",
+    //     "Personalised expert support throughout the process",
     //     "Faster processing with our streamlined systems",
     //     "Higher success rate than industry average",
     //     "Comprehensive documentation guidance",
@@ -61,32 +61,32 @@ const SponsorServices: React.FC = () => {
   ]);
 
   // State for managing modal
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<ServiceCard | null>(
-    null,
-  );
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [selectedService, setSelectedService] = useState<ServiceCard | null>(
+  //   null,
+  // );
 
   // State for FAQ visibility
-  const [showFaq, setShowFaq] = useState(false);
+  // const [showFaq, setShowFaq] = useState(false);
 
   // Sample FAQ data
-  const faqs = [
-    {
-      question: "What is the processing time for a Skilled Worker Visa?",
-      answer:
-        "Processing times typically range from 3-8 weeks depending on the service option selected and your specific circumstances.",
-    },
-    {
-      question: "What compliance documents do I need to maintain?",
-      answer:
-        "You need to maintain accurate records of employee right-to-work documents, attendance monitoring systems, and internal HR policies aligned with UKVI requirements.",
-    },
-    {
-      question: "Do you offer emergency visa services?",
-      answer:
-        "Yes, we offer premium and priority services for urgent cases with expedited processing times.",
-    },
-  ];
+  // const faqs = [
+  //   {
+  //     question: "What is the processing time for a Skilled Worker Visa?",
+  //     answer:
+  //       "Processing times typically range from 3-8 weeks depending on the service option selected and your specific circumstances.",
+  //   },
+  //   {
+  //     question: "What compliance documents do I need to maintain?",
+  //     answer:
+  //       "You need to maintain accurate records of employee right-to-work documents, attendance monitoring systems, and internal HR policies aligned with UKVI requirements.",
+  //   },
+  //   {
+  //     question: "Do you offer emergency visa services?",
+  //     answer:
+  //       "Yes, we offer premium and priority services for urgent cases with expedited processing times.",
+  //   },
+  // ];
 
   // Animation variants
   const cardVariants = {
@@ -119,99 +119,99 @@ const SponsorServices: React.FC = () => {
     },
   };
 
-  const faqVariants = {
-    closed: { height: 0, opacity: 0 },
-    open: { height: "auto", opacity: 1, transition: { duration: 0.5 } },
-  };
+  // const faqVariants = {
+  //   closed: { height: 0, opacity: 0 },
+  //   open: { height: "auto", opacity: 1, transition: { duration: 0.5 } },
+  // };
 
-  const modalVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.3 },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.8,
-      transition: { duration: 0.2 },
-    },
-  };
+  // const modalVariants = {
+  //   hidden: { opacity: 0, scale: 0.8 },
+  //   visible: {
+  //     opacity: 1,
+  //     scale: 1,
+  //     transition: { duration: 0.3 },
+  //   },
+  //   exit: {
+  //     opacity: 0,
+  //     scale: 0.8,
+  //     transition: { duration: 0.2 },
+  //   },
+  // };
 
-  const backdropVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    exit: { opacity: 0 },
-  };
+  // const backdropVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: { opacity: 1 },
+  //   exit: { opacity: 0 },
+  // };
 
   // Function to render the appropriate icon based on the icon name
-  const renderIcon = (iconName: string) => {
-    switch (iconName) {
-      case "document":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-            />
-          </svg>
-        );
-      case "user":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-            />
-          </svg>
-        );
-      // Add more icon cases as needed
-      default:
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        );
-    }
-  };
+  // const renderIcon = (iconName: string) => {
+  //   switch (iconName) {
+  //     case "document":
+  //       return (
+  //         <svg
+  //           xmlns="http://www.w3.org/2000/svg"
+  //           className="h-6 w-6 text-white"
+  //           fill="none"
+  //           viewBox="0 0 24 24"
+  //           stroke="currentColor"
+  //         >
+  //           <path
+  //             strokeLinecap="round"
+  //             strokeLinejoin="round"
+  //             strokeWidth={2}
+  //             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+  //           />
+  //         </svg>
+  //       );
+  //     case "user":
+  //       return (
+  //         <svg
+  //           xmlns="http://www.w3.org/2000/svg"
+  //           className="h-6 w-6 text-white"
+  //           fill="none"
+  //           viewBox="0 0 24 24"
+  //           stroke="currentColor"
+  //         >
+  //           <path
+  //             strokeLinecap="round"
+  //             strokeLinejoin="round"
+  //             strokeWidth={2}
+  //             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+  //           />
+  //         </svg>
+  //       );
+  //     // Add more icon cases as needed
+  //     default:
+  //       return (
+  //         <svg
+  //           xmlns="http://www.w3.org/2000/svg"
+  //           className="h-6 w-6 text-white"
+  //           fill="none"
+  //           viewBox="0 0 24 24"
+  //           stroke="currentColor"
+  //         >
+  //           <path
+  //             strokeLinecap="round"
+  //             strokeLinejoin="round"
+  //             strokeWidth={2}
+  //             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  //           />
+  //         </svg>
+  //       );
+  //   }
+  // };
 
   // Function to open modal with service details
-  const openServiceModal = (service: ServiceCard) => {
-    setSelectedService(service);
-    setModalOpen(true);
-  };
+  // const openServiceModal = (service: ServiceCard) => {
+  //   setSelectedService(service);
+  //   setModalOpen(true);
+  // };
 
-  // Close modal when clicking outside or on close button
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  // // Close modal when clicking outside or on close button
+  // const closeModal = () => {
+  //   setModalOpen(false);
+  // };
 
   return (
     <div className="w-full bg-white px-4 py-16 md:py-24">
@@ -238,8 +238,8 @@ const SponsorServices: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Why not look for how we can help you to maintain your compliance in
-            order to reduce risk of losing licence
+            Let us help you maintain compliance and reduce the risk of losing
+            your sponsor licence.
           </motion.p>
 
           <motion.div className="mb-8 flex flex-col items-center justify-center gap-2 sm:flex-row">
@@ -249,36 +249,25 @@ const SponsorServices: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Looking for candidates & Visa Application - Seamless process and
-              Visa guaranteed
-            </motion.p>
-
-            <motion.button
-              className="flex items-center font-medium text-[#0e9dcc] hover:underline focus:outline-none"
-              onClick={() => setShowFaq(!showFaq)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              FAQ
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={`ml-1 h-4 w-4 transition-transform duration-300 ${showFaq ? "rotate-180" : ""}`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              Looking for candidates and visa applications? Our seamless process
+              offers guaranteed visa success.{" "}
+              <button
+                onClick={() => {
+                  setTimeout(() => {
+                    document.getElementById("faq")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }, 100);
+                }}
+                className="inline cursor-pointer border-none bg-transparent p-0 font-bold text-[#0e9dcc] hover:underline"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </motion.button>
+                Learn more in our FAQ.
+              </button>
+            </motion.p>
           </motion.div>
 
           {/* FAQ Section */}
-          <AnimatePresence>
+          {/* <AnimatePresence>
             {showFaq && (
               <motion.div
                 className="mx-auto mb-8 max-w-3xl rounded-lg bg-gray-50 p-4"
@@ -301,7 +290,7 @@ const SponsorServices: React.FC = () => {
                 </div>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
         </motion.div>
 
         {/* Cards Section */}
@@ -370,10 +359,9 @@ const SponsorServices: React.FC = () => {
         </motion.div>
 
         {/* Modal */}
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {modalOpen && selectedService && (
             <>
-              {/* Backdrop */}
               <motion.div
                 className="fixed inset-0 z-999 bg-black bg-opacity-50"
                 variants={backdropVariants}
@@ -383,7 +371,6 @@ const SponsorServices: React.FC = () => {
                 onClick={closeModal}
               />
 
-              {/* Modal content */}
               <motion.div
                 className="fixed inset-0 z-99999 flex items-center justify-center px-4"
                 onClick={(e) => e.stopPropagation()}
@@ -474,7 +461,7 @@ const SponsorServices: React.FC = () => {
               </motion.div>
             </>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </div>
     </div>
   );

@@ -146,12 +146,12 @@ const SponsorLicenceSection: React.FC = () => {
   );
 
   const listItems = [
-    "Recruit Skilled Workers from Outside UK to fill talent gaps.",
-    "Hire Right Talent to drive Innovation and Business Growth.",
-    "Support your Business Expansion Plan",
-    "Stay Competitive in your Industry with Highly Skilled Workers",
-    "Allow you to legally employ non-UK workers",
-    "Long term Staff Retention & Peace of Mind",
+    "Recruit Skilled Workers from Outside UK to Fill Talent Gaps",
+    "Hire Right Talent to Drive Innovation and Business Growth",
+    "Support Your Business Expansion Plan",
+    "Stay Competitive in Your Industry with Highly Skilled Workers",
+    "Allow You to Legally Employ Non-UK Workers",
+    "Long Term Staff Retention & Peace of Mind",
   ];
 
   return (

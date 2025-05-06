@@ -16,7 +16,7 @@ export const steps = [
   {
     id: 3,
     image: "/images/steps/step-3.svg",
-    title: "ASSIGN CERTIFICATE of SPONSORSHIP (CoS) to Your Skilled Worker",
+    title: "Assign Certificate of Sponsorship (CoS) to Your Skilled Worker",
     description:
       "Once your business has secured a Sponsor Licence, the next crucial step is assigning a Certificate of Sponsorship (CoS) to the skilled worker you want to hire. A CoS is a unique reference number that confirms the job offer and enables the worker to apply for a Skilled Worker visa.",
   },
@@ -40,7 +40,7 @@ export const steps = [
 export const additionalInfo = {
   1: {
     expectation:
-      "Before applying for a Sponsor Licence, businesses must meet certain requirements set by the UK Home Office. Our Experts Review will help determine whether your business qualifies.",
+      "We will thoroughly review your company’s documents and verify if they meet the UKVI criteria, ensuring that you are fully prepared for your Sponsor Licence application without any complications. Our Expert Review will evaluate your business's eligibility to ensure it meets the requirements.",
     documents: [
       "Business Legitimacy: We check if your company is legally registered and operating in the UK.",
       "Genuine Need for Sponsorship: We assess whether your business genuinely requires skilled foreign workers.",

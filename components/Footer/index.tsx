@@ -76,13 +76,13 @@ const socialLinks: SocialLink[] = [
     icon: <Facebook size={24} />,
     href: "https://www.facebook.com/profile.php?id=61550724784012",
   },
-  { id: 2, icon: <Twitter size={24} />, href: "https://twitter.com" },
+  // { id: 2, icon: <Twitter size={24} />, href: "https://twitter.com" },
   {
     id: 3,
     icon: <Linkedin size={24} />,
-    href: "https://www.linkedin.com/in/a2z-immigration-solutions/",
+    href: "https://www.linkedin.com/company/a2z-immigration/",
   },
-  { id: 4, icon: <Instagram size={24} />, href: "https://instagram.com" },
+  // { id: 4, icon: <Instagram size={24} />, href: "https://instagram.com" },
 ];
 
 const Footer: React.FC = () => {
@@ -273,7 +273,7 @@ const Footer: React.FC = () => {
                   <div className="flex flex-col items-center">
                     <div className="relative mb-2 h-28 w-28">
                       <Image
-                        src="/images/logo/oisc.png"
+                        src="/images/logo/iaa.png"
                         alt="OISC icon"
                         layout="fill"
                         objectFit="contain"
@@ -414,7 +414,7 @@ const Footer: React.FC = () => {
               <div className="mb-2 flex items-center">
                 <div className="relative mb-2 h-28 w-28">
                   <Image
-                    src="/images/logo/oisc.png"
+                    src="/images/logo/iaa.png"
                     alt="OISC icon"
                     layout="fill"
                     objectFit="contain"

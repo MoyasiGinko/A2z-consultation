@@ -6,13 +6,13 @@ import Lines from "@/components/Lines";
 import ScrollToTop from "@/components/ScrollToTop";
 // import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import ToasterContext from "./utils/context/ToastContext";
-import StoreProvider from "./utils/provider/StoreProvider";
+import "@/app/globals.css";
+import ToasterContext from "@/app/utils/context/ToastContext";
+import StoreProvider from "@/app/utils/provider/StoreProvider";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/configs/redux/hooks";
 import { fetchLoggedInUser } from "@/configs/redux/auth/authSlice";
-import TawkToChat from "./utils/context/TawkToChat";
+import TawkToChat from "@/app/utils/context/TawkToChat";
 import CookieConsent from "@/utils/CookiesConsent";
 
 const inter = Inter({ subsets: ["latin"] });

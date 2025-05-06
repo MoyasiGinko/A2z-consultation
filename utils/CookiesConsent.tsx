@@ -415,7 +415,7 @@ const CookieConsent = () => {
         <h4 className="text-lg font-medium text-gray-900">Our Cookie Policy</h4>
         <p className="text-gray-600">
           This Cookie Policy explains how our website uses cookies and similar
-          technologies to recognize you when you visit our website. It explains
+          technologies to recognise you when you visit our website. It explains
           what these technologies are and why we use them, as well as your
           rights to control our use of them.
         </p>
@@ -453,7 +453,7 @@ const CookieConsent = () => {
                   {showPolicy
                     ? "Cookie Policy"
                     : showCustomize
-                      ? "Customize Cookies"
+                      ? "Customise Cookies"
                       : "Cookie Settings"}
                 </h3>
               </div>
@@ -492,7 +492,7 @@ const CookieConsent = () => {
                     onClick={toggleCustomize}
                     className="flex-grow rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 sm:px-5 sm:py-2.5 md:flex-grow-0 md:text-base"
                   >
-                    Customize
+                    Customise
                   </button>
                   <button
                     onClick={acceptEssential}
@@ -560,7 +560,7 @@ const CookieConsent = () => {
               <div className="space-y-4 sm:space-y-6">
                 <div>
                   <p className="text-sm text-gray-600 sm:text-base">
-                    Customize your cookie preferences. Essential cookies are
+                    Customise your cookie preferences. Essential cookies are
                     always enabled as they are necessary for the website to
                     function properly.
                   </p>
@@ -667,7 +667,7 @@ const CookieConsent = () => {
                           </h4>
                         </div>
                         <p className="mt-0.5 line-clamp-2 text-xs text-gray-600 sm:mt-1 sm:text-sm">
-                          Used to display personalized ads and content
+                          Used to display personalised ads and content
                         </p>
                       </div>
                       <div className="flex items-center gap-2">

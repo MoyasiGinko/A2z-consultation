@@ -216,7 +216,7 @@ const AboutUs: React.FC = () => {
         >
           {[
             {
-              title: "Personalized Strategy",
+              title: "Personalised Strategy",
               description:
                 "We analyze your unique circumstances, goals, and timeline to create a tailored immigration plan optimized for your specific situation.",
               icon: "🔍",
@@ -410,16 +410,13 @@ const AboutUs: React.FC = () => {
               through the process of maintaining our Sponsor Licence. Their deep
               expertise in immigration compliance, especially in SMS portal
               management and HR compliance, has been invaluable in keeping us
-              fully aligned with all regulations. Their guidance has always been
-              clear, thorough, and highly specialised, ensuring that we remain
-              compliant and audit-ready at all times. We truly appreciate their
-              transparency and dedication, always being available when we needed
-              them. If you're looking for a trustworthy and knowledgeable
-              immigration firm, we highly recommend their immigration firm.
+              fully aligned with all regulations.
             </p>
             <div className="mx-auto mb-4 h-px w-24 bg-sky-300"></div>
-            <p className="font-medium">MD Ashiqur rahman</p>
-            {/* <p className="text-sm text-sky-300">Bulgaria → Canada, 2021</p> */}
+            <p className="font-medium">Yerasimos Angelis</p>
+            <p className="text-sm text-sky-300">
+              Managing Director of GA R&D LTD
+            </p>
 
             <Link
               href="/our-clients"
@@ -461,7 +458,7 @@ const AboutUs: React.FC = () => {
               {
                 name: "Fiyadh Hosne Mowla",
                 role: "Director",
-                bio: "Fiyadh joined A2Z in 2016 after a successful career in international development. Born in Bangladesh and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Fiyadh specializes in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
+                bio: "Fiyadh joined A2Z in 2016 after a successful career in international development. Born in Bangladesh and having immigrated to three different countries throughout his life, he brings unique insight to our operations. Fiyadh specialises in family reunification cases and has personally overseen more than 1,500 successful applications. He holds an MBA from INSEAD and speaks five languages fluently.",
                 image: "/images/user/team-02.png",
               },
               {
@@ -533,7 +530,7 @@ const AboutUs: React.FC = () => {
           <p className="mb-8 text-xl">
             Join thousands of successful clients who have trusted A2Z Immigrants
             to guide them through the complexities of immigration. Our team is
-            ready to create a customized plan for your specific needs.
+            ready to create a customised plan for your specific needs.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link

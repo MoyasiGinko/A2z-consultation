@@ -47,7 +47,7 @@ export const supportTabs: SupportTab[] = [
           title: "Key Eligibility Criteria",
           paragraphs: [
             "Valid Purpose: You must have a valid reason for your visit, such as tourism, family visit, business, or other permitted activities.",
-            "Temporary Intent: You must demonstrate that your visit is temporary, and you intend to leave the UK at the end of your authorized stay.",
+            "Temporary Intent: You must demonstrate that your visit is temporary, and you intend to leave the UK at the end of your authorised stay.",
             "Funds for the Trip: You must have sufficient funds to cover your travel and living expenses during your stay in the UK.",
             "Ties to Home Country: You must show strong ties to your home country, such as employment, family, or property, to ensure your return after the visit.",
             "No Intention to Work or Settle: A Visit Visa does not permit work or settlement in the UK. You must not engage in any paid or unpaid work during your visit.",
@@ -124,7 +124,7 @@ export const supportTabs: SupportTab[] = [
         {
           title: "Application Strategy",
           description:
-            "Personalized approach to demonstrating the care needs and UK family support arrangements",
+            "Personalised approach to demonstrating the care needs and UK family support arrangements",
           icon: "/icons/strategy.svg",
         },
       ],
@@ -158,7 +158,7 @@ export const supportTabs: SupportTab[] = [
         {
           title: "Visa Benefits",
           paragraphs: [
-            "Study at recognized UK institutions",
+            "Study at recognised UK institutions",
             "Possibility to work part-time during term time",
             "Full-time work allowed during holidays",
             "Bring dependents in certain circumstances",
@@ -353,7 +353,7 @@ export const supportTabs: SupportTab[] = [
         },
         {
           title: "Strategic Planning",
-          description: "Development of personalized immigration strategy",
+          description: "Development of personalised immigration strategy",
           icon: "/icons/planning.svg",
         },
       ],

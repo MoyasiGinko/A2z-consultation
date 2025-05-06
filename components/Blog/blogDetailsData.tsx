@@ -54,7 +54,7 @@ export async function getSingleBlogPost(
       category:
         post.categories && post.categories.length > 0
           ? post.categories[0].title
-          : "Uncategorized",
+          : "Uncategorised",
       mainImage: post.mainImage?.asset?.url || "/images/blog/blog-01.png",
       content: post.body || [],
       estimatedReadingTime: post.estimatedReadingTime

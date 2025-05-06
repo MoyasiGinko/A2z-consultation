@@ -82,7 +82,7 @@ const useBlogData = ({ categorySlug }: BlogDataProps): BlogDataResult => {
               category:
                 post.categories && post.categories.length > 0
                   ? post.categories[0].title
-                  : "Uncategorized",
+                  : "Uncategorised",
               date: new Date(post.publishedAt).toLocaleDateString("en-US", {
                 month: "short",
                 day: "numeric",
