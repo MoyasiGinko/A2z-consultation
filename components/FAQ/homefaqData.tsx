@@ -5,66 +5,42 @@ interface FAQItem {
 
 const faqItems: FAQItem[] = [
   {
-    question: "What is a sponsor licence, and why do I need one?",
+    question: "What are your core services?",
     answer: (
       <p>
-        A <span className="text-black">sponsor licence</span> allows UK
-        businesses to legally hire skilled workers from outside the UK. Without
-        it, you cannot sponsor visas for international employees.
+        Our core services include sponsor licence applications, visa
+        sponsorship, compliance management, and immigration strategy consulting
+        for UK businesses looking to hire international talent.
       </p>
     ),
   },
   {
-    question: "Can I sponsor an employee who is already in the UK?",
+    question: "What industries do you serve?",
     answer: (
       <p>
-        Yes, you can sponsor an employee already in the UK, provided they have
-        the right immigration status and meet the eligibility requirements for
-        the specific visa category you're sponsoring them under.
+        We serve a wide range of industries including technology, healthcare,
+        education, finance, manufacturing, and hospitality. Our expertise
+        extends to businesses of all sizes, from startups to established
+        corporations.
       </p>
     ),
   },
   {
-    question: "How long does it take to obtain a sponsor licence?",
-    answer: (
-      <p>
-        The standard processing time for a sponsor licence application is
-        typically 8 weeks from the date of submission. However, premium
-        processing is available for an additional fee, which can reduce the
-        processing time to 10 working days.
-      </p>
-    ),
-  },
-  {
-    question: "What are the costs associated with a sponsor licence?",
+    question: "How does the consultation process work?",
     answer: (
       <div>
-        <p>The main costs associated with a sponsor licence include:</p>
+        <p>Our consultation process involves three simple steps:</p>
         <ul className="mt-2 list-disc pl-5">
           <li>
-            Application fee: £536 for small businesses or £1,476 for
-            medium/large businesses
+            Initial assessment: We discuss your specific needs and objectives
           </li>
-          <li>Certificate of Sponsorship: £199 per worker</li>
-          <li>Immigration Skills Charge: £364 to £1,000 per year per worker</li>
+          <li>Strategy development: We create a customized immigration plan</li>
           <li>
-            Additional legal fees if you use a law firm to assist with the
-            application
+            Implementation: We guide you through the application process with
+            ongoing support
           </li>
         </ul>
       </div>
-    ),
-  },
-  {
-    question: "Can I reapply if my application is refused?",
-    answer: (
-      <p>
-        Yes, you can reapply if your sponsor licence application is refused.
-        However, it's important to address the reasons for the refusal before
-        submitting a new application. There is no cooling-off period, but
-        reapplying without addressing the issues will likely result in another
-        refusal.
-      </p>
     ),
   },
 ];
