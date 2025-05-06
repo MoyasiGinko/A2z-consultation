@@ -42,7 +42,7 @@ export const clientData: ClientInfo[] = [
       quote:
         "A huge thank you to Fiyadh and his team for expertly guiding us through the process of maintaining our Sponsor Licence. Their deep expertise in immigration compliance, especially in SMS portal management and HR compliance, has been invaluable in keeping us fully aligned with all regulations.",
       source: "Yerasimos Angelis, Managing Director of GA R&D LTD",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://www.youtube.com/embed/0pJWdqBEQhQ?si=fh30vZiqZ_9ktCuz",
       videoThumbnail: "/images/clients/thumbnail1.png",
       // No thumbnail - will use the iframe itself
     },
