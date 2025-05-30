@@ -161,15 +161,19 @@ pre {
 
 /* Blog Details Table Integration */
 .blog-details table {
-  @apply my-6 w-full border-collapse overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm;
+  @apply my-6 w-full overflow-hidden rounded-lg border-none bg-white shadow-sm;
 }
 
 .blog-details table th {
-  @apply bg-gradient-to-r from-blue-600 to-blue-700 p-3 text-left text-sm font-semibold uppercase tracking-wider text-white;
+  @apply border-none bg-gradient-to-r from-sky-600 to-sky-700 p-3 text-left text-sm font-semibold uppercase tracking-wider text-white;
 }
 
 .blog-details table td {
   @apply border-b border-gray-200 p-3 text-gray-800;
+}
+
+.table-content {
+  @apply border-[0.1px] border-gray-200 transition-colors duration-200;
 }
 
 .blog-details table tbody tr:hover {

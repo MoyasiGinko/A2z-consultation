@@ -93,7 +93,7 @@ const TableComponent: React.FC<TableComponentProps> = ({
 
     switch (style) {
       case "striped":
-        baseClasses += isEven ? " bg-gray-50" : " bg-white";
+        baseClasses += isEven ? " bg-gray-100" : " bg-white";
         break;
       case "bordered":
         baseClasses += " border border-gray-300 bg-white";
@@ -127,18 +127,29 @@ const TableComponent: React.FC<TableComponentProps> = ({
       )}
 
       {/* Table Container with Responsive Scroll */}
-      <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
-        <table className={getTableStyleClasses(table.tableStyle)}>
+      <div className="overflow-x-auto bg-transparent">
+        <table
+          className={
+            getTableStyleClasses(table.tableStyle) +
+            " min-w-[600px] sm:min-w-full"
+          }
+        >
           {/* Table Header */}
           <thead>
             <tr>
               {table.headers.map((header, index) => (
-                <th key={index} className={getHeaderClasses(table.tableStyle)}>
+                <th
+                  key={index}
+                  className={
+                    getHeaderClasses(table.tableStyle) +
+                    " text-xs sm:text-sm md:text-base"
+                  }
+                >
                   {header}
                 </th>
               ))}
             </tr>
-          </thead>{" "}
+          </thead>
           {/* Table Body */}
           <tbody>
             {table.rows.map((row, rowIndex) => {
@@ -152,7 +163,7 @@ const TableComponent: React.FC<TableComponentProps> = ({
                   <tr key={rowIndex} className="bg-red-50">
                     <td
                       colSpan={table.headers.length}
-                      className="p-4 text-center text-red-600"
+                      className="p-4 text-center text-xs text-red-600 sm:text-sm md:text-base"
                     >
                       Invalid row data at position {rowIndex + 1}
                     </td>
@@ -163,17 +174,17 @@ const TableComponent: React.FC<TableComponentProps> = ({
               return (
                 <tr
                   key={rowIndex}
-                  className="transition-shadow duration-200 hover:shadow-sm"
+                  className="table-content transition-shadow duration-200 hover:shadow-sm"
                 >
                   {table.headers.map((header, cellIndex) => {
                     const cellValue = row.cells[cellIndex];
                     return (
                       <td
                         key={cellIndex}
-                        className={getCellClasses(
-                          table.tableStyle,
-                          rowIndex % 2 === 0,
-                        )}
+                        className={
+                          getCellClasses(table.tableStyle, rowIndex % 2 === 0) +
+                          " text-xs sm:text-sm md:text-base"
+                        }
                       >
                         {cellValue !== undefined &&
                         cellValue !== null &&
@@ -190,10 +201,10 @@ const TableComponent: React.FC<TableComponentProps> = ({
                     }).map((_, index) => (
                       <td
                         key={`empty-${index}`}
-                        className={getCellClasses(
-                          table.tableStyle,
-                          rowIndex % 2 === 0,
-                        )}
+                        className={
+                          getCellClasses(table.tableStyle, rowIndex % 2 === 0) +
+                          " text-xs sm:text-sm md:text-base"
+                        }
                       >
                         -
                       </td>
@@ -206,10 +217,10 @@ const TableComponent: React.FC<TableComponentProps> = ({
       </div>
 
       {/* Table Info */}
-      <div className="mt-2 flex justify-between text-xs text-gray-500">
+      {/* <div className="mt-2 flex justify-between text-xs text-gray-500">
         <span>{table.rows.length} rows</span>
         <span>{table.headers.length} columns</span>
-      </div>
+      </div> */}
     </div>
   );
 };
