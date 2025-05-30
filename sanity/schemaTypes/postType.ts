@@ -50,6 +50,13 @@ export const postType = defineType({
       name: "body",
       type: "blockContent",
     }),
+    defineField({
+      name: "dataTables",
+      title: "Data Tables",
+      type: "array",
+      of: [defineArrayMember({ type: "reference", to: { type: "table" } })],
+      description: "Add data tables to display in this post",
+    }),
   ],
   preview: {
     select: {

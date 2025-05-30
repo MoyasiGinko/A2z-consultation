@@ -48,6 +48,15 @@ export async function fetchPostBySlug(slug: string) {
       image { asset -> { url } }
     },
     publishedAt,
+    dataTables[]-> {
+      _id,
+      title,
+      description,
+      headers,
+      rows,
+      tableStyle,
+      slug
+    },
     "relatedPosts": *[_type == "post" && slug.current != $slug && count(categories[@._ref in ^.^.categories[]._ref]) > 0] {
       _id,
       title,
@@ -166,7 +175,7 @@ export async function fetchFeaturedPosts(limit: number = 3) {
  * @returns Object with posts array and pagination info
  */
 export async function fetchPaginatedPosts(
-  pageSize: number = 9,
+  pageSize: number = 10,
   pageNumber: number = 1,
 ) {
   // Calculate start and end indexes

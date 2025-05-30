@@ -14,15 +14,33 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
 }) => {
   const prevPageRef = useRef(currentPage);
-
   // Effect to scroll to top when page changes
   useEffect(() => {
     if (prevPageRef.current !== currentPage) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Try to scroll to blog section with offset, fallback to top of page
+      const blogSection =
+        document.querySelector("section[data-blog-section]") ||
+        document.querySelector("section.bg-gray-50") ||
+        document.body;
+
+      if (blogSection && blogSection !== document.body) {
+        const rect = blogSection.getBoundingClientRect();
+        const offsetTop = window.pageYOffset + rect.top - 100; // 100px offset for breathing room
+        
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
       prevPageRef.current = currentPage;
     }
   }, [currentPage]);
-
   const handlePrevious = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);

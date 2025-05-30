@@ -14,9 +14,8 @@ const Blog = () => {
   const categorySlug = pathname.startsWith("/blog/category/")
     ? pathname.split("/blog/category/")[1]
     : undefined;
-
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 9;
+  const postsPerPage = 10;
 
   // Get blog data using the custom hook
   const { posts, loading, error, categoryTitle, totalPosts } = useBlogData({
@@ -36,9 +35,9 @@ const Blog = () => {
 
   return (
     <>
+      {" "}
       <BlogHeader categoryTitle={categoryTitle} />
-
-      <section className="bg-gray-50 py-10">
+      <section className="bg-gray-50 py-10" data-blog-section>
         <div className="mx-auto max-w-c-1280 px-4 md:px-8 xl:px-0">
           {/* Show notification for "show-all" */}
           {/* {categorySlug === "show-all" && (
@@ -91,7 +90,6 @@ const Blog = () => {
           </div>
         </div>
       </section>
-
       <FindCTA />
     </>
   );
