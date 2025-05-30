@@ -1,16 +1,17 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import SharePost from "@/components/Blog/lib/SharePost";
 import BookCallSidebar from "@/components/Blog/lib/sub/BookCall";
 import CategoryList from "@/components/Blog/lib/sub/CategoryList";
 import TrendingPosts from "@/components/Blog/lib/sub/TrendingPosts";
+import TableComponent from "@/components/Blog/lib/TableComponent";
 import Image from "next/image";
 import Link from "next/link";
 import { getSingleBlogPost } from "@/components/Blog/blogDetailsData";
 import fallbackDetailsData from "@/components/Blog/blogDetailsData";
 import { useRouter, usePathname } from "next/navigation";
 import { PortableText } from "@/utils/PortableText";
+import { DataTable } from "@/types/blog";
 
 // Define types
 interface BlogPost {
@@ -23,6 +24,7 @@ interface BlogPost {
   content: string[] | any; // Support both array of strings and PortableText blocks
   estimatedReadingTime?: string;
   additionalImages?: string[];
+  dataTables?: DataTable[];
   relatedPosts?: Array<{
     id: string;
     title: string;
@@ -261,8 +263,19 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
                         );
                       }
                     })()}
-                  </div>
-
+                  </div>{" "}
+                  {/* Data Tables Section */}
+                  {blogPost.dataTables && blogPost.dataTables.length > 0 && (
+                    <div className="my-8">
+                      {blogPost.dataTables.map((table, index) => (
+                        <TableComponent
+                          key={table.slug?.current || table._id || index}
+                          table={table}
+                          className="mb-8 last:mb-0"
+                        />
+                      ))}
+                    </div>
+                  )}
                   {/* Additional Images */}
                   {blogPost.additionalImages &&
                     blogPost.additionalImages.length > 0 && (

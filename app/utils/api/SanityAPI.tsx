@@ -48,6 +48,15 @@ export async function fetchPostBySlug(slug: string) {
       image { asset -> { url } }
     },
     publishedAt,
+    dataTables[]-> {
+      _id,
+      title,
+      description,
+      headers,
+      rows,
+      tableStyle,
+      slug
+    },
     "relatedPosts": *[_type == "post" && slug.current != $slug && count(categories[@._ref in ^.^.categories[]._ref]) > 0] {
       _id,
       title,

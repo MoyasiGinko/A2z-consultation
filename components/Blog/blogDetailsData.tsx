@@ -1,6 +1,7 @@
 "use client";
 import { fetchPostBySlug } from "@/app/utils/api/SanityAPI";
 import { format } from "date-fns";
+import { DataTable } from "@/types/blog";
 
 interface BlogPost {
   id: string;
@@ -12,6 +13,7 @@ interface BlogPost {
   content: string[] | any;
   estimatedReadingTime?: string;
   additionalImages?: string[];
+  dataTables?: DataTable[];
   relatedPosts?: Array<{
     id: string;
     title: string;
@@ -63,6 +65,8 @@ export async function getSingleBlogPost(
       additionalImages: post.additionalImages?.map(
         (image: any) => image?.asset?.url || "/images/blog/blog-01.png",
       ),
+      // Map data tables if available
+      dataTables: post.dataTables || [],
       // Format related posts if available
       relatedPosts: post.relatedPosts?.map((relatedPost) => ({
         id: relatedPost._id || `related-${Date.now()}`,
@@ -131,8 +135,25 @@ const fallbackDetailsData = [
         markDefs: [],
       },
     ],
-
     additionalImages: ["/images/blog/blog-01.png", "/images/blog/blog-02.png"],
+
+    // Add sample data tables to the fallback data
+    dataTables: [
+      {
+        _id: "sample-table-1",
+        title: "Sample Data Table",
+        description: "This is a sample data table for demonstration purposes.",
+        headers: ["Feature", "Basic Plan", "Pro Plan", "Enterprise"],
+        rows: [
+          { cells: ["Users", "5", "25", "Unlimited"] },
+          { cells: ["Storage", "10GB", "100GB", "1TB"] },
+          { cells: ["Support", "Email", "Email & Chat", "24/7 Phone"] },
+          { cells: ["API Access", "Limited", "Full", "Full + Priority"] },
+        ],
+        tableStyle: "striped" as const,
+        slug: { current: "sample-table" },
+      },
+    ],
 
     // Add some related posts to the fallback data
     relatedPosts: [
