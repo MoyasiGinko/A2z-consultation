@@ -175,7 +175,7 @@ export async function fetchFeaturedPosts(limit: number = 3) {
  * @returns Object with posts array and pagination info
  */
 export async function fetchPaginatedPosts(
-  pageSize: number = 9,
+  pageSize: number = 10,
   pageNumber: number = 1,
 ) {
   // Calculate start and end indexes

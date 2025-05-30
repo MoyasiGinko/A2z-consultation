@@ -14,9 +14,8 @@ const Blog = () => {
   const categorySlug = pathname.startsWith("/blog/category/")
     ? pathname.split("/blog/category/")[1]
     : undefined;
-
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 9;
+  const postsPerPage = 10;
 
   // Get blog data using the custom hook
   const { posts, loading, error, categoryTitle, totalPosts } = useBlogData({

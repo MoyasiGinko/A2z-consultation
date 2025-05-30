@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { fetchCategories } from "@/app/utils/api/SanityAPI";
+import { client } from "@/sanity/lib/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -55,21 +56,18 @@ const CategoryList = ({ currentCategory }: CategoryListProps) => {
   const handleClearFilter = () => {
     router.push("/blog/category/show-all");
   };
-
   // Fetch categories on component mount
   useEffect(() => {
     const getCategories = async () => {
       try {
         setLoading(true);
 
-        // Only fetch categories - we'll calculate total posts from category counts
+        // Fetch categories and total post count separately
         const fetchedCategories = await fetchCategories();
 
-        // Calculate total posts by summing post counts from all categories
-        const total = fetchedCategories.reduce(
-          (sum: number, category: Category) => sum + (category.postCount || 0),
-          0,
-        );
+        // Get actual total post count directly from all posts (including uncategorized)
+        const totalPostsQuery = `count(*[_type == "post"])`;
+        const total = await client.fetch(totalPostsQuery);
 
         setTotalPosts(total);
 
