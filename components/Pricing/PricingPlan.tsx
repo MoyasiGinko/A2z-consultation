@@ -26,16 +26,16 @@ const PricingPackages: React.FC<PricingPackagesProps> = ({ packages }) => {
   const [expandedStates, setExpandedStates] = useState<{
     [key: string]: boolean;
   }>({
-    Gold: false,
-    Platinum: false,
-    VIP: false,
+    Essential: false,
+    Enhanced: false,
+    Premium: false,
   });
 
   // Create refs for each card
   const cardRefs = {
-    Gold: useRef<HTMLDivElement>(null),
-    Platinum: useRef<HTMLDivElement>(null),
-    VIP: useRef<HTMLDivElement>(null),
+    Essential: useRef<HTMLDivElement>(null),
+    Enhanced: useRef<HTMLDivElement>(null),
+    Premium: useRef<HTMLDivElement>(null),
   };
 
   const toggleReadMore = (packageName: string) => {

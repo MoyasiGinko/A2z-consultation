@@ -16,7 +16,7 @@ interface PricingPackage {
 
 const packages: PricingPackage[] = [
   {
-    name: "Gold",
+    name: "Essential",
     tagline: "Essential compliance support",
     color: "#08A1DA", // Modified to moderate dark light teal
     ring: "#08A1DA", // Matching ring color
@@ -35,17 +35,17 @@ const packages: PricingPackage[] = [
       { text: "General Advice & Support" },
     ],
     description:
-      "Our Gold compliance package provides essential support to help you maintain basic sponsor license compliance, including initial assessment, SMS portal management, and limited CoS application support.",
+      "Our Essential compliance package provides essential support to help you maintain basic sponsor license compliance, including initial assessment, SMS portal management, and limited CoS application support.",
   },
   {
-    name: "Platinum",
+    name: "Enhanced",
     tagline: "Enhanced compliance management",
     color: "#7986cb",
     ring: "#7986cb",
     text: "#fff",
     shadowColor: "rgba(121, 134, 203, 0.1)", // RGB version of #7986cb with alpha
     features: [
-      { text: "All Services with Gold" },
+      { text: "All Services with Essential" },
       {
         text: "Fully Digital HR Service with Real-time visa expiry and compliance reminders",
       },
@@ -65,17 +65,17 @@ const packages: PricingPackage[] = [
       { text: "Provide Monthly Update on Compliance Health Check" },
     ],
     description:
-      "Our Platinum compliance package offers comprehensive compliance management with digital HR services, unlimited CoS applications, regular updates, and proactive audit preparation to ensure ongoing compliance.",
+      "Our Enhanced compliance package offers comprehensive compliance management with digital HR services, unlimited CoS applications, regular updates, and proactive audit preparation to ensure ongoing compliance.",
   },
   {
-    name: "VIP",
+    name: "Premium",
     tagline: "Premium compliance and recruitment support",
     color: "#ffb900",
     ring: "#ffb900",
     text: "#000",
     shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
     features: [
-      { text: "All With Diamond" }, // Note: There seems to be a typo in the original data; "Diamond" should likely be "Platinum"
+      { text: "All With Diamond" }, // Note: There seems to be a typo in the original data; "Diamond" should likely be "Enhanced"
       { text: "Priority handling of the CoS Application" },
       { text: "Fast-tracked assistance with the CoS assignments" },
       {
@@ -88,7 +88,7 @@ const packages: PricingPackage[] = [
       { text: "Direct Home Office liaison support for any queries." },
     ],
     description:
-      "Our VIP compliance package delivers the highest level of support including priority CoS handling, recruitment assistance, unlimited CoS support, and direct Home Office liaison to ensure complete compliance and streamlined processes.",
+      "Our Premium compliance package delivers the highest level of support including priority CoS handling, recruitment assistance, unlimited CoS support, and direct Home Office liaison to ensure complete compliance and streamlined processes.",
   },
 ];
 
