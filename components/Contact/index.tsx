@@ -86,6 +86,7 @@ const Contact: React.FC<ContactProps> = ({
             message: "Your message has been sent successfully!",
           });
           if (form.current) form.current.reset();
+          setIsChecked(false); // Reset checkbox state
         },
         (error) => {
           console.log("FAILED...", error.text);
