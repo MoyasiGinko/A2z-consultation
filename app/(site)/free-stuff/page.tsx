@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const FreeStuffPage = () => {
   return (
     <div>
-      <FreeStuff />
+      <FreeStuff publicKey="8seFmYH7EcPOmhmGg" />
     </div>
   );
 };

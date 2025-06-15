@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
 
 type Resource = {
   id: string;
@@ -13,7 +14,11 @@ type Resource = {
   fileSize?: string;
 };
 
-const FreeStuff: React.FC = () => {
+interface FreeStuffProps {
+  publicKey: string;
+}
+
+const FreeStuff: React.FC<FreeStuffProps> = ({ publicKey }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(
     null,
@@ -68,6 +73,8 @@ const FreeStuff: React.FC = () => {
   };
 
   const handleSubmit = () => {
+    console.log("FreeStuff handleSubmit started");
+
     if (!email.trim()) {
       setEmailError("Email is required");
       return;
@@ -78,32 +85,62 @@ const FreeStuff: React.FC = () => {
       return;
     }
 
+    if (!publicKey) {
+      setEmailError("Email service is not configured. Please try again later.");
+      return;
+    }
+
+    console.log("FreeStuff validation passed, sending email...");
     setEmailError("");
     setIsLoading(true);
 
-    // Simulate API call to validate email and process download
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSuccess(true);
+    // Send email via EmailJS
+    const templateParams = {
+      email: email,
+    };
 
-      // In a real implementation, you would:
-      // 1. Send the email to your backend
-      // 2. Add the email to your newsletter list
-      // 3. Track the download
+    console.log("FreeStuff EmailJS params:", templateParams);
 
-      // Automatically download file after 1.5 seconds of showing success message
-      setTimeout(() => {
-        if (selectedResource) {
-          const link = document.createElement("a");
-          link.href = selectedResource.fileUrl;
-          link.download =
-            selectedResource.fileUrl.split("/").pop() || "download";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
-      }, 1500);
-    }, 1000);
+    emailjs
+      .send(
+        "service_6kcz58m", // Service ID
+        "template_uhk81r5", // Template ID
+        templateParams,
+        publicKey, // Use the public key from props
+      )
+      .then(
+        (result) => {
+          console.log("FreeStuff Email sent successfully:", result.text);
+          setIsLoading(false);
+          setIsSuccess(true);
+
+          // Automatically download file after 1.5 seconds of showing success message
+          setTimeout(() => {
+            if (selectedResource) {
+              const link = document.createElement("a");
+              link.href = selectedResource.fileUrl;
+              link.download =
+                selectedResource.fileUrl.split("/").pop() || "download";
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }
+          }, 1500);
+        },
+        (error) => {
+          console.error("FreeStuff Failed to send email:", error);
+          setIsLoading(false);
+          setEmailError(
+            error.text ||
+              "Failed to send email. Please check your connection and try again.",
+          );
+        },
+      )
+      .catch((error) => {
+        console.error("FreeStuff EmailJS error:", error);
+        setIsLoading(false);
+        setEmailError("An unexpected error occurred. Please try again later.");
+      });
   };
 
   const closeModal = () => {
