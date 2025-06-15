@@ -12,7 +12,7 @@ const GetInTouchPage = () => {
   return (
     <div className="pb-20 pt-40">
       <Contact
-        serviceId="service_vvede9g"
+        serviceId="service_6kcz58m"
         templateId="template_b1obkqe"
         publicKey="8seFmYH7EcPOmhmGg"
       />
