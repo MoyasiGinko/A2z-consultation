@@ -104,7 +104,6 @@ const Brands: React.FC = () => {
       setIsInitialized(true);
     }
   }, [dimensions]);
-
   // Function to update all responsive styles based on screen width
   const updateResponsiveStyles = () => {
     try {
@@ -122,41 +121,39 @@ const Brands: React.FC = () => {
       // Set values based on screen size
       if (dimensions.width < 480) {
         // Mobile
-        duration = "35s";
+        duration = "60s";
         floatDistance = "1px";
         gapSize = "1rem";
         brandMargin = "2px";
       } else if (dimensions.width < 768) {
         // Small tablets
-        duration = "30s";
+        duration = "55s";
         floatDistance = "1.5px";
         gapSize = "1.5rem";
         brandMargin = "4px";
       } else if (dimensions.width < 1024) {
         // Large tablets
-        duration = "25s";
+        duration = "50s";
         floatDistance = "2px";
         gapSize = "2.5rem";
         brandMargin = "8px";
       } else if (dimensions.width < 1280) {
         // Small desktops
-        duration = "22s";
+        duration = "45s";
         floatDistance = "2.5px";
         gapSize = "2.8rem";
         brandMargin = "10px";
       } else {
         // Large desktops
-        duration = "20s";
+        duration = "40s";
         floatDistance = "3px";
         gapSize = "3rem";
         brandMargin = "12px";
       }
 
-      // Apply animation duration to both slider tracks
-      leftTrackRef.current.style.animationDuration = duration;
-      rightTrackRef.current.style.animationDuration = duration;
-
-      // Apply gap size to slider tracks
+      // Apply styles without interfering with CSS animation
+      leftTrackRef.current.style.setProperty("--animation-duration", duration);
+      rightTrackRef.current.style.setProperty("--animation-duration", duration);
       leftTrackRef.current.style.gap = gapSize;
       rightTrackRef.current.style.gap = gapSize;
 
@@ -304,16 +301,26 @@ const Brands: React.FC = () => {
         </div>
       );
     });
-  };
-
-  // Define each set with a specific ID for each row
+  }; // Define each set with a specific ID for each row - create infinite loop sets
   const renderMultipleSets = (rowId: string) => {
-    return (
-      <>
-        {renderBrandSet(`${rowId}-set1`)}
-        {renderBrandSet(`${rowId}-set2`)}
-      </>
-    );
+    // Create multiple identical sets to ensure truly infinite scrolling
+    // The more sets we have, the smoother the infinite loop appears
+    const brandSet = renderBrandSet(`${rowId}-original`);
+    const infiniteSets: React.ReactElement[] = [];
+
+    // Generate multiple identical sets for seamless infinite loop
+    for (let i = 0; i < 6; i++) {
+      const setNumber = i + 1;
+      brandSet.forEach((brand, index) => {
+        infiniteSets.push(
+          React.cloneElement(brand, {
+            key: `${rowId}-set${setNumber}-brand${index}`,
+          }),
+        );
+      });
+    }
+
+    return <>{infiniteSets}</>;
   };
 
   // Don't render content until dimensions are measured to prevent flickering
@@ -401,24 +408,27 @@ const Brands: React.FC = () => {
         .brand-container {
           margin: 0 var(--brand-margin, 20px);
         }
-
         .slider-track {
+          display: flex;
           width: max-content;
           animation-iteration-count: infinite;
           animation-timing-function: linear;
+          animation-play-state: running;
+          animation-fill-mode: none;
           will-change: transform;
-          /* Fallback animation duration if JS fails */
-          animation-duration: 25s;
+          /* Use CSS custom property for duration, with fallback */
+          animation-duration: var(--animation-duration, 50s);
           /* Fallback gap if JS fails */
           gap: 2rem;
+          align-items: center;
         }
 
         .slider-track[data-direction="left"] {
-          animation-name: scrollLeft;
+          animation-name: infiniteScrollLeft;
         }
 
         .slider-track[data-direction="right"] {
-          animation-name: scrollRight;
+          animation-name: infiniteScrollRight;
         }
 
         .slider-row::before,
@@ -477,19 +487,18 @@ const Brands: React.FC = () => {
             --fade-width: 100px;
           }
         }
-
-        @keyframes scrollLeft {
+        @keyframes infiniteScrollLeft {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-25%));
+            transform: translateX(calc(-100% / 6));
           }
         }
 
-        @keyframes scrollRight {
+        @keyframes infiniteScrollRight {
           0% {
-            transform: translateX(calc(-25%));
+            transform: translateX(calc(-100% / 6));
           }
           100% {
             transform: translateX(0);
