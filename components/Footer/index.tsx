@@ -12,7 +12,7 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  Instagram,
+  Youtube,
   ChevronDown,
 } from "lucide-react";
 import { useState } from "react";
@@ -76,13 +76,13 @@ const socialLinks: SocialLink[] = [
     icon: <Facebook size={24} />,
     href: "https://www.facebook.com/profile.php?id=61550724784012",
   },
-  // { id: 2, icon: <Twitter size={24} />, href: "https://twitter.com" },
+  { id: 2, icon: <Twitter size={24} />, href: "https://x.com/a2z_Immig_UK" },
   {
     id: 3,
     icon: <Linkedin size={24} />,
     href: "https://www.linkedin.com/company/a2z-immigration/",
   },
-  // { id: 4, icon: <Instagram size={24} />, href: "https://instagram.com" },
+  { id: 4, icon: <Youtube size={24} />, href: "https://youtube.com/@a2z_imm" },
 ];
 
 const Footer: React.FC = () => {
@@ -292,7 +292,7 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Email Signup and Download Button - Always visible on mobile */}
-            <motion.div className="mb-4 w-full px-2" variants={itemVariants}>
+            {/* <motion.div className="mb-4 w-full px-2" variants={itemVariants}>
               <div className="mb-4 flex h-10 w-full overflow-hidden rounded-md shadow-md">
                 <input
                   type="email"
@@ -312,7 +312,7 @@ const Footer: React.FC = () => {
                   Download our guide
                 </motion.button>
               </a>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* Desktop View */}
@@ -339,7 +339,7 @@ const Footer: React.FC = () => {
                 OISC-registered consultants.
               </p>
 
-              <div className="flex h-10 max-w-full">
+              {/* <div className="flex h-10 max-w-full">
                 <input
                   type="email"
                   placeholder="Email"
@@ -348,7 +348,7 @@ const Footer: React.FC = () => {
                 <button className="bg-blue-600 px-2 text-white transition-colors hover:bg-blue-700">
                   Sign up
                 </button>
-              </div>
+              </div> */}
             </motion.div>
 
             {/* 2. Get in Touch Column */}

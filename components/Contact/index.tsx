@@ -24,6 +24,7 @@ const Contact: React.FC<ContactProps> = ({
 
   // Fix for rehydration error
   const [hasMounted, setHasMounted] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   useEffect(() => {
     setHasMounted(true);
   }, []);
@@ -85,6 +86,7 @@ const Contact: React.FC<ContactProps> = ({
             message: "Your message has been sent successfully!",
           });
           if (form.current) form.current.reset();
+          setIsChecked(false); // Reset checkbox state
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -204,36 +206,45 @@ const Contact: React.FC<ContactProps> = ({
 
                 <div className="flex flex-wrap gap-4 xl:justify-between ">
                   <div className="mb-4 flex md:mb-0">
-                    <input
-                      id="default-checkbox"
-                      type="checkbox"
-                      name="consent"
-                      className="peer sr-only"
-                      required
-                    />
-                    <span className="group mt-2 flex h-5 min-w-[20px] items-center justify-center rounded border border-gray-300 bg-gray-100 text-blue-600 transition-all duration-200 hover:bg-gray-200 peer-checked:border-primary peer-checked:bg-primary">
-                      <svg
-                        className="opacity-0 transition-opacity duration-200 peer-checked:group-[]:opacity-100"
-                        width="10"
-                        height="8"
-                        viewBox="0 0 10 8"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M9.70704 0.792787C9.89451 0.980314 9.99983 1.23462 9.99983 1.49979C9.99983 1.76495 9.89451 2.01926 9.70704 2.20679L4.70704 7.20679C4.51951 7.39426 4.26521 7.49957 4.00004 7.49957C3.73488 7.49957 3.48057 7.39426 3.29304 7.20679L0.293041 4.20679C0.110883 4.01818 0.0100885 3.76558 0.0123669 3.50339C0.0146453 3.24119 0.119814 2.99038 0.305222 2.80497C0.490631 2.61956 0.741443 2.51439 1.00364 2.51211C1.26584 2.50983 1.51844 2.61063 1.70704 2.79279L4.00004 5.08579L8.29304 0.792787C8.48057 0.605316 8.73488 0.5 9.00004 0.5C9.26521 0.5 9.51951 0.605316 9.70704 0.792787Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </span>
                     <label
                       htmlFor="default-checkbox"
-                      className="flex max-w-[425px] cursor-pointer select-none pl-5 text-gray-700 transition-colors duration-200 hover:text-blue-500"
+                      className="group flex cursor-pointer select-none items-start gap-3"
                     >
-                      By clicking Checkbox, you agree to use our "Form" terms
-                      And consent cookie usage in browser.
+                      <div className="relative mt-1">
+                        <input
+                          id="default-checkbox"
+                          type="checkbox"
+                          name="consent"
+                          checked={isChecked}
+                          onChange={(e) => setIsChecked(e.target.checked)}
+                          className="h-5 w-5 cursor-pointer rounded border-2 border-gray-300 bg-white shadow-sm transition-all duration-200 checked:border-sky-500 checked:bg-sky-500 checked:shadow-lg checked:shadow-sky-200 hover:border-sky-400 hover:shadow-md focus:ring-2 focus:ring-sky-300 focus:ring-offset-1"
+                          required
+                        />
+                        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                          <svg
+                            className={`h-3 w-3 text-white transition-all duration-200 ${
+                              isChecked
+                                ? "scale-110 opacity-100"
+                                : "scale-75 opacity-0"
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <span className="text-gray-700 transition-colors duration-200 group-hover:text-sky-600">
+                        By clicking Checkbox, you agree to use our "Form" terms
+                        And consent cookie usage in browser.
+                      </span>
                     </label>
                   </div>
 

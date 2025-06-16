@@ -16,7 +16,7 @@ interface PricingPackage {
 
 const packages: PricingPackage[] = [
   {
-    name: "Gold",
+    name: "Essential",
     tagline:
       "For employers who need minimal assistance with the visa application process.",
     color: "#08A1DA", // Modified to moderate dark light teal
@@ -33,10 +33,10 @@ const packages: PricingPackage[] = [
       { text: "Guidance on visa application fees and timelines" },
     ],
     description:
-      "Our Gold package provides essential guidance and support for employers who need minimal assistance with the Skilled Worker Visa application process, including eligibility assessment and document guidance.",
+      "Our Essential package provides essential guidance and support for employers who need minimal assistance with the Skilled Worker Visa application process, including eligibility assessment and document guidance.",
   },
   {
-    name: "Platinum",
+    name: "Enhanced",
     tagline:
       "For employers who require hands-on support in submitting a successful visa application.",
     color: "#5c6bc0", // More vibrant blue-purple
@@ -44,7 +44,7 @@ const packages: PricingPackage[] = [
     text: "#ffffff",
     shadowColor: "rgba(92, 107, 192, 0.15)", // RGB version of #5c6bc0 with increased alpha
     features: [
-      { text: "Everything in the Gold Package, plus:" },
+      { text: "Everything in the Essential Package, plus:" },
       {
         text: "Full preparation and submission of the Skilled Worker Visa application",
       },
@@ -58,10 +58,10 @@ const packages: PricingPackage[] = [
       { text: "Ongoing support for 3 months post-submission" },
     ],
     description:
-      "Our Platinum package offers comprehensive hands-on support throughout the entire Skilled Worker Visa application process, including document preparation, submission assistance, and ongoing support after submission.",
+      "Our Enhanced package offers comprehensive hands-on support throughout the entire Skilled Worker Visa application process, including document preparation, submission assistance, and ongoing support after submission.",
   },
   {
-    name: "VIP",
+    name: "Premium",
     tagline:
       "For employers who want a fully managed visa application process, including candidate preparation.",
     color: "#ffb900",
@@ -69,7 +69,7 @@ const packages: PricingPackage[] = [
     text: "#000",
     shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
     features: [
-      { text: "Everything in the Platinum Package, plus:" },
+      { text: "Everything in the Enhanced Package, plus:" },
       { text: "Priority handling of the application process" },
       { text: "Direct liaison with the Home Office for complex queries" },
       {
@@ -81,7 +81,7 @@ const packages: PricingPackage[] = [
       { text: "Dedicated immigration consultant for 6 months" },
     ],
     description:
-      "Our VIP package provides a fully managed service with priority handling, direct Home Office liaison, and dedicated consultant support for employers who want the highest level of assistance with Skilled Worker Visa applications.",
+      "Our Premium package provides a fully managed service with priority handling, direct Home Office liaison, and dedicated consultant support for employers who want the highest level of assistance with Skilled Worker Visa applications.",
   },
 ];
 

@@ -16,7 +16,7 @@ interface PricingPackage {
 
 const packages: PricingPackage[] = [
   {
-    name: "Gold",
+    name: "Essential",
     tagline: "Esse magna sunt pariatur culpa quis",
     color: "#3d6582",
     ring: "#3d6582",
@@ -32,7 +32,7 @@ const packages: PricingPackage[] = [
       "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
   },
   {
-    name: "Platinum",
+    name: "Enhanced",
     tagline: "Esse magna sunt pariatur culpa quis",
     color: "#7986cb",
     ring: "#7986cb",
@@ -48,7 +48,7 @@ const packages: PricingPackage[] = [
       "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
   },
   {
-    name: "VIP",
+    name: "Premium",
     tagline: "Esse magna sunt pariatur culpa quis",
     color: "#ffb900",
     ring: "#ffb900",

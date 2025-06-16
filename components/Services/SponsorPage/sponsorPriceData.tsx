@@ -16,7 +16,7 @@ interface PricingPackage {
 
 const packages: PricingPackage[] = [
   {
-    name: "Gold",
+    name: "Essential",
     tagline: "Essential sponsorship application support",
     color: "#08A1DA", // Modified to moderate dark light teal
     ring: "#08A1DA", // Matching ring color
@@ -31,17 +31,17 @@ const packages: PricingPackage[] = [
       { text: "General email support for queries" },
     ],
     description:
-      "Our Gold package provides essential support for your sponsor license application process, ensuring your application is complete and compliant with Home Office requirements.",
+      "Our Essential package provides essential support for your sponsor license application process, ensuring your application is complete and compliant with Home Office requirements.",
   },
   {
-    name: "Platinum",
+    name: "Enhanced",
     tagline: "Enhanced customer support with priority handling",
     color: "#7986cb",
     ring: "#7986cb",
     text: "#fff",
     shadowColor: "rgba(121, 134, 203, 0.1)", // RGB version of #7986cb with alpha
     features: [
-      { text: "Everything in the Gold Package, plus:" },
+      { text: "Everything in the Essential Package, plus:" },
       {
         text: "Assistance in appointing Key Personnel (Authorising Officer, Key Contact, Level 1 User)",
       },
@@ -58,17 +58,17 @@ const packages: PricingPackage[] = [
       },
     ],
     description:
-      "Our Platinum package offers priority handling and additional support both during the application process and after your license is approved, including dedicated consultant support.",
+      "Our Enhanced package offers priority handling and additional support both during the application process and after your license is approved, including dedicated consultant support.",
   },
   {
-    name: "VIP",
+    name: "Premium",
     tagline: "Comprehensive solution with ongoing compliance support",
     color: "#ffb900",
     ring: "#ffb900",
     text: "#000",
     shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
     features: [
-      { text: "Everything in the Platinum Package, plus:" },
+      { text: "Everything in the Enhanced Package, plus:" },
       {
         text: "Conduct & Assist Recruitment Process as part of Compliance Process",
       },
@@ -78,7 +78,7 @@ const packages: PricingPackage[] = [
       { text: "Fast-tracked assistance with the first 3 CoS assignments ✅" },
     ],
     description:
-      "Our VIP package provides the highest level of support throughout the entire sponsorship process, including recruitment assistance, direct Home Office liaison, and fast-tracked CoS assignments.",
+      "Our Premium package provides the highest level of support throughout the entire sponsorship process, including recruitment assistance, direct Home Office liaison, and fast-tracked CoS assignments.",
   },
 ];
 

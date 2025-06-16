@@ -23,21 +23,21 @@ const PricingPackages: React.FC = () => {
   const [expandedStates, setExpandedStates] = useState<{
     [key: string]: boolean;
   }>({
-    Gold: false,
-    Platinum: false,
-    VIP: false,
+    Essential: false,
+    Enhanced: false,
+    Premium: false,
   });
 
   // Create refs for each card
   const cardRefs = {
-    Gold: useRef<HTMLDivElement>(null),
-    Platinum: useRef<HTMLDivElement>(null),
-    VIP: useRef<HTMLDivElement>(null),
+    Essential: useRef<HTMLDivElement>(null),
+    Enhanced: useRef<HTMLDivElement>(null),
+    Premium: useRef<HTMLDivElement>(null),
   };
 
   const packages: PricingPackage[] = [
     {
-      name: "Gold",
+      name: "Essential",
       tagline: "Esse magna sunt pariatur culpa quis",
       color: "#3d6582",
       ring: "#3d6582",
@@ -53,7 +53,7 @@ const PricingPackages: React.FC = () => {
         "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat.",
     },
     {
-      name: "Platinum",
+      name: "Enhanced",
       tagline: "Esse magna sunt pariatur culpa quis",
       color: "#7986cb",
       ring: "#7986cb",
@@ -69,7 +69,7 @@ const PricingPackages: React.FC = () => {
         "Lorem laboris consequat incididunt reprehenderit dolor tempor exercitation ullamco sunt sint cillum occaecat aliquip. Magna commodo et tempor ipsum ut ut ullamco pariatur excepteur mollit tempor. Anim laborum reprehenderit enim duis in minim culpa amet labore veniam fugiat. Laboris esse qui Lorem in Lorem labore sit magna aliquip consectetur i",
     },
     {
-      name: "VIP",
+      name: "Premium",
       tagline: "Esse magna sunt pariatur culpa quis",
       color: "#ffb900",
       ring: "#ffb900",
