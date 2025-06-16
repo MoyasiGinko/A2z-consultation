@@ -104,7 +104,6 @@ const Brands: React.FC = () => {
       setIsInitialized(true);
     }
   }, [dimensions]);
-
   // Function to update all responsive styles based on screen width
   const updateResponsiveStyles = () => {
     try {
@@ -117,7 +116,9 @@ const Brands: React.FC = () => {
       // Safeguard for SSR
       if (typeof document === "undefined" || !dimensions.width) return;
 
-      let duration, floatDistance, gapSize, brandMargin; // Set values based on screen size
+      let duration, floatDistance, gapSize, brandMargin;
+
+      // Set values based on screen size
       if (dimensions.width < 480) {
         // Mobile
         duration = "60s";
@@ -150,11 +151,9 @@ const Brands: React.FC = () => {
         brandMargin = "12px";
       }
 
-      // Apply animation duration to both slider tracks
-      leftTrackRef.current.style.animationDuration = duration;
-      rightTrackRef.current.style.animationDuration = duration;
-
-      // Apply gap size to slider tracks
+      // Apply styles without interfering with CSS animation
+      leftTrackRef.current.style.setProperty("--animation-duration", duration);
+      rightTrackRef.current.style.setProperty("--animation-duration", duration);
       leftTrackRef.current.style.gap = gapSize;
       rightTrackRef.current.style.gap = gapSize;
 
@@ -302,17 +301,26 @@ const Brands: React.FC = () => {
         </div>
       );
     });
-  };
-  // Define each set with a specific ID for each row - create more sets for seamless loop
+  }; // Define each set with a specific ID for each row - create infinite loop sets
   const renderMultipleSets = (rowId: string) => {
-    return (
-      <>
-        {renderBrandSet(`${rowId}-set1`)}
-        {renderBrandSet(`${rowId}-set2`)}
-        {renderBrandSet(`${rowId}-set3`)}
-        {renderBrandSet(`${rowId}-set4`)}
-      </>
-    );
+    // Create multiple identical sets to ensure truly infinite scrolling
+    // The more sets we have, the smoother the infinite loop appears
+    const brandSet = renderBrandSet(`${rowId}-original`);
+    const infiniteSets: React.ReactElement[] = [];
+
+    // Generate multiple identical sets for seamless infinite loop
+    for (let i = 0; i < 6; i++) {
+      const setNumber = i + 1;
+      brandSet.forEach((brand, index) => {
+        infiniteSets.push(
+          React.cloneElement(brand, {
+            key: `${rowId}-set${setNumber}-brand${index}`,
+          }),
+        );
+      });
+    }
+
+    return <>{infiniteSets}</>;
   };
 
   // Don't render content until dimensions are measured to prevent flickering
@@ -401,22 +409,26 @@ const Brands: React.FC = () => {
           margin: 0 var(--brand-margin, 20px);
         }
         .slider-track {
+          display: flex;
           width: max-content;
           animation-iteration-count: infinite;
           animation-timing-function: linear;
+          animation-play-state: running;
+          animation-fill-mode: none;
           will-change: transform;
-          /* Fallback animation duration if JS fails */
-          animation-duration: 50s;
+          /* Use CSS custom property for duration, with fallback */
+          animation-duration: var(--animation-duration, 50s);
           /* Fallback gap if JS fails */
           gap: 2rem;
+          align-items: center;
         }
 
         .slider-track[data-direction="left"] {
-          animation-name: scrollLeft;
+          animation-name: infiniteScrollLeft;
         }
 
         .slider-track[data-direction="right"] {
-          animation-name: scrollRight;
+          animation-name: infiniteScrollRight;
         }
 
         .slider-row::before,
@@ -475,18 +487,18 @@ const Brands: React.FC = () => {
             --fade-width: 100px;
           }
         }
-        @keyframes scrollLeft {
+        @keyframes infiniteScrollLeft {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-25%);
+            transform: translateX(calc(-100% / 6));
           }
         }
 
-        @keyframes scrollRight {
+        @keyframes infiniteScrollRight {
           0% {
-            transform: translateX(-25%);
+            transform: translateX(calc(-100% / 6));
           }
           100% {
             transform: translateX(0);
