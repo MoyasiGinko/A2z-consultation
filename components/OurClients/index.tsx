@@ -308,6 +308,15 @@ const ClientCard: FC<{ client: ClientInfo; index: number }> = ({
 };
 
 const ClientsPage: FC = () => {
+  const industries = [
+    "Hospitality & Leisure Businesses",
+    "Engineering Firms",
+    "Charity & Religious Organisations",
+    "IT Firms",
+    "Dental Practices",
+    "Health & Care Sector",
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-16 sm:px-6 lg:px-8">
       <motion.div
@@ -322,10 +331,42 @@ const ClientsPage: FC = () => {
         <h1 className="mb-6 mt-3 text-3xl font-extrabold text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
           See How We've Helped Our Clients
         </h1>
-        <p className="mx-auto max-w-3xl text-xl text-gray-600">
+        <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-600">
           Read these real success stories from clients who've transformed their
           businesses with our expert guidance.
         </p>
+
+        {/* Industries Section */}
+        <motion.div
+          className="mx-auto max-w-4xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h2 className="mb-6 text-lg font-semibold text-gray-700">
+            Trusted by Industry Leaders Across
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {industries.map((industry, index) => (
+              <motion.div
+                key={index}
+                className="group relative overflow-hidden rounded-full border border-sky-200/50 bg-gradient-to-r from-sky-500/10 to-indigo-500/10 px-6 py-3 shadow-sm transition-all duration-300 hover:shadow-md"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0px 8px 20px rgba(14, 165, 233, 0.15)",
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-indigo-400/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <span className="relative text-sm font-medium text-gray-700 transition-colors duration-300 group-hover:text-sky-700">
+                  {industry}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
 
       <div className="space-y-8">
