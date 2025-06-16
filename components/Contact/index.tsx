@@ -220,26 +220,6 @@ const Contact: React.FC<ContactProps> = ({
                           className="h-5 w-5 cursor-pointer rounded border-2 border-gray-300 bg-white shadow-sm transition-all duration-200 checked:border-sky-500 checked:bg-sky-500 checked:shadow-lg checked:shadow-sky-200 hover:border-sky-400 hover:shadow-md focus:ring-2 focus:ring-sky-300 focus:ring-offset-1"
                           required
                         />
-                        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                          <svg
-                            className={`h-3 w-3 text-white transition-all duration-200 ${
-                              isChecked
-                                ? "scale-110 opacity-100"
-                                : "scale-75 opacity-0"
-                            }`}
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        </div>
                       </div>
                       <span className="text-gray-700 transition-colors duration-200 group-hover:text-sky-600">
                         By clicking Checkbox, you agree to use our "Form" terms
