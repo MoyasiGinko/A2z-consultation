@@ -117,36 +117,34 @@ const Brands: React.FC = () => {
       // Safeguard for SSR
       if (typeof document === "undefined" || !dimensions.width) return;
 
-      let duration, floatDistance, gapSize, brandMargin;
-
-      // Set values based on screen size
+      let duration, floatDistance, gapSize, brandMargin; // Set values based on screen size
       if (dimensions.width < 480) {
         // Mobile
-        duration = "35s";
+        duration = "60s";
         floatDistance = "1px";
         gapSize = "1rem";
         brandMargin = "2px";
       } else if (dimensions.width < 768) {
         // Small tablets
-        duration = "30s";
+        duration = "55s";
         floatDistance = "1.5px";
         gapSize = "1.5rem";
         brandMargin = "4px";
       } else if (dimensions.width < 1024) {
         // Large tablets
-        duration = "25s";
+        duration = "50s";
         floatDistance = "2px";
         gapSize = "2.5rem";
         brandMargin = "8px";
       } else if (dimensions.width < 1280) {
         // Small desktops
-        duration = "22s";
+        duration = "45s";
         floatDistance = "2.5px";
         gapSize = "2.8rem";
         brandMargin = "10px";
       } else {
         // Large desktops
-        duration = "20s";
+        duration = "40s";
         floatDistance = "3px";
         gapSize = "3rem";
         brandMargin = "12px";
@@ -305,13 +303,14 @@ const Brands: React.FC = () => {
       );
     });
   };
-
-  // Define each set with a specific ID for each row
+  // Define each set with a specific ID for each row - create more sets for seamless loop
   const renderMultipleSets = (rowId: string) => {
     return (
       <>
         {renderBrandSet(`${rowId}-set1`)}
         {renderBrandSet(`${rowId}-set2`)}
+        {renderBrandSet(`${rowId}-set3`)}
+        {renderBrandSet(`${rowId}-set4`)}
       </>
     );
   };
@@ -401,14 +400,13 @@ const Brands: React.FC = () => {
         .brand-container {
           margin: 0 var(--brand-margin, 20px);
         }
-
         .slider-track {
           width: max-content;
           animation-iteration-count: infinite;
           animation-timing-function: linear;
           will-change: transform;
           /* Fallback animation duration if JS fails */
-          animation-duration: 25s;
+          animation-duration: 50s;
           /* Fallback gap if JS fails */
           gap: 2rem;
         }
@@ -477,19 +475,18 @@ const Brands: React.FC = () => {
             --fade-width: 100px;
           }
         }
-
         @keyframes scrollLeft {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-25%));
+            transform: translateX(-25%);
           }
         }
 
         @keyframes scrollRight {
           0% {
-            transform: translateX(calc(-25%));
+            transform: translateX(-25%);
           }
           100% {
             transform: translateX(0);
