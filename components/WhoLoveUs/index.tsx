@@ -20,7 +20,7 @@ const testimonials: Testimonial[] = [
     id: 1,
     content:
       "Working with this team has transformed our business completely. Their attention to detail and innovative solutions helped us increase our revenue by 40% in just six months. I couldn't recommend them more highly!",
-    name: "John Smith",
+    name: "John",
     position: "CEO",
     location: "London, UK",
     avatar: "/images/user/user-01.png",
