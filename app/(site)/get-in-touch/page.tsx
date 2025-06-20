@@ -12,8 +12,8 @@ const GetInTouchPage = () => {
   return (
     <div className="pb-20 pt-40">
       <Contact
-        serviceId="service_6kcz58m"
-        templateId="template_b1obkqe"
+        serviceId="service_yj3nlrh"
+        templateId="template_nastr37"
         publicKey="8seFmYH7EcPOmhmGg"
       />
     </div>
