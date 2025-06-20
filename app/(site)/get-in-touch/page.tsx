@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Get In Touch - A2Z",
   description: "A2Z Immigrants",
-  // other metadata
+  // other metadataa
 };
 
 const GetInTouchPage = () => {
