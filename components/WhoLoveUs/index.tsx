@@ -19,91 +19,98 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     content:
-      "Working with this team has transformed our business completely. Their attention to detail and innovative solutions helped us increase our revenue by 40% in just six months. I couldn't recommend them more highly!",
-    name: "John",
+      "Had a great experience! Big thanks for all the support with my visa. The team’s really helpful, especially Fahim bhai. Would definitely recommend if you need help with visa stuff!",
+    name: "Tanafz",
     position: "CEO",
-    location: "London, UK",
+    location: "Scotland, UK",
     avatar: "/images/user/user-01.png",
     rating: 5,
   },
   {
     id: 2,
     content:
-      "I was skeptical at first, but their results speak for themselves. The team consistently delivered beyond our expectations and made the entire process smooth and stress-free. They're truly experts in their field.",
-    name: "Sarah Johnson",
+      "A huge thank you to Fiyadh and his team for expertly guiding us through the process of maintaining our Sponsor Licence. Their deep expertise in immigration compliance, especially in SMS portal management and HR compliance, has been invaluable in keeping us fully aligned with all regulations.",
+    name: "MD Ashiqur Rahman",
     position: "Marketing Director",
-    location: "New York, USA",
+    location: "Scotland, UK",
     avatar: "/images/user/user-02.png",
     rating: 5,
   },
   {
     id: 3,
     content:
-      "The level of creativity and technical expertise is outstanding. They understood our vision immediately and brought it to life better than we could have imagined. Worth every penny and more.",
-    name: "David Chen",
+      "I had a super experience throughout the journey. Me and my wife always got great help and cooperation from the team. Everyone is very helpful. A special thanks to Fahim bhai for his continuous support. Wish you good luck A2Z Immigration Solutions Ltd.",
+    name: "Mohammed Afzal",
     position: "Product Manager",
-    location: "Tokyo, Japan",
+    location: "Scotland, UK",
     avatar: "/images/user/user-01.png",
     rating: 4,
   },
   {
     id: 4,
     content:
-      "Our collaboration was seamless from start to finish. They not only met our requirements but also provided valuable insights that helped us improve our original concept. I'll definitely work with them again.",
-    name: "Emma Garcia",
+      "A2Z Immigration Solution team is fantastic! They helped me with my immigration docs, and I’m thrilled with the outcome. Sharon’s professionalism and the team’s efficiency are amazing. Highly recommend their friendly, expert service!",
+    name: "Nahid Tangil Rahaman",
     position: "Founder",
-    location: "Barcelona, Spain",
+    location: "Scotland, UK",
     avatar: "/images/user/user-02.png",
     rating: 5,
   },
   {
     id: 5,
     content:
-      "The team's ability to solve complex problems with elegant solutions is remarkable. They're responsive, professional, and truly care about delivering quality work. A rare find in today's market.",
-    name: "Alex Taylor",
+      "They provide their clients all the relevant and true information required to make their migration journey as obstacle free as possible, would highly recommend to all people who are interested in moving to UK.",
+    name: "Aamna Haneef",
     position: "CTO",
-    location: "Berlin, Germany",
+    location: "Scotland, UK",
     avatar: "/images/user/user-01.png",
     rating: 5,
   },
   {
     id: 6,
     content:
-      "I've worked with many agencies over the years, but none have delivered the level of quality and attention to detail as this team. They're true partners in our success.",
-    name: "Maria Rodriguez",
+      "I'm really appreciate their service. everyone is very helpful and kind. One thing i really like,that is they always give good and helpful advice.",
+    name: "Ahmed Shuvo",
     position: "VP of Operations",
-    location: "Sydney, Australia",
+    location: "Scotland, UK",
     avatar: "/images/user/user-02.png",
     rating: 5,
   },
   {
     id: 7,
-    content:
-      "The strategic guidance we received was invaluable. They don't just execute tasks but provide insights that make a real impact on your business. Couldn't be happier with our choice.",
-    name: "Ryan Park",
+    content: "Very friendly & work with care .service was good",
+    name: "Iqra Mukther",
     position: "Startup Founder",
-    location: "San Francisco, USA",
+    location: "Scotland, UK",
     avatar: "/images/user/user-01.png",
     rating: 4,
   },
   {
     id: 8,
     content:
-      "From day one, the communication was clear and the delivery exceeded our timeline requirements. A true pleasure to work with professionals who take such pride in their craft.",
-    name: "Sophia Müller",
+      "Excellent service and very helpful. Always got very quick response if I needed to know anything. I would recommend them anytime.",
+    name: "Fayez Ahmed",
     position: "Creative Director",
-    location: "Munich, Germany",
+    location: "Scotland, UK",
     avatar: "/images/user/user-02.png",
     rating: 5,
   },
   {
     id: 9,
-    content:
-      "Their ability to take our complex requirements and transform them into an elegant solution was remarkable. The ROI has been incredible and our customers love the results.",
-    name: "James Wilson",
+    content: "Very good service and well guidance. Thank you!",
+    name: "Imran Ahmed",
     position: "Head of Digital",
-    location: "Toronto, Canada",
+    location: "Scotland, UK",
     avatar: "/images/user/user-01.png",
+    rating: 5,
+  },
+  {
+    id: 10,
+    content: "Very good service provided by A2Z.",
+    name: "Zubair Ahmad",
+    position: "Head of Digital",
+    location: "Scotland, UK",
+    avatar: "/images/user/user-02.png",
     rating: 5,
   },
 ];
@@ -294,9 +301,9 @@ const WhoLovesUs: React.FC = () => {
                         <h3 className="text-lg font-bold text-gray-800">
                           {testimonial.name}
                         </h3>
-                        <p className="text-sm font-medium text-gray-600">
+                        {/* <p className="text-sm font-medium text-gray-600">
                           {testimonial.position}
-                        </p>
+                        </p> */}
                         <p className="text-xs text-gray-500">
                           {testimonial.location}
                         </p>
@@ -386,9 +393,9 @@ const WhoLovesUs: React.FC = () => {
                             <h3 className="text-lg font-bold text-gray-800">
                               {testimonial.name}
                             </h3>
-                            <p className="text-sm font-medium text-gray-600">
+                            {/* <p className="text-sm font-medium text-gray-600">
                               {testimonial.position}
-                            </p>
+                            </p> */}
                             <p className="text-xs text-gray-500">
                               {testimonial.location}
                             </p>
