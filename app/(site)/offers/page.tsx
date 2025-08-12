@@ -1056,7 +1056,7 @@ export default function OffersPage() {
                       </div>
                       <div className="contact-details">
                         <strong>Phone</strong>
-                        <span>+44 20 1234 5678</span>
+                        <span>+44 7441 398273</span>
                       </div>
                     </div>
 
@@ -1076,7 +1076,7 @@ export default function OffersPage() {
                       </div>
                       <div className="contact-details">
                         <strong>Office Address</strong>
-                        <span>London, United Kingdom</span>
+                        <span>49 Shaw Crescent, Aberdeen AB25 3BT, UK</span>
                       </div>
                     </div>
 
@@ -1087,7 +1087,7 @@ export default function OffersPage() {
                       <div className="contact-details">
                         <strong>Business Hours</strong>
                         <span>
-                          Mon-Fri: 9AM-6PM
+                          Mon-Fri: 9:00 – 17:00
                           <br />
                           24/7 Emergency Support
                         </span>
