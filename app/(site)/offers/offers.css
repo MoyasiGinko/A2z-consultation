@@ -1,3 +1,5 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
 /* ===========================
    1. GLOBAL STYLES & RESETS
    =========================== */
@@ -193,6 +195,7 @@
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 60px;
   position: relative;
   overflow: hidden;
   transform: translateY(0);
@@ -1390,6 +1393,11 @@
 }
 
 .google-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   text-align: center;
   padding-top: 30px;
   border-top: 2px solid #e2e8f0;
@@ -1446,7 +1454,8 @@
   height: 200px;
   object-fit: cover;
   border-radius: 15px;
-  margin-bottom: 20px;
+  display: block;
+  margin: 0 auto 20px;
 }
 
 .process-step h3 {
@@ -2420,7 +2429,7 @@
   position: fixed;
   width: 70px;
   height: 70px;
-  bottom: 30px;
+  bottom: 110px;
   right: 30px;
   background: linear-gradient(135deg, #25d366, #20ba5a);
   color: white;
@@ -2690,11 +2699,11 @@
 
   /* WhatsApp */
   .whatsapp-float {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     font-size: 1.5rem;
-    bottom: 20px;
-    right: 20px;
+    bottom: 100px;
+    right: 29px;
   }
 }
 

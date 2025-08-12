@@ -28,6 +28,9 @@ const Header = () => {
 
   const pathUrl = usePathname();
 
+  const onOffersRoute =
+    pathUrl === "/offers" || pathUrl?.startsWith("/offers/");
+
   const isOffersMenu = (title: string) =>
     title.trim().toLowerCase() === "offers";
 
@@ -113,12 +116,20 @@ const Header = () => {
       ref={headerRef}
       className={`fixed left-0 top-0 z-50 w-full py-4 ${!isMounted ? "invisible" : "visible"}`}
       initial={{
-        backgroundColor: stickyMenu ? "rgba(255,255,255,0.98)" : "transparent",
-        boxShadow: stickyMenu ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
+        backgroundColor:
+          stickyMenu || onOffersRoute
+            ? "rgba(255,255,255,0.98)"
+            : "transparent",
+        boxShadow:
+          stickyMenu || onOffersRoute ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
       }}
       animate={{
-        backgroundColor: stickyMenu ? "rgba(255,255,255,0.98)" : "transparent",
-        boxShadow: stickyMenu ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
+        backgroundColor:
+          stickyMenu || onOffersRoute
+            ? "rgba(255,255,255,0.98)"
+            : "transparent",
+        boxShadow:
+          stickyMenu || onOffersRoute ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
       }}
     >
       {/* Container: original 1280px */}

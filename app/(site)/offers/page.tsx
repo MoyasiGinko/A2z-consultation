@@ -188,7 +188,7 @@ export default function OffersPage() {
                 <div className="trust-badge-item">
                   <div className="badge-icon-wrapper">
                     <img
-                      src="asset/home-office-logo-white.png"
+                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/home-office-logo-white_fuqriv.png"
                       alt="UK Government Authorized"
                       className="trust-badge"
                     />
@@ -200,7 +200,7 @@ export default function OffersPage() {
                 <div className="trust-badge-item">
                   <div className="badge-icon-wrapper">
                     <img
-                      src="asset/iaa_govt.png"
+                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945402/iaa_govt_fzouvk.png"
                       alt="OISC Regulated"
                       className="trust-badge"
                     />
@@ -212,7 +212,7 @@ export default function OffersPage() {
                 <div className="trust-badge-item">
                   <div className="badge-icon-wrapper">
                     <img
-                      src="asset/i&a.jpg"
+                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/i_a_uuax2o.jpg"
                       alt="Law Society Member"
                       className="trust-badge"
                     />
@@ -310,7 +310,7 @@ export default function OffersPage() {
             <div className="testimonials-grid">
               <div className="testimonial-card">
                 <img
-                  src="/asset/client-photo-1.png"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945399/client-photo-1_n7dy7n.jpg"
                   alt="Sarah Ahmed"
                   className="client-photo"
                 />
@@ -329,7 +329,7 @@ export default function OffersPage() {
               </div>
               <div className="testimonial-card">
                 <img
-                  src="/asset/client-photo-2.png"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945399/client-photo-1_n7dy7n.jpg"
                   alt="Raj Patel"
                   className="client-photo"
                 />
@@ -348,7 +348,7 @@ export default function OffersPage() {
               </div>
               <div className="testimonial-card">
                 <img
-                  src="/asset/client-photo-3.png"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/client-photo-3_vgfbu5.png"
                   alt="Maria Garcia"
                   className="client-photo"
                 />
@@ -368,7 +368,7 @@ export default function OffersPage() {
             </div>
             <div className="google-reviews">
               <img
-                src="asset/google-reviews-badge.png"
+                src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/google-reviews-badge_qccjai.png"
                 alt="Google Reviews 4.9 stars"
                 className="reviews-badge"
               />
@@ -676,7 +676,7 @@ export default function OffersPage() {
               <div className="process-step">
                 <div className="step-number">1</div>
                 <img
-                  src="/asset/consultation-icon.jpg"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945404/consultation-icon_xvhxoj.jpg"
                   alt="Free Consultation"
                   className="step-image"
                 />
@@ -689,7 +689,7 @@ export default function OffersPage() {
               <div className="process-step">
                 <div className="step-number">2</div>
                 <img
-                  src="asset/document-preparation.jpg"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945425/document-preparation_gjnsm4.jpg"
                   alt="Document Preparation"
                   className="step-image"
                 />
@@ -702,7 +702,7 @@ export default function OffersPage() {
               <div className="process-step">
                 <div className="step-number">3</div>
                 <img
-                  src="asset/application-submission.jpg"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945400/application-submission_lf8zjj.jpg"
                   alt="Application Submission"
                   className="step-image"
                 />
@@ -715,7 +715,7 @@ export default function OffersPage() {
               <div className="process-step">
                 <div className="step-number">4</div>
                 <img
-                  src="asset/approval-celebration.avif"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945400/approval-celebration_wnkbhb.avif"
                   alt="Get Approval"
                   className="step-image"
                 />
@@ -787,7 +787,7 @@ export default function OffersPage() {
                 <div className="guarantee-card">
                   <div className="guarantee-image-wrapper">
                     <img
-                      src="asset/money-back-gurantee.webp"
+                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945403/money-back-gurantee_dqdpqk.webp"
                       alt="Money Back Guarantee"
                       className="guarantee-image"
                     />
@@ -803,7 +803,7 @@ export default function OffersPage() {
                 <div className="guarantee-card">
                   <div className="guarantee-image-wrapper">
                     <img
-                      src="asset/24-hour-response.avif"
+                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945402/24-hour-response_havhxd.avif"
                       alt="24 Hour Response"
                       className="guarantee-image"
                     />
@@ -819,7 +819,7 @@ export default function OffersPage() {
                 <div className="guarantee-card">
                   <div className="guarantee-image-wrapper">
                     <img
-                      src="asset/no-hidden-fees.jpg"
+                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945404/no-hidden-fees_vrmeqd.jpg"
                       alt="No Hidden Fees"
                       className="guarantee-image"
                     />
@@ -906,7 +906,7 @@ export default function OffersPage() {
           <section className="urgency-section">
             <div className="urgency-content">
               <img
-                src="asset/urgent-immigration.png"
+                src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945410/urgent-immigration_nep3fe.png"
                 alt="Time Sensitive Immigration"
                 className="urgency-image"
               />
