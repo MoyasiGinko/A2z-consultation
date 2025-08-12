@@ -1,24 +1,28 @@
 /* ===========================
    1. GLOBAL STYLES & RESETS
    =========================== */
-* {
+.offers-scope,
+.offers-scope * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-body {
+.offers-scope {
   font-family: "Inter", sans-serif;
   line-height: 1.6;
   color: #333;
-  background: #ffffff;
+  background: #fff;
   min-height: 100vh;
 }
 
-.container {
+.offers-scope .container {
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.offers-scope ul {
+  list-style: none;
 }
 
 /* ===========================
@@ -116,7 +120,7 @@ body {
    3. HEADER SECTION
    =========================== */
 
-.header {
+.offers-scope .offers-hero {
   background: linear-gradient(rgba(25, 32, 72, 0.45), rgba(67, 90, 111, 0.48)),
     url("https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754861450/pexels-137666-747079_i5kssv.webp");
   background-size: cover;
@@ -132,7 +136,7 @@ body {
   align-items: center;
 }
 
-.header::before {
+.offers-hero::before {
   content: "";
   position: absolute;
   top: 0;
@@ -152,7 +156,7 @@ body {
   z-index: 1;
 }
 
-.header::after {
+.offers-hero::after {
   content: "";
   position: absolute;
   top: 0;
@@ -163,7 +167,7 @@ body {
   z-index: 1;
 }
 
-.header-content {
+.offers-scope .header-contents {
   position: relative;
   z-index: 10;
   text-align: center;
@@ -2809,5 +2813,34 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+/* --- SAFETY OVERRIDES: keep site chrome visible on /offers --- */
+.site-header,
+footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Make Tailwind's responsive display utilities win again */
+@media (min-width: 768px) {
+  /* md */
+  .md\:flex {
+    display: flex !important;
+  }
+  .md\:block {
+    display: block !important;
+  }
+}
+@media (min-width: 1280px) {
+  /* xl */
+  .xl\:flex {
+    display: flex !important;
+  }
+  .xl\:block {
+    display: block !important;
   }
 }
