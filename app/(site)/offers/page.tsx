@@ -413,24 +413,22 @@ export default function OffersPage() {
                 <div className="card-body">
                   <ul className="features">
                     <li>
-                      <i className="fas fa-check-circle"></i> Complete
-                      application preparation
+                      <i className="fas fa-check-circle"></i> Eligibility check
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Document review
-                      &amp; compilation
+                      <i className="fas fa-check-circle"></i> Docs & templates
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Home Office
-                      correspondence
+                      <i className="fas fa-check-circle"></i> Application
+                      drafted + submitted
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Compliance
+                      <i className="fas fa-check-circle"></i> Mock audit
+                      preparation
+                    </li>
+                    <li>
+                      <i className="fas fa-check-circle"></i> Professional
                       guidance
-                    </li>
-                    <li>
-                      <i className="fas fa-check-circle"></i> Post-approval
-                      support
                     </li>
                   </ul>
                 </div>
@@ -454,23 +452,23 @@ export default function OffersPage() {
                 <div className="card-body">
                   <ul className="features">
                     <li>
-                      <i className="fas fa-check-circle"></i> Application form
-                      completion
+                      <i className="fas fa-check-circle"></i> Role & points
+                      check (RQF 6+)
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Supporting
-                      documents
+                      <i className="fas fa-check-circle"></i> Forms + cover
+                      letters
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Appointment
-                      booking
+                      <i className="fas fa-check-circle"></i> Home Office
+                      enquiries handled
                     </li>
                     <li>
                       <i className="fas fa-check-circle"></i> Interview
                       preparation
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Follow-up support
+                      <i className="fas fa-check-circle"></i> Submission support
                     </li>
                   </ul>
                 </div>
@@ -494,23 +492,24 @@ export default function OffersPage() {
                 <div className="card-body">
                   <ul className="features">
                     <li>
-                      <i className="fas fa-check-circle"></i> Eligibility
-                      assessment
+                      <i className="fas fa-check-circle"></i> Route check
+                      (5-year / 10-year)
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Complete
-                      application
+                      <i className="fas fa-check-circle"></i> Absence & lawful
+                      stay audit
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Evidence
-                      preparation
+                      <i className="fas fa-check-circle"></i> Life in the UK /
+                      English guidance
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Biometric
-                      appointment
+                      <i className="fas fa-check-circle"></i> Application &
+                      document pack
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Decision tracking
+                      <i className="fas fa-check-circle"></i> Professional
+                      guidance
                     </li>
                   </ul>
                 </div>
@@ -525,7 +524,7 @@ export default function OffersPage() {
               <div className="pricing-card fade-in">
                 <div className="card-header">
                   <div className="card-icon">💑</div>
-                  <h3>Spouse Visa/Extension</h3>
+                  <h3>Spouse/PartnerVisa (FM)</h3>
                   <div className="savings-badge">Save £650</div>
                   <div className="price">
                     £650<span className="original-price">£1,300</span>
@@ -535,23 +534,23 @@ export default function OffersPage() {
                   <ul className="features">
                     <li>
                       <i className="fas fa-check-circle"></i> Relationship
-                      evidence
+                      evidence pack
                     </li>
                     <li>
                       <i className="fas fa-check-circle"></i> Financial
-                      requirements
+                      requirement (Appendix FM) calculation
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Application
-                      completion
+                      <i className="fas fa-check-circle"></i> Accommodation
+                      checks
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> English test
+                      <i className="fas fa-check-circle"></i> Forms & cover
+                      letter
+                    </li>
+                    <li>
+                      <i className="fas fa-check-circle"></i> Professional
                       guidance
-                    </li>
-                    <li>
-                      <i className="fas fa-check-circle"></i> Premium service
-                      option
                     </li>
                   </ul>
                 </div>
@@ -575,23 +574,24 @@ export default function OffersPage() {
                 <div className="card-body">
                   <ul className="features">
                     <li>
-                      <i className="fas fa-check-circle"></i> Citizenship
-                      application
+                      <i className="fas fa-check-circle"></i> Eligibility &
+                      residence check
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Life in UK test
-                      prep
+                      <i className="fas fa-check-circle"></i> Absence/travel
+                      audit
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Passport
-                      application
+                      <i className="fas fa-check-circle"></i> Life in the UK /
+                      English guidance
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Ceremony
-                      arrangements
+                      <i className="fas fa-check-circle"></i> Application,
+                      referees & ceremony steps
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Complete guidance
+                      <i className="fas fa-check-circle"></i> Professional
+                      guidance
                     </li>
                   </ul>
                 </div>
@@ -617,22 +617,23 @@ export default function OffersPage() {
                 <div className="card-body">
                   <ul className="features">
                     <li>
-                      <i className="fas fa-check-circle"></i> Tourism/business
-                      visits
+                      <i className="fas fa-check-circle"></i> Eligibility &
+                      purpose mapping
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Document checklist
+                      <i className="fas fa-check-circle"></i> Invite/itinerary &
+                      cover letter
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Interview
-                      preparation
+                      <i className="fas fa-check-circle"></i> Docs checklist &
+                      review
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Travel itinerary
-                      help
+                      <i className="fas fa-check-circle"></i> Submission support
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Quick processing
+                      <i className="fas fa-check-circle"></i> Professional
+                      guidance
                     </li>
                   </ul>
                 </div>
@@ -658,23 +659,23 @@ export default function OffersPage() {
                 <div className="card-body">
                   <ul className="features">
                     <li>
-                      <i className="fas fa-check-circle"></i> University
-                      applications
+                      <i className="fas fa-check-circle"></i> CAS & course check
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> CAS letter
+                      <i className="fas fa-check-circle"></i> Financials
+                      (maintenance) review
+                    </li>
+                    <li>
+                      <i className="fas fa-check-circle"></i> Forms + SOP
                       guidance
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> Financial evidence
+                      <i className="fas fa-check-circle"></i> Submission &
+                      priority options
                     </li>
                     <li>
-                      <i className="fas fa-check-circle"></i> IELTS preparation
-                      tips
-                    </li>
-                    <li>
-                      <i className="fas fa-check-circle"></i> Pre-arrival
-                      support
+                      <i className="fas fa-check-circle"></i> Professional
+                      guidance
                     </li>
                   </ul>
                 </div>

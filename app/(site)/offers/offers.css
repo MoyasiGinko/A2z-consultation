@@ -2603,3 +2603,246 @@ footer {
     word-break: break-word !important;
   }
 }
+/* =========================================================
+   PRICING — MOBILE/TABLET SIZE OVERRIDES ONLY
+   (Desktop unchanged; no styling changes beyond sizes)
+   ========================================================= */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  .pricing-section {
+    margin: 120px 0; /* tighter than desktop */
+  }
+  .pricing-section h2 {
+    margin-bottom: 70px;
+    font-size: 2.2rem; /* down from very large desktop heading */
+    line-height: 1.2;
+  }
+
+  .pricing-card {
+    min-height: 520px;
+  }
+  .pricing-card .card-header,
+  .pricing-card .card-body,
+  .pricing-card .card-footer {
+    padding: 24px;
+  }
+
+  .pricing-card .card-icon {
+    font-size: 2.5rem;
+  }
+  .pricing-card h3 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+  .pricing-card .price {
+    font-size: 3rem;
+  }
+  .pricing-card .original-price {
+    font-size: 1.1rem;
+    margin-left: 12px;
+  }
+  .pricing-card .savings-badge,
+  .pricing-card .special-badge {
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 22px; /* proportional to original */
+  }
+
+  .pricing-card .features li {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+  .pricing-card .features li i {
+    font-size: 1.1rem;
+    margin-right: 10px;
+  }
+
+  .pricing-card .btn-primary {
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 50px;
+  }
+}
+
+/* Large Mobile / Small Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  .pricing-section {
+    margin: 90px 0;
+  }
+  .pricing-section h2 {
+    margin-bottom: 55px;
+    font-size: 2rem;
+  }
+
+  .pricing-card {
+    min-height: 480px;
+  }
+  .pricing-card .card-header,
+  .pricing-card .card-body,
+  .pricing-card .card-footer {
+    padding: 18px;
+  }
+
+  .pricing-card .card-icon {
+    font-size: 2.1rem;
+    margin-bottom: 14px;
+  }
+  .pricing-card h3 {
+    font-size: 1.2rem;
+  }
+  .pricing-card .price {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+  }
+  .pricing-card .original-price {
+    font-size: 1rem;
+    margin-left: 10px;
+  }
+  .pricing-card .savings-badge,
+  .pricing-card .special-badge {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
+
+  .pricing-card .features li {
+    font-size: 0.9rem;
+    padding: 9px 0;
+  }
+  .pricing-card .features li i {
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+
+  .pricing-card .btn-primary {
+    font-size: 0.95rem;
+    padding: 12px 18px;
+  }
+}
+
+/* Mobile (≤ 600px) */
+@media (max-width: 600px) {
+  .pricing-section {
+    margin: 80px 0;
+  }
+  .pricing-section h2 {
+    margin-bottom: 45px;
+    font-size: 1.8rem;
+  }
+
+  .pricing-card {
+    min-height: 440px;
+  }
+  .pricing-card .card-header,
+  .pricing-card .card-body,
+  .pricing-card .card-footer {
+    padding: 16px;
+  }
+
+  .pricing-card .card-icon {
+    font-size: 1.9rem;
+    margin-bottom: 12px;
+  }
+  .pricing-card h3 {
+    font-size: 1.1rem;
+  }
+  .pricing-card .price {
+    font-size: 2.2rem;
+  }
+  .pricing-card .original-price {
+    font-size: 0.95rem;
+    margin-left: 8px;
+  }
+  .pricing-card .savings-badge,
+  .pricing-card .special-badge {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+  }
+
+  .pricing-card .features li {
+    font-size: 0.88rem;
+    padding: 8px 0;
+  }
+  .pricing-card .features li i {
+    font-size: 0.95rem;
+  }
+
+  .pricing-card .btn-primary {
+    font-size: 0.92rem;
+    padding: 10px 16px;
+  }
+}
+
+/* Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .pricing-section {
+    margin: 70px 0;
+  }
+  .pricing-section h2 {
+    margin-bottom: 35px;
+    font-size: 1.6rem;
+  }
+
+  .pricing-card {
+    min-height: auto; /* let content dictate height on small screens */
+  }
+  .pricing-card .card-header,
+  .pricing-card .card-body,
+  .pricing-card .card-footer {
+    padding: 14px;
+  }
+
+  .pricing-card .card-icon {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+  }
+  .pricing-card h3 {
+    font-size: 1.05rem;
+  }
+  .pricing-card .price {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+  .pricing-card .original-price {
+    font-size: 0.9rem;
+  }
+  .pricing-card .savings-badge,
+  .pricing-card .special-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .pricing-card .features li {
+    font-size: 0.85rem;
+    padding: 7px 0;
+  }
+  .pricing-card .features li i {
+    font-size: 0.9rem;
+  }
+
+  .pricing-card .btn-primary {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+}
+
+/* Extra-small (≤ 360px) */
+@media (max-width: 360px) {
+  .pricing-section h2 {
+    font-size: 1.45rem;
+  }
+
+  .pricing-card h3 {
+    font-size: 0.98rem;
+  }
+  .pricing-card .price {
+    font-size: 1.7rem;
+  }
+  .pricing-card .original-price {
+    font-size: 0.82rem;
+  }
+  .pricing-card .btn-primary {
+    font-size: 0.88rem;
+    padding: 9px 12px;
+  }
+}
