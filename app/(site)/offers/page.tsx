@@ -304,12 +304,12 @@ export default function OffersPage() {
                 <div className="trust-badge-item">
                   <div className="badge-icon-wrapper">
                     <img
-                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/i_a_uuax2o.jpg"
+                      src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1755965258/Add_a_heading_rugrhy.png"
                       alt="Law Society Member"
                       className="trust-badge"
                     />
                   </div>
-                  <span className="trust-badge-label">Law Society Member</span>
+                  <span className="trust-badge-label">Rated 5/5 stars!</span>
                 </div>
               </div>
 
@@ -712,7 +712,7 @@ export default function OffersPage() {
               </div>
               <div className="testimonial-card">
                 <img
-                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945399/client-photo-1_n7dy7n.jpg"
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945400/client-photo-2_bishn0.png"
                   alt="Raj Patel"
                   className="client-photo"
                 />
