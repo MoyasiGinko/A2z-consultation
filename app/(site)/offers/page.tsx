@@ -1,44 +1,58 @@
-// app/offers/page.tsx
+// app/(site)/offers/page.tsx
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect, useRef, useState, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
+
+type SubmitStatus =
+  | { success: true; message: string }
+  | { success: false; message: string }
+  | null;
 
 export default function OffersPage() {
+  // === EmailJS form state (follow get-in-touch pattern) ===
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(null);
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // prevent page refresh
+
+    if (!formRef.current) return;
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    emailjs
+      .sendForm("service_yj3nlrh", "template_nastr37", formRef.current, {
+        publicKey: "8seFmYH7EcPOmhmGg",
+      })
+      .then(() => {
+        setSubmitStatus({
+          success: true,
+          message: "Your message has been sent successfully.",
+        });
+        formRef.current?.reset();
+        // Scroll message into view for better UX
+        document.getElementById("formStatusBox")?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      })
+      .catch(() => {
+        setSubmitStatus({
+          success: false,
+          message: "Error sending the message, kindly message us on WhatsApp.",
+        });
+        document.getElementById("formStatusBox")?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      })
+      .finally(() => setIsSubmitting(false));
+  };
+
+  // === Page animations / behaviors (existing) ===
   useEffect(() => {
-    // Form submission handling
-    const form = document.getElementById(
-      "contactForm",
-    ) as HTMLFormElement | null;
-    const onSubmit = (e: Event) => {
-      e.preventDefault();
-      const target = e.target as HTMLFormElement;
-      const formData = new FormData(target);
-      // const data = Object.fromEntries(formData); // kept identical behavior
-
-      // Show loading state (fixed selector to match HTML button class)
-      const submitBtn = target.querySelector(
-        ".btn-callback",
-      ) as HTMLButtonElement | null;
-      const originalText = submitBtn ? submitBtn.textContent : null;
-      if (submitBtn) {
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
-      }
-
-      // Simulate form submission (as in your HTML)
-      setTimeout(() => {
-        alert(
-          "Thank you for your inquiry! We will contact you within 24 hours with your free consultation details.",
-        );
-        target.reset();
-        if (submitBtn && originalText) {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        }
-      }, 1500);
-    };
-    if (form) form.addEventListener("submit", onSubmit);
-
     // Smooth scrolling for anchor links
     const anchors = Array.from(
       document.querySelectorAll('a[href^="#"]'),
@@ -47,9 +61,7 @@ export default function OffersPage() {
       e.preventDefault();
       const el = e.currentTarget as HTMLAnchorElement;
       const target = document.querySelector(el.getAttribute("href") || "");
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     };
     anchors.forEach((a) => a.addEventListener("click", onAnchor));
 
@@ -162,7 +174,6 @@ export default function OffersPage() {
     });
 
     return () => {
-      if (form) form.removeEventListener("submit", onSubmit);
       anchors.forEach((a) => a.removeEventListener("click", onAnchor));
       animTargets.forEach((el) => io.unobserve(el));
       document
@@ -173,6 +184,87 @@ export default function OffersPage() {
         c.removeEventListener("mouseenter", onEnter as any);
         c.removeEventListener("mouseleave", onLeave as any);
       });
+    };
+  }, []);
+
+  // === 2-Day rolling countdown (highlight-banner only) ===
+  useEffect(() => {
+    const STORAGE_KEY = "a2z_highlight_offer_deadline";
+    const TWO_DAYS_MS = 2 * 24 * 60 * 60 * 1000;
+
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+
+    if (!daysEl || !hoursEl || !minutesEl) return;
+
+    const now = () => new Date().getTime();
+
+    const getOrCreateDeadline = (): number => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const asNum = raw ? parseInt(raw, 10) : NaN;
+
+        if (!raw || Number.isNaN(asNum) || asNum <= now()) {
+          // remove old value and set a fresh 2-day window from NOW
+          localStorage.removeItem(STORAGE_KEY);
+          const newDeadline = now() + TWO_DAYS_MS;
+          localStorage.setItem(STORAGE_KEY, String(newDeadline));
+          return newDeadline;
+        }
+        return asNum;
+      } catch {
+        // Fallback: no storage available
+        return now() + TWO_DAYS_MS;
+      }
+    };
+
+    let deadline = getOrCreateDeadline();
+
+    const render = () => {
+      let remaining = deadline - now();
+
+      // If finished, reset for another 2 days (rolling window)
+      if (remaining <= 0) {
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+          deadline = now() + TWO_DAYS_MS;
+          localStorage.setItem(STORAGE_KEY, String(deadline));
+        } catch {
+          deadline = now() + TWO_DAYS_MS;
+        }
+        remaining = deadline - now();
+      }
+
+      const DAY = 24 * 60 * 60 * 1000;
+      const HOUR = 60 * 60 * 1000;
+      const MIN = 60 * 1000;
+
+      const d = Math.floor(remaining / DAY);
+      const h = Math.floor((remaining % DAY) / HOUR);
+      const m = Math.floor((remaining % HOUR) / MIN);
+
+      // Keep original structure/classes; just update text
+      daysEl.textContent = String(d);
+      hoursEl.textContent = String(h);
+      minutesEl.textContent = String(m);
+    };
+
+    // Initial paint ASAP
+    render();
+
+    // Update every second (smooth; minutes display will step when needed)
+    const interval = setInterval(render, 1000);
+
+    // Also refresh when tab becomes visible again
+    const onVis = () => {
+      if (document.visibilityState === "visible") render();
+    };
+    document.addEventListener("visibilitychange", onVis);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener("visibilitychange", onVis);
     };
   }, []);
 
@@ -237,7 +329,7 @@ export default function OffersPage() {
               {/* Enhanced Stats Grid */}
               <div className="hero-stats">
                 <div className="hero-stat">
-                  <strong>98%</strong>
+                  <strong>99%</strong>
                   <span>Success Rate</span>
                 </div>
                 <div className="hero-stat">
@@ -286,7 +378,7 @@ export default function OffersPage() {
               {/* WhatsApp Action Button */}
               <div className="whatsapp-action">
                 <a
-                  href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi! I'm interested in the 50% discount offer. Can you help me?"
+                  href="https://wa.me/447441398273?text=Hi! I'm interested in the 50% discount offer. Can you help me?"
                   className="whatsapp-btn"
                   target="_blank"
                 >
@@ -303,80 +395,6 @@ export default function OffersPage() {
               </div>
             </div>
           </div>
-
-          {/* Social Proof Section */}
-          <section className="social-proof-section">
-            <h2 className="section-title">👥 What Our Clients Say</h2>
-            <div className="testimonials-grid">
-              <div className="testimonial-card">
-                <img
-                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945399/client-photo-1_n7dy7n.jpg"
-                  alt="Sarah Ahmed"
-                  className="client-photo"
-                />
-                <div className="testimonial-content">
-                  <div className="stars">⭐⭐⭐⭐⭐</div>
-                  <p>
-                    "A huge thank you to Fiyadh and his team for expertly
-                    guiding us through the process of maintaining our Sponsor
-                    Licence."
-                  </p>
-                  <div className="client-info">
-                    <strong>MD Ashiqur Rahman</strong>
-                    <span>Sponsor Licence Approved</span>
-                  </div>
-                </div>
-              </div>
-              <div className="testimonial-card">
-                <img
-                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945399/client-photo-1_n7dy7n.jpg"
-                  alt="Raj Patel"
-                  className="client-photo"
-                />
-                <div className="testimonial-content">
-                  <div className="stars">⭐⭐⭐⭐⭐</div>
-                  <p>
-                    "I had a super experience throughout the journey. Me and my
-                    wife always got great help and cooperation from the team.
-                    Everyone is very helpful."
-                  </p>
-                  <div className="client-info">
-                    <strong>Mohammed Afzal</strong>
-                    <span>Spouse Visa Approved</span>
-                  </div>
-                </div>
-              </div>
-              <div className="testimonial-card">
-                <img
-                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/client-photo-3_vgfbu5.png"
-                  alt="Maria Garcia"
-                  className="client-photo"
-                />
-                <div className="testimonial-content">
-                  <div className="stars">⭐⭐⭐⭐⭐</div>
-                  <p>
-                    "Had a great experience! Big thanks for all the support with
-                    my visa. The team’s really helpful. Would definitely
-                    recommend if you need help with visa stuff!"
-                  </p>
-                  <div className="client-info">
-                    <strong>Tanafz</strong>
-                    <span>Student Visa Approved</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="google-reviews">
-              <img
-                src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/google-reviews-badge_qccjai.png"
-                alt="Google Reviews 4.9 stars"
-                className="reviews-badge"
-              />
-              <p>
-                Rated 4.9/5 stars on Google Reviews from 200+ verified clients
-              </p>
-            </div>
-          </section>
 
           {/* Pricing Section */}
           <section className="pricing-section">
@@ -669,6 +687,83 @@ export default function OffersPage() {
             </div>
           </section>
 
+          {/* Social Proof Section */}
+          <section className="social-proof-section">
+            <h2 className="section-title">👥 What Our Clients Say</h2>
+            <div className="testimonials-grid">
+              <div className="testimonial-card">
+                <img
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945399/client-photo-1_n7dy7n.jpg"
+                  alt="Sarah Ahmed"
+                  className="client-photo"
+                />
+                <div className="testimonial-content">
+                  <div className="stars">⭐⭐⭐⭐⭐</div>
+                  <p>
+                    "A huge thank you to Fiyadh and his team for expertly
+                    guiding us through the process of maintaining our Sponsor
+                    Licence."
+                  </p>
+                  <div className="client-info">
+                    <strong>MD Ashiqur Rahman</strong>
+                    <span>Sponsor Licence Approved</span>
+                  </div>
+                </div>
+              </div>
+              <div className="testimonial-card">
+                <img
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945399/client-photo-1_n7dy7n.jpg"
+                  alt="Raj Patel"
+                  className="client-photo"
+                />
+                <div className="testimonial-content">
+                  <div className="stars">⭐⭐⭐⭐⭐</div>
+                  <p>
+                    "I had a super experience throughout the journey. My wife
+                    and I always got great help and cooperation from the team.
+                    Everyone is very helpful."
+                  </p>
+                  <div className="client-info">
+                    <strong>Mohammed Afzal</strong>
+                    <span>Spouse Visa Approved</span>
+                  </div>
+                </div>
+              </div>
+              <div className="testimonial-card">
+                <img
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/client-photo-3_vgfbu5.png"
+                  alt="Maria Garcia"
+                  className="client-photo"
+                />
+                <div className="testimonial-content">
+                  <div className="stars">⭐⭐⭐⭐⭐</div>
+                  <p>
+                    "Had a great experience! Big thanks for all the support with
+                    my visa. The team’s really helpful. Would definitely
+                    recommend if you need help with visa stuff!"
+                  </p>
+                  <div className="client-info">
+                    <strong>Tanafz</strong>
+                    <span>Student Visa Approved</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="google-reviews">
+              <a
+                target="_blank"
+                href="https://www.google.com/search?q=a2z+immigrations+uk&rlz=1C1GCEB_enBD1155BD1155&oq=a2z+immigrations+uk&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MgYIAhBFGDzSAQg1MTQyajBqOagCBrACAfEFcIlwEVprSgI&sourceid=chrome&ie=UTF-8#lrd=0x48841199bf824d51:0x25fb4b10baf319db,1,,,,"
+              >
+                <img
+                  src="https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754945401/google-reviews-badge_qccjai.png"
+                  alt="Google Reviews 5.0 stars"
+                  className="reviews-badge"
+                />
+              </a>
+              <p>Rated 5/5 stars on Google Reviews from 10+ verified clients</p>
+            </div>
+          </section>
+
           {/* Process Section */}
           <section className="process-section">
             <h2 className="section-title">📋 Our Simple 4-Step Process</h2>
@@ -735,7 +830,7 @@ export default function OffersPage() {
                 <i className="fas fa-award"></i>
                 <span>Industry Leading Immigration Specialists</span>
               </div>
-              <h2 className="section-title">Why Choose A2Z Immigrations?</h2>
+              <h2 className="section-title">Why Choose A2Z Immigration?</h2>
               <p className="stats-subtitle">
                 Trusted by thousands of clients worldwide for exceptional
                 immigration services
@@ -756,7 +851,7 @@ export default function OffersPage() {
                   </div>
                 </div>
                 <div className="stat-item">
-                  <div className="stat-number">98%</div>
+                  <div className="stat-number">99%</div>
                   <div className="stat-label">Success Rate</div>
                   <div className="stat-description">
                     Industry leading approval rate
@@ -875,9 +970,9 @@ export default function OffersPage() {
                   <i className="fas fa-shield-alt"></i>
                 </div>
                 <div className="feature-content">
-                  <h3>Guaranteed Success</h3>
+                  <h3>Satisfaction Guaranteed</h3>
                   <p>
-                    With our 98% success rate and money-back guarantee, you can
+                    With our 99% success rate and money-back guarantee, you can
                     trust us with your immigration journey. We thoroughly review
                     every case and only proceed when we&apos;re confident of a
                     positive outcome.
@@ -954,7 +1049,15 @@ export default function OffersPage() {
                   <h3>
                     <i className="fas fa-edit"></i>Send us a Message
                   </h3>
-                  <form className="contact-form" id="contactForm">
+
+                  {/* === FORM (fields + names mirror get-in-touch) === */}
+                  <form
+                    ref={formRef}
+                    onSubmit={sendEmail}
+                    className="contact-form"
+                    id="contactForm"
+                    noValidate
+                  >
                     <div className="form-row">
                       <div className="form-group">
                         <label htmlFor="name">
@@ -990,9 +1093,13 @@ export default function OffersPage() {
                         <input
                           type="tel"
                           id="phone"
-                          name="phone"
+                          name="number"
                           required
-                          placeholder="+44 123 456 7890"
+                          placeholder="+44 7123 456789"
+                          pattern="^(\+44|0)[0-9]{10}$"
+                          minLength={11}
+                          maxLength={13}
+                          title="Please enter a valid UK phone number starting with +44 or 0"
                         />
                       </div>
                       <div className="form-group">
@@ -1034,14 +1141,98 @@ export default function OffersPage() {
                         name="message"
                         rows={4}
                         placeholder="Please tell us about your immigration needs and any specific questions you have..."
+                        required
                       />
                     </div>
 
-                    <button type="submit" className="btn-callback">
-                      <i className="fas fa-paper-plane"></i>
-                      Request a Callback
+                    <div className="form-group" style={{ marginTop: 8 }}>
+                      <label
+                        htmlFor="consent"
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: 8,
+                          cursor: "pointer",
+                        }}
+                      >
+                        <input
+                          id="consent"
+                          name="consent"
+                          type="checkbox"
+                          required
+                          style={{
+                            width: 18,
+                            height: 18,
+                            marginTop: 4,
+                            accentColor: "#0ea5e9",
+                          }}
+                          aria-required="true"
+                        />
+                        <span>
+                          By clicking Checkbox, you agree to use our
+                          &quot;Form&quot; terms and consent cookie usage in
+                          browser.
+                        </span>
+                      </label>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn-callback"
+                      disabled={isSubmitting}
+                    >
+                      <i className="fas fa-paper-plane"></i>{" "}
+                      {isSubmitting ? "Sending..." : "Request a Callback"}
                     </button>
                   </form>
+
+                  {/* === Inline status box (below the form) === */}
+                  <div
+                    id="formStatusBox"
+                    aria-live="polite"
+                    role="status"
+                    style={{ marginTop: 12 }}
+                  >
+                    {submitStatus && submitStatus.success && (
+                      <div
+                        style={{
+                          backgroundColor: "#ecfdf5",
+                          color: "#065f46",
+                          border: "1px solid #a7f3d0",
+                          borderLeft: "6px solid #34d399",
+                          padding: "12px 16px",
+                          borderRadius: 8,
+                          fontWeight: 500,
+                        }}
+                      >
+                        ✅ {submitStatus.message}
+                      </div>
+                    )}
+                    {submitStatus && submitStatus.success === false && (
+                      <div
+                        style={{
+                          backgroundColor: "#fee2e2",
+                          color: "#991b1b",
+                          border: "1px solid #fecaca",
+                          borderLeft: "6px solid #f87171",
+                          padding: "12px 16px",
+                          borderRadius: 8,
+                          fontWeight: 500,
+                        }}
+                      >
+                        ❌ {submitStatus.message}{" "}
+                        <a
+                          href="https://wa.me/447441398273"
+                          target="_blank"
+                          style={{
+                            textDecoration: "underline",
+                          }}
+                        >
+                          WhatsApp
+                        </a>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Contact Info Card */}
@@ -1095,7 +1286,7 @@ export default function OffersPage() {
                     </div>
 
                     <a
-                      href="https://wa.me/442012345678"
+                      href="https://wa.me/447441398273"
                       className="whatsapp-btn"
                       target="_blank"
                     >
@@ -1111,7 +1302,7 @@ export default function OffersPage() {
 
         {/* Floating WhatsApp Button */}
         <a
-          href="https://wa.me/442012345678"
+          href="https://wa.me/447441398273"
           className="whatsapp-float"
           target="_blank"
           title="Chat with us on WhatsApp"
