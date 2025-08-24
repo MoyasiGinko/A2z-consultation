@@ -607,9 +607,6 @@ export default function OffersPage() {
                 <div className="card-header">
                   <div className="card-icon">✈️</div>
                   <h3>Visit Visa Application</h3>
-                  <div className="special-badge">
-                    🇧🇩 🇮🇳 Special Price for Bangladesh &amp; India
-                  </div>
                   <div className="price">
                     £350<span className="original-price">£700</span>
                   </div>
@@ -649,9 +646,6 @@ export default function OffersPage() {
                 <div className="card-header">
                   <div className="card-icon">🎓</div>
                   <h3>Student Visa Application</h3>
-                  <div className="special-badge">
-                    🇧🇩 🇮🇳 Special Price for Bangladesh &amp; India
-                  </div>
                   <div className="price">
                     £500<span className="original-price">£1,000</span>
                   </div>

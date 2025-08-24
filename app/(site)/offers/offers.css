@@ -948,17 +948,6 @@
   display: inline-block;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.special-badge {
-  background: rgba(255, 255, 255, 0.9);
-  color: #2d3748;
-  padding: 8px 20px;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  display: inline-block;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
 .card-body {
   padding: 0 30px;
   flex-grow: 1;
