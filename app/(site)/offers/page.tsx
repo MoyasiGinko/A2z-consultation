@@ -564,7 +564,7 @@ export default function OffersPage() {
               {/* Naturalisation */}
               <div className="pricing-card fade-in">
                 <div className="card-header">
-                  <div className="card-icon">🇬🇧</div>
+                  <div className="card-icon">📕</div>
                   <h3>Naturalisation + Passport</h3>
                   <div className="savings-badge">Save £500</div>
                   <div className="price">
@@ -608,7 +608,7 @@ export default function OffersPage() {
                   <div className="card-icon">✈️</div>
                   <h3>Visit Visa Application</h3>
                   <div className="price">
-                    £350<span className="original-price">£700</span>
+                    £600<span className="original-price">£1200</span>
                   </div>
                 </div>
                 <div className="card-body">
