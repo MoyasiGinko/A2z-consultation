@@ -363,6 +363,14 @@ export default function PrivacyPolicy() {
               {/* You can add a second column here if needed */}
             </div>
           </div>
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center rounded-lg bg-white px-6 py-3 shadow-md">
+              <i className="fas fa-calendar-alt mr-4 text-lg text-blue-500"></i>
+              <span className="text-sm text-gray-600">
+                Last updated: September 14, 2025
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
