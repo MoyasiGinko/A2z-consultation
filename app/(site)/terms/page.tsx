@@ -46,12 +46,9 @@ export default function TermsConditions() {
               <h1 className="mb-4 text-4xl font-bold text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
                 Terms & <span className="text-bluepaint">Conditions</span>
               </h1>
-              <p className="text-lg text-white drop-shadow-md sm:text-xl">
-                Effective from 14 September 2025
-              </p>
               <div className="mt-6 flex items-center justify-center text-white lg:justify-start">
                 <i className="fas fa-shield-alt mr-2 flex-shrink-0" />
-                <span className="text-center text-sm drop-shadow-md sm:text-base lg:text-left">
+                <span className="text-center text-[11px] drop-shadow-md sm:text-base lg:text-left lg:text-left">
                   IAA Regulated • Professional Immigration Services
                 </span>
               </div>
@@ -685,6 +682,14 @@ export default function TermsConditions() {
             </div>
           </div>
         </section>
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center rounded-lg bg-white px-6 py-3 shadow-md">
+            <i className="fas fa-calendar-alt mr-4 text-lg text-blue-500"></i>
+            <span className="text-sm text-gray-600">
+              Last updated: September 14, 2025
+            </span>
+          </div>
+        </div>
       </main>
     </div>
   );

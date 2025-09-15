@@ -41,12 +41,9 @@ export default function PrivacyPolicy() {
               <h1 className="mb-4 text-4xl font-bold text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
                 Privacy <span className="text-bluepaint">Policy</span>
               </h1>
-              <p className="text-lg text-white drop-shadow-md sm:text-xl">
-                Last updated: September 14, 2025
-              </p>
               <div className="mt-6 flex items-center justify-center text-white lg:justify-start">
                 <i className="fas fa-shield-alt mr-2 flex-shrink-0" />
-                <span className="text-center text-sm drop-shadow-md sm:text-base lg:text-left">
+                <span className="lg:text-md text-center text-[11px] drop-shadow-md sm:text-base lg:text-left">
                   IAA Regulated • Professional Immigration Services
                 </span>
               </div>
