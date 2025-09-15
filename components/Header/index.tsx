@@ -28,8 +28,15 @@ const Header = () => {
 
   const pathUrl = usePathname();
 
+  // Pages where header should be solid (not transparent)
   const onOffersRoute =
     pathUrl === "/offers" || pathUrl?.startsWith("/offers/");
+  const onLegalRoute =
+    pathUrl === "/terms" ||
+    pathUrl?.startsWith("/terms/") ||
+    pathUrl === "/privacy-policy" ||
+    pathUrl?.startsWith("/privacy-policy/");
+  const forceSolidHeader = onOffersRoute || onLegalRoute;
 
   const isOffersMenu = (title: string) =>
     title.trim().toLowerCase() === "offers";
@@ -117,19 +124,23 @@ const Header = () => {
       className={`fixed left-0 top-0 z-50 w-full py-4 ${!isMounted ? "invisible" : "visible"}`}
       initial={{
         backgroundColor:
-          stickyMenu || onOffersRoute
+          stickyMenu || forceSolidHeader
             ? "rgba(255,255,255,0.98)"
             : "transparent",
         boxShadow:
-          stickyMenu || onOffersRoute ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
+          stickyMenu || forceSolidHeader
+            ? "0 4px 12px rgba(0,0,0,0.05)"
+            : "none",
       }}
       animate={{
         backgroundColor:
-          stickyMenu || onOffersRoute
+          stickyMenu || forceSolidHeader
             ? "rgba(255,255,255,0.98)"
             : "transparent",
         boxShadow:
-          stickyMenu || onOffersRoute ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
+          stickyMenu || forceSolidHeader
+            ? "0 4px 12px rgba(0,0,0,0.05)"
+            : "none",
       }}
     >
       {/* Container: original 1280px */}

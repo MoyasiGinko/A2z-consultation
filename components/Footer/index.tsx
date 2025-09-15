@@ -40,7 +40,9 @@ const serviceLinks: ServiceLink[] = [
   { id: 1, name: "Sponsor Licence", href: "/services/sponsor-licence" },
   { id: 2, name: "Compliance", href: "/services/compliance" },
   { id: 3, name: "Skilled Worker Visa", href: "/services/skilled-worker-visa" },
-  { id: 4, name: "Other Services", href: "/services/other-services" },
+  { id: 4, name: "All Services", href: "/services/other-services" },
+  { id: 5, name: "Terms & Conditions", href: "/terms" },
+  { id: 6, name: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 const contactInfo: ContactInfo[] = [
