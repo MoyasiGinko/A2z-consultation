@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 import {ImageIcon} from '@sanity/icons'
 
 /**
@@ -71,6 +71,38 @@ export const blockContentType = defineType({
           title: 'Alternative Text',
         }
       ]
+    }),
+    defineArrayMember({
+      name: 'tableBlock',
+      title: 'Table',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'table',
+          title: 'Table reference',
+          type: 'reference',
+          to: [{type: 'table'}],
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+          description: 'Optional caption displayed below the table',
+        }),
+      ],
+      preview: {
+        select: {
+          title: 'table.title',
+          subtitle: 'caption',
+        },
+        prepare({title, subtitle}) {
+          return {
+            title: title || 'Table',
+            subtitle: subtitle || 'Inline table block',
+          }
+        },
+      },
     }),
   ],
 })
