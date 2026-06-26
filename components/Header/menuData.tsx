@@ -62,7 +62,20 @@ const menuData: Menu[] = [
     id: 4,
     title: "Free Stuff",
     newTab: false,
-    path: "/free-stuff",
+    submenu: [
+      {
+        id: 41,
+        title: "Resources",
+        newTab: false,
+        path: "/resources",
+      },
+      {
+        id: 42,
+        title: "Calculator",
+        newTab: false,
+        path: "/calculator",
+      },
+    ],
   },
 ];
 
