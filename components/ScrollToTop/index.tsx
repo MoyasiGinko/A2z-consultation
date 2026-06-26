@@ -1,7 +1,11 @@
+"use client";
+
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -22,6 +26,10 @@ export default function ScrollToTop() {
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
+
+  if (pathname === "/calculator") {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-5 left-8 z-[9999]">
