@@ -133,23 +133,25 @@ const CostSummary: React.FC<Props> = ({ costs, state }) => {
         </AnimatePresence>
 
         <div 
-          className="p-4 flex items-center justify-between cursor-pointer active:bg-gray-50 dark:active:bg-strokedark transition-colors"
+          className="p-4 flex items-center cursor-pointer active:bg-gray-50 dark:active:bg-strokedark transition-colors"
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          <div>
-            <p className="text-xs text-waterloo font-medium mb-1">Estimated Total Cost</p>
-            <p className="text-xl font-bold text-primary">{formatGBP(costs.grandTotal)}</p>
+          <div className="flex items-center gap-4">
+            <div>
+              <p className="text-xs text-waterloo font-medium mb-1">Estimated Total Cost</p>
+              <p className="text-xl font-bold text-primary">{formatGBP(costs.grandTotal)}</p>
+            </div>
+            <button className="flex items-center justify-center w-10 h-10 rounded-full bg-zumthor dark:bg-strokedark text-primary">
+              <svg
+                className={`w-5 h-5 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+              </svg>
+            </button>
           </div>
-          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-zumthor dark:bg-strokedark text-primary">
-            <svg
-              className={`w-5 h-5 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-            </svg>
-          </button>
         </div>
       </div>
       
