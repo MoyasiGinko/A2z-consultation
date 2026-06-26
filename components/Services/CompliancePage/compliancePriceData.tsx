@@ -75,7 +75,7 @@ const packages: PricingPackage[] = [
     text: "#000",
     shadowColor: "rgba(255, 185, 0, 0.1)", // RGB version of #ffb900 with alpha
     features: [
-      { text: "All With Diamond" }, // Note: There seems to be a typo in the original data; "Diamond" should likely be "Enhanced"
+      { text: "All Services With Enhanced" }, // Note: There seems to be a typo in the original data; "Diamond" should likely be "Enhanced"
       { text: "Priority handling of the CoS Application" },
       { text: "Fast-tracked assistance with the CoS assignments" },
       {

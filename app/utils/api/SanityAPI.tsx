@@ -36,7 +36,23 @@ export async function fetchPostBySlug(slug: string) {
     _id,
     title,
     slug,
-    body,
+    body[]{
+      ...,
+      _type == "tableBlock" => {
+        _type,
+        _key,
+        caption,
+        "table": table-> {
+          _id,
+          title,
+          description,
+          headers,
+          rows,
+          tableStyle,
+          slug
+        }
+      }
+    },
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     mainImage {
       asset -> { url }

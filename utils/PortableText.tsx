@@ -1,8 +1,11 @@
+"use client";
 // components/PortableText.tsx
 import { PortableText as PortableTextComponent } from "@portabletext/react";
 import type { PortableTextReactComponents } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
+import TableComponent from "@/components/Blog/lib/TableComponent";
+import { DataTable } from "@/types/blog";
 
 // Define custom components for different block types
 const components: Partial<PortableTextReactComponents> = {
@@ -19,6 +22,27 @@ const components: Partial<PortableTextReactComponents> = {
             fill
             className="rounded-lg object-cover"
           />
+        </div>
+      );
+    },
+    tableBlock: ({ value }) => {
+      const table: DataTable | undefined = value?.table || value;
+
+      if (!table) {
+        return null;
+      }
+
+      const tableWithDefaults = {
+        ...table,
+        tableStyle: table.tableStyle || "default",
+      } as DataTable;
+
+      return (
+        <div className="my-8 w-full">
+          <TableComponent table={tableWithDefaults} className="my-4" />
+          {value?.caption ? (
+            <p className="mt-2 text-sm text-gray-600">{value.caption}</p>
+          ) : null}
         </div>
       );
     },
