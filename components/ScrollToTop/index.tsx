@@ -40,7 +40,7 @@ export default function ScrollToTop() {
           className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-gradient-to-b from-sky-500 to-sky-600 text-white shadow-lg transition-all duration-300 ease-in-out hover:translate-y-[-2px] hover:bg-opacity-90 hover:shadow-xl"
         >
           <span className="mt-[2px] h-3 w-3 rotate-45 border-l-2 border-t-2 border-white"></span>
-          <span className="sr-only">scroll to top</span>
+          <span className="sr-only">Scroll to top</span>
         </div>
       )}
     </div>
