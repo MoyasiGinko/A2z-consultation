@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useRef, useState, FormEvent, useEffect } from "react";
-import emailjs from "@emailjs/browser";
 
 interface ContactProps {
   serviceId: string;
@@ -29,7 +28,7 @@ const Contact: React.FC<ContactProps> = ({
     setHasMounted(true);
   }, []);
 
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!form.current) return;
@@ -72,33 +71,40 @@ const Contact: React.FC<ContactProps> = ({
       message: messageInput?.value,
     };
 
-    // Use sendForm for direct form submission with form element
-    emailjs
-      .sendForm(serviceId, templateId, form.current, {
-        publicKey: publicKey,
-      })
-      .then(
-        (result) => {
-          console.log("SUCCESS!", result.text);
-          console.log("Sent data:", templateParams);
-          setSubmitStatus({
-            success: true,
-            message: "Your message has been sent successfully!",
-          });
-          if (form.current) form.current.reset();
-          setIsChecked(false); // Reset checkbox state
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-          setSubmitStatus({
-            success: false,
-            message: `Failed to send message: ${error.text}`,
-          });
-        },
-      )
-      .finally(() => {
-        setIsSubmitting(false);
+    try {
+      const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "";
+      if (!GOOGLE_SCRIPT_URL) {
+        throw new Error("Google Script URL is missing in environment variables.");
+      }
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(templateParams),
       });
+
+      const result = await response.json();
+
+      if (result.result === "success") {
+        console.log("SUCCESS!", result);
+        console.log("Sent data:", templateParams);
+        setSubmitStatus({
+          success: true,
+          message: "Your message has been sent successfully!",
+        });
+        if (form.current) form.current.reset();
+        setIsChecked(false); // Reset checkbox state
+      } else {
+        throw new Error(result.error || "Unknown error from server");
+      }
+    } catch (error) {
+      console.error("FAILED...", error);
+      setSubmitStatus({
+        success: false,
+        message: `Failed to send message: ${error instanceof Error ? error.message : "Unexpected error"}`,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!hasMounted) {
@@ -144,15 +150,26 @@ const Contact: React.FC<ContactProps> = ({
               </h2>
 
               {submitStatus && (
-                <div
-                  className={`mb-7.5 rounded-md p-3 ${
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mb-7.5 flex items-center gap-3 rounded-lg p-4 shadow-sm border ${
                     submitStatus.success
-                      ? "bg-green-100 text-green-800"
-                      : "bg-red-100 text-red-800"
+                      ? "bg-green-50 text-green-800 border-green-200"
+                      : "bg-red-50 text-red-800 border-red-200"
                   }`}
                 >
-                  {submitStatus.message}
-                </div>
+                  {submitStatus.success ? (
+                    <svg className="w-5 h-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5 flex-shrink-0 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                  <span className="font-medium">{submitStatus.message}</span>
+                </motion.div>
               )}
 
               <form ref={form} onSubmit={sendEmail} id="contactForm">
@@ -232,7 +249,7 @@ const Contact: React.FC<ContactProps> = ({
                     type="submit"
                     disabled={isSubmitting}
                     aria-label="send message"
-                    className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out hover:from-sky-800 hover:via-sky-600 hover:to-sky-500 hover:shadow-lg disabled:opacity-70 "
+                    className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-l from-sky-700 via-sky-500 to-sky-400 px-6 py-3 font-medium text-white transition-all duration-300 ease-in-out hover:from-sky-800 hover:via-sky-600 hover:to-sky-500 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                     <svg

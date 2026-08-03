@@ -40,7 +40,9 @@ const serviceLinks: ServiceLink[] = [
   { id: 1, name: "Sponsor Licence", href: "/services/sponsor-licence" },
   { id: 2, name: "Compliance", href: "/services/compliance" },
   { id: 3, name: "Skilled Worker Visa", href: "/services/skilled-worker-visa" },
-  { id: 4, name: "Other Services", href: "/services/other-services" },
+  { id: 4, name: "All Services", href: "/services/other-services" },
+  { id: 5, name: "Terms & Conditions", href: "/terms" },
+  { id: 6, name: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 const contactInfo: ContactInfo[] = [
@@ -279,7 +281,9 @@ const Footer: React.FC = () => {
                         objectFit="contain"
                       />
                     </div>
-                    <p className="mb-1 text-center text-sm">OISC Member</p>
+                    <p className="mb-1 text-center text-sm">
+                      Immigration Advice Authority (IAA)
+                    </p>
                     <p className="mb-4 text-center text-sm">F202100303</p>
                     <p className="text-center text-sm">
                       Registered Company in the UK
@@ -336,7 +340,7 @@ const Footer: React.FC = () => {
 
               <p className="mb-6 text-sm">
                 A2Z Immigration offers expert UK immigration services with
-                OISC-registered consultants.
+                IAA-registered consultants.
               </p>
 
               {/* <div className="flex h-10 max-w-full">
@@ -422,7 +426,7 @@ const Footer: React.FC = () => {
                   />
                 </div>
               </div>
-              <p className="mb-1 text-sm">OISC Member</p>
+              <p className="mb-1 text-sm">Immigration Advice Authority (IAA)</p>
               <p className="mb-4 text-sm">F202100303</p>
             </motion.div>
 

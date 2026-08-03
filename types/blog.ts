@@ -16,7 +16,7 @@ export type DataTable = {
   description?: string;
   headers: string[];
   rows: TableRow[];
-  tableStyle: "default" | "striped" | "bordered" | "compact";
+  tableStyle?: "default" | "striped" | "bordered" | "compact";
   slug: {
     current: string;
   };

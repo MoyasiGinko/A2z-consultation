@@ -17,12 +17,12 @@ const faqItems: FAQItem[] = [
             Job offer from a licensed sponsor with a valid Certificate of
             Sponsorship (CoS)
           </li>
-          <li>Job at RQF Level 3 or above</li>
+          <li>Job at RQF Level 6 or above</li>
           <li>
-            Salary meeting thresholds (£38,700 per year, or the job-specific
+            Salary meeting thresholds (£41,700 per year, or the job-specific
             going rate, whichever is highest)
           </li>
-          <li>English proficiency (CEFR Level B1)</li>
+          <li>English proficiency (CEFR Level B2)</li>
         </ul>
       </div>
     ),
@@ -87,113 +87,17 @@ const faqItems: FAQItem[] = [
     question: "What costs are involved with the Skilled Worker Visa?",
     answer: (
       <div className="space-y-4">
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse border border-gray-300 text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-300 p-2 font-medium">
-                  Application Type
-                </th>
-                <th className="border border-gray-300 p-2 font-medium">
-                  Application Fee
-                </th>
-                <th className="border border-gray-300 p-2 font-medium">
-                  Immigration Health Surcharge (IHS)
-                </th>
-                <th className="border border-gray-300 p-2 font-medium">
-                  CoS Fee (Employer)
-                </th>
-                <th className="border border-gray-300 p-2 font-medium">
-                  ISC (Employer) Small/Charitable
-                </th>
-                <th className="border border-gray-300 p-2 font-medium">
-                  ISC (Employer) Medium/Large
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border border-gray-300 p-2">
-                  Applying from outside the UK (up to 3 years)
-                </td>
-                <td className="border border-gray-300 p-2">£719 per person</td>
-                <td className="border border-gray-300 p-2">£624 per year</td>
-                <td className="border border-gray-300 p-2">£199</td>
-                <td className="border border-gray-300 p-2">£364 per year</td>
-                <td className="border border-gray-300 p-2">£1,000 per year</td>
-              </tr>
-              <tr className="bg-gray-50">
-                <td className="border border-gray-300 p-2">
-                  Applying from outside the UK (over 3 years)
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £1,420 per person
-                </td>
-                <td className="border border-gray-300 p-2">£624 per year</td>
-                <td className="border border-gray-300 p-2">£199</td>
-                <td className="border border-gray-300 p-2">£364 per year</td>
-                <td className="border border-gray-300 p-2">£1,000 per year</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 p-2">
-                  Applying from inside the UK (up to 3 years)
-                </td>
-                <td className="border border-gray-300 p-2">£827 per person</td>
-                <td className="border border-gray-300 p-2">£624 per year</td>
-                <td className="border border-gray-300 p-2">£199</td>
-                <td className="border border-gray-300 p-2">£364 per year</td>
-                <td className="border border-gray-300 p-2">£1,000 per year</td>
-              </tr>
-              <tr className="bg-gray-50">
-                <td className="border border-gray-300 p-2">
-                  Applying from inside the UK (over 3 years)
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £1,500 per person
-                </td>
-                <td className="border border-gray-300 p-2">£624 per year</td>
-                <td className="border border-gray-300 p-2">£199</td>
-                <td className="border border-gray-300 p-2">£364 per year</td>
-                <td className="border border-gray-300 p-2">£1,000 per year</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 p-2">
-                  Applying from outside the UK (5 years)
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £1,420 per person
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £3,120 total (£624 x 5 years)
-                </td>
-                <td className="border border-gray-300 p-2">£199</td>
-                <td className="border border-gray-300 p-2">
-                  £1,820 total (£364 x 5 years)
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £5,000 total (£1,000 x 5 years)
-                </td>
-              </tr>
-              <tr className="bg-gray-50">
-                <td className="border border-gray-300 p-2">
-                  Applying from inside the UK (5 years)
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £1,500 per person
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £3,120 total (£624 x 5 years)
-                </td>
-                <td className="border border-gray-300 p-2">£199</td>
-                <td className="border border-gray-300 p-2">
-                  £1,820 total (£364 x 5 years)
-                </td>
-                <td className="border border-gray-300 p-2">
-                  £5,000 total (£1,000 x 5 years)
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="rounded-lg border border-blue-100 bg-blue-50 p-5">
+          <p className="text-gray-700">
+            Visa costs vary depending on your specific circumstances, including the length of the visa, whether you are applying from inside or outside the UK, and other factors.
+          </p>
+          <p className="mt-3 text-gray-700">
+            To get an accurate estimate of all costs involved (including application fees, Healthcare Surcharge, and employer costs), please use our{" "}
+            <a href="/calculator" className="font-semibold text-blue-600 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 transition-colors">
+              Immigration Calculator
+            </a>
+            .
+          </p>
         </div>
 
         <div className="mt-4 grid gap-4 md:grid-cols-2">

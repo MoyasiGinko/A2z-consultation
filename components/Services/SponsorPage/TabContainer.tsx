@@ -138,7 +138,7 @@ const TabContainer: React.FC = () => {
     >
       <div className="flex justify-center">
         <motion.h1
-          className="mb-12 inline-block bg-gradient-to-r from-[#3985ad] via-[#0369a0] to-[#075178] bg-clip-text text-center  text-3xl font-bold text-transparent sm:text-3xl md:mb-12 md:text-4xl lg:text-5xl"
+          className="mb-12 inline-block bg-gradient-to-r from-[#3985ad] via-[#0369a0] to-[#075178] bg-clip-text pb-2 text-center  text-3xl font-bold text-transparent sm:text-3xl md:mb-12 md:text-4xl lg:text-5xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}

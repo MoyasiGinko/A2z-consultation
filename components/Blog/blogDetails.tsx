@@ -155,6 +155,21 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
     );
   }
 
+  // Determine if there are legacy tables that still need rendering
+  const inlineTableIds = Array.isArray(blogPost.content)
+    ? blogPost.content
+        .filter((block: any) => block?._type === "tableBlock" && block?.table)
+        .map(
+          (block: any) => block.table?._id || block.table?.slug?.current || "",
+        )
+        .filter(Boolean)
+    : [];
+  const remainingDataTables =
+    blogPost.dataTables?.filter((table) => {
+      const id = table?._id || table?.slug?.current;
+      return id ? !inlineTableIds.includes(id) : true;
+    }) || [];
+
   // Render function to handle content display with error info
   const renderContent = () => {
     // Always show fallback content when there's an error
@@ -264,10 +279,10 @@ const BlogDetails = ({ slug: propSlug }: BlogDetailsProps) => {
                       }
                     })()}
                   </div>{" "}
-                  {/* Data Tables Section */}
-                  {blogPost.dataTables && blogPost.dataTables.length > 0 && (
+                  {/* Legacy Data Tables Section (for posts not yet migrated to inline tables) */}
+                  {remainingDataTables.length > 0 && (
                     <div className="my-8">
-                      {blogPost.dataTables.map((table, index) => (
+                      {remainingDataTables.map((table, index) => (
                         <TableComponent
                           key={table.slug?.current || table._id || index}
                           table={table}

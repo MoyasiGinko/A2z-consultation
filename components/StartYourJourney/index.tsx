@@ -130,8 +130,8 @@ const StartYourJourney = () => {
         }}
       />
 
-      {/* Conditionally render particles for performance */}
-      {!isMobile && <Particles />}
+      {/* Conditionally render particles for performance and to prevent hydration mismatch */}
+      {isMounted && !isMobile && <Particles />}
 
       {/* Enhanced gradient overlay with better visual depth */}
       <div className="absolute inset-0 bg-gradient-to-r from-sky-950/90 via-sky-950/80 to-sky-900/70" />

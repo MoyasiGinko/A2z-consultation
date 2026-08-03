@@ -49,13 +49,16 @@ export const postType = defineType({
     defineField({
       name: "body",
       type: "blockContent",
+      description: "Use the block content to add text, images, and inline tables.",
     }),
     defineField({
       name: "dataTables",
       title: "Data Tables",
       type: "array",
       of: [defineArrayMember({ type: "reference", to: { type: "table" } })],
-      description: "Add data tables to display in this post",
+      description:
+        "Deprecated: use the table block inside the Body field to place tables inline with content.",
+      hidden: true,
     }),
   ],
   preview: {

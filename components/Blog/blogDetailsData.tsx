@@ -45,6 +45,28 @@ export async function getSingleBlogPost(
       return null;
     }
 
+    // Ensure body is always an array for PortableText
+    const bodyContent = Array.isArray(post.body) ? post.body : [];
+
+    // Find any tables already embedded inside the body content
+    const inlineTableBlocks =
+      bodyContent?.filter(
+        (block: any) => block?._type === "tableBlock" && block?.table,
+      ) || [];
+    const inlineTableIds = new Set(
+      inlineTableBlocks
+        .map((block: any) => block.table?._id || block.table?.slug?.current)
+        .filter(Boolean),
+    );
+
+    // Keep any legacy dataTables that were not already embedded inline
+    const remainingDataTables = (post.dataTables || []).filter(
+      (table: DataTable) => {
+        const id = table?._id || table?.slug?.current;
+        return id ? !inlineTableIds.has(id) : true;
+      },
+    );
+
     // Format the post data to match BlogPost interface
     const formattedPost: BlogPost = {
       id: post._id || `temp-id-${Date.now()}`,
@@ -58,15 +80,15 @@ export async function getSingleBlogPost(
           ? post.categories[0].title
           : "Uncategorised",
       mainImage: post.mainImage?.asset?.url || "/images/blog/blog-01.png",
-      content: post.body || [],
+      content: bodyContent,
       estimatedReadingTime: post.estimatedReadingTime
         ? `${post.estimatedReadingTime} min read`
         : undefined,
       additionalImages: post.additionalImages?.map(
         (image: any) => image?.asset?.url || "/images/blog/blog-01.png",
       ),
-      // Map data tables if available
-      dataTables: post.dataTables || [],
+      // Legacy fallback tables (those not already embedded inline)
+      dataTables: remainingDataTables,
       // Format related posts if available
       relatedPosts: post.relatedPosts?.map((relatedPost) => ({
         id: relatedPost._id || `related-${Date.now()}`,
@@ -133,6 +155,25 @@ const fallbackDetailsData = [
           },
         ],
         markDefs: [],
+      },
+      {
+        _type: "tableBlock",
+        _key: "sample-table-block",
+        caption: "Sample pricing comparison",
+        table: {
+          _id: "sample-table-1",
+          title: "Sample Data Table",
+          description: "This is a sample data table for demonstration purposes.",
+          headers: ["Feature", "Basic Plan", "Pro Plan", "Enterprise"],
+          rows: [
+            { cells: ["Users", "5", "25", "Unlimited"] },
+            { cells: ["Storage", "10GB", "100GB", "1TB"] },
+            { cells: ["Support", "Email", "Email & Chat", "24/7 Phone"] },
+            { cells: ["API Access", "Limited", "Full", "Full + Priority"] },
+          ],
+          tableStyle: "striped" as const,
+          slug: { current: "sample-table" },
+        },
       },
     ],
     additionalImages: ["/images/blog/blog-01.png", "/images/blog/blog-02.png"],

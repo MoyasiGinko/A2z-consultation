@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "@/configs/redux/hooks";
 import { fetchLoggedInUser } from "@/configs/redux/auth/authSlice";
 import TawkToChat from "@/app/utils/context/TawkToChat";
+import GoogleAnalytics from "@/app/utils/context/GoogleAnalytics";
 import CookieConsent from "@/utils/CookiesConsent";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,6 +35,7 @@ export default function RootLayout({
     <StoreProvider>
       <html lang="en" suppressHydrationWarning>
         <TawkToChat />
+        <GoogleAnalytics />
         <body className={`flex min-h-screen flex-col ${inter.className}`}>
           {/* <ThemeProvider
             enableSystem={false}

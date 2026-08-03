@@ -130,7 +130,7 @@ const TableComponent: React.FC<TableComponentProps> = ({
       <div className="overflow-x-auto bg-transparent">
         <table
           className={
-            getTableStyleClasses(table.tableStyle) +
+            getTableStyleClasses(table.tableStyle || "default") +
             " min-w-[600px] sm:min-w-full"
           }
         >
@@ -141,7 +141,7 @@ const TableComponent: React.FC<TableComponentProps> = ({
                 <th
                   key={index}
                   className={
-                    getHeaderClasses(table.tableStyle) +
+                    getHeaderClasses(table.tableStyle || "default") +
                     " text-xs sm:text-sm md:text-base"
                   }
                 >
@@ -182,7 +182,10 @@ const TableComponent: React.FC<TableComponentProps> = ({
                       <td
                         key={cellIndex}
                         className={
-                          getCellClasses(table.tableStyle, rowIndex % 2 === 0) +
+                          getCellClasses(
+                            table.tableStyle || "default",
+                            rowIndex % 2 === 0,
+                          ) +
                           " text-xs sm:text-sm md:text-base"
                         }
                       >
@@ -195,14 +198,17 @@ const TableComponent: React.FC<TableComponentProps> = ({
                     );
                   })}
                   {/* Add empty cells if row has fewer cells than headers */}
-                  {row.cells.length < table.headers.length &&
+                    {row.cells.length < table.headers.length &&
                     Array.from({
                       length: table.headers.length - row.cells.length,
                     }).map((_, index) => (
                       <td
                         key={`empty-${index}`}
                         className={
-                          getCellClasses(table.tableStyle, rowIndex % 2 === 0) +
+                          getCellClasses(
+                            table.tableStyle || "default",
+                            rowIndex % 2 === 0,
+                          ) +
                           " text-xs sm:text-sm md:text-base"
                         }
                       >
